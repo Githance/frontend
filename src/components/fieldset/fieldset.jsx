@@ -42,7 +42,7 @@ function Fieldset({
           ></button>
         )}
       </div>
-      <span className={cn(style.text)}>Error text</span>
+      {false && <span className={cn(style.text)}>Error text</span>}
     </fieldset>
   );
 }

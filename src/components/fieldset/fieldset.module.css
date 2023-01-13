@@ -16,19 +16,20 @@
   background-color: transparent;
   width: 15px;
   height: 10px;
-  cursor: pointer;  
+  cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  top: 20px;
   right: 12.5px;
 }
 
-.input__button_close {  
+.input__button_close {
+  top: 20px;
   background-image: url(../../images/input-icon-close.svg);
 }
 
-.input__button_open {  
+.input__button_open {
+  top: 18px;
   background-image: url(../../images/input-icon-open.svg);
 }
 

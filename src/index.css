@@ -16,6 +16,13 @@ body {
   --bg-color-button-pressed: #5d5fef;
   --bg-color-button-disabled: rgba(93, 95, 239, 0.5);
 
+  /* Переменные основных цветов для кнопки Google */
+  --bg-color-g-button-normal: rgba(93, 95, 239, 0.05);
+  --bg-color-g-button-hover: rgba(93, 95, 239, 0.2);
+  --bg-color-g-button-pressed: rgba(93, 95, 239, 0.05);
+  --bg-color-g-button-disabled: rgba(93, 95, 239, 0.05);
+  --border-color-g-button: #7879f1;
+
   /* Перемнные основных цветов полей ввода */
   --color-input-normal: #5d5fef;
   --color-input-true: #6be0a8;
