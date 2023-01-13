@@ -6,7 +6,7 @@
 .container {
   max-width: 1440px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .button {

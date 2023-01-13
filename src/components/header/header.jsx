@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className={style.header}>
       <div className={style.container}>
-        <NavLink className={style.button} to="/authorization">
+        <NavLink className={style.button} to="/authentication">
           Войти
         </NavLink>
       </div>

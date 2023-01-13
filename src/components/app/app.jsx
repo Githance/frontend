@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import MainPage from "../main-page/main-page";
-import AuthorizationPage from "../authorization-page/authorization-page";
+import AuthenticationPage from "../authentication-page/authentication-page";
 
 function App() {
   return (
     <Routes>
       <Route exact path="/" element={<MainPage />} />
-      <Route path="/authorization" element={<AuthorizationPage />} />
+      <Route path="/authentication" element={<AuthenticationPage />} />
     </Routes>
   );
 }
