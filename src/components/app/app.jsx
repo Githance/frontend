@@ -1,15 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import Header from "../header/header";
+import MainPage from "../main-page/main-page";
 import AuthorizationPage from "../authorization-page/authorization-page";
 
 function App() {
   return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/authorization" element={<AuthorizationPage />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route exact path="/" element={<MainPage />} />
+      <Route path="/authorization" element={<AuthorizationPage />} />
+    </Routes>
   );
 }
 
