@@ -2,5 +2,33 @@
   width: 100vw;
   height: 100vh;
   background-color: var(--bg-color-main);
-  color: white;
+}
+
+.container__text {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  margin: 0;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.link {
+  display: inline-block;
+  margin-left: 5px;
+  text-decoration: underline;
+  color: var(--bg-color-button-normal);
+}
+
+.link:hover {
+  color: var(--bg-color-button-hover);
+}
+
+.link:active {
+  color: var(--bg-color-button-pressed);
 }

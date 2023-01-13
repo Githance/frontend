@@ -6,7 +6,7 @@ function Form({ children }) {
 }
 
 Form.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default Form;
