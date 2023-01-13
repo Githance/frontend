@@ -1,0 +1,34 @@
+.header {
+  background-color: var(--bg-color-main);
+  padding: 28px 165px;
+}
+
+.container {
+  max-width: 1440px;
+  display: flex;
+  justify-content: end;
+}
+
+.button {
+  display: block;
+  text-align: center;
+  box-sizing: border-box;
+  max-width: 93px;
+  min-width: 50px;
+  padding: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 10px;
+  color: var(--text-color-main);
+  background-color: var(--bg-color-button-normal);
+}
+
+.button:hover {
+  background-color: var(--bg-color-button-hover);
+}
+
+.button:active {
+  background-color: var(--bg-color-button-normal);
+}

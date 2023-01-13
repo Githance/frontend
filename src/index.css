@@ -1,1 +1,13 @@
 @import url(./vendor/normalize.css);
+
+:root {
+  --bg-color-main: #171717;
+  
+  --bg-color-button-normal: #5d5fef;
+  --bg-color-button-hover: #7879f1;
+  --bg-color-button-pressed: #5d5fef;
+  --bg-color-button-disabled: rgba(93, 95, 239, 0.5);
+
+  --text-color-main: #ffffff;
+  --text-color-additional: rgba(255, 255, 255, 0.5);
+}
