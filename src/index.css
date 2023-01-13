@@ -1,14 +1,30 @@
 @import url(./vendor/normalize.css);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
 
 :root {
+  /* Переменные основных цветов фона */
   --bg-color-main: #171717;
   --bg-color-form: #ffffff;
 
+  /* Переменные основных цветов кнопок */
   --bg-color-button-normal: #5d5fef;
   --bg-color-button-hover: #7879f1;
   --bg-color-button-pressed: #5d5fef;
   --bg-color-button-disabled: rgba(93, 95, 239, 0.5);
 
-  --text-color-main: #ffffff;
+  /* Перемнные основных цветов полей ввода */
+  --color-input-normal: #5d5fef;
+  --color-input-true: #6be0a8;
+  --color-input-false: #f9465c;
+
+  /* Переменные основных цветов текста */
+  --text-color-white: #ffffff;
+  --text-color-black: #171717;
+  --text-color-grey: #575656;
+  --text-color-red: #f9465c;
   --text-color-additional: rgba(255, 255, 255, 0.5);
 }

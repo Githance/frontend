@@ -1,0 +1,47 @@
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.input {
+  margin: 0;
+  padding: 0 0 0 12px;
+  width: 368px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #5d5fef;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--text-color-grey);
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label__container {
+  margin-bottom: 8px;
+}
+
+.label__text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--text-color-black);
+}
+
+.required_tag {
+  color: var(--text-color-red);
+}
+
+.text {
+  display: block;
+  margin-top: 4px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--text-color-red);
+}

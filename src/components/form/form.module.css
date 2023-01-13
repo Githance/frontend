@@ -1,7 +1,7 @@
 .form {
   box-sizing: border-box;
   padding: 60px;
-  max-width: 488px;
+  width: 488px;
   border-radius: 20px;
   background-color: var(--bg-color-form);
   position: fixed;
