@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/self-closing-comp */
@@ -13,6 +14,8 @@ function Fieldset({
   name,
   className,
   button,
+  hint,
+  hintText,
   togglePassword,
   showPassword,
 }) {
@@ -42,7 +45,11 @@ function Fieldset({
           ></button>
         )}
       </div>
-      {false && <span className={cn(style.text)}>Error text</span>}
+      {false ? (
+        <span className={cn(style.text, style.text_error)}>Error text</span>
+      ) : (
+        hint && <span className={style.text}>{hintText}</span>
+      )}
     </fieldset>
   );
 }
@@ -52,7 +59,9 @@ Fieldset.propTypes = {
   required: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  hintText: PropTypes.string.isRequired,
   button: PropTypes.bool,
+  hint: PropTypes.bool,
   showPassword: PropTypes.bool,
   togglePassword: PropTypes.func,
 };

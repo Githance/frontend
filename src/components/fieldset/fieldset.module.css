@@ -39,12 +39,16 @@
   width: 368px;
   height: 46px;
   box-sizing: border-box;
-  border: 1px solid #5d5fef;
+  border: 1px solid var(--color-input-normal);
   border-radius: 6px;
   font-size: 18px;
   line-height: 22px;
   color: var(--text-color-grey);
   cursor: text;
+}
+
+.input__element:focus {
+  outline: 2px solid var(--color-input-normal);
 }
 
 .label {
@@ -73,5 +77,9 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
+  color: var(--text-color-grey);
+}
+
+.text_error {
   color: var(--text-color-red);
 }

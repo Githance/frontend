@@ -3,3 +3,7 @@
   height: 100vh;
   background-color: var(--bg-color-main);
 }
+
+.input {
+  margin-top: 25px;
+}

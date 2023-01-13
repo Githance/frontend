@@ -1,9 +1,13 @@
 .button {
   margin: 0;
   padding: 0;
-  border: 0;  
+  border: 0;
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   cursor: pointer;
+}
+
+.button:focus {
+  outline: 2px solid var(--color-input-normal);
 }

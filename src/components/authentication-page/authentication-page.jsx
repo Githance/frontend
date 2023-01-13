@@ -31,7 +31,7 @@ function AuthenticationPage() {
           className={style.input}
           togglePassword={() => togglePassword()}
           showPassword={showPassword}
-          button
+          button          
         />
         <Button className={cn(style.button, style.button__main)} type="submit">
           Войти
