@@ -2,7 +2,8 @@
 
 :root {
   --bg-color-main: #171717;
-  
+  --bg-color-form: #ffffff;
+
   --bg-color-button-normal: #5d5fef;
   --bg-color-button-hover: #7879f1;
   --bg-color-button-pressed: #5d5fef;
