@@ -4,7 +4,35 @@
   border: none;
 }
 
-.input {
+.input__container {
+  position: relative;
+}
+
+.input__button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  width: 15px;
+  height: 10px;
+  cursor: pointer;  
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 20px;
+  right: 12.5px;
+}
+
+.input__button_close {  
+  background-image: url(../../images/input-icon-close.svg);
+}
+
+.input__button_open {  
+  background-image: url(../../images/input-icon-open.svg);
+}
+
+.input__element {
   margin: 0;
   padding: 0 0 0 12px;
   width: 368px;
@@ -15,6 +43,7 @@
   font-size: 18px;
   line-height: 22px;
   color: var(--text-color-grey);
+  cursor: text;
 }
 
 .label {
@@ -33,7 +62,7 @@
   color: var(--text-color-black);
 }
 
-.required_tag {
+.tag {
   color: var(--text-color-red);
 }
 
