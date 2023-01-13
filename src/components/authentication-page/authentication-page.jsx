@@ -1,5 +1,7 @@
+import style from "./authentication-page.module.css";
+
 function AuthenticationPage() {
-  return <div>Страница авторизации</div>;
+  return <div className={style.container}>Страница авторизации</div>;
 }
 
 export default AuthenticationPage;
