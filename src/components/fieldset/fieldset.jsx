@@ -59,7 +59,7 @@ Fieldset.propTypes = {
   required: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  hintText: PropTypes.string.isRequired,
+  hintText: PropTypes.string,
   button: PropTypes.bool,
   hint: PropTypes.bool,
   showPassword: PropTypes.bool,

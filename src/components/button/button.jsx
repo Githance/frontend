@@ -14,7 +14,7 @@ function Button({ type, className, children }) {
 
 Button.propTypes = {
   type: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
 
 export default Button;
