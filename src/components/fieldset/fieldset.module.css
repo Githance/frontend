@@ -23,18 +23,16 @@
   right: 12.5px;
 }
 
-.input__button:focus {
-  outline: 1px solid var(--bg-color-button-focus);
-}
-
 .input__button_close {
   top: 20px;
+  transition: 0.1s ease-in-out;
   background-image: url(../../images/input-icon-close.svg);
 }
 
 .input__button_open {
   top: 18px;
   background-image: url(../../images/input-icon-open.svg);
+  transition: 0.1s ease-in-out;
 }
 
 .input__element {

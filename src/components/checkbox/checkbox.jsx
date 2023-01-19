@@ -1,10 +1,16 @@
-// eslint-disable-next-line no-unused-vars
-import style from "./checkbox.module.css"
+/* eslint-disable react/self-closing-comp */
+import style from "./checkbox.module.css";
 
 function CheckBox() {
   return (
     <label htmlFor="checkbox">
-      <input type="checkbox" name="checkbox" id="checkbox" />
+      <input
+        className={style.real}
+        type="checkbox"
+        name="checkbox"
+        id="checkbox"
+      />
+      <span className={style.custom}></span>
     </label>
   );
 }

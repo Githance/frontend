@@ -6,6 +6,7 @@ import Form from "../form/form";
 import Title from "../title/title";
 import Fieldset from "../fieldset/fieldset";
 import Button from "../button/button";
+import CheckBox from "../checkbox/checkbox";
 import style from "./registration-page.module.css";
 
 function RegistrationPage() {
@@ -44,6 +45,9 @@ function RegistrationPage() {
           hint
           hintText="Минимум 8 символов, должен включать цифры и буквы"
         />
+        <div>
+          <CheckBox />
+        </div>
         <Button className={cn(style.button, style.button__main)} type="submit">
           Войти
         </Button>
