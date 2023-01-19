@@ -33,7 +33,9 @@ function AuthenticationPage() {
           className={style.input}
           togglePassword={() => togglePassword()}
           showPassword={showPassword}
-          button          
+          linkPage="/registration"
+          linkText="Забыли пароль?"
+          button
         />
         <Button className={cn(style.button, style.button__main)} type="submit">
           Войти

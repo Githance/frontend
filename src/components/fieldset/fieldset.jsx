@@ -4,6 +4,7 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import cn from "classnames";
 import style from "./fieldset.module.css";
 
@@ -16,6 +17,8 @@ function Fieldset({
   button,
   hint,
   hintText,
+  linkPage,
+  linkText,
   togglePassword,
   showPassword,
 }) {
@@ -25,6 +28,11 @@ function Fieldset({
         <label htmlFor={name} className={style.label__text}>
           {label} {required && <span className={style.tag}>*</span>}
         </label>
+        {linkPage && (
+          <NavLink to={linkPage} className={style.link}>
+            {linkText}
+          </NavLink>
+        )}
       </div>
       <div className={cn(style.input, style.input__container)}>
         <input
