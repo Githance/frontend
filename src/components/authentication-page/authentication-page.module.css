@@ -4,6 +4,14 @@
   background-color: var(--bg-color-main);
 }
 
+.title {
+  margin-bottom: 40px;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: var(--text-color-black);
+}
+
 .container__text {
   margin-top: 40px;
   display: flex;
@@ -84,5 +92,3 @@
 .button__google:active {
   background-color: var(--bg-color-g-button-normal);
 }
-
-

@@ -5,6 +5,7 @@ import cn from "classnames";
 import Form from "../form/form";
 import Fieldset from "../fieldset/fieldset";
 import Button from "../button/button";
+import Title from "../title/title";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {
@@ -17,6 +18,7 @@ function AuthenticationPage() {
   return (
     <div className={style.container}>
       <Form>
+        <Title className={style.title}>Вход</Title>
         <Fieldset
           type="text"
           required="required"
