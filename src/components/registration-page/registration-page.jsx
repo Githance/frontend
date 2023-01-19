@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/self-closing-comp */
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -45,8 +46,19 @@ function RegistrationPage() {
           hint
           hintText="Минимум 8 символов, должен включать цифры и буквы"
         />
-        <div>
+        <div className={style.agreement}>
           <CheckBox />
+          <p className={style.agreement__text}>
+            Согласен с
+            <a className={style.agreement__link} href="#">
+              условиями пользования
+            </a>
+            платформой Githance и&nbsp;условиями обработки персональных данных
+            на условиях, определенных
+            <a className={style.agreement__link} href="">
+              Политикой конфиденциальности
+            </a>
+          </p>
         </div>
         <Button className={cn(style.button, style.button__main)} type="submit">
           Войти
