@@ -15,6 +15,7 @@ body {
   --bg-color-button-hover: #7879f1;
   --bg-color-button-pressed: #5d5fef;
   --bg-color-button-disabled: rgba(93, 95, 239, 0.5);
+  --bg-color-button-focus: #050897;
 
   /* Переменные основных цветов для кнопки Google */
   --bg-color-g-button-normal: rgba(93, 95, 239, 0.05);

@@ -1,6 +1,11 @@
+/* eslint-disable react/self-closing-comp */
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import cn from "classnames";
 import Form from "../form/form";
+import Title from "../title/title";
 import Fieldset from "../fieldset/fieldset";
+import Button from "../button/button";
 import style from "./registration-page.module.css";
 
 function RegistrationPage() {
@@ -13,6 +18,7 @@ function RegistrationPage() {
   return (
     <div className={style.container}>
       <Form>
+        <Title className={style.title}>Регистрация</Title>
         <Fieldset
           type="text"
           required="required"
@@ -38,6 +44,25 @@ function RegistrationPage() {
           hint
           hintText="Минимум 8 символов, должен включать цифры и буквы"
         />
+        <Button className={cn(style.button, style.button__main)} type="submit">
+          Войти
+        </Button>
+        <p className={style.text}>или</p>
+        <Button
+          className={cn(style.button, style.button__google)}
+          type="submit"
+        >
+          <span className={style.icon}></span>
+          Войти через Google
+        </Button>
+        <div className={style.container__text}>
+          <p className={style.text}>
+            Уже зарегистрированы?
+            <NavLink to="/authentication" className={style.link}>
+              Войти
+            </NavLink>
+          </p>
+        </div>
       </Form>
     </div>
   );

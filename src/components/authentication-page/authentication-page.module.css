@@ -45,6 +45,10 @@
   color: var(--bg-color-button-pressed);
 }
 
+.link:focus {
+  outline: 2px solid var(--bg-color-button-focus);
+}
+
 .button {
   width: 100%;
   min-width: 300px;

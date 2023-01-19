@@ -23,6 +23,10 @@
   right: 12.5px;
 }
 
+.input__button:focus {
+  outline: 1px solid var(--bg-color-button-focus);
+}
+
 .input__button_close {
   top: 20px;
   background-image: url(../../images/input-icon-close.svg);
@@ -48,7 +52,7 @@
 }
 
 .input__element:focus {
-  outline: 2px solid var(--color-input-normal);
+  outline: 2px solid var(--bg-color-button-focus);
 }
 
 .label {
@@ -90,4 +94,8 @@
   line-height: 22px;
   text-decoration: underline;
   color: var(--bg-color-button-normal);
+}
+
+.link:focus {
+  outline: 2px solid var(--bg-color-button-focus);
 }

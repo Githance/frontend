@@ -9,5 +9,5 @@
 }
 
 .button:focus {
-  outline: 2px solid var(--color-input-normal);
+  outline: 2px solid var(--bg-color-button-focus);
 }
