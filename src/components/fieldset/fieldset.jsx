@@ -1,3 +1,5 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-proto */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -23,13 +25,18 @@ function Fieldset({
   togglePassword,
   showPassword,
   register,
+  errors,
 }) {
+  console.log(errors);
+
   return (
     <fieldset className={style.fieldset}>
       <div className={cn(style.label, style.label__container, className)}>
-        <label htmlFor={name} className={style.label__text}>
-          {label} {required && <span className={style.tag}>*</span>}
-        </label>
+        {label && (
+          <label htmlFor={name} className={style.label__text}>
+            {label} {required && <span className={style.tag}>*</span>}
+          </label>
+        )}
         {linkPage && (
           <NavLink to={linkPage} className={style.link}>
             {linkText}
@@ -41,7 +48,11 @@ function Fieldset({
           id={name}
           type={type}
           className={style.input__element}
-          {...register(name)}
+          {...register(name, {
+            required: "Заполни меня",
+            minLength: { value: 3, message: "Минимум 3 символа" },
+            maxLength: { value: 10, message: "Максимум 10 символов" },
+          })}
         />
         {button && (
           <button
@@ -55,8 +66,10 @@ function Fieldset({
           ></button>
         )}
       </div>
-      {false ? (
-        <span className={cn(style.text, style.text_error)}>Error text</span>
+      {errors[name] ? (
+        <span className={cn(style.text, style.text_error)}>
+          {errors[name].message}
+        </span>
       ) : (
         hint && <span className={style.text}>{hintText}</span>
       )}

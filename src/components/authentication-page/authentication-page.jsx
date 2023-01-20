@@ -17,11 +17,19 @@ function AuthenticationPage() {
     setShowPassword((prevValue) => !prevValue);
   }
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: "onChange" });
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  };
 
   return (
     <div className={style.container}>
-      <Form>
+      <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
         <Title className={style.title}>Вход</Title>
         <Fieldset
           type="text"
@@ -29,6 +37,7 @@ function AuthenticationPage() {
           label="Электронная почта"
           name="email"
           register={register}
+          errors={errors}
         />
         <Fieldset
           type={showPassword ? "password" : "text"}
@@ -42,6 +51,7 @@ function AuthenticationPage() {
           linkText="Забыли пароль?"
           button
           register={register}
+          errors={errors}
         />
         <Button className={cn(style.button, style.button__main)} type="submit">
           Войти
