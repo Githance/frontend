@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
@@ -21,6 +22,7 @@ function Fieldset({
   linkText,
   togglePassword,
   showPassword,
+  register,
 }) {
   return (
     <fieldset className={style.fieldset}>
@@ -38,8 +40,8 @@ function Fieldset({
         <input
           id={name}
           type={type}
-          required={required}
           className={style.input__element}
+          {...register(name)}
         />
         {button && (
           <button
@@ -63,10 +65,10 @@ function Fieldset({
 }
 
 Fieldset.propTypes = {
-  type: PropTypes.string.isRequired,
-  required: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  required: PropTypes.bool,
+  label: PropTypes.string,
+  name: PropTypes.string,
   hintText: PropTypes.string,
   button: PropTypes.bool,
   hint: PropTypes.bool,

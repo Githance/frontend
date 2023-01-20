@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../form/form";
 import Fieldset from "../fieldset/fieldset";
@@ -15,19 +17,22 @@ function AuthenticationPage() {
     setShowPassword((prevValue) => !prevValue);
   }
 
+  const { register, handleSubmit } = useForm();
+
   return (
     <div className={style.container}>
       <Form>
         <Title className={style.title}>Вход</Title>
         <Fieldset
           type="text"
-          required="required"
+          required
           label="Электронная почта"
           name="email"
+          register={register}
         />
         <Fieldset
           type={showPassword ? "password" : "text"}
-          required="required"
+          required
           label="Пароль"
           name="password"
           className={style.input}
@@ -36,6 +41,7 @@ function AuthenticationPage() {
           linkPage="/registration"
           linkText="Забыли пароль?"
           button
+          register={register}
         />
         <Button className={cn(style.button, style.button__main)} type="submit">
           Войти
