@@ -26,8 +26,7 @@ function Fieldset({
   showPassword,
   register,
   errors,
-}) {
-  console.log(errors);
+}) {  
 
   return (
     <fieldset className={style.fieldset}>
@@ -47,7 +46,11 @@ function Fieldset({
         <input
           id={name}
           type={type}
-          className={style.input__element}
+          className={`${style.input__element} ${
+            errors[name]
+              ? style.input__element_validation_false
+              : style.input__element_validation_success
+          }`}
           {...register(name, {
             required: "Заполни меня",
             minLength: { value: 3, message: "Минимум 3 символа" },

@@ -49,6 +49,14 @@
   cursor: text;
 }
 
+.input__element_validation_success {
+  border: 1px solid var(--color-input-true);
+}
+
+.input__element_validation_false {
+  border: 1px solid var(--color-input-false);
+} 
+
 .input__element:focus {
   outline: 2px solid var(--bg-color-button-focus);
 }
