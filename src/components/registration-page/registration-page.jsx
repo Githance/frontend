@@ -22,7 +22,7 @@ function RegistrationPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isValid },
   } = useForm({
     mode: "onChange",
     defaultValues: { user: "", email: "", password: "" },
@@ -71,7 +71,7 @@ function RegistrationPage() {
           dirtyFields={dirtyFields}
         />
         <div className={style.agreement}>
-          <CheckBox />
+          <CheckBox register={register} />
           <p className={style.agreement__text}>
             Согласен с
             <a className={style.agreement__link} href="#">
@@ -84,7 +84,13 @@ function RegistrationPage() {
             </a>
           </p>
         </div>
-        <Button className={cn(style.button, style.button__main)} type="submit">
+        <Button
+          className={`${style.button} ${
+            isValid ? style.button__main : style.button__main_noValid
+          }`}
+          type="submit"
+          isValid={isValid}
+        >
           Войти
         </Button>
         <p className={style.text}>или</p>

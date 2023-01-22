@@ -4,9 +4,13 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import style from "./button.module.css";
 
-function Button({ type, className, children }) {
+function Button({ type, isValid, className, children }) {
   return (
-    <button className={cn(style.button, className)} type={type}>
+    <button
+      disabled={!isValid}
+      className={cn(style.button, className)}
+      type={type}
+    >
       {children}
     </button>
   );

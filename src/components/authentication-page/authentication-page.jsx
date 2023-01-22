@@ -19,7 +19,7 @@ function AuthenticationPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isValid },
   } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
 
   const onSubmit = (data) => {
@@ -54,7 +54,13 @@ function AuthenticationPage() {
           errors={errors}
           dirtyFields={dirtyFields}
         />
-        <Button className={cn(style.button, style.button__main)} type="submit">
+        <Button
+          className={`${style.button} ${
+            isValid ? style.button__main : style.button__main_noValid
+          }`}
+          type="submit"
+          isValid={isValid}
+        >
           Войти
         </Button>
         <p className={style.text}>или</p>

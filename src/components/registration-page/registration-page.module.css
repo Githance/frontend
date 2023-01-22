@@ -23,13 +23,23 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  margin: 32px 0 12px;
+  padding: 16px 0;
 }
 
 .button__main {
-  margin: 32px 0 12px;
-  padding: 16px 0;
   color: var(--text-color-white);
   background-color: var(--bg-color-button-normal);
+}
+
+.button__main_noValid {
+  cursor: auto;
+  color: var(--text-color-additional);
+  background-color: var(--bg-color-button-disabled);
+}
+
+.button__main_noValid:hover {
+  background-color: var(--bg-color-button-disabled);
 }
 
 .button__main:hover {

@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/self-closing-comp */
 import style from "./checkbox.module.css";
 
-function CheckBox() {
+function CheckBox({ register }) {
   return (
     <label htmlFor="checkbox">
       <input
@@ -9,6 +11,7 @@ function CheckBox() {
         type="checkbox"
         name="checkbox"
         id="checkbox"
+        {...register("checkbox", { required: "Заполни меня" })}
       />
       <span className={style.custom}></span>
     </label>
