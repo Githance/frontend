@@ -16,8 +16,7 @@ function Fieldset({
   label,
   name,
   className,
-  button,
-  hint,
+  button,  
   hintText,
   linkPage,
   linkText,
@@ -80,7 +79,7 @@ function Fieldset({
           )}
         </span>
       ) : (
-        <span className={style.text}>{hintText}</span>
+        hintText && <span className={style.text}>{hintText}</span>
       )}
     </fieldset>
   );

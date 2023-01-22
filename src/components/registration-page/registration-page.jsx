@@ -63,8 +63,7 @@ function RegistrationPage() {
           className={style.input}
           togglePassword={() => togglePassword()}
           showPassword={showPassword}
-          button
-          hint
+          button          
           hintText="Минимум 8 символов, должен включать цифры и буквы"
           register={register}
           errors={errors}
