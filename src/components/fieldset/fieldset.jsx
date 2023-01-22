@@ -1,6 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable no-prototype-builtins */
-/* eslint-disable no-proto */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -28,8 +26,7 @@ function Fieldset({
   register,
   errors,
   dirtyFields,
-}) {
-  console.log(errors[name]);
+}) {  
 
   return (
     <fieldset className={style.fieldset}>

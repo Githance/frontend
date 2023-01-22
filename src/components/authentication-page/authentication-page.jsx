@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
