@@ -16,7 +16,7 @@ function Fieldset({
   label,
   name,
   className,
-  button,  
+  button,
   hintText,
   linkPage,
   linkText,
@@ -54,8 +54,12 @@ function Fieldset({
           }
           {...register(name, {
             required: "Заполни меня",
-            minLength: { value: 3, message: "Минимум 3 символа" },
-            maxLength: { value: 10, message: "Максимум 10 символов" },
+            minLength: { value: 5, message: "Минимум 5 символа" },
+            maxLength: { value: 40, message: "Максимум 40 символов" },
+            pattern: {
+              value: /[^\s]+[\sа-яА-ЯёЁa-zA-Z]+[^\s$]/,
+              message: "Только кирилица и латиница",
+            },
           })}
         />
         {button && (
