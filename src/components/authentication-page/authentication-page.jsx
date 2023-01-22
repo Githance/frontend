@@ -20,8 +20,8 @@ function AuthenticationPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ mode: "onChange" });
+    formState: { errors, dirtyFields },
+  } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
@@ -38,6 +38,7 @@ function AuthenticationPage() {
           name="email"
           register={register}
           errors={errors}
+          dirtyFields={dirtyFields}
         />
         <Fieldset
           type={showPassword ? "password" : "text"}
@@ -52,6 +53,7 @@ function AuthenticationPage() {
           button
           register={register}
           errors={errors}
+          dirtyFields={dirtyFields}
         />
         <Button className={cn(style.button, style.button__main)} type="submit">
           Войти

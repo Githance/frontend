@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-proto */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -26,7 +27,9 @@ function Fieldset({
   showPassword,
   register,
   errors,
-}) {  
+  dirtyFields,
+}) {
+  console.log(errors[name]);
 
   return (
     <fieldset className={style.fieldset}>
@@ -46,11 +49,13 @@ function Fieldset({
         <input
           id={name}
           type={type}
-          className={`${style.input__element} ${
-            errors[name]
+          className={
+            !dirtyFields[name]
+              ? style.input__element
+              : errors[name]
               ? style.input__element_validation_false
               : style.input__element_validation_success
-          }`}
+          }
           {...register(name, {
             required: "Заполни меня",
             minLength: { value: 3, message: "Минимум 3 символа" },
@@ -71,10 +76,14 @@ function Fieldset({
       </div>
       {errors[name] ? (
         <span className={cn(style.text, style.text_error)}>
-          {errors[name].message}
+          {dirtyFields[name] && errors[name] ? (
+            errors[name].message
+          ) : (
+            <span className={style.text}>{hintText}</span>
+          )}
         </span>
       ) : (
-        hint && <span className={style.text}>{hintText}</span>
+        <span className={style.text}>{hintText}</span>
       )}
     </fieldset>
   );

@@ -19,11 +19,22 @@ function RegistrationPage() {
     setShowPassword((prevValue) => !prevValue);
   }
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, dirtyFields },
+  } = useForm({
+    mode: "onChange",
+    defaultValues: { user: "", email: "", password: "" },
+  });
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  };
 
   return (
     <div className={style.container}>
-      <Form>
+      <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
         <Title className={style.title}>Регистрация</Title>
         <Fieldset
           type="text"
@@ -31,6 +42,8 @@ function RegistrationPage() {
           label="Имя пользователя"
           name="user"
           register={register}
+          errors={errors}
+          dirtyFields={dirtyFields}
         />
         <Fieldset
           type="email"
@@ -39,6 +52,8 @@ function RegistrationPage() {
           name="email"
           className={style.input}
           register={register}
+          errors={errors}
+          dirtyFields={dirtyFields}
         />
         <Fieldset
           type={showPassword ? "password" : "text"}
@@ -52,6 +67,8 @@ function RegistrationPage() {
           hint
           hintText="Минимум 8 символов, должен включать цифры и буквы"
           register={register}
+          errors={errors}
+          dirtyFields={dirtyFields}
         />
         <div className={style.agreement}>
           <CheckBox />
