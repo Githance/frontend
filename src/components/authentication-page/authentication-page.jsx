@@ -6,7 +6,7 @@ import cn from "classnames";
 import Form from "../form/form";
 import Fieldset from "../fieldset/fieldset";
 import Button from "../button/button";
-import Title from "../title/title";
+import FormTitle from "../form-title/form-title";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {
@@ -29,7 +29,7 @@ function AuthenticationPage() {
   return (
     <div className={style.container}>
       <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
-        <Title className={style.title}>Вход</Title>
+        <FormTitle className={style.title}>Вход</FormTitle>
         <Fieldset
           type="text"
           required

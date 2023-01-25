@@ -7,6 +7,7 @@ import cn from "classnames";
 import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
 import InputLabel from "../../components/input-label/input-label";
+import Input from "../../components/input/input";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {
@@ -34,12 +35,14 @@ function AuthenticationPage() {
         className={style.form}
       >
         <FormTitle className={style.title}>Вход</FormTitle>
-        <fieldset className={style.fieldset}>          
+        <fieldset className={style.fieldset}>
           <InputLabel
             label="Электронная почта"
             htmlFor="email"
+            className={style.label}
             required
           ></InputLabel>
+          <Input type="email" htmlFor="email" />
         </fieldset>
       </Form>
     </div>

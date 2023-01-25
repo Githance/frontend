@@ -3,6 +3,7 @@
   font-size: 18px;
   line-height: 22px;
   color: var(--text-color-black);
+  display: inline-block;
 }
 
 .tag {

@@ -30,6 +30,17 @@
   border: none;
 }
 
+.label {
+  margin-bottom: 8px;
+}
+
+
+
+
+
+
+
+
 .container__text {
   margin-top: 40px;
   display: flex;
