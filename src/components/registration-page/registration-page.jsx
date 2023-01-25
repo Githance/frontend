@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../form/form";
-import Title from "../title/title";
+import FormTitle from "../form-title/form-title";
 import Fieldset from "../fieldset/fieldset";
 import Button from "../button/button";
 import CheckBox from "../checkbox/checkbox";
@@ -35,7 +35,7 @@ function RegistrationPage() {
   return (
     <div className={style.container}>
       <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
-        <Title className={style.title}>Регистрация</Title>
+        <FormTitle className={style.title}>Регистрация</FormTitle>
         <Fieldset
           type="text"
           required

@@ -1,15 +1,15 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from "prop-types";
 import cn from "classnames";
-import style from "./title.module.css";
+import style from "./form-title.module.css";
 
-function Title({ children, className }) {
+function FormTitle({ children, className }) {
   return <p className={cn(style.title, className)}>{children}</p>;
 }
 
-Title.propTypes = {
+FormTitle.propTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
 };
 
-export default Title;
+export default FormTitle;

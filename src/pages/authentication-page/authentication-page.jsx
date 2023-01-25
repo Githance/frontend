@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
-import Title from "../../components/title/title";
+import FormTitle from "../../components/form-title/form-title";
+import InputLabel from "../../components/input-label/input-label";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {
@@ -32,7 +33,14 @@ function AuthenticationPage() {
         onSubmit={onSubmit}
         className={style.form}
       >
-        <Title className={style.title}>Вход</Title>
+        <FormTitle className={style.title}>Вход</FormTitle>
+        <fieldset className={style.fieldset}>          
+          <InputLabel
+            label="Электронная почта"
+            htmlFor="email"
+            required
+          ></InputLabel>
+        </fieldset>
       </Form>
     </div>
   );
