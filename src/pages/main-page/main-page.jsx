@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import Header from "../header/header";
+import Header from "../../components/header/header";
 import style from "./main-page.module.css";
 
 function MainPage() {

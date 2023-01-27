@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import cn from "classnames";
 import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
@@ -10,8 +9,6 @@ import TextInput from "../../components/text-input/text-input";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {
-  
-
   const {
     register,
     handleSubmit,
@@ -38,7 +35,7 @@ function AuthenticationPage() {
             required
           ></InputLabel>
           <TextInput type="email" htmlFor="email" />
-        </fieldset>
+        </fieldset>        
       </Form>
     </div>
   );
