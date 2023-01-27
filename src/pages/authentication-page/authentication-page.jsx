@@ -1,21 +1,16 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import cn from "classnames";
 import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
 import InputLabel from "../../components/input-label/input-label";
-import Input from "../../components/input/input";
+import TextInput from "../../components/text-input/text-input";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {
-  const [showPassword, setShowPassword] = useState(true);
-
-  function togglePassword() {
-    setShowPassword((prevValue) => !prevValue);
-  }
+  
 
   const {
     register,
@@ -42,7 +37,7 @@ function AuthenticationPage() {
             className={style.label}
             required
           ></InputLabel>
-          <Input type="email" htmlFor="email" />
+          <TextInput type="email" htmlFor="email" />
         </fieldset>
       </Form>
     </div>
