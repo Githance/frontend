@@ -1,12 +1,22 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/self-closing-comp */
+/* eslint-disable object-shorthand */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 import PropTypes from "prop-types";
 import cn from "classnames";
 import { useState } from "react";
 import style from "./password-input.module.css";
 
-function PasswordInput({ htmlFor, placeholder, className }) {
+function PasswordInput({
+  register,
+  minLength,
+  maxLength,
+  pattern,
+  htmlFor,
+  placeholder,
+  className,
+}) {
   const [showPassword, setShowPassword] = useState(true);
 
   function togglePassword() {
@@ -20,6 +30,12 @@ function PasswordInput({ htmlFor, placeholder, className }) {
         type={showPassword ? "password" : "text"}
         placeholder={placeholder}
         className={style.input__element}
+        {...register(htmlFor, {
+          required: "Заполни меня",
+          minLength: minLength,
+          maxLength: maxLength,
+          pattern: pattern,
+        })}
       />
       <button
         className={`${style.input__button} ${
@@ -36,6 +52,10 @@ PasswordInput.propTypes = {
   placeholder: PropTypes.string,
   htmlFor: PropTypes.string,
   className: PropTypes.string,
+  register: PropTypes.func,
+  minLength: PropTypes.objectOf(PropTypes.number, PropTypes.string),
+  maxLength: PropTypes.objectOf(PropTypes.number, PropTypes.string),
+  pattern: PropTypes.objectOf(PropTypes.string, PropTypes.string),
 };
 
 export default PasswordInput;

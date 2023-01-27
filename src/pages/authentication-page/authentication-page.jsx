@@ -35,7 +35,11 @@ function AuthenticationPage() {
           <InputLabel htmlFor="email" required>
             Электронная почта
           </InputLabel>
-          <EmailInput className={style.input} htmlFor="email" />
+          <EmailInput
+            register={register}
+            className={style.input}
+            htmlFor="email"
+          />
           {false && <InputErrorText>Validation text</InputErrorText>}
         </fieldset>
         <fieldset className={style.fieldset}>
@@ -47,7 +51,11 @@ function AuthenticationPage() {
               Забыли пароль?
             </Link>
           </div>
-          <PasswordInput className={style.input} htmlFor="password" />
+          <PasswordInput
+            register={register}
+            className={style.input}
+            htmlFor="password"
+          />
           {false && <InputErrorText>Validation text</InputErrorText>}
         </fieldset>
         <fieldset className={cn(style.fieldset, style.container__buttons)}>
