@@ -6,6 +6,7 @@ import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
 import InputLabel from "../../components/input-label/input-label";
 import TextInput from "../../components/text-input/text-input";
+import InputErrorText from "../../components/input-error-text/input-error-text";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {
@@ -35,6 +36,7 @@ function AuthenticationPage() {
             required
           ></InputLabel>
           <TextInput type="email" htmlFor="email" />
+          <InputErrorText className={style.error}>Validation text</InputErrorText>
         </fieldset>        
       </Form>
     </div>
