@@ -5,6 +5,7 @@
 }
 
 .container__password {
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
 }
@@ -41,6 +42,7 @@
 }
 
 .link {
+  margin-left: 5px;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -57,11 +59,6 @@
   color: var(--bg-color-button-pressed);
 }
 
-
-
-
-
-
 .container__text {
   margin-top: 40px;
   display: flex;
@@ -76,6 +73,15 @@
   line-height: 22px;
 }
 
+.container__buttons {
+  padding-top: 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
 .button {
   width: 100%;
   min-width: 300px;
@@ -83,7 +89,6 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  margin: 32px 0 12px;
   padding: 16px 0;
 }
 
@@ -119,7 +124,6 @@
 }
 
 .button__google {
-  margin-top: 12px;
   padding: 15px 0;
   border: 1px solid var(--border-color-g-button);
   background-color: var(--bg-color-g-button-normal);
