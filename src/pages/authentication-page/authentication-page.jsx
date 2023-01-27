@@ -32,37 +32,23 @@ function AuthenticationPage() {
       >
         <FormTitle className={style.title}>Вход</FormTitle>
         <fieldset className={style.fieldset}>
-          <InputLabel
-            label="Электронная почта"
-            htmlFor="email"
-            className={style.label}
-            required
-          ></InputLabel>
+          <InputLabel htmlFor="email" required>
+            Электронная почта
+          </InputLabel>
           <EmailInput className={style.input} htmlFor="email" />
-          {false && (
-            <InputErrorText className={style.error}>
-              Validation text
-            </InputErrorText>
-          )}
+          {false && <InputErrorText>Validation text</InputErrorText>}
         </fieldset>
         <fieldset className={style.fieldset}>
           <div className={style.container__password}>
-            <InputLabel
-              label="Пароль"
-              htmlFor="password"
-              className={style.label}
-              required
-            ></InputLabel>
+            <InputLabel htmlFor="password" required>
+              Пароль
+            </InputLabel>
             <Link className={style.link} to="/registration">
               Забыли пароль?
             </Link>
           </div>
           <PasswordInput className={style.input} htmlFor="password" />
-          {false && (
-            <InputErrorText className={style.error}>
-              Validation text
-            </InputErrorText>
-          )}
+          {false && <InputErrorText>Validation text</InputErrorText>}
         </fieldset>
         <fieldset className={cn(style.fieldset, style.container__buttons)}>
           <Button

@@ -59,20 +59,6 @@
   color: var(--bg-color-button-pressed);
 }
 
-.container__text {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-}
-
-.text {
-  margin: 0;
-  display: inline-block;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-}
-
 .container__buttons {
   padding-top: 28px;
   box-sizing: border-box;
@@ -136,4 +122,18 @@
 
 .button__google:active {
   background-color: var(--bg-color-g-button-normal);
+}
+
+.container__text {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  margin: 0;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
 }

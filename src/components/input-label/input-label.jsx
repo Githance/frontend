@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import style from "./input-label.module.css";
 
-function InputLabel({ label, htmlFor, className, required }) {
+function InputLabel({ children, htmlFor, className, required }) {
   return (
-    label && (
+    children && (
       <label htmlFor={htmlFor} className={cn(style.label, className)}>
-        {label} {required && <span className={style.tag}>*</span>}
+        {children} {required && <span className={style.tag}>*</span>}
       </label>
     )
   );
 }
 
 InputLabel.propTypes = {
-  label: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   htmlFor: PropTypes.string.isRequired,
   className: PropTypes.string,
   required: PropTypes.bool,
