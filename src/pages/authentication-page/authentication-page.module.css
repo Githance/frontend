@@ -4,6 +4,11 @@
   background-color: var(--bg-color-main);
 }
 
+.container__password {
+  display: flex;
+  justify-content: space-between;
+}
+
 .form {
   padding: 60px;
   width: 488px;
@@ -30,13 +35,28 @@
   border: none;
 }
 
-.label {
-  margin-bottom: 8px;
+.input {
+  margin-top: 8px;
+  margin-bottom: 4px;
 }
 
-.error {
-  margin-top: 4px;
+.link {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--bg-color-button-normal);
 }
+
+.link:hover {
+  color: var(--bg-color-button-hover);
+}
+
+.link:active {
+  color: var(--bg-color-button-pressed);
+}
+
 
 
 
@@ -48,31 +68,12 @@
   justify-content: center;
 }
 
-.input {
-  margin-top: 25px;
-}
-
 .text {
   margin: 0;
   display: inline-block;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-}
-
-.link {
-  display: inline-block;
-  margin-left: 5px;
-  text-decoration: underline;
-  color: var(--bg-color-button-normal);
-}
-
-.link:hover {
-  color: var(--bg-color-button-hover);
-}
-
-.link:active {
-  color: var(--bg-color-button-pressed);
 }
 
 .button {

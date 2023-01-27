@@ -2,10 +2,11 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/require-default-props */
 import PropTypes from "prop-types";
+import cn from "classnames";
 import { useState } from "react";
 import style from "./password-input.module.css";
 
-function PasswordInput({ htmlFor, placeholder }) {
+function PasswordInput({ htmlFor, placeholder, className }) {
   const [showPassword, setShowPassword] = useState(true);
 
   function togglePassword() {
@@ -13,10 +14,10 @@ function PasswordInput({ htmlFor, placeholder }) {
   }
 
   return (
-    <div className={style.input}>
+    <div className={cn(style.input, className)}>
       <input
         id={htmlFor}
-        type="text"
+        type={showPassword ? "password" : "text"}
         placeholder={placeholder}
         className={style.input__element}
       />
@@ -34,6 +35,7 @@ function PasswordInput({ htmlFor, placeholder }) {
 PasswordInput.propTypes = {
   placeholder: PropTypes.string,
   htmlFor: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default PasswordInput;

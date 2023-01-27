@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 import { useForm } from "react-hook-form";
-import cn from "classnames";
+import { Link } from "react-router-dom";
 import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
 import InputLabel from "../../components/input-label/input-label";
-import TextInput from "../../components/text-input/text-input";
+import EmailInput from "../../components/email-input/email-input";
+import PasswordInput from "../../components/password-input/password-input";
 import InputErrorText from "../../components/input-error-text/input-error-text";
 import style from "./authentication-page.module.css";
 
@@ -35,9 +36,32 @@ function AuthenticationPage() {
             className={style.label}
             required
           ></InputLabel>
-          <TextInput type="email" htmlFor="email" />
-          <InputErrorText className={style.error}>Validation text</InputErrorText>
-        </fieldset>        
+          <EmailInput className={style.input} htmlFor="email" />
+          {false && (
+            <InputErrorText className={style.error}>
+              Validation text
+            </InputErrorText>
+          )}
+        </fieldset>
+        <fieldset className={style.fieldset}>
+          <div className={style.container__password}>
+            <InputLabel
+              label="Пароль"
+              htmlFor="password"
+              className={style.label}
+              required
+            ></InputLabel>
+            <Link className={style.link} to="/registration">
+              Забыли пароль?
+            </Link>
+          </div>
+          <PasswordInput className={style.input} htmlFor="password" />
+          {false && (
+            <InputErrorText className={style.error}>
+              Validation text
+            </InputErrorText>
+          )}
+        </fieldset>
       </Form>
     </div>
   );
