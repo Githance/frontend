@@ -14,6 +14,7 @@ import InputErrorText from "../../components/input-error-text/input-error-text";
 import InputText from "../../components/input-text/input-text";
 import Button from "../../components/button/button";
 import CheckBox from "../../components/checkbox/checkbox";
+import { registrationPageScheme } from "../../utils/validation-scheme";
 import style from "./registration-page.module.css";
 
 function RegistrationPage() {

@@ -10,6 +10,7 @@ import EmailInput from "../../components/email-input/email-input";
 import PasswordInput from "../../components/password-input/password-input";
 import InputErrorText from "../../components/input-error-text/input-error-text";
 import Button from "../../components/button/button";
+import { authenticationPageScheme } from "../../utils/validation-scheme";
 import style from "./authentication-page.module.css";
 
 function AuthenticationPage() {

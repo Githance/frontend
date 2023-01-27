@@ -1,24 +1,27 @@
 export const authenticationPageScheme = {
   email: {
-    pattern: /[a-zA-Z]/,
+    pattern: { value: /[a-zA-Z]/, message: "Текст сообщения" },
   },
   password: {
-    minLength: 8,
-    maxLength: 40,
+    minLength: { value: 8, message: "Минимум 8 символов" },
+    maxLength: { value: 40, message: "Максимум 40 символов" },
   },
 };
 
 export const registrationPageScheme = {
   user: {
-    minLength: 5,
-    maxLength: 40,
-    pattern: /[^\s]+[а-яА-ЯёЁa-zA-Z\-\s]+[^\s$]/,
+    minLength: { value: 8, message: "Минимум 8 символов" },
+    maxLength: { value: 40, message: "Максимум 40 символов" },
+    pattern: {
+      value: /[^\s]+[а-яА-ЯёЁa-zA-Z\-\s]+[^\s$]/,
+      message: "Текст сообщения",
+    },
   },
   email: {
-    pattern: /[а-яА-Я]/,
+    pattern: { value: /[a-zA-Z]/, message: "Текст сообщения" },
   },
   password: {
-    minLength: 5,
-    maxLength: 40,
+    minLength: { value: 8, message: "Минимум 8 символов" },
+    maxLength: { value: 40, message: "Максимум 40 символов" },
   },
 };
