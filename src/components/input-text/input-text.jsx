@@ -8,7 +8,7 @@ function InputText({ children, className }) {
 }
 
 InputText.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
   className: PropTypes.string,
 };
 

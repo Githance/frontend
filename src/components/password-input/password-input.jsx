@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable object-shorthand */
@@ -16,7 +17,9 @@ function PasswordInput({
   htmlFor,
   placeholder,
   className,
+  errorClassName
 }) {
+  
   const [showPassword, setShowPassword] = useState(true);
 
   function togglePassword() {
@@ -29,7 +32,7 @@ function PasswordInput({
         id={htmlFor}
         type={showPassword ? "password" : "text"}
         placeholder={placeholder}
-        className={style.input__element}
+        className={cn(style.input__element, errorClassName)}
         {...register(htmlFor, {
           required: "Заполни меня",
           minLength: minLength,
@@ -52,10 +55,20 @@ PasswordInput.propTypes = {
   placeholder: PropTypes.string,
   htmlFor: PropTypes.string,
   className: PropTypes.string,
+  errorClassName: PropTypes.string,
   register: PropTypes.func,
-  minLength: PropTypes.objectOf(PropTypes.number, PropTypes.string),
-  maxLength: PropTypes.objectOf(PropTypes.number, PropTypes.string),
-  pattern: PropTypes.objectOf(PropTypes.string, PropTypes.string),
+  minLength: PropTypes.shape({
+    value: PropTypes.number,
+    message: PropTypes.string,
+  }),
+  maxLength: PropTypes.shape({
+    value: PropTypes.number,
+    message: PropTypes.string,
+  }),
+  pattern: PropTypes.shape({
+    value: PropTypes.any,
+    message: PropTypes.string,
+  }),
 };
 
 export default PasswordInput;

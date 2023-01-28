@@ -8,7 +8,7 @@ function InputErrorText({ children, className }) {
 }
 
 InputErrorText.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
   className: PropTypes.string,
 };
 

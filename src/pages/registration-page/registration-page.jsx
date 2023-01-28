@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/self-closing-comp */
@@ -46,9 +48,19 @@ function RegistrationPage() {
           <TextInput
             register={register}
             className={style.input}
+            errorClassName={
+              !dirtyFields.user
+                ? undefined
+                : errors.user
+                ? style.input_validation_false
+                : style.input_validation_success
+            }
             htmlFor="user"
+            {...registrationPageScheme.user}
           />
-          {false && <InputErrorText>Validation text</InputErrorText>}
+          {errors.user && (
+            <InputErrorText>{errors.user.message}</InputErrorText>
+          )}
         </fieldset>
         <fieldset className={cn(style.fieldset, style.container__email)}>
           <InputLabel htmlFor="email" required>
@@ -57,9 +69,19 @@ function RegistrationPage() {
           <EmailInput
             register={register}
             className={style.input}
+            errorClassName={
+              !dirtyFields.email
+                ? undefined
+                : errors.email
+                ? style.input_validation_false
+                : style.input_validation_success
+            }
             htmlFor="email"
+            {...registrationPageScheme.email}
           />
-          {false && <InputErrorText>Validation text</InputErrorText>}
+          {errors.email && (
+            <InputErrorText>{errors.email.message}</InputErrorText>
+          )}
         </fieldset>
         <fieldset className={cn(style.fieldset, style.container__password)}>
           <InputLabel htmlFor="password" required>
@@ -68,10 +90,18 @@ function RegistrationPage() {
           <PasswordInput
             register={register}
             className={style.input}
+            errorClassName={
+              !dirtyFields.password
+                ? undefined
+                : errors.password
+                ? style.input_validation_false
+                : style.input_validation_success
+            }
             htmlFor="password"
+            {...registrationPageScheme.password}
           />
-          {false ? (
-            <InputErrorText>Validation text</InputErrorText>
+          {errors.password ? (
+            <InputErrorText>{errors.password.message}</InputErrorText>
           ) : (
             <InputText>
               Минимум 8 символов, должен включать цифры и буквы

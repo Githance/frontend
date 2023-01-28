@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 import { useForm } from "react-hook-form";
@@ -22,7 +24,7 @@ function AuthenticationPage() {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-  };
+  }; 
 
   return (
     <div className={style.container}>
@@ -39,9 +41,19 @@ function AuthenticationPage() {
           <EmailInput
             register={register}
             className={style.input}
+            errorClassName={
+              !dirtyFields.email
+                ? undefined
+                : errors.email
+                ? style.input_validation_false
+                : style.input_validation_success
+            }
             htmlFor="email"
+            {...authenticationPageScheme.email}
           />
-          {false && <InputErrorText>Validation text</InputErrorText>}
+          {errors.email && (
+            <InputErrorText>{errors.email.message}</InputErrorText>
+          )}
         </fieldset>
         <fieldset className={style.fieldset}>
           <div className={style.container__password}>
@@ -55,9 +67,19 @@ function AuthenticationPage() {
           <PasswordInput
             register={register}
             className={style.input}
+            errorClassName={
+              !dirtyFields.password
+                ? undefined
+                : errors.password
+                ? style.input_validation_false
+                : style.input_validation_success
+            }
             htmlFor="password"
+            {...authenticationPageScheme.password}
           />
-          {false && <InputErrorText>Validation text</InputErrorText>}
+          {errors.password && (
+            <InputErrorText>{errors.password.message}</InputErrorText>
+          )}
         </fieldset>
         <fieldset className={cn(style.fieldset, style.container__buttons)}>
           <Button
