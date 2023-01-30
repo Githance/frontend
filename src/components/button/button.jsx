@@ -5,13 +5,14 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import style from "./button.module.css";
 
-function Button({ type, isValid, className, children, onClick }) {
+function Button({ type, isValid, className, children, onClick, onSubmit }) {
   return (
     <button
       disabled={!isValid}
       className={cn(style.button, className)}
       type={type}
       onClick={onClick}
+      onSubmit={onSubmit}
     >
       {children}
     </button>
@@ -22,6 +23,7 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   onClick: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default Button;

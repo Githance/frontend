@@ -14,6 +14,7 @@ import InputErrorText from "../../components/input-error-text/input-error-text";
 import Button from "../../components/button/button";
 import { authenticationPageScheme } from "../../utils/validation-scheme";
 import style from "./authentication-page.module.css";
+import getGoogleToken from "../../api/user-api";
 
 function AuthenticationPage() {
   const {
@@ -24,7 +25,11 @@ function AuthenticationPage() {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-  }; 
+  };
+
+  function onGoogleSubmit() {
+    getGoogleToken().then((res) => console.log(res));
+  }
 
   return (
     <div className={style.container}>
@@ -95,10 +100,11 @@ function AuthenticationPage() {
           <Button
             className={cn(style.button, style.button__google)}
             type="submit"
+            onSubmit={() => onGoogleSubmit()}
           >
             <span className={style.icon}></span>
             Войти через Google
-          </Button>
+          </Button>          
         </fieldset>
         <div className={style.container__text}>
           <p className={style.text}>Нет аккаунта?</p>
