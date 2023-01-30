@@ -4,7 +4,8 @@
   background-color: var(--bg-color-main);
 }
 
-.form {
+.content {
+  box-sizing: border-box;
   padding: 60px;
   width: 488px;
   border-radius: 20px;
@@ -21,7 +22,7 @@
   line-height: 27px;
   letter-spacing: 0.04em;
   color: var(--text-color-black);
-  align-self: center;
+  text-align: center;
 }
 
 .fieldset {
@@ -43,16 +44,16 @@
   margin-bottom: 4px;
 }
 
-.input_validation_success {  
+.input_validation_success {
   border: 1px solid var(--color-input-true);
 }
 
-.input_validation_false {  
+.input_validation_false {
   border: 1px solid var(--color-input-false);
 }
 
 .container__buttons {
-  padding-top: 28px;
+  margin-top: 28px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -102,6 +103,7 @@
 }
 
 .button__google {
+  margin-top: 12px;
   padding: 15px 0;
   border: 1px solid var(--border-color-g-button);
   background-color: var(--bg-color-g-button-normal);

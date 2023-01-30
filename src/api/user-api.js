@@ -7,9 +7,5 @@ const checkResponse = (res) => {
 };
 
 export default function getGoogleToken() {
-  return fetch(GOOGLE_AUTH_URL, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then(checkResponse);
+  return fetch(GOOGLE_AUTH_URL).then(checkResponse);
 }

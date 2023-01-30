@@ -20,6 +20,7 @@ function Button({ type, isValid, className, children, onClick, onSubmit }) {
 }
 
 Button.propTypes = {
+  isValid: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   onClick: PropTypes.func,
