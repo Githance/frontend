@@ -1,0 +1,7 @@
+**/*.sqlite3
+.git
+.cache
+.env
+.idea
+__pycache__
+media/
