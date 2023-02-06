@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - frontend_local:/app/result_build/
+                       /app/build/
   nginx:
     image: nginx:1.19.3
     ports:
