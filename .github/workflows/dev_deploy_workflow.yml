@@ -66,9 +66,9 @@ jobs:
               cd ${{ env.DEPLOY_PATH }}              
               # echo "IMAGE_FRONT=${{ vars.IMAGE_BACK }}" > .env
               # echo "IMAGE_FRONT_TAG=${{ vars.IMAGE_BACK_TAG }}" >> .env
-              echo "IMAGE_FRONT=ghcr.io/BKonstantine/githance_frontend" > .env
+              echo "IMAGE_FRONT=ghcr.io/bkonstantine/githance_frontend" > .env
               echo "IMAGE_FRONT_TAG=dev" >> .env
               chmod 600 .env
               
-              docker compose -f docker-compose-frontend_dev.yml.yaml pull 
-              docker compose -f docker-compose-frontend_dev.yml.yaml up --detach
+              docker compose -f docker-compose-frontend_dev.yml pull 
+              docker compose -f docker-compose-frontend_dev.yml up --detach
