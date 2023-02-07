@@ -51,6 +51,8 @@ jobs:
           target: ~/${{ env.DEPLOY_PATH }}
   deploy:
       runs-on: ubuntu-latest
+      needs:
+        - delivery-new-build
       steps:
         -
           name: Executing deploy via ssh
