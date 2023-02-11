@@ -3,7 +3,7 @@ name: dev frontend githance workflow
 on:
   push:
     branches:
-      - feature/deploy
+      - develop
 
 env:
   REGISTRY: ghcr.io
@@ -63,12 +63,13 @@ jobs:
             key: ${{ secrets.SRV_SSH_KEY }}
             passphrase: ${{ secrets.SRV_SSH_PASSPHRASE }}
             script: |
-              cd ${{ env.DEPLOY_PATH }}              
-              # echo "IMAGE_FRONT=${{ vars.IMAGE_BACK }}" > .env
-              # echo "IMAGE_FRONT_TAG=${{ vars.IMAGE_BACK_TAG }}" >> .env
-              echo "IMAGE_FRONT=ghcr.io/bkonstantine/githance_frontend" > .env
-              echo "IMAGE_FRONT_TAG=dev" >> .env
+              cd ${{ env.DEPLOY_PATH }}
+
+              echo "IMAGE_FRONT=${{ vars.IMAGE_FRONT }}" > .env
+              echo "IMAGE_FRONT_TAG=${{ vars.IMAGE_FRONT_TAG }}" >> .env
               chmod 600 .env
-              
+
               docker compose -f docker-compose-frontend_dev.yml pull 
               docker compose -f docker-compose-frontend_dev.yml up --detach
+
+              docker image prune

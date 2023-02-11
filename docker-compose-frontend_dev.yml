@@ -3,7 +3,7 @@ services:
   frontend:
     image: "${IMAGE_FRONT}:${IMAGE_FRONT_TAG}"
     volumes:
-      - githance_frontend_dev:/app/result_build/
+      - frontend_dev:/app/result_build/
 
 volumes:
-  githance_frontend_dev:
+  frontend_dev:
