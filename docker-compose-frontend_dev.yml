@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  frontend:
+    image: "${IMAGE_FRONT}:${IMAGE_FRONT_TAG}"
+    volumes:
+      - frontend_dev:/app/result_build/
+
+volumes:
+  frontend_dev:

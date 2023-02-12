@@ -1,0 +1,79 @@
+name: dev frontend githance workflow
+
+on:
+  push:
+    branches:
+      - develop
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: githance_frontend
+  DEPLOY_PATH: GITHANCE_DEV
+
+jobs:
+  delivery-new-build:
+    name: Delivery new build
+    runs-on: ubuntu-latest
+    environment:
+      name: dev_deploy
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set variables
+        run: |
+          echo REP_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+      - name: Build image and push to GitHub Packages
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          labels: runnumber=${GITHUB_RUN_ID}
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.REP_OWNER }}/${{ env.IMAGE_NAME }}:dev,
+            ${{ env.REGISTRY }}/${{ env.REP_OWNER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+      - name: Copy infra files via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SRV_HOST }}
+          username: ${{ secrets.SRV_USER }}
+          key: ${{ secrets.SRV_SSH_KEY }}
+          passphrase: ${{ secrets.SRV_SSH_PASSPHRASE }}
+          source: "docker-compose-frontend_dev.yml"
+          rm: true
+          target: ~/${{ env.DEPLOY_PATH }}
+  deploy:
+      runs-on: ubuntu-latest
+      environment:
+        name: dev_deploy
+      needs:
+        - delivery-new-build
+      steps:
+        -
+          name: Executing deploy via ssh
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.SRV_HOST }}
+            username: ${{ secrets.SRV_USER }}
+            key: ${{ secrets.SRV_SSH_KEY }}
+            passphrase: ${{ secrets.SRV_SSH_PASSPHRASE }}
+            script: |
+              cd ${{ env.DEPLOY_PATH }}
+
+              echo "IMAGE_FRONT=${{ vars.IMAGE_FRONT }}" > .env
+              echo "IMAGE_FRONT_TAG=${{ vars.IMAGE_FRONT_TAG }}" >> .env
+              chmod 600 .env
+
+              docker compose -f docker-compose-frontend_dev.yml pull 
+              docker compose -f docker-compose-frontend_dev.yml up --detach
+
+              docker image prune

@@ -1,0 +1,6 @@
+.git
+.cache
+.env*
+.idea
+__pycache__
+media/
