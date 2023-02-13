@@ -1,6 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -12,9 +10,7 @@ import EmailInput from "../../components/email-input/email-input";
 import PasswordInput from "../../components/password-input/password-input";
 import InputErrorText from "../../components/input-error-text/input-error-text";
 import Button from "../../components/button/button";
-import { authenticationPageScheme } from "../../utils/validation-scheme";
 import style from "./authentication-page.module.css";
-import getGoogleToken from "../../api/user-api";
 
 function AuthenticationPage() {
   const {
@@ -25,13 +21,7 @@ function AuthenticationPage() {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-  };
-
-  function onGoogleSubmit() {
-    getGoogleToken()
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
+  }; 
 
   return (
     <div className={style.container}>
@@ -39,7 +29,7 @@ function AuthenticationPage() {
         <FormTitle className={style.title}>Вход</FormTitle>
         <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
           <fieldset className={style.fieldset}>
-            <InputLabel htmlFor="email" required>
+            <InputLabel htmlFor="email">
               Электронная почта
             </InputLabel>
             <EmailInput
@@ -52,8 +42,7 @@ function AuthenticationPage() {
                   ? style.input_validation_false
                   : style.input_validation_success
               }
-              htmlFor="email"
-              {...authenticationPageScheme.email}
+              htmlFor="email"              
             />
             {errors.email && (
               <InputErrorText>{errors.email.message}</InputErrorText>
@@ -61,10 +50,10 @@ function AuthenticationPage() {
           </fieldset>
           <fieldset className={style.fieldset}>
             <div className={style.container__password}>
-              <InputLabel htmlFor="password" required>
+              <InputLabel htmlFor="password">
                 Пароль
               </InputLabel>
-              <Link className={style.link} to="/registration">
+              <Link className={style.link} to="/register">
                 Забыли пароль?
               </Link>
             </div>
@@ -78,8 +67,7 @@ function AuthenticationPage() {
                   ? style.input_validation_false
                   : style.input_validation_success
               }
-              htmlFor="password"
-              {...authenticationPageScheme.password}
+              htmlFor="password"              
             />
             {errors.password && (
               <InputErrorText>{errors.password.message}</InputErrorText>
@@ -101,15 +89,14 @@ function AuthenticationPage() {
         <Button
           isValid
           className={cn(style.button, style.button__google)}
-          type="button"
-          onClick={() => onGoogleSubmit()}
+          type="button"          
         >
           <span className={style.icon}></span>
           Войти через Google
         </Button>
         <div className={style.container__text}>
           <p className={style.text}>Нет аккаунта?</p>
-          <Link className={style.link} to="/registration">
+          <Link className={style.link} to="/register">
             Зарегистрироваться
           </Link>
         </div>

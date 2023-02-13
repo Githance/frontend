@@ -150,7 +150,7 @@ function RegistrationPage() {
         </Button>
         <div className={style.container__text}>
           <p className={style.text}>Уже зарегистрированы? </p>
-          <Link className={style.link} to="/authentication">
+          <Link className={style.link} to="/auth">
             Войти
           </Link>
         </div>
