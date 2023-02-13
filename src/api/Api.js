@@ -7,7 +7,7 @@ class Api {
 
   constructor() {
     this.#authAxios = axios.create({
-      baseURL: "https://githance.com:1443/api/v1/auth",
+      baseURL: "https://dev.githance.com/api/v1/auth",
     });
     this.#googleAuthUrl = "/google/login/";
   }
