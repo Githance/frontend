@@ -1,11 +1,8 @@
 class Api {
-  #url;
+  #baseUrl;  
 
-  #headers;
-
-  constructor(url, headers) {
-    this.#url = url;
-    this.#headers = headers;
+  constructor() {
+    this.#baseUrl = "https://githance.com:1443/api/v1/auth";    
   }
 }
 
