@@ -3,13 +3,17 @@
   padding: 40px 165px 40px 164px;
   outline: 1px solid red;
   display: flex;
+  max-width: 1440px;
+  width: 100%;
   justify-content: center;
+  box-sizing: border-box;
 }
 .container {
   outline: 1px solid green;
-  max-width: 1440px;
-  padding-right: 3px;
+ 
   width: 100%;
+  padding-right: 3px;
+  
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
