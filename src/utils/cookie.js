@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable eqeqeq */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
@@ -6,12 +7,12 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable prefer-template */
 class Cookie {
-  static parseCookie(name) {
+  parseCookie(name) {
     const authToken = name.split("Bearer ")[1];
     return authToken;
   }
 
-  static getCookie(name) {
+  getCookie(name) {
     const matches = document.cookie.match(
       new RegExp(
         "(?:^|; )" +
@@ -22,7 +23,7 @@ class Cookie {
     return matches ? decodeURIComponent(matches[1]) : undefined;
   }
 
-  static setCookie(name, value, props) {
+  setCookie(name, value, props) {
     props = props || {};
     let exp = props.expires;    
     if (typeof exp == "number" && exp) {

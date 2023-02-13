@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import { Route, Routes } from "react-router-dom";
 import MainPage from "../../pages/main-page/main-page";
 import AuthenticationPage from "../../pages/authentication-page/authentication-page";
@@ -8,7 +9,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
-      <Route path="/auth" element={<AuthenticationPage />} />
+      <Route path="/auth" element={<AuthenticationPage />}>
+        <Route path="google/code/" element={<AuthenticationPage />} />
+      </Route>
       <Route path="/register" element={<RegistrationPage />} />
       <Route path="/success" element={<SuccessRegistrationPage />} />
     </Routes>
