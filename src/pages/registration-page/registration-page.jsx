@@ -18,7 +18,7 @@ import Button from "../../components/button/button";
 import CheckBox from "../../components/checkbox/checkbox";
 import { registrationPageScheme } from "../../utils/validation-scheme";
 import style from "./registration-page.module.css";
-import getGoogleToken from "../../api/user-api";
+import getGoogleToken from "../../api/api";
 
 function RegistrationPage() {
   const {
