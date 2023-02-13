@@ -1,17 +1,19 @@
 import axios from "axios";
 
 class Api {
-  #baseUrl;
+  #authAxios;
 
   #googleAuthUrl;
 
   constructor() {
-    this.#baseUrl = "https://githance.com:1443/api/v1/auth";
-    this.#googleAuthUrl = `${this.#baseUrl}/google/login/`;
+    this.#authAxios = axios.create({
+      baseURL: "https://githance.com:1443/api/v1/auth",
+    });
+    this.#googleAuthUrl = "/google/login/";
   }
 
   googleAuthRequest(googleCode) {
-    return axios.post(this.#googleAuthUrl, { code: googleCode });
+    return this.#authAxios.post(this.#googleAuthUrl, { code: googleCode });
   }
 }
 
