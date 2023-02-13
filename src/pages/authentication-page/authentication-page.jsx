@@ -19,7 +19,7 @@ function AuthenticationPage() {
   const [searchCode] = useSearchParams();
 
   useEffect(() => {
-    const code = searchCode.get("code");    
+    const code = searchCode.get("code");
     if (code) {
       api
         .googleAuthRequest(code)
