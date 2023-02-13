@@ -1,34 +1,39 @@
 .header {
-  background-color: var(--bg-color-main);
-  padding: 28px 165px;
-}
-
-.container {
-  max-width: 1440px;
+  background-color: var(--bg-color-form);
+  padding: 40px 165px 40px 164px;
+  outline: 1px solid red;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+}
+.container {
+  outline: 1px solid green;
+  max-width: 1440px;
+  padding-right: 3px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
 }
 
 .button {
-  display: block;
-  text-align: center;
-  box-sizing: border-box;
-  max-width: 93px;
-  min-width: 50px;
-  padding: 16px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
-  border-radius: 10px;
-  color: var(--text-color-white);
-  background-color: var(--bg-color-button-normal);
+  outline: 1px solid blue;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
 }
-
-.button:hover {
-  background-color: var(--bg-color-button-hover);
+.nav_wrapper {
+  display: flex;
+  gap: 60px;
 }
-
-.button:active {
-  background-color: var(--bg-color-button-normal);
+.login_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.logo_wrapper {
+  outline: 1px solid green;
+  max-width: 434px;
+  width: 100%;
 }
