@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/self-closing-comp */
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { Link, useSearchParams } from "react-router-dom";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -26,43 +25,31 @@ function AuthenticationPage() {
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
     }
-  }, []);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, dirtyFields, isValid },
-  } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
-
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
-  };
+  }, []);  
 
   const handleGoogleSubmit = () => {
     oauthSignIn();
   };
 
+  const handleFormSubmit = () => {
+    alert("Привет")
+  }
+
   return (
     <div className={style.container}>
       <div className={style.content}>
         <FormTitle className={style.title}>Вход</FormTitle>
-        <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
+        <Form onSubmit={handleFormSubmit}>
           <fieldset className={style.fieldset}>
             <InputLabel htmlFor="email">Электронная почта</InputLabel>
             <EmailInput
-              register={register}
+              
               className={style.input}
-              errorClassName={
-                !dirtyFields.email
-                  ? undefined
-                  : errors.email
-                  ? style.input_validation_false
-                  : style.input_validation_success
-              }
+              
               htmlFor="email"
             />
-            {errors.email && (
-              <InputErrorText>{errors.email.message}</InputErrorText>
+            {false && (
+              <InputErrorText>Text</InputErrorText>
             )}
           </fieldset>
           <fieldset className={style.fieldset}>
@@ -72,29 +59,21 @@ function AuthenticationPage() {
                 Забыли пароль?
               </Link>
             </div>
-            <PasswordInput
-              register={register}
-              className={style.input}
-              errorClassName={
-                !dirtyFields.password
-                  ? undefined
-                  : errors.password
-                  ? style.input_validation_false
-                  : style.input_validation_success
-              }
+            <PasswordInput              
+              className={style.input}              
               htmlFor="password"
             />
-            {errors.password && (
-              <InputErrorText>{errors.password.message}</InputErrorText>
+            {false && (
+              <InputErrorText>Text</InputErrorText>
             )}
           </fieldset>
           <fieldset className={cn(style.fieldset, style.container__buttons)}>
             <Button
               className={`${style.button} ${
-                isValid ? style.button__main : style.button__main_noValid
+                false ? style.button__main : style.button__main_noValid
               }`}
               type="submit"
-              isValid={isValid}
+              isValid={false}
             >
               Войти
             </Button>

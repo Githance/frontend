@@ -6,11 +6,7 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import style from "./text-input.module.css";
 
-function TextInput({
-  register,
-  minLength,
-  maxLength,
-  pattern,
+function TextInput({  
   htmlFor,
   placeholder,
   className,
@@ -22,13 +18,7 @@ function TextInput({
       id={htmlFor}
       type="text"
       placeholder={placeholder}
-      className={cn(style.input, className, errorClassName)}
-      {...register(htmlFor, {
-        required: "Заполни меня",
-        minLength: minLength,
-        maxLength: maxLength,
-        pattern: pattern,
-      })}
+      className={cn(style.input, className, errorClassName)}      
     />
   );
 }
@@ -37,20 +27,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   htmlFor: PropTypes.string,
   className: PropTypes.string,
-  errorClassName: PropTypes.string,
-  register: PropTypes.func,
-  minLength: PropTypes.shape({
-    value: PropTypes.number,
-    message: PropTypes.string,
-  }),
-  maxLength: PropTypes.shape({
-    value: PropTypes.number,
-    message: PropTypes.string,
-  }),
-  pattern: PropTypes.shape({
-    value: PropTypes.any,
-    message: PropTypes.string,
-  }),
+  errorClassName: PropTypes.string, 
 };
 
 export default TextInput;
