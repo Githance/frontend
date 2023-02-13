@@ -13,13 +13,19 @@ import InputErrorText from "../../components/input-error-text/input-error-text";
 import Button from "../../components/button/button";
 import style from "./authentication-page.module.css";
 import oauthSignIn from "../../utils/google-request";
+import api from "../../api/api";
 
 function AuthenticationPage() {
   const [searchCode] = useSearchParams();
 
   useEffect(() => {
-    const code = searchCode.get("code")
-    console.log(code);
+    const code = searchCode.get("code");    
+    if (code) {
+      api
+        .googleAuthRequest(code)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   const {
