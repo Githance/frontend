@@ -1,11 +1,12 @@
-/* eslint-disable prefer-promise-reject-errors */
-/* eslint-disable arrow-body-style */
-import { GOOGLE_AUTH_URL } from "../utils/urls";
+class Api {
+  #url;
 
-const checkResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-};
+  #headers;
 
-export default function getGoogleToken() {
-  return fetch(GOOGLE_AUTH_URL).then(checkResponse);
+  constructor(url, headers) {
+    this.#url = url;
+    this.#headers = headers;
+  }
 }
+
+export default new Api();
