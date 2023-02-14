@@ -1,5 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/self-closing-comp */
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import cn from "classnames";
@@ -13,21 +16,15 @@ import Button from "../../components/button/button";
 import style from "./authentication-page.module.css";
 import oauthSignIn from "../../utils/google-request";
 import { fetchGoogleDate } from "../../services/slice/user-auth-slice";
-import useForm from "../../hooks/useForm";
 
 function AuthenticationPage() {
   const dispatch = useDispatch();
   const [searchCode] = useSearchParams();
-  const configForm = {
-    email: { value: "", valid: true },
-    password: { value: "", valid: true },
-  };
-
-  const { onFormChange, form, isValid } = useForm(configForm);
-
-  console.log(isValid);
-
-  console.log(form);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, dirtyFields, isValid },
+  } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
 
   useEffect(() => {
     const code = searchCode.get("code");
@@ -40,24 +37,32 @@ function AuthenticationPage() {
     oauthSignIn();
   };
 
-  const handleFormSubmit = () => {
-    alert("Привет");
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
   };
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <FormTitle className={style.title}>Вход</FormTitle>
-        <Form onSubmit={handleFormSubmit}>
+        <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
           <fieldset className={style.fieldset}>
             <InputLabel htmlFor="email">Электронная почта</InputLabel>
             <EmailInput
               className={style.input}
               htmlFor="email"
-              name="email"
-              onChange={(e) => onFormChange(e)}
+              register={register}
+              errorClassName={
+                !dirtyFields.email
+                  ? undefined
+                  : errors.email
+                  ? style.input_validation_false
+                  : style.input_validation_success
+              }              
             />
-            {!form.email.valid && <InputErrorText>Text</InputErrorText>}
+            {errors.email && (
+              <InputErrorText>{errors.email.message}</InputErrorText>
+            )}
           </fieldset>
           <fieldset className={style.fieldset}>
             <div className={style.container__password}>
@@ -69,10 +74,18 @@ function AuthenticationPage() {
             <PasswordInput
               className={style.input}
               htmlFor="password"
-              name="password"
-              onChange={(e) => onFormChange(e)}
+              register={register}
+              errorClassName={
+                !dirtyFields.password
+                  ? undefined
+                  : errors.password
+                  ? style.input_validation_false
+                  : style.input_validation_success
+              }              
             />
-            {!form.password.valid && <InputErrorText>Text</InputErrorText>}
+            {errors.password && (
+              <InputErrorText>{errors.password.message}</InputErrorText>
+            )}
           </fieldset>
           <fieldset className={cn(style.fieldset, style.container__buttons)}>
             <Button

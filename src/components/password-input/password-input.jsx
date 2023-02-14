@@ -10,6 +10,10 @@ import { useState } from "react";
 import style from "./password-input.module.css";
 
 function PasswordInput({
+  register,
+  minLength,
+  maxLength,
+  pattern,
   htmlFor,
   placeholder,
   name,
@@ -32,6 +36,12 @@ function PasswordInput({
         placeholder={placeholder}
         className={cn(style.input__element, errorClassName)}
         onChange={onChange}
+        {...register(htmlFor, {
+          required: "Заполни меня",
+          minLength: minLength,
+          maxLength: maxLength,
+          pattern: pattern,
+        })}
       />
       <button
         className={`${style.input__button} ${
@@ -51,6 +61,19 @@ PasswordInput.propTypes = {
   errorClassName: PropTypes.string,
   onChange: PropTypes.func,
   name: PropTypes.string,
+  register: PropTypes.func,
+  minLength: PropTypes.shape({
+    value: PropTypes.number,
+    message: PropTypes.string,
+  }),
+  maxLength: PropTypes.shape({
+    value: PropTypes.number,
+    message: PropTypes.string,
+  }),
+  pattern: PropTypes.shape({
+    value: PropTypes.any,
+    message: PropTypes.string,
+  }),
 };
 
 export default PasswordInput;

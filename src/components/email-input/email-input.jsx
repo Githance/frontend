@@ -7,6 +7,10 @@ import cn from "classnames";
 import style from "./email-input.module.css";
 
 function EmailInput({
+  register,
+  minLength,
+  maxLength,
+  pattern,
   htmlFor,
   name,
   placeholder,
@@ -22,6 +26,12 @@ function EmailInput({
       placeholder={placeholder}
       className={cn(style.input, className, errorClassName)}
       onChange={onChange}
+      {...register(htmlFor, {
+        required: "Заполни меня",
+        minLength: minLength,
+        maxLength: maxLength,
+        pattern: pattern,
+      })}
     />
   );
 }
@@ -33,6 +43,19 @@ EmailInput.propTypes = {
   errorClassName: PropTypes.string,
   onChange: PropTypes.func,
   name: PropTypes.string,
+  register: PropTypes.func,
+  minLength: PropTypes.shape({
+    value: PropTypes.number,
+    message: PropTypes.string,
+  }),
+  maxLength: PropTypes.shape({
+    value: PropTypes.number,
+    message: PropTypes.string,
+  }),
+  pattern: PropTypes.shape({
+    value: PropTypes.any,
+    message: PropTypes.string,
+  }),
 };
 
 export default EmailInput;

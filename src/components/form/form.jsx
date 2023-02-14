@@ -5,9 +5,13 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import style from "./form.module.css";
 
-function Form({ children, className, onSubmit }) {
+function Form({ children, className, onSubmit, handleSubmit }) {
   return (
-    <form onSubmit={onSubmit} className={cn(style.form, className)} noValidate>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={cn(style.form, className)}
+      noValidate
+    >
       {children}
     </form>
   );
@@ -15,6 +19,7 @@ function Form({ children, className, onSubmit }) {
 
 Form.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
+  handleSubmit: PropTypes.func,
 };
 
 export default Form;
