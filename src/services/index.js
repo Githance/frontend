@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import isAuthSlice from "./slice/google-auth-slice";
+import userAuthSlice from "./slice/user-auth-slice";
 
 const store = configureStore({
   reducer: {
-    isAuthSlice,
+    userAuthSlice,
   },
 });
 

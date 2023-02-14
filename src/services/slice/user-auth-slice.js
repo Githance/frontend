@@ -1,21 +1,21 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
-const isAuthSlice = createSlice({
-  name: "isAuth",
+const userAuthSlice = createSlice({
+  name: "userAuth",
   initialState: {
     isAuth: false,
   },
   reducers: {
-    logIn(state) {
+    userlogIn(state) {
       state.isAuth = true;
     },
 
-    logOut(state) {
+    userlogOut(state) {
       state.isAuth = false;
     },
   },
 });
 
-export const { logIn, logOut } = isAuthSlice.actions;
-export default isAuthSlice.reducer;
+export const { logIn, logOut } = userAuthSlice.actions;
+export default userAuthSlice.reducer;
