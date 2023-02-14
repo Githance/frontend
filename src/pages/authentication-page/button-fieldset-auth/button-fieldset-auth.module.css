@@ -1,0 +1,55 @@
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.container__buttons {
+  margin-top: 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.button {
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 16px 0;
+}
+
+.button__main {
+  color: var(--text-color-white);
+  background-color: var(--bg-color-button-normal);
+}
+
+.button__main_noValid {
+  cursor: auto;
+  color: var(--text-color-additional);
+  background-color: var(--bg-color-button-disabled);
+}
+
+.button__main_noValid:hover {
+  background-color: var(--bg-color-button-disabled);
+}
+
+.button__main:hover {
+  background-color: var(--bg-color-button-hover);
+}
+
+.button__main:active {
+  background-color: var(--bg-color-button-normal);
+}
+
+.text {
+  margin: 0;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
