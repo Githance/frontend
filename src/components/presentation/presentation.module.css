@@ -1,7 +1,7 @@
 .container {
   max-width: 1440px;
   width: 100%;
-  height: 725px;
+ 
   padding: 95px 151px 120px 128px;
   outline: 1px solid red;
   display: flex;
@@ -12,6 +12,11 @@
 .wrapper {
   outline: 1px solid green;
   max-width: 724px;
+  padding-bottom: 167px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 .title {
   margin: 0;
@@ -26,23 +31,43 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
-  padding-bottom: 24px;
+  padding-bottom: 28px;
 }
 .man_image {
   position: absolute;
-  top: 70px;
-  left: 110px;
+  top: -24px;
+  left: -230px;
   width: 300px;
   height: 435px;
   background: url(../../images/illustration_man.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .woman_image {
   position: absolute;
 
-  width: 300px;
-  height: 435px;
-  right: 204px;
-  bottom: 91px;
+  width: 350px;
+  height: 455px;
+  right: -211px;
+  bottom: -48px;
 
   background: url(../../images/illustration\ woman.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.button{
+  text-align: center;
+  box-sizing: border-box;
+  max-width: 345px;
+  width: 100%;
+  min-width: 54px;
+  padding: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 10px;
+  color: var(--text-color-white);
+  background-color: var(--bg-color-button-normal);
+  cursor: pointer
 }

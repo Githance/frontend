@@ -9,11 +9,11 @@ export default function Presentation() {
       <h1 className={style.title}>Мы — сообщество единомышленников</h1>
       <p className={style.subtitle}>Делаем вместе IT-проекты для портфолио и бизнеса.
 С&nbsp;нами ты можешь создать свой проект или&nbsp;присоединиться к существующему.</p>
-<Button>Присоединиться к сообществу</Button>
-
-      </div>
-      <div className={style.man_image}></div>
+<Button className={style.button}>Присоединиться к сообществу</Button>
+<div className={style.man_image}></div>
       <div className={style.woman_image}></div>
+      </div>
+      
     </div>
   )
 }
