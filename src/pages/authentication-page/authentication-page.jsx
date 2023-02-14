@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/self-closing-comp */
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useSearchParams } from "react-router-dom";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -12,28 +13,27 @@ import InputErrorText from "../../components/input-error-text/input-error-text";
 import Button from "../../components/button/button";
 import style from "./authentication-page.module.css";
 import oauthSignIn from "../../utils/google-request";
-import api from "../../api/api";
+/* import api from "../../api/api"; */
+import { fetchGoogleDate } from "../../services/slice/user-auth-slice";
 
 function AuthenticationPage() {
+  const dispatch = useDispatch();
   const [searchCode] = useSearchParams();
 
   useEffect(() => {
     const code = searchCode.get("code");
     if (code) {
-      api
-        .googleAuthRequest(code)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+      dispatch(fetchGoogleDate(code));      
     }
-  }, []);  
+  }, []);
 
   const handleGoogleSubmit = () => {
     oauthSignIn();
   };
 
   const handleFormSubmit = () => {
-    alert("Привет")
-  }
+    alert("Привет");
+  };
 
   return (
     <div className={style.container}>
@@ -42,15 +42,8 @@ function AuthenticationPage() {
         <Form onSubmit={handleFormSubmit}>
           <fieldset className={style.fieldset}>
             <InputLabel htmlFor="email">Электронная почта</InputLabel>
-            <EmailInput
-              
-              className={style.input}
-              
-              htmlFor="email"
-            />
-            {false && (
-              <InputErrorText>Text</InputErrorText>
-            )}
+            <EmailInput className={style.input} htmlFor="email" />
+            {false && <InputErrorText>Text</InputErrorText>}
           </fieldset>
           <fieldset className={style.fieldset}>
             <div className={style.container__password}>
@@ -59,13 +52,8 @@ function AuthenticationPage() {
                 Забыли пароль?
               </Link>
             </div>
-            <PasswordInput              
-              className={style.input}              
-              htmlFor="password"
-            />
-            {false && (
-              <InputErrorText>Text</InputErrorText>
-            )}
+            <PasswordInput className={style.input} htmlFor="password" />
+            {false && <InputErrorText>Text</InputErrorText>}
           </fieldset>
           <fieldset className={cn(style.fieldset, style.container__buttons)}>
             <Button
