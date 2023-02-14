@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable react/self-closing-comp */
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -13,17 +12,22 @@ import InputErrorText from "../../components/input-error-text/input-error-text";
 import Button from "../../components/button/button";
 import style from "./authentication-page.module.css";
 import oauthSignIn from "../../utils/google-request";
-/* import api from "../../api/api"; */
 import { fetchGoogleDate } from "../../services/slice/user-auth-slice";
+import useForm from "../../hooks/useForm";
 
 function AuthenticationPage() {
   const dispatch = useDispatch();
   const [searchCode] = useSearchParams();
+  const { onFormChange, form, isValid } = useForm({ email: "", password: "" });
+
+  console.log(isValid);
+
+  console.log(form);
 
   useEffect(() => {
     const code = searchCode.get("code");
     if (code) {
-      dispatch(fetchGoogleDate(code));      
+      dispatch(fetchGoogleDate(code));
     }
   }, []);
 
@@ -42,7 +46,12 @@ function AuthenticationPage() {
         <Form onSubmit={handleFormSubmit}>
           <fieldset className={style.fieldset}>
             <InputLabel htmlFor="email">Электронная почта</InputLabel>
-            <EmailInput className={style.input} htmlFor="email" />
+            <EmailInput
+              className={style.input}
+              htmlFor="email"
+              name="email"
+              onChange={(e) => onFormChange(e)}
+            />
             {false && <InputErrorText>Text</InputErrorText>}
           </fieldset>
           <fieldset className={style.fieldset}>
@@ -52,7 +61,12 @@ function AuthenticationPage() {
                 Забыли пароль?
               </Link>
             </div>
-            <PasswordInput className={style.input} htmlFor="password" />
+            <PasswordInput
+              className={style.input}
+              htmlFor="password"
+              name="password"
+              onChange={(e) => onFormChange(e)}
+            />
             {false && <InputErrorText>Text</InputErrorText>}
           </fieldset>
           <fieldset className={cn(style.fieldset, style.container__buttons)}>

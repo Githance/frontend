@@ -6,19 +6,22 @@ import PropTypes from "prop-types";
 import cn from "classnames";
 import style from "./email-input.module.css";
 
-function EmailInput({  
+function EmailInput({
   htmlFor,
+  name,
   placeholder,
   className,
-  errorClassName
-}) {  
-
+  errorClassName,
+  onChange,
+}) {
   return (
     <input
       id={htmlFor}
+      name={name}
       type="email"
       placeholder={placeholder}
-      className={cn(style.input, className, errorClassName)}      
+      className={cn(style.input, className, errorClassName)}
+      onChange={onChange}
     />
   );
 }
@@ -27,7 +30,9 @@ EmailInput.propTypes = {
   placeholder: PropTypes.string,
   htmlFor: PropTypes.string,
   className: PropTypes.string,
-  errorClassName: PropTypes.string,  
+  errorClassName: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default EmailInput;

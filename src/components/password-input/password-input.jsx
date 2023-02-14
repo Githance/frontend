@@ -9,13 +9,14 @@ import cn from "classnames";
 import { useState } from "react";
 import style from "./password-input.module.css";
 
-function PasswordInput({  
+function PasswordInput({
   htmlFor,
   placeholder,
+  name,
   className,
-  errorClassName
+  errorClassName,
+  onChange,
 }) {
-  
   const [showPassword, setShowPassword] = useState(true);
 
   function togglePassword() {
@@ -26,10 +27,12 @@ function PasswordInput({
     <div className={cn(style.input, className)}>
       <input
         id={htmlFor}
+        name={name}
         type={showPassword ? "password" : "text"}
         placeholder={placeholder}
         className={cn(style.input__element, errorClassName)}
-              />
+        onChange={onChange}
+      />
       <button
         className={`${style.input__button} ${
           showPassword ? style.input__button_close : style.input__button_open
@@ -45,7 +48,9 @@ PasswordInput.propTypes = {
   placeholder: PropTypes.string,
   htmlFor: PropTypes.string,
   className: PropTypes.string,
-  errorClassName: PropTypes.string, 
+  errorClassName: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
 };
 
 export default PasswordInput;
