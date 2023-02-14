@@ -18,7 +18,12 @@ import useForm from "../../hooks/useForm";
 function AuthenticationPage() {
   const dispatch = useDispatch();
   const [searchCode] = useSearchParams();
-  const { onFormChange, form, isValid } = useForm({ email: "", password: "" });
+  const configForm = {
+    email: { value: "", valid: true },
+    password: { value: "", valid: true },
+  };
+
+  const { onFormChange, form, isValid } = useForm(configForm);
 
   console.log(isValid);
 
@@ -52,7 +57,7 @@ function AuthenticationPage() {
               name="email"
               onChange={(e) => onFormChange(e)}
             />
-            {false && <InputErrorText>Text</InputErrorText>}
+            {!form.email.valid && <InputErrorText>Text</InputErrorText>}
           </fieldset>
           <fieldset className={style.fieldset}>
             <div className={style.container__password}>
@@ -67,15 +72,15 @@ function AuthenticationPage() {
               name="password"
               onChange={(e) => onFormChange(e)}
             />
-            {false && <InputErrorText>Text</InputErrorText>}
+            {!form.password.valid && <InputErrorText>Text</InputErrorText>}
           </fieldset>
           <fieldset className={cn(style.fieldset, style.container__buttons)}>
             <Button
               className={`${style.button} ${
-                false ? style.button__main : style.button__main_noValid
+                isValid ? style.button__main : style.button__main_noValid
               }`}
               type="submit"
-              isValid={false}
+              isValid={isValid}
             >
               Войти
             </Button>
