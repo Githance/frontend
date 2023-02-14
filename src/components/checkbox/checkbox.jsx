@@ -3,14 +3,15 @@
 /* eslint-disable react/self-closing-comp */
 import style from "./checkbox.module.css";
 
-function CheckBox() {
+function CheckBox({register}) {
   return (
     <label htmlFor="checkbox">
       <input
         className={style.real}
         type="checkbox"
         name="checkbox"
-        id="checkbox"        
+        id="checkbox"
+        {...register("checkbox", { required: "Заполни меня" })}
       />
       <span className={style.custom}></span>
     </label>

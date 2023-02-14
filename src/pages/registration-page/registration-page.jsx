@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/self-closing-comp */
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
@@ -15,52 +16,89 @@ import InputErrorText from "../../components/input-error-text/input-error-text";
 import InputText from "../../components/input-text/input-text";
 import Button from "../../components/button/button";
 import CheckBox from "../../components/checkbox/checkbox";
+import { registrationPageScheme } from "../../utils/validation-scheme";
 import style from "./registration-page.module.css";
 
-function RegistrationPage() { 
-  const handleFormSubmit = () => {
-    alert("Привет")
-  } 
+function RegistrationPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, dirtyFields, isValid },
+  } = useForm({
+    mode: "onChange",
+    defaultValues: { user: "", email: "", password: "" },
+  });
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  };
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <FormTitle className={style.title}>Регистрация</FormTitle>
-        <Form onSubmit={handleFormSubmit}>
+        <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
           <fieldset className={style.fieldset}>
             <InputLabel htmlFor="user" className={style.label} required>
               Имя пользователя
             </InputLabel>
-            <TextInput              
-              className={style.input}              
-              htmlFor="user"              
+            <TextInput
+              register={register}
+              className={style.input}
+              errorClassName={
+                !dirtyFields.user
+                  ? undefined
+                  : errors.user
+                  ? style.input_validation_false
+                  : style.input_validation_success
+              }
+              htmlFor="user"
+              {...registrationPageScheme.user}
             />
-            {false && (
-              <InputErrorText>Text</InputErrorText>
+            {errors.user && (
+              <InputErrorText>{errors.user.message}</InputErrorText>
             )}
           </fieldset>
           <fieldset className={cn(style.fieldset, style.container__email)}>
             <InputLabel htmlFor="email" required>
               Электронная почта
             </InputLabel>
-            <EmailInput              
-              className={style.input}              
-              htmlFor="email"              
+            <EmailInput
+              register={register}
+              className={style.input}
+              errorClassName={
+                !dirtyFields.email
+                  ? undefined
+                  : errors.email
+                  ? style.input_validation_false
+                  : style.input_validation_success
+              }
+              htmlFor="email"
+              {...registrationPageScheme.email}
             />
-            {false && (
-              <InputErrorText>Text</InputErrorText>
+            {errors.email && (
+              <InputErrorText>{errors.email.message}</InputErrorText>
             )}
           </fieldset>
           <fieldset className={cn(style.fieldset, style.container__password)}>
             <InputLabel htmlFor="password" required>
               Пароль
             </InputLabel>
-            <PasswordInput              
-              className={style.input}              
-              htmlFor="password"              
+            <PasswordInput
+              register={register}
+              className={style.input}
+              errorClassName={
+                !dirtyFields.password
+                  ? undefined
+                  : errors.password
+                  ? style.input_validation_false
+                  : style.input_validation_success
+              }
+              htmlFor="password"
+              {...registrationPageScheme.password}
             />
-            {false ? (
-              <InputErrorText>Text</InputErrorText>
+            {errors.password ? (
+              <InputErrorText>{errors.password.message}</InputErrorText>
             ) : (
               <InputText>
                 Минимум 8 символов, должен включать цифры и буквы
@@ -68,7 +106,7 @@ function RegistrationPage() {
             )}
           </fieldset>
           <div className={style.agreement}>
-            <CheckBox />
+            <CheckBox register={register}/>
             <p className={style.agreement__text}>
               Согласен с
               <a className={style.agreement__link} href="#">
@@ -84,10 +122,10 @@ function RegistrationPage() {
           <fieldset className={cn(style.fieldset, style.container__buttons)}>
             <Button
               className={`${style.button} ${
-                false ? style.button__main : style.button__main_noValid
+                isValid ? style.button__main : style.button__main_noValid
               }`}
               type="submit"
-              isValid={false}
+              isValid={isValid}
             >
               Войти
             </Button>
@@ -97,7 +135,7 @@ function RegistrationPage() {
         <Button
           isValid
           className={cn(style.button, style.button__google)}
-          type="button"          
+          type="button"
         >
           <span className={style.icon}></span>
           Войти через Google
