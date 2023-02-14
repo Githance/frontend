@@ -153,27 +153,3 @@
 .link:focus {
   outline: 2px solid var(--bg-color-button-focus);
 }
-
-.agreement {
-  margin-top: 24px;
-  display: flex;
-  gap: 11px;
-}
-
-.agreement__text {
-  margin: 0;
-  display: inline-block;
-  font-size: 12px;
-  line-height: 15px;
-  color: var(--text-color-grey);
-}
-
-.agreement__link {
-  margin: 0 4px;
-  display: inline-block;
-  color: var(--text-color-grey);
-}
-
-.agreement__text a:last-child {
-  margin: 0;
-}
