@@ -6,11 +6,14 @@ class Api {
 
   #googleAuthUrl;
 
+  #registerUser;
+
   constructor() {
     this.#authAxios = axios.create({
       baseURL: "https://dev.githance.com/api/v1/auth",
     });
     this.#googleAuthUrl = "/google/login/";
+    this.#registerUser = "/registration/";
   }
 
   googleAuthRequest(googleCode) {
@@ -18,7 +21,7 @@ class Api {
   }
 
   userRegisterRequest(userData) {
-    return this.#authAxios.post(this.#googleAuthUrl, {
+    return this.#authAxios.post(this.#registerUser, {
       email: userData.email,
       password1: userData.password,
       password2: userData.password,

@@ -12,12 +12,23 @@ export const fetchGoogleDate = createAsyncThunk(
   }
 );
 
+export const registerUser = createAsyncThunk(
+  "userAuthSlice/registerUser",
+  (userData) => {
+    api
+      .userRegisterRequest(userData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+);
+
 const userAuthSlice = createSlice({
   name: "userAuth",
   initialState: {
     isAuth: false,
     request: null,
     error: null,
+    errorText: null,
   },
   reducers: {
     userlogIn(state) {

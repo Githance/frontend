@@ -5,7 +5,7 @@ export const authenticationPageScheme = {
 };
 
 export const registrationPageScheme = {
-  user: {
+  name: {
     minLength: { value: 8, message: "Минимум 8 символов" },    
   },  
   password: {

@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/self-closing-comp */
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
@@ -15,19 +16,23 @@ import AgreementRegister from "./agreement-register/agreement-register";
 import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-register";
 import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
+import { registerUser } from "../../services/slice/user-auth-slice";
 
 function RegistrationPage() {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors, dirtyFields, isValid },
   } = useForm({
     mode: "onChange",
-    defaultValues: { user: "", email: "", password: "" },
+    defaultValues: { name: "", email: "", password: "" },
   });
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    dispatch(registerUser(data));
   };
 
   return (

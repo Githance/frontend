@@ -18,7 +18,7 @@ function TextFieldsetRegister({
 }) {
   return (
     <fieldset className={style.fieldset}>
-      <InputLabel htmlFor="user" required>
+      <InputLabel htmlFor="name" required>
         Имя пользователя
       </InputLabel>
       <TextInput
@@ -26,16 +26,16 @@ function TextFieldsetRegister({
         register={register}
         className={style.input}
         errorClassName={
-          !dirtyFields.user
+          !dirtyFields.name
             ? undefined
-            : errors.user
+            : errors.name
             ? classNameFalse
             : classNameSuccess
         }
-        htmlFor="user"
-        {...registrationPageScheme.user}
+        htmlFor="name"
+        {...registrationPageScheme.name}
       />
-      {errors.user && <InputErrorText>{errors.user.message}</InputErrorText>}
+      {errors.name && <InputErrorText>{errors.name.message}</InputErrorText>}
     </fieldset>
   );
 }
