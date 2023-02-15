@@ -5,21 +5,15 @@ import cookie from "../../utils/cookie";
 
 export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
-  (googleCode) => {
+  (googleCode) =>
     api.googleAuthRequest(googleCode).then((res) => {
       cookie.setCookie("accessToken", res.data.access_token);
-    });
-  }
+    })
 );
 
 export const registerUser = createAsyncThunk(
   "userAuthSlice/registerUser",
-  (userData) => {
-    api
-      .userRegisterRequest(userData)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
+  (userData) => api.userRegisterRequest(userData)
 );
 
 const userAuthSlice = createSlice({

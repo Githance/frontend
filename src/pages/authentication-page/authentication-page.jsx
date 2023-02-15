@@ -24,9 +24,9 @@ function AuthenticationPage() {
   } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
 
   useEffect(() => {
-    const code = searchCode.get("code");
+    const code = searchCode.get("code");    
     if (code) {
-      dispatch(fetchGoogleDate(code));
+      dispatch(fetchGoogleDate(code)).then(res => console.log(res));
     }
   }, []);
 

@@ -1,10 +1,7 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/self-closing-comp */
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -16,11 +13,15 @@ import AgreementRegister from "./agreement-register/agreement-register";
 import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-register";
 import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
-import { registerUser } from "../../services/slice/user-auth-slice";
+import {
+  registerUser,
+  fetchGoogleDate,
+} from "../../services/slice/user-auth-slice";
+import oauthSignIn from "../../utils/google-request";
 
 function RegistrationPage() {
   const dispatch = useDispatch();
-
+  const [searchCode] = useSearchParams();
   const {
     register,
     handleSubmit,
@@ -30,9 +31,22 @@ function RegistrationPage() {
     defaultValues: { name: "", email: "", password: "" },
   });
 
+  useEffect(() => {
+    const code = searchCode.get("code");
+    if (code) {
+      dispatch(fetchGoogleDate(code));
+    }
+  }, []);
+
+  const handleGoogleSubmit = () => {
+    oauthSignIn();
+  };
+
   const onSubmit = (data, e) => {
     e.preventDefault();
-    dispatch(registerUser(data));
+    dispatch(registerUser(data))
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -68,6 +82,7 @@ function RegistrationPage() {
           isValid
           className={cn(style.button, style.button__google)}
           type="button"
+          onClick={handleGoogleSubmit}
         >
           <span className={style.icon}></span>
           Войти через Google
