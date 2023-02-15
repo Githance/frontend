@@ -13,7 +13,10 @@ export const fetchGoogleDate = createAsyncThunk(
 
 export const registerUser = createAsyncThunk(
   "userAuthSlice/registerUser",
-  (userData) => api.userRegisterRequest(userData)
+  (userData, { rejectWithValue }) =>
+    api
+      .userRegisterRequest(userData)      
+      .catch((err) => rejectWithValue(err.response.data))
 );
 
 export const loginUser = createAsyncThunk(

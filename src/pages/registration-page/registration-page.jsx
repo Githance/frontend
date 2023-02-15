@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* import { useEffect } from "react"; */
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, /* useNavigate */ } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -18,7 +18,7 @@ import oauthSignIn from "../../utils/google-request";
 
 function RegistrationPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  /* const navigate = useNavigate(); */
   const {
     register,
     handleSubmit,
@@ -34,7 +34,7 @@ function RegistrationPage() {
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    dispatch(registerUser(data)).then(() => navigate("/auth/mail"));
+    dispatch(registerUser(data))/* .then(() => navigate("/auth/mail")) */;
   };
 
   return (
