@@ -1,11 +1,4 @@
 /* eslint-disable class-methods-use-this */
-/* eslint-disable eqeqeq */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-multi-assign */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-useless-escape */
-/* eslint-disable prefer-template */
 class Cookie {
   parseCookie(name) {
     const authToken = name.split("Bearer ")[1];
@@ -13,41 +6,15 @@ class Cookie {
   }
 
   getCookie(name) {
-    const matches = document.cookie.match(
-      new RegExp(
-        "(?:^|; )" +
-          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
-          "=([^;]*)"
-      )
-    );
-    return matches ? decodeURIComponent(matches[1]) : undefined;
+    return localStorage.getItem(name);
   }
 
-  setCookie(name, value, props) {
-    props = props || {};
-    let exp = props.expires;    
-    if (typeof exp == "number" && exp) {
-      const d = new Date();
-      d.setTime(d.getTime() + exp * 1000);
-      exp = props.expires = d;
-    }
-    if (exp && exp.toUTCString) {
-      props.expires = exp.toUTCString();
-    }
-    value = encodeURIComponent(value);
-    let updatedCookie = name + "=" + value;
-    for (const propName in props) {
-      updatedCookie += "; " + propName;
-      const propValue = props[propName];
-      if (propValue !== true) {
-        updatedCookie += "=" + propValue;
-      }
-    }
-    document.cookie = updatedCookie;
+  setCookie(name, value) {
+    localStorage.setItem(name, value);
   }
 
   deleteCookie(name) {
-    this.setCookie(name, null, { expires: -1 });
+    localStorage.removeItem(name);
   }
 }
 

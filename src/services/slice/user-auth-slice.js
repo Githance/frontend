@@ -1,11 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/Api";
+import cookie from "../../utils/cookie";
 
 export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
   (googleCode) => {
-    api.googleAuthRequest(googleCode);
+    api.googleAuthRequest(googleCode).then((res) => {
+      cookie.setCookie("accessToken", res.data.access_token);
+    });
   }
 );
 
