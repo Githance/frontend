@@ -20,6 +20,7 @@ function EmailInput({
 }) {
   return (
     <input
+      autoComplete="on"
       id={htmlFor}
       name={name}
       type="email"

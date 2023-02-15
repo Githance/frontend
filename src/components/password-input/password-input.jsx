@@ -30,6 +30,7 @@ function PasswordInput({
   return (
     <div className={cn(style.input, className)}>
       <input
+        autoComplete="on"
         id={htmlFor}
         name={name}
         type={showPassword ? "password" : "text"}

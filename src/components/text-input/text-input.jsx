@@ -20,6 +20,7 @@ function TextInput({
 }) {
   return (
     <input
+      autoComplete="on"
       id={htmlFor}
       name={name}
       type="text"
