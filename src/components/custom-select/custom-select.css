@@ -1,0 +1,64 @@
+.react-select-container {
+  color: var(--text-color-black) !important;
+}
+.react-select__control {
+  width: 240px !important;
+  
+  height: 46px !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--text-color-black) !important;
+  color: var(--text-color-black) !important;
+}
+.react-select__control:hover {
+  border-color: var(--bg-color-button-normal) !important;
+}
+.react-select__control--is-focused {
+  border-color: var(--bg-color-button-normal) !important;
+  box-shadow: none !important;
+}
+.react-select__value-container {
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
+.react-select__indicators {
+  cursor: pointer;
+}
+.react-select__placeholder {
+  color: var(--text-color-black) !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 22px !important;
+  margin: 0 !important;
+}
+.react-select__dropdown-indicator {
+  color: var(--text-color-black) !important;
+  padding-left: 4px !important;
+}
+.react-select__indicator-separator {
+  width: 0 !important;
+}
+.react-select__menu {
+  margin: 10px 0 0 0 !important;
+  border-radius: 10px !important;
+}
+.react-select__menu-list {
+  padding: 0 !important;
+}
+.react-select__option {
+  border-radius: 10px !important;
+}
+.react-select__option:hover {
+  background-color: rgb(36%, 37%, 94%, 0.3) !important;
+  cursor: pointer;
+}
+.react-select__option--is-focused {
+  background-color: rgb(36%, 37%, 94%, 0.3) !important;
+}
+.react-select__option--is-selected {
+  background-color: var(--bg-color-button-pressed) !important;
+  color: var(--text-color-black) !important;
+}
+.react-select__input-container {
+  color: var(--text-color-black) !important;
+}

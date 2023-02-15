@@ -7,10 +7,10 @@ import CardTable from "../../components/card-table/card-table";
 function MainPage() {
   return (
     <main className={style.container}>
-  <Header />
-  <Presentation/>
-  <CardTable/>
-  </main>
+      <Header />
+      <Presentation />
+      <CardTable />
+    </main>
   );
 }
 
