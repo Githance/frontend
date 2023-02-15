@@ -1,34 +1,45 @@
 .header {
-  background-color: var(--bg-color-main);
-  padding: 28px 165px;
-}
+  background-color: var(--bg-color-form);
+  padding: 40px 167px 40px 164px;
 
-.container {
-  max-width: 1440px;
   display: flex;
-  justify-content: flex-end;
-}
-
-.button {
-  display: block;
-  text-align: center;
+  max-width: 1440px;
+  width: 100%;
+  justify-content: center;
   box-sizing: border-box;
-  max-width: 93px;
-  min-width: 50px;
-  padding: 16px;
+}
+.container {
+  width: 100%;
+  padding-right: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-sizing: border-box;
+}
+
+.link {
+  padding-bottom: 1px;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
-  border-radius: 10px;
-  color: var(--text-color-white);
-  background-color: var(--bg-color-button-normal);
+  display: flex;
+  align-items: flex-end;
 }
-
-.button:hover {
-  background-color: var(--bg-color-button-hover);
+.nav_wrapper {
+  max-width: 244px;
+  padding-right: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
-
-.button:active {
-  background-color: var(--bg-color-button-normal);
+.login_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.logo_wrapper {
+  max-width: 434px;
+  width: 100%;
 }
