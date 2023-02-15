@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
-import style from "./success-registration-page.module.css";
+import Button from "../../components/button/button";
+import style from "./verify-email-page.module.css";
 
-function SuccessRegistrationPage() {
+/* Отсутствует дизайн */
+
+function VerifyEmailPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
@@ -10,12 +12,12 @@ function SuccessRegistrationPage() {
           Теперь вы&nbsp;можете создавать проекты и&nbsp;присоединяться
           к&nbsp;существующим
         </p>
-        <Link className={style.button} to="/">
+        <Button isValid className={style.button}>
           К проектам
-        </Link>
+        </Button>
       </div>
     </div>
   );
 }
 
-export default SuccessRegistrationPage;
+export default VerifyEmailPage;
