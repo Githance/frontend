@@ -1,16 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../../components/loader/loader";
 import style from "./verify-email-page.module.css";
+import { confirmUserEmail } from "../../services/slice/user-auth-slice";
 
 function VerifyEmailPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { confirmCode } = useParams();
 
   useEffect(() => {
     if (confirmCode) {
-      dispatch();
+      dispatch(confirmUserEmail(confirmCode)).then(() => navigate("/auth/success"));
     }
   }, []);
 

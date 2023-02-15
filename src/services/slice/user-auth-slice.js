@@ -6,20 +6,26 @@ import cookie from "../../utils/cookie";
 export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
   (googleCode) =>
-    api.googleAuthRequest(googleCode).then((res) => {
+    api.googleAuthRequest(googleCode).then((res) => {      
       cookie.setCookie("accessToken", res.data.access_token);
     })
 );
 
 export const registerUser = createAsyncThunk(
   "userAuthSlice/registerUser",
-  (userData) => api.userRegisterRequest(userData).then(() => console.log("1"))
+  (userData) => api.userRegisterRequest(userData)
+);
+
+export const confirmUserEmail = createAsyncThunk(
+  "userAuthSlice/confirmUserEmail",
+  (userEmail) => api.confirmEmailRequest(userEmail)
 );
 
 const userAuthSlice = createSlice({
   name: "userAuth",
   initialState: {
     isAuth: false,
+
     googleRequest: null,
     googleError: null,
     googleErrorText: null,
@@ -27,17 +33,10 @@ const userAuthSlice = createSlice({
     registerRequest: null,
     registerError: null,
     registerErrorText: null,
-  },
-  reducers: {
-    userlogIn(state) {
-      state.isAuth = true;
-    },
 
-    userlogOut(state) {
-      state.isAuth = false;
-      state.request = null;
-      state.error = null;
-    },
+    confirmEmailRequest: null,
+    confirmEmailError: null,
+    confirmEmailErrorText: null,
   },
 
   extraReducers: (builder) => {
@@ -66,8 +65,21 @@ const userAuthSlice = createSlice({
       state.registerError = true;
       state.registerErrorText = action.payload;
     });
+
+    // TODO: Подтверждение почты пользователя
+    builder.addCase(confirmUserEmail.pending, (state) => {
+      state.confirmEmailRequest = true;
+    });
+    builder.addCase(confirmUserEmail.fulfilled, (state) => {
+      state.isAuth = true;
+      state.confirmEmailRequest = null;
+    });
+    builder.addCase(confirmUserEmail.rejected, (state, action) => {
+      state.confirmEmailRequest = null;
+      state.confirmEmailError = true;
+      state.confirmEmailErrorText = action.payload;
+    });
   },
 });
 
-export const { userlogIn, userlogOut } = userAuthSlice.actions;
 export default userAuthSlice.reducer;

@@ -1,11 +1,12 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable lines-between-class-members */
 import axios from "axios";
 
 class Api {
   #authAxios;
-
   #googleAuthUrl;
-
   #registerUser;
+  #confirmEmail;
 
   constructor() {
     this.#authAxios = axios.create({
@@ -13,19 +14,34 @@ class Api {
     });
     this.#googleAuthUrl = "/google/login/";
     this.#registerUser = "/registration/";
+    this.#confirmEmail = "/verify-email/";
+  }
+
+  checkResponse(res) {
+    return res.data;
   }
 
   googleAuthRequest(googleCode) {
-    return this.#authAxios.post(this.#googleAuthUrl, { code: googleCode });
+    return this.#authAxios
+      .post(this.#googleAuthUrl, { code: googleCode })
+      .then(this.checkResponse);
   }
 
   userRegisterRequest(userData) {
-    return this.#authAxios.post(this.#registerUser, {
-      email: userData.email,
-      password1: userData.password,
-      password2: userData.password,
-      name: userData.name,
-    });
+    return this.#authAxios
+      .post(this.#registerUser, {
+        email: userData.email,
+        password1: userData.password,
+        password2: userData.password,
+        name: userData.name,
+      })
+      .then(this.checkResponse);
+  }
+
+  confirmEmailRequest(userEmail) {
+    return this.#authAxios
+      .post(this.#confirmEmail, { key: userEmail })
+      .then(this.checkResponse);
   }
 }
 
