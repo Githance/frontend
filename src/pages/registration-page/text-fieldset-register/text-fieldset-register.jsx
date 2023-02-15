@@ -22,6 +22,7 @@ function TextFieldsetRegister({
         Имя пользователя
       </InputLabel>
       <TextInput
+      placeholder="Jack Sparrow"
         register={register}
         className={style.input}
         errorClassName={

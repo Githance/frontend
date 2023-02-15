@@ -18,6 +18,7 @@ function EmailFieldsetAuth({
     <fieldset className={style.fieldset}>
       <InputLabel htmlFor="email">Электронная почта</InputLabel>
       <EmailInput
+        placeholder="Email"
         className={style.input}
         htmlFor="email"
         register={register}

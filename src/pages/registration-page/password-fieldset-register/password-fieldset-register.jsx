@@ -24,6 +24,7 @@ function PasswordFieldsetRegister({
         Пароль
       </InputLabel>
       <PasswordInput
+        placeholder="Password"
         register={register}
         className={style.input}
         errorClassName={

@@ -23,6 +23,7 @@ function EmailFieldsetRegister({
         Электронная почта
       </InputLabel>
       <EmailInput
+        placeholder="Email"
         register={register}
         className={style.input}
         errorClassName={

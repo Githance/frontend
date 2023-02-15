@@ -24,6 +24,7 @@ function PasswordFieldsetAuth({
         </Link>
       </div>
       <PasswordInput
+        placeholder="Password"
         className={style.input}
         htmlFor="password"
         register={register}
