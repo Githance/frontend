@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../../components/loader/loader";
 import style from "./verify-email-page.module.css";
 import { confirmUserEmail } from "../../services/slice/user-auth-slice";
-import { getStatusVerifyMail } from "../../services/selectors/selectors";
 
 function VerifyEmailPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const verifyMail = useSelector(getStatusVerifyMail());
   const { confirmCode } = useParams();
 
   useEffect(() => {
@@ -21,7 +19,9 @@ function VerifyEmailPage() {
   }, []);
 
   return (
-    <div className={style.container}>{verifyMail ? <Loader /> : undefined}</div>
+    <div className={style.container}>      
+      <Loader />
+    </div>
   );
 }
 
