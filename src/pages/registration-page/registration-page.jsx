@@ -34,7 +34,7 @@ function RegistrationPage() {
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    dispatch(registerUser(data)).then(() => navigate("/"));
+    dispatch(registerUser(data)).then(() => navigate("/auth/mail"));
   };
 
   return (

@@ -6,7 +6,7 @@ import cookie from "../../utils/cookie";
 export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
   (googleCode) =>
-    api.googleAuthRequest(googleCode).then((res) => {      
+    api.googleAuthRequest(googleCode).then((res) => {
       cookie.setCookie("accessToken", res.data.access_token);
     })
 );

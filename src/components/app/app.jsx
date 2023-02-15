@@ -7,6 +7,7 @@ import RegistrationPage from "../../pages/registration-page/registration-page";
 import SuccessRegistrationPage from "../../pages/success-registration-page/success-registration-page";
 import VerifyEmailPage from "../../pages/verify-email-page/verify-email-page";
 import GoogleAuthPage from "../../pages/google-auth-page/google-auth-page";
+import SentMailPage from "../../pages/sent-mail-page/sent-mail-page";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           path="email/confirm/:confirmCode"
           element={<VerifyEmailPage />}
         />
+        <Route path="mail" element={<SentMailPage />} />
         <Route path="google/code/" element={<GoogleAuthPage />} />
         <Route path="success" element={<SuccessRegistrationPage />} />
       </Route>
