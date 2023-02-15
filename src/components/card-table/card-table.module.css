@@ -32,7 +32,7 @@
 }
 .button {
   box-sizing: border-box;
-  
+  background: transparent;
   border: 1px solid #171717;
   border-radius: 60px;
   padding: 10px 16px;

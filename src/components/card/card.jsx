@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/self-closing-comp */
+/* eslint-disable react/jsx-boolean-value */
 import Button from "../button/button";
 import style from "./card.module.css";
 
@@ -17,7 +18,7 @@ export default function Сard({ ...props }) {
           <span className={style.status}>{status}</span>
           <div className={style.title_wrapper}>
             <h2 className={style.title}>{title}</h2>
-            <Button className={style.button} />
+            <Button type='button' isValid={true} className={style.button} />
           </div>
           <p className={style.subtitle}>{subtitle}</p>
           <div className={style.progress_bar}>

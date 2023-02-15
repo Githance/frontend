@@ -18,10 +18,10 @@ export default function CardTable() {
     <section className={style.container}>
       <div className={style.selectors_wrapper}>
         <div className={style.btns_wrapper}>
-          <Button className={style.button}>Все проекты</Button>
-          <Button className={style.button}>Идёт набор</Button>
-          <Button className={style.button}>Завершённые проекты</Button>
-          <Button className={style.button}>Текущие проекты</Button>
+          <Button type='button' isValid={true} className={style.button}>Все проекты</Button>
+          <Button type='button' isValid={true} className={style.button}>Идёт набор</Button>
+          <Button type='button' isValid={true} className={style.button}>Завершённые проекты</Button>
+          <Button type='button' isValid={true} className={style.button}>Текущие проекты</Button>
         </div>
         <CustomSelect
           isClearable={true}

@@ -16,17 +16,9 @@
   align-items: flex-end;
   box-sizing: border-box;
 }
-.nav_button {
-  padding-bottom: 1px;
-  color: var(--text-color-black);
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  background-color: transparent;
-  display: flex;
-  align-items: flex-end;
-}
+
 .link {
+  padding-bottom: 1px;
   color: var(--text-color-black);
   font-weight: 500;
   font-size: 24px;
