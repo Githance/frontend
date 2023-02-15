@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
-import { useEffect } from "react";
+/* import { useEffect } from "react"; */
 import { useDispatch } from "react-redux";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -14,14 +14,12 @@ import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-r
 import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
 import {
-  registerUser,
-  fetchGoogleDate,
+  registerUser,  
 } from "../../services/slice/user-auth-slice";
 import oauthSignIn from "../../utils/google-request";
 
 function RegistrationPage() {
-  const dispatch = useDispatch();
-  const [searchCode] = useSearchParams();
+  const dispatch = useDispatch();  
   const {
     register,
     handleSubmit,
@@ -29,14 +27,7 @@ function RegistrationPage() {
   } = useForm({
     mode: "onChange",
     defaultValues: { name: "", email: "", password: "" },
-  });
-
-  useEffect(() => {
-    const code = searchCode.get("code");
-    if (code) {
-      dispatch(fetchGoogleDate(code));
-    }
-  }, []);
+  });  
 
   const handleGoogleSubmit = () => {
     oauthSignIn();

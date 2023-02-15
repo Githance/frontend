@@ -1,8 +1,7 @@
 /* eslint-disable react/self-closing-comp */
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { Link, useSearchParams } from "react-router-dom";
+/* import { useDispatch } from "react-redux"; */
+import { Link } from "react-router-dom";
 import cn from "classnames";
 import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
@@ -12,23 +11,15 @@ import PasswordFieldsetAuth from "./password-fieldset-auth/password-fieldset-aut
 import ButtonFieldsetAuth from "./button-fieldset-auth/button-fieldset-auth";
 import style from "./authentication-page.module.css";
 import oauthSignIn from "../../utils/google-request";
-import { fetchGoogleDate } from "../../services/slice/user-auth-slice";
 
 function AuthenticationPage() {
-  const dispatch = useDispatch();
-  const [searchCode] = useSearchParams();
+  /* const dispatch = useDispatch(); */
+
   const {
     register,
     handleSubmit,
     formState: { errors, dirtyFields, isValid },
   } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
-
-  useEffect(() => {
-    const code = searchCode.get("code");    
-    if (code) {
-      dispatch(fetchGoogleDate(code)).then(res => console.log(res));
-    }
-  }, []);
 
   const handleGoogleSubmit = () => {
     oauthSignIn();
@@ -70,7 +61,7 @@ function AuthenticationPage() {
         </Button>
         <div className={style.container__text}>
           <p className={style.text}>Нет аккаунта?</p>
-          <Link className={style.link} to="/register">
+          <Link className={style.link} to="registration">
             Зарегистрироваться
           </Link>
         </div>

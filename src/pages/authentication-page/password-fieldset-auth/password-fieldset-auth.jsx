@@ -19,7 +19,7 @@ function PasswordFieldsetAuth({
     <fieldset className={style.fieldset}>
       <div className={style.container__password}>
         <InputLabel htmlFor="password">Пароль</InputLabel>
-        <Link className={style.link} to="/register">
+        <Link className={style.link} to="registration">
           Забыли пароль?
         </Link>
       </div>

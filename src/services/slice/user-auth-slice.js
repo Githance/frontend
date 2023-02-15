@@ -7,6 +7,7 @@ export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
   (googleCode) =>
     api.googleAuthRequest(googleCode).then((res) => {
+      console.log("1");
       cookie.setCookie("accessToken", res.data.access_token);
     })
 );
@@ -20,9 +21,13 @@ const userAuthSlice = createSlice({
   name: "userAuth",
   initialState: {
     isAuth: false,
-    request: null,
-    error: null,
-    errorText: null,
+    googleRequest: null,
+    googleError: null,
+    googleErrorText: null,
+
+    registerRequest: null,
+    registerError: null,
+    registerErrorText: null,
   },
   reducers: {
     userlogIn(state) {
@@ -37,16 +42,30 @@ const userAuthSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+    // TODO: Регистрация через Google аккаунт
     builder.addCase(fetchGoogleDate.pending, (state) => {
-      state.request = true;
+      state.googleRequest = true;
     });
     builder.addCase(fetchGoogleDate.fulfilled, (state) => {
       state.isAuth = true;
-      state.request = null;
+      state.googleRequest = null;
     });
     builder.addCase(fetchGoogleDate.rejected, (state) => {
-      state.request = null;
-      state.error = true;
+      state.googleRequest = null;
+      state.googleError = true;
+    });
+
+    // TODO: Регистрация с помощью почты и пароля
+    builder.addCase(registerUser.pending, (state) => {
+      state.registerRequest = true;
+    });
+    builder.addCase(registerUser.fulfilled, (state) => {
+      state.registerRequest = null;
+    });
+    builder.addCase(registerUser.rejected, (state, action) => {
+      state.registerRequest = null;
+      state.registerError = true;
+      state.registerErrorText = action.payload;
     });
   },
 });
