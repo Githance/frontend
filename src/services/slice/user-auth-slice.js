@@ -7,14 +7,13 @@ export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
   (googleCode) =>
     api.googleAuthRequest(googleCode).then((res) => {
-      console.log("1");
       cookie.setCookie("accessToken", res.data.access_token);
     })
 );
 
 export const registerUser = createAsyncThunk(
   "userAuthSlice/registerUser",
-  (userData) => api.userRegisterRequest(userData)
+  (userData) => api.userRegisterRequest(userData).then(() => console.log("1"))
 );
 
 const userAuthSlice = createSlice({

@@ -16,11 +16,11 @@ class Api {
   }
 
   googleAuthRequest(googleCode) {
-    this.#authAxios.post(this.#googleAuthUrl, { code: googleCode });
+    return this.#authAxios.post(this.#googleAuthUrl, { code: googleCode });
   }
 
   userRegisterRequest(userData) {
-    this.#authAxios.post(this.#registerUser, {
+    return this.#authAxios.post(this.#registerUser, {
       email: userData.email,
       password1: userData.password,
       password2: userData.password,

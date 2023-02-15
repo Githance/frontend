@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* import { useEffect } from "react"; */
 import { useDispatch } from "react-redux";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -13,13 +13,11 @@ import AgreementRegister from "./agreement-register/agreement-register";
 import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-register";
 import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
-import {
-  registerUser,  
-} from "../../services/slice/user-auth-slice";
+import { registerUser } from "../../services/slice/user-auth-slice";
 import oauthSignIn from "../../utils/google-request";
 
 function RegistrationPage() {
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -27,7 +25,7 @@ function RegistrationPage() {
   } = useForm({
     mode: "onChange",
     defaultValues: { name: "", email: "", password: "" },
-  });  
+  });
 
   const handleGoogleSubmit = () => {
     oauthSignIn();
@@ -36,7 +34,7 @@ function RegistrationPage() {
   const onSubmit = (data, e) => {
     e.preventDefault();
     dispatch(registerUser(data))
-      .then((res) => console.log(res))
+      .then(() => console.log("2"))
       .catch((err) => console.log(err));
   };
 
