@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 import { useForm } from "react-hook-form";
-/* import { useDispatch } from "react-redux"; */
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import cn from "classnames";
 import Form from "../../components/form/form";
 import FormTitle from "../../components/form-title/form-title";
@@ -11,10 +11,11 @@ import PasswordFieldsetAuth from "./password-fieldset-auth/password-fieldset-aut
 import ButtonFieldsetAuth from "./button-fieldset-auth/button-fieldset-auth";
 import style from "./authentication-page.module.css";
 import oauthSignIn from "../../utils/google-request";
+import { loginUser } from "../../services/slice/user-auth-slice";
 
 function AuthenticationPage() {
-  /* const dispatch = useDispatch(); */
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -25,8 +26,9 @@ function AuthenticationPage() {
     oauthSignIn();
   };
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    dispatch(loginUser(data)).then(() => navigate("/"));
   };
 
   return (

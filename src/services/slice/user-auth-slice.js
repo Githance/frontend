@@ -7,13 +7,21 @@ export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
   (googleCode) =>
     api.googleAuthRequest(googleCode).then((res) => {
-      cookie.setCookie("accessToken", res.data.access_token);
+      cookie.setCookie("accessToken", res.access_token);
     })
 );
 
 export const registerUser = createAsyncThunk(
   "userAuthSlice/registerUser",
   (userData) => api.userRegisterRequest(userData)
+);
+
+export const loginUser = createAsyncThunk(
+  "userAuthSlice/loginUser",
+  (userData) =>
+    api.userLoginRequest(userData).then((res) => {
+      cookie.setCookie("accessToken", res.access_token);
+    })
 );
 
 export const confirmUserEmail = createAsyncThunk(
@@ -29,6 +37,10 @@ const userAuthSlice = createSlice({
     googleRequest: null,
     googleError: null,
     googleErrorText: null,
+
+    loginRequest: null,
+    loginError: null,
+    loginErrorText: null,
 
     registerRequest: null,
     registerError: null,
@@ -64,6 +76,20 @@ const userAuthSlice = createSlice({
       state.registerRequest = null;
       state.registerError = true;
       state.registerErrorText = action.payload;
+    });
+
+    // TODO: Авторизация пользователя
+    builder.addCase(loginUser.pending, (state) => {
+      state.loginRequest = true;
+    });
+    builder.addCase(loginUser.fulfilled, (state) => {
+      state.isAuth = true;
+      state.loginRequest = null;
+    });
+    builder.addCase(loginUser.rejected, (state, action) => {
+      state.loginRequest = null;
+      state.loginError = true;
+      state.loginErrorText = action.payload;
     });
 
     // TODO: Подтверждение почты пользователя

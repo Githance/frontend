@@ -5,6 +5,7 @@ import axios from "axios";
 class Api {
   #authAxios;
   #googleAuthUrl;
+  #loginUser;
   #registerUser;
   #confirmEmail;
 
@@ -13,6 +14,7 @@ class Api {
       baseURL: "https://dev.githance.com/api/v1/auth",
     });
     this.#googleAuthUrl = "/google/login/";
+    this.#loginUser = "/login/";
     this.#registerUser = "/registration/";
     this.#confirmEmail = "/verify-email/";
   }
@@ -35,6 +37,12 @@ class Api {
         password2: userData.password,
         name: userData.name,
       })
+      .then(this.checkResponse);
+  }
+
+  userLoginRequest(userData) {
+    return this.#authAxios
+      .post(this.#loginUser, userData)
       .then(this.checkResponse);
   }
 
