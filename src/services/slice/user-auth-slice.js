@@ -15,7 +15,7 @@ export const registerUser = createAsyncThunk(
   "userAuthSlice/registerUser",
   (userData, { rejectWithValue }) =>
     api
-      .userRegisterRequest(userData)      
+      .userRegisterRequest(userData)
       .catch((err) => rejectWithValue(err.response.data))
 );
 
@@ -54,6 +54,12 @@ const userAuthSlice = createSlice({
     confirmEmailErrorText: null,
   },
 
+  reducers: {
+    setRegisterError(state, action) {
+      state.registerErrorText = action.payload;
+    },
+  },
+
   extraReducers: (builder) => {
     // TODO: Регистрация через Google аккаунт
     builder.addCase(fetchGoogleDate.pending, (state) => {
@@ -78,7 +84,7 @@ const userAuthSlice = createSlice({
     builder.addCase(registerUser.rejected, (state, action) => {
       state.registerRequest = null;
       state.registerError = true;
-      state.registerErrorText = action.payload;
+      state.registerErrorText = action.payload.name;
     });
 
     // TODO: Авторизация пользователя
@@ -110,5 +116,7 @@ const userAuthSlice = createSlice({
     });
   },
 });
+
+export const { setRegisterError } = userAuthSlice.actions;
 
 export default userAuthSlice.reducer;

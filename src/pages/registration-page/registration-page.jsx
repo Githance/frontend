@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
-/* import { useEffect } from "react"; */
-import { useDispatch } from "react-redux";
-import { Link, /* useNavigate */ } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link /* useNavigate */ } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -13,11 +14,16 @@ import AgreementRegister from "./agreement-register/agreement-register";
 import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-register";
 import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
-import { registerUser } from "../../services/slice/user-auth-slice";
+import {
+  registerUser,
+  setRegisterError,
+} from "../../services/slice/user-auth-slice";
 import oauthSignIn from "../../utils/google-request";
+import { getRegisterError } from "../../services/selectors/selectors";
 
 function RegistrationPage() {
   const dispatch = useDispatch();
+  const registerErrorText = useSelector(getRegisterError);
   /* const navigate = useNavigate(); */
   const {
     register,
@@ -28,13 +34,18 @@ function RegistrationPage() {
     defaultValues: { name: "", email: "", password: "" },
   });
 
+ /*  useEffect(() => {
+    dispatch(setRegisterError(errors));
+  }, [errors]);
+  console.log(registerErrorText); */
+
   const handleGoogleSubmit = () => {
     oauthSignIn();
   };
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    dispatch(registerUser(data))/* .then(() => navigate("/auth/mail")) */;
+    dispatch(registerUser(data)) /* .then(() => navigate("/auth/mail")) */;
   };
 
   return (
