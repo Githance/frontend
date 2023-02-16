@@ -38,23 +38,18 @@ function PasswordFieldsetRegister({
         errorClassName={
           !dirtyFields.password
             ? undefined
-            : errors.password ||
-              (serverErrors ? serverErrors.password1 : undefined)
+            : errors.password
             ? classNameFalse
             : classNameSuccess
         }
         htmlFor="password"
         {...registrationPageScheme.password}
       />
-      {/* {errors.password ? (
+      {errors.password ? (
         <InputErrorText>{errors.password.message}</InputErrorText>
-      ) : serverErrors === null ? (
-        <InputText>Минимум 8 символов, должен включать цифры и буквы</InputText>
       ) : (
-        serverErrors.password1.map((item) => (
-          <InputErrorText key={uuidv4()}>{item}</InputErrorText>
-        ))
-      )}  */}     
+        <InputText>Минимум 8 символов, должен включать цифры и буквы</InputText>
+      )}
     </fieldset>
   );
 }

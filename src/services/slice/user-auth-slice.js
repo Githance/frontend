@@ -52,14 +52,7 @@ const userAuthSlice = createSlice({
     confirmEmailRequest: null,
     confirmEmailError: null,
     confirmEmailErrorText: null,
-  },
-
-  reducers: {
-    setRegisterError(state, action) {
-      state.registerErrorText = action.payload;
-    },
-  },
-
+  }, 
   extraReducers: (builder) => {
     // TODO: Регистрация через Google аккаунт
     builder.addCase(fetchGoogleDate.pending, (state) => {
@@ -84,7 +77,7 @@ const userAuthSlice = createSlice({
     builder.addCase(registerUser.rejected, (state, action) => {
       state.registerRequest = null;
       state.registerError = true;
-      state.registerErrorText = action.payload.name;
+      state.registerErrorText = action.payload;
     });
 
     // TODO: Авторизация пользователя

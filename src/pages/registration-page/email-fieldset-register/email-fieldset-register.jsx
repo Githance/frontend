@@ -5,15 +5,12 @@
 /* eslint-disable react/require-default-props */
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import InputLabel from "../../../components/input-label/input-label";
 import EmailInput from "../../../components/email-input/email-input";
 import InputErrorText from "../../../components/input-error-text/input-error-text";
 import { registrationPageScheme } from "../../../utils/validation-scheme";
 import style from "./email-fieldset-register.module.css";
-import { getRegisterError } from "../../../services/selectors/selectors";
-import { setRegisterError } from "../../../services/slice/user-auth-slice";
 
 function EmailFieldsetRegister({
   register,
@@ -22,9 +19,6 @@ function EmailFieldsetRegister({
   classNameSuccess,
   classNameFalse,
 }) {
-  const serverErrors = useSelector(getRegisterError);
-  const dispatch = useDispatch();  
-
   return (
     <fieldset className={cn(style.fieldset, style.container__email)}>
       <InputLabel htmlFor="email" required>
@@ -37,20 +31,14 @@ function EmailFieldsetRegister({
         errorClassName={
           !dirtyFields.email
             ? undefined
-            : errors.email || (serverErrors ? serverErrors.email : undefined)
+            : errors.email
             ? classNameFalse
             : classNameSuccess
         }
         htmlFor="email"
         {...registrationPageScheme.email}
-      />      
-      {/* {errors.email ? (
-        <InputErrorText>{errors.email.message}</InputErrorText>
-      ) : serverErrors === null ? undefined : (
-        serverErrors.email.map((item) => (
-          <InputErrorText key={uuidv4()}>{item}</InputErrorText>
-        ))
-      )} */}
+      />
+      {errors.email && <InputErrorText>{errors.email.message}</InputErrorText>}
     </fieldset>
   );
 }

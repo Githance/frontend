@@ -15,8 +15,7 @@ import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-r
 import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
 import {
-  registerUser,
-  setRegisterError,
+  registerUser,  
 } from "../../services/slice/user-auth-slice";
 import oauthSignIn from "../../utils/google-request";
 import { getRegisterError } from "../../services/selectors/selectors";
@@ -33,11 +32,8 @@ function RegistrationPage() {
     mode: "onChange",
     defaultValues: { name: "", email: "", password: "" },
   });
-
- /*  useEffect(() => {
-    dispatch(setRegisterError(errors));
-  }, [errors]);
-  console.log(registerErrorText); */
+ 
+  console.log(errors);
 
   const handleGoogleSubmit = () => {
     oauthSignIn();
@@ -52,7 +48,7 @@ function RegistrationPage() {
     <div className={style.container}>
       <div className={style.content}>
         <FormTitle className={style.title}>Регистрация</FormTitle>
-        <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <TextFieldsetRegister
             register={register}
             dirtyFields={dirtyFields}
