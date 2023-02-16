@@ -28,7 +28,7 @@ function PasswordFieldsetRegister({
 
   return (
     <fieldset className={cn(style.fieldset, style.container__password)}>
-      <InputLabel htmlFor="password" required>
+      <InputLabel htmlFor="password1" required>
         Пароль
       </InputLabel>
       <PasswordInput
@@ -36,17 +36,17 @@ function PasswordFieldsetRegister({
         register={register}
         className={style.input}
         errorClassName={
-          !dirtyFields.password
+          !dirtyFields.password1
             ? undefined
-            : errors.password
+            : errors.password1
             ? classNameFalse
             : classNameSuccess
         }
-        htmlFor="password"
+        htmlFor="password1"
         {...registrationPageScheme.password}
       />
-      {errors.password ? (
-        <InputErrorText>{errors.password.message}</InputErrorText>
+      {errors.password1 ? (
+        <InputErrorText>{errors.password1.message}</InputErrorText>
       ) : (
         <InputText>Минимум 8 символов, должен включать цифры и буквы</InputText>
       )}

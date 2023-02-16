@@ -8,7 +8,7 @@ function InputErrorText({ children, className }) {
 }
 
 InputErrorText.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   className: PropTypes.string,
 };
 
