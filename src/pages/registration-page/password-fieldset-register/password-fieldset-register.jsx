@@ -5,16 +5,12 @@
 /* eslint-disable react/require-default-props */
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { useSelector, useDispatch } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import InputLabel from "../../../components/input-label/input-label";
 import InputText from "../../../components/input-text/input-text";
 import PasswordInput from "../../../components/password-input/password-input";
 import InputErrorText from "../../../components/input-error-text/input-error-text";
 import { registrationPageScheme } from "../../../utils/validation-scheme";
 import style from "./password-fieldset-register.module.css";
-import { getRegisterError } from "../../../services/selectors/selectors";
-import { setRegisterError } from "../../../services/slice/user-auth-slice";
 
 function PasswordFieldsetRegister({
   register,
@@ -23,9 +19,6 @@ function PasswordFieldsetRegister({
   classNameSuccess,
   classNameFalse,
 }) {
-  const serverErrors = useSelector(getRegisterError);
-  const dispatch = useDispatch();
-
   return (
     <fieldset className={cn(style.fieldset, style.container__password)}>
       <InputLabel htmlFor="password1" required>

@@ -52,7 +52,7 @@ const userAuthSlice = createSlice({
     confirmEmailRequest: null,
     confirmEmailError: null,
     confirmEmailErrorText: null,
-  }, 
+  },
   extraReducers: (builder) => {
     // TODO: Регистрация через Google аккаунт
     builder.addCase(fetchGoogleDate.pending, (state) => {

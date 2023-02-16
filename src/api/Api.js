@@ -33,8 +33,8 @@ class Api {
     return this.#authAxios
       .post(this.#registerUser, {
         email: userData.email,
-        password1: userData.password,
-        password2: userData.password,
+        password1: userData.password1,
+        password2: userData.password1,
         name: userData.name,
       })
       .then(this.checkResponse);

@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
 /* eslint-disable react/self-closing-comp */
-import axios from "axios";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link /* useNavigate */ } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import cn from "classnames";
 import Form from "../../components/form/form";
@@ -17,12 +16,10 @@ import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
 import { registerUser } from "../../services/slice/user-auth-slice";
 import oauthSignIn from "../../utils/google-request";
-import { getRegisterError } from "../../services/selectors/selectors";
 
 function RegistrationPage() {
   const dispatch = useDispatch();
-  const registerErrorText = useSelector(getRegisterError);
-  /* const navigate = useNavigate(); */
+  const navigate = useNavigate();
   const {
     register,
     setError,
@@ -37,49 +34,21 @@ function RegistrationPage() {
     },
   });
 
-  console.log(errors);
-
   const handleGoogleSubmit = () => {
     oauthSignIn();
   };
 
-  /* const onSubmit = (data) => {
-    dispatch(registerUser(data)).then(() => navigate("/auth/mail"));
-  }; */
-  const url = "https://dev.githance.com/api/v1/auth/registration/";
-
-  const onSubmit = handleSubmit(async (data) => {
-    await axios
-      .post(url, {
-        email: data.email,
-        password1: data.password1,
-        password2: data.password1,
-        name: data.name,
-      })
-      .then((res) => {
-        console.log(res);
-      })
+  const onSubmit = handleSubmit((data) => {
+    dispatch(registerUser(data))
+      .unwrap()
+      .then(() => navigate("/auth/mail"))
       .catch((err) => {
-        console.log(err.response.data);
-
-        if (err.response.data.email) {
-          setError("email", {
+        for (const key in err) {
+          setError(key, {
             type: "server",
-            message: err.response.data.email,
+            message: err[key],
           });
-        }
-        if (err.response.data.password1) {
-          setError("password1", {
-            type: "server",
-            message: err.response.data.password1,
-          });
-        }
-        if (err.response.data.name) {
-          setError("name", {
-            type: "server",
-            message: err.response.data.name,
-          });
-        }
+        }        
       });
   });
 

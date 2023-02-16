@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
 import PropTypes from "prop-types";
 import cn from "classnames";
-import { v4 as uuidv4 } from "uuid";
 import InputLabel from "../../../components/input-label/input-label";
 import EmailInput from "../../../components/email-input/email-input";
 import InputErrorText from "../../../components/input-error-text/input-error-text";
