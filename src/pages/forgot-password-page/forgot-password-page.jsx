@@ -1,6 +1,44 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Form from "../../components/form/form";
+import EmailFieldsetForgotPassword from "./email-fieldset-forgot-password/email-fieldset-forgot-password";
+import Button from "../../components/button/button";
 import style from "./forgot-password-page.module.css";
+import { resetUserPassword } from "../../services/slice/user-auth-slice";
 
 function ForgotPasswordPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    setError,
+    handleSubmit,
+    formState: { errors, dirtyFields, isValid },
+  } = useForm({
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+    },
+  });
+
+  const onSubmit = handleSubmit((data) => {
+    dispatch(resetUserPassword(data))
+      .unwrap()
+      .then(() => navigate("/"))
+      .catch((err) => {
+        for (const key in err) {
+          setError(key, {
+            type: "server",
+            message: err[key],
+          });
+        }
+      });
+  });
+
   return (
     <div className={style.container}>
       <div className={style.content}>
@@ -9,6 +47,24 @@ function ForgotPasswordPage() {
           Пожалуйста, введите адрес электронной почты, на&nbsp;который
           мы&nbsp;отправим вам инструкцию для восстановления пароля
         </p>
+        <Form onSubmit={onSubmit}>
+          <EmailFieldsetForgotPassword
+            register={register}
+            dirtyFields={dirtyFields}
+            errors={errors}
+            classNameFalse={style.input_validation_false}
+            classNameSuccess={style.input_validation_success}
+          />
+          <Button
+            className={`${style.button} ${
+              isValid ? style.button__main : style.button__main_noValid
+            }`}
+            type="submit"
+            isValid={isValid}
+          >
+            Войти
+          </Button>
+        </Form>
       </div>
     </div>
   );

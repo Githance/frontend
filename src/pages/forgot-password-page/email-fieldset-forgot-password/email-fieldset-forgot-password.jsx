@@ -7,9 +7,9 @@ import cn from "classnames";
 import InputLabel from "../../../components/input-label/input-label";
 import EmailInput from "../../../components/email-input/email-input";
 import InputErrorText from "../../../components/input-error-text/input-error-text";
-import style from "./email-fieldset-register.module.css";
+import style from "./email-fieldset-forgot-password.module.css";
 
-function EmailFieldsetRegister({
+function EmailFieldsetForgotPassword({
   register,
   dirtyFields,
   errors,
@@ -18,7 +18,7 @@ function EmailFieldsetRegister({
 }) {
   return (
     <fieldset className={cn(style.fieldset, style.container__email)}>
-      <InputLabel htmlFor="email" required>
+      <InputLabel htmlFor="email">
         Электронная почта
       </InputLabel>
       <EmailInput
@@ -32,14 +32,14 @@ function EmailFieldsetRegister({
             ? classNameFalse
             : classNameSuccess
         }
-        htmlFor="email"        
+        htmlFor="email"
       />
       {errors.email && <InputErrorText>{errors.email.message}</InputErrorText>}
     </fieldset>
   );
 }
 
-EmailFieldsetRegister.propTypes = {
+EmailFieldsetForgotPassword.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
   dirtyFields: PropTypes.object,
@@ -47,4 +47,4 @@ EmailFieldsetRegister.propTypes = {
   classNameFalse: PropTypes.string,
 };
 
-export default EmailFieldsetRegister;
+export default EmailFieldsetForgotPassword;

@@ -38,13 +38,21 @@ export const confirmUserEmail = createAsyncThunk(
   (userEmail) => api.confirmEmailRequest(userEmail)
 );
 
+export const resetUserPassword = createAsyncThunk(
+  "userAuthSlice/resetUserPassword",
+  (userEmail, { rejectWithValue }) =>
+    api
+      .userResetPasswordRequest(userEmail)
+      .catch((err) => rejectWithValue(err.response.data))
+);
+
 const userAuthSlice = createSlice({
   name: "userAuth",
   initialState: {
     isAuth: false,
 
     googleRequest: null,
-    googleError: null,    
+    googleError: null,
 
     loginRequest: null,
     loginError: null,
@@ -58,6 +66,9 @@ const userAuthSlice = createSlice({
 
     confirmEmailRequest: null,
     confirmEmailError: null,
+
+    resetPasswordRequest: null,
+    resetPasswordError: null,
   },
   extraReducers: (builder) => {
     // TODO: Регистрация через Google аккаунт
@@ -96,7 +107,7 @@ const userAuthSlice = createSlice({
     });
     builder.addCase(loginUser.rejected, (state) => {
       state.loginRequest = null;
-      state.loginError = true;      
+      state.loginError = true;
     });
 
     // TODO: Выход пользователя из аккаунта пользователя
@@ -122,7 +133,19 @@ const userAuthSlice = createSlice({
     });
     builder.addCase(confirmUserEmail.rejected, (state) => {
       state.confirmEmailRequest = null;
-      state.confirmEmailError = true;      
+      state.confirmEmailError = true;
+    });
+
+    // TODO: Запрос смены пароля
+    builder.addCase(resetUserPassword.pending, (state) => {
+      state.resetPasswordRequest = true;
+    });
+    builder.addCase(resetUserPassword.fulfilled, (state) => {
+      state.resetPasswordRequest = null;
+    });
+    builder.addCase(resetUserPassword.rejected, (state) => {
+      state.resetPasswordRequest = null;
+      state.resetPasswordError = true;
     });
   },
 });

@@ -7,6 +7,7 @@ class Api {
   #googleAuthUrl;
   #loginUser;
   #logoutUser;
+  #resetPassword;
   #registerUser;
   #confirmEmail;
 
@@ -16,7 +17,8 @@ class Api {
     });
     this.#googleAuthUrl = "/google/login/";
     this.#loginUser = "/login/";
-    this.#logoutUser = "/login/";
+    this.#logoutUser = "/logout/";
+    this.#resetPassword = "/password/reset/";
     this.#registerUser = "/registration/";
     this.#confirmEmail = "/verify-email/";
   }
@@ -49,6 +51,12 @@ class Api {
   }
   userLogoutRequest() {
     return this.#authAxios.post(this.#logoutUser).then(this.checkResponse);
+  }
+
+  userResetPasswordRequest(userEmail) {
+    return this.#authAxios
+      .post(this.#resetPassword, { email: userEmail })
+      .then(this.checkResponse);
   }
 
   confirmEmailRequest(userEmail) {
