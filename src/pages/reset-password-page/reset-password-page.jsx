@@ -1,15 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/form/form";
-import EmailFieldsetForgotPassword from "./email-fieldset-forgot-password/email-fieldset-forgot-password";
 import Button from "../../components/button/button";
-import style from "./forgot-password-page.module.css";
-import { resetUserPassword } from "../../services/slice/user-auth-slice";
+import style from "./reset-password-page.module.css";
 
-function ForgotPasswordPage() {
+function ResetPasswordPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ function ForgotPasswordPage() {
     },
   });
 
-  const onSubmit = handleSubmit((data) => {
+  /* const onSubmit = handleSubmit((data) => {
     dispatch(resetUserPassword(data))
       .unwrap()
       .then(() => navigate("/"))
@@ -37,24 +36,13 @@ function ForgotPasswordPage() {
           });
         }
       });
-  });
+  }); */
 
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <p className={style.title}>Забыли пароль?</p>
-        <p className={style.text}>
-          Пожалуйста, введите адрес электронной почты, на&nbsp;который
-          мы&nbsp;отправим вам инструкцию для восстановления пароля
-        </p>
-        <Form onSubmit={onSubmit}>
-          <EmailFieldsetForgotPassword
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-          />
+        <p className={style.title}>Новый пароль</p>
+        <Form /* onSubmit={onSubmit} */>
           <Button
             className={`${style.button} ${
               isValid ? style.button__main : style.button__main_noValid
@@ -62,7 +50,7 @@ function ForgotPasswordPage() {
             type="submit"
             isValid={isValid}
           >
-            Отправить
+            Сохранить
           </Button>
         </Form>
       </div>
@@ -70,4 +58,4 @@ function ForgotPasswordPage() {
   );
 }
 
-export default ForgotPasswordPage;
+export default ResetPasswordPage;
