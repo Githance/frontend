@@ -10,7 +10,7 @@ function ResetPasswordMailPage() {
           Если вы&nbsp;не&nbsp;получили письмо, проверьте папку
           &laquo;спам&raquo; или попробуйте отправить запрос ещё раз
         </p>
-        <Button className={style.button}>Ещё раз</Button>
+        <Button isValid className={style.button}>Ещё раз</Button>
       </div>
     </div>
   );
