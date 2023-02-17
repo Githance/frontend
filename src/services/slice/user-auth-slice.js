@@ -27,6 +27,12 @@ export const loginUser = createAsyncThunk(
     })
 );
 
+export const logoutUser = createAsyncThunk("userAuthSlice/logoutUser", () =>
+  api.userLogoutRequest().then(() => {
+    cookie.deleteCookie("accessToken");
+  })
+);
+
 export const confirmUserEmail = createAsyncThunk(
   "userAuthSlice/confirmUserEmail",
   (userEmail) => api.confirmEmailRequest(userEmail)
@@ -38,12 +44,13 @@ const userAuthSlice = createSlice({
     isAuth: false,
 
     googleRequest: null,
-    googleError: null,
-    googleErrorText: null,
+    googleError: null,    
 
     loginRequest: null,
     loginError: null,
-    loginErrorText: null,
+
+    logoutRequest: null,
+    logoutError: null,
 
     registerRequest: null,
     registerError: null,
@@ -51,7 +58,6 @@ const userAuthSlice = createSlice({
 
     confirmEmailRequest: null,
     confirmEmailError: null,
-    confirmEmailErrorText: null,
   },
   extraReducers: (builder) => {
     // TODO: Регистрация через Google аккаунт
@@ -88,10 +94,22 @@ const userAuthSlice = createSlice({
       state.isAuth = true;
       state.loginRequest = null;
     });
-    builder.addCase(loginUser.rejected, (state, action) => {
+    builder.addCase(loginUser.rejected, (state) => {
       state.loginRequest = null;
-      state.loginError = true;
-      state.loginErrorText = action.payload;
+      state.loginError = true;      
+    });
+
+    // TODO: Выход пользователя из аккаунта пользователя
+    builder.addCase(logoutUser.pending, (state) => {
+      state.logoutRequest = true;
+    });
+    builder.addCase(logoutUser.fulfilled, (state) => {
+      state.isAuth = false;
+      state.logoutRequest = null;
+    });
+    builder.addCase(logoutUser.rejected, (state) => {
+      state.logoutRequest = null;
+      state.logoutError = true;
     });
 
     // TODO: Подтверждение почты пользователя
@@ -102,10 +120,9 @@ const userAuthSlice = createSlice({
       state.isAuth = true;
       state.confirmEmailRequest = null;
     });
-    builder.addCase(confirmUserEmail.rejected, (state, action) => {
+    builder.addCase(confirmUserEmail.rejected, (state) => {
       state.confirmEmailRequest = null;
-      state.confirmEmailError = true;
-      state.confirmEmailErrorText = action.payload;
+      state.confirmEmailError = true;      
     });
   },
 });
