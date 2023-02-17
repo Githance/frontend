@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import style from "./sent-mail-page.module.css";
+import style from "./info-mail-page.module.css";
 
-function SentMailPage() {
+function InfoMailPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
@@ -17,4 +17,4 @@ function SentMailPage() {
   );
 }
 
-export default SentMailPage;
+export default InfoMailPage;

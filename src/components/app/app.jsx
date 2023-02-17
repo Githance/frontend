@@ -7,7 +7,8 @@ import RegistrationPage from "../../pages/registration-page/registration-page";
 import SuccessRegistrationPage from "../../pages/success-registration-page/success-registration-page";
 import VerifyEmailPage from "../../pages/verify-email-page/verify-email-page";
 import GoogleAuthPage from "../../pages/google-auth-page/google-auth-page";
-import SentMailPage from "../../pages/sent-mail-page/sent-mail-page";
+import InfoMailPage from "../../pages/info-mail-page/info-mail-page";
+import ResetPasswordMailPage from "../../pages/reset-password-mail-page/reset-password-mail-page";
 import ForgotPasswordPage from "../../pages/forgot-password-page/forgot-password-page";
 
 function App() {
@@ -22,7 +23,10 @@ function App() {
           path="email/confirm/:confirmCode"
           element={<VerifyEmailPage />}
         />
-        <Route path="mail" element={<SentMailPage />} />
+        <Route path="mail" element={<AuthWrapper />}>
+          <Route path="info" element={<InfoMailPage />} />
+          <Route path="password" element={<ResetPasswordMailPage />} />
+        </Route>
         <Route path="google/code/" element={<GoogleAuthPage />} />
         <Route path="success" element={<SuccessRegistrationPage />} />
       </Route>

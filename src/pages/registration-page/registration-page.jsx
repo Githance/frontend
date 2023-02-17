@@ -41,7 +41,7 @@ function RegistrationPage() {
   const onSubmit = handleSubmit((data) => {
     dispatch(registerUser(data))
       .unwrap()
-      .then(() => navigate("/auth/mail"))
+      .then(() => navigate("/auth/mail/info"))
       .catch((err) => {
         for (const key in err) {
           setError(key, {
