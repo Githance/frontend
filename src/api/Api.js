@@ -8,6 +8,7 @@ class Api {
   #loginUser;
   #logoutUser;
   #resetPassword;
+  #confirmNewPassword;
   #registerUser;
   #confirmEmail;
   #resendEmail;
@@ -20,6 +21,7 @@ class Api {
     this.#loginUser = "/login/";
     this.#logoutUser = "/logout/";
     this.#resetPassword = "/password/reset/";
+    this.#confirmNewPassword = "/password/reset/confirm/";
     this.#registerUser = "/registration/";
     this.#confirmEmail = "/verify-email/";
     this.#resendEmail = "/resend-email/";
@@ -58,6 +60,12 @@ class Api {
   userResetPasswordRequest(userEmail) {
     return this.#authAxios
       .post(this.#resetPassword, userEmail)
+      .then(this.checkResponse);
+  }
+
+  userConfirmPasswordRequest(userData) {
+    return this.#authAxios
+      .post(this.#confirmNewPassword, userData)
       .then(this.checkResponse);
   }
 

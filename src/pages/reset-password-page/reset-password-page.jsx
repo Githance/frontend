@@ -3,14 +3,17 @@
 /* eslint-disable no-restricted-syntax */
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Form from "../../components/form/form";
 import Button from "../../components/button/button";
+import PasswordFieldsetResetPassword from "./password-fieldset-reset-password/password-fieldset-reset-password";
 import style from "./reset-password-page.module.css";
+import { confirmUserPassword } from "../../services/slice/user-auth-slice";
 
 function ResetPasswordPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id, confirmCode } = useParams();
 
   const {
     register,
@@ -20,12 +23,19 @@ function ResetPasswordPage() {
   } = useForm({
     mode: "onChange",
     defaultValues: {
-      email: "",
+      new_password2: "",
     },
   });
 
-  /* const onSubmit = handleSubmit((data) => {
-    dispatch(resetUserPassword(data))
+  const onSubmit = handleSubmit((data) => {
+    const userData = {
+      new_password1: data.new_password2,
+      new_password2: data.new_password2,
+      uid: id,
+      token: confirmCode,
+    };
+
+    dispatch(confirmUserPassword(userData))
       .unwrap()
       .then(() => navigate("/"))
       .catch((err) => {
@@ -36,13 +46,20 @@ function ResetPasswordPage() {
           });
         }
       });
-  }); */
+  });
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <p className={style.title}>Новый пароль</p>
-        <Form /* onSubmit={onSubmit} */>
+        <Form onSubmit={onSubmit}>
+          <PasswordFieldsetResetPassword
+            register={register}
+            dirtyFields={dirtyFields}
+            errors={errors}
+            classNameFalse={style.input_validation_false}
+            classNameSuccess={style.input_validation_success}
+          />
           <Button
             className={`${style.button} ${
               isValid ? style.button__main : style.button__main_noValid

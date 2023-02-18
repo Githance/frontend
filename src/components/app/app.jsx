@@ -9,6 +9,7 @@ import VerifyEmailPage from "../../pages/verify-email-page/verify-email-page";
 import GoogleAuthPage from "../../pages/google-auth-page/google-auth-page";
 import InfoMailPage from "../../pages/info-mail-page/info-mail-page";
 import ForgotPasswordPage from "../../pages/forgot-password-page/forgot-password-page";
+import ResetPasswordPage from "../../pages/reset-password-page/reset-password-page";
 import ResendEmailPage from "../../pages/resend-email-page/resend-email-page";
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
         <Route index element={<AuthenticationPage />} />
         <Route path="registration" element={<RegistrationPage />} />
         <Route path="password/reset" element={<ForgotPasswordPage />} />
+        <Route
+          path="password/reset/confirm/:id/:confirmCode"
+          element={<ResetPasswordPage />}
+        />
         <Route
           path="email/confirm/:confirmCode"
           element={<VerifyEmailPage />}

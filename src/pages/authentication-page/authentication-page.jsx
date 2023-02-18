@@ -26,16 +26,16 @@ function AuthenticationPage() {
     oauthSignIn();
   };
 
-  const onSubmit = (data, e) => {
+  const onSubmit = handleSubmit((data, e) => {
     e.preventDefault();
     dispatch(loginUser(data)).then(() => navigate("/"));
-  };
+  });
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <FormTitle className={style.title}>Вход</FormTitle>
-        <Form handleSubmit={handleSubmit} onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit}>
           <EmailFieldsetAuth
             register={register}
             dirtyFields={dirtyFields}
