@@ -7,7 +7,10 @@ import Form from "../../components/form/form";
 import EmailFieldsetForgotPassword from "./email-fieldset-forgot-password/email-fieldset-forgot-password";
 import Button from "../../components/button/button";
 import style from "./forgot-password-page.module.css";
-import { resetUserPassword } from "../../services/slice/user-auth-slice";
+import {
+  resetUserPassword,
+  setEmail,
+} from "../../services/slice/user-auth-slice";
 
 function ForgotPasswordPage() {
   const dispatch = useDispatch();
@@ -26,9 +29,10 @@ function ForgotPasswordPage() {
   });
 
   const onSubmit = handleSubmit((data) => {
+    dispatch(setEmail(data));
     dispatch(resetUserPassword(data))
       .unwrap()
-      .then(() => navigate("/"))
+      .then(() => navigate("/auth/mail/resend"))
       .catch((err) => {
         for (const key in err) {
           setError(key, {

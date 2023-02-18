@@ -10,6 +10,7 @@ class Api {
   #resetPassword;
   #registerUser;
   #confirmEmail;
+  #resendEmail;
 
   constructor() {
     this.#authAxios = axios.create({
@@ -21,6 +22,7 @@ class Api {
     this.#resetPassword = "/password/reset/";
     this.#registerUser = "/registration/";
     this.#confirmEmail = "/verify-email/";
+    this.#resendEmail = "/resend-email/";
   }
 
   checkResponse(res) {
@@ -55,13 +57,19 @@ class Api {
 
   userResetPasswordRequest(userEmail) {
     return this.#authAxios
-      .post(this.#resetPassword, { email: userEmail })
+      .post(this.#resetPassword, userEmail)
       .then(this.checkResponse);
   }
 
   confirmEmailRequest(userEmail) {
     return this.#authAxios
       .post(this.#confirmEmail, { key: userEmail })
+      .then(this.checkResponse);
+  }
+
+  resendEmailRequest(userEmail) {
+    return this.#authAxios
+      .post(this.#resendEmail, userEmail)
       .then(this.checkResponse);
   }
 }

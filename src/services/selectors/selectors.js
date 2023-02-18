@@ -1,4 +1,4 @@
-const getAuthUser = (store) => store.userAuth.isAuth;
-const getRegisterError = (store) => store.userAuth.registerErrorText;
+const getAuth = (store) => store.userAuth.isAuth;
+const getUserEmail = (store) => store.userAuth.userEmail;
 
-export { getAuthUser, getRegisterError };
+export { getAuth, getUserEmail };

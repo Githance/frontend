@@ -46,10 +46,16 @@ export const resetUserPassword = createAsyncThunk(
       .catch((err) => rejectWithValue(err.response.data))
 );
 
+export const resendUserEmail = createAsyncThunk(
+  "userAuthSlice/resendUserEmail",
+  (userEmail) => api.resendEmailRequest(userEmail)
+);
+
 const userAuthSlice = createSlice({
   name: "userAuth",
   initialState: {
     isAuth: false,
+    userEmail: null,
 
     googleRequest: null,
     googleError: null,
@@ -62,14 +68,26 @@ const userAuthSlice = createSlice({
 
     registerRequest: null,
     registerError: null,
-    registerErrorText: null,
 
     confirmEmailRequest: null,
     confirmEmailError: null,
 
     resetPasswordRequest: null,
     resetPasswordError: null,
+
+    resendEmailRequest: null,
+    resendEmailError: null,
   },
+
+  reducers: {
+    setEmail(state, action) {
+      state.userEmail = action.payload;
+    },
+    resetEmail(state) {
+      state.userEmail = null;
+    },
+  },
+
   extraReducers: (builder) => {
     // TODO: Регистрация через Google аккаунт
     builder.addCase(fetchGoogleDate.pending, (state) => {
@@ -91,10 +109,9 @@ const userAuthSlice = createSlice({
     builder.addCase(registerUser.fulfilled, (state) => {
       state.registerRequest = null;
     });
-    builder.addCase(registerUser.rejected, (state, action) => {
+    builder.addCase(registerUser.rejected, (state) => {
       state.registerRequest = null;
       state.registerError = true;
-      state.registerErrorText = action.payload;
     });
 
     // TODO: Авторизация пользователя
@@ -147,9 +164,21 @@ const userAuthSlice = createSlice({
       state.resetPasswordRequest = null;
       state.resetPasswordError = true;
     });
+
+    // TODO: Повторная отправка ссылки для смены пароля на почту
+    builder.addCase(resendUserEmail.pending, (state) => {
+      state.resendEmailRequest = true;
+    });
+    builder.addCase(resendUserEmail.fulfilled, (state) => {
+      state.resendEmailRequest = null;
+    });
+    builder.addCase(resendUserEmail.rejected, (state) => {
+      state.resendEmailRequest = null;
+      state.resendEmailError = true;
+    });
   },
 });
 
-export const { setRegisterError } = userAuthSlice.actions;
+export const { setEmail, resetEmail } = userAuthSlice.actions;
 
 export default userAuthSlice.reducer;
