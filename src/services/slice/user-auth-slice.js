@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../api/Api";
-import cookie from "../../utils/cookie";
+import token from "../../utils/token";
 
 export const fetchGoogleDate = createAsyncThunk(
   "userAuth/fetchGoogleDate",
   (googleCode) =>
     api.googleAuthRequest(googleCode).then((res) => {
-      cookie.setCookie("accessToken", res.access_token);
+      token.setToken("accessToken", res.access_token);
     })
 );
 
@@ -23,13 +23,13 @@ export const loginUser = createAsyncThunk(
   "userAuthSlice/loginUser",
   (userData) =>
     api.userLoginRequest(userData).then((res) => {
-      cookie.setCookie("accessToken", res.access_token);
+      token.setToken("accessToken", res.access_token);
     })
 );
 
 export const logoutUser = createAsyncThunk("userAuthSlice/logoutUser", () =>
   api.userLogoutRequest().then(() => {
-    cookie.deleteCookie("accessToken");
+    token.deleteToken("accessToken");
   })
 );
 
