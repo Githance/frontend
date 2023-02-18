@@ -13,7 +13,7 @@ function VerifyEmailPage() {
   useEffect(() => {
     if (confirmCode) {
       dispatch(confirmUserEmail(confirmCode)).then(() =>
-        navigate("/auth/success")
+        navigate("/")
       );
     }
   }, []);
