@@ -12,17 +12,21 @@ function EmailInput({
   maxLength,
   pattern,
   htmlFor,
+  name,
   placeholder,
   className,
-  errorClassName
-}) {  
-
+  errorClassName,
+  onChange,
+}) {
   return (
     <input
+      autoComplete="on"
       id={htmlFor}
+      name={name}
       type="email"
       placeholder={placeholder}
       className={cn(style.input, className, errorClassName)}
+      onChange={onChange}
       {...register(htmlFor, {
         required: "Заполни меня",
         minLength: minLength,
@@ -38,6 +42,8 @@ EmailInput.propTypes = {
   htmlFor: PropTypes.string,
   className: PropTypes.string,
   errorClassName: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
   register: PropTypes.func,
   minLength: PropTypes.shape({
     value: PropTypes.number,

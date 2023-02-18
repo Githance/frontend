@@ -18,7 +18,7 @@ export default function Header() {
         <div className={style.logo_wrapper}>
           <Logo />
         </div>
-        <NavLink className={style.link} to="/authentication">
+        <NavLink className={style.link} to="/auth">
           Войти
         </NavLink>
       </div>

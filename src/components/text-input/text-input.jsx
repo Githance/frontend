@@ -13,16 +13,20 @@ function TextInput({
   pattern,
   htmlFor,
   placeholder,
+  name,
   className,
-  errorClassName
+  errorClassName,
+  onChange,
 }) {
-  
   return (
     <input
+      autoComplete="on"
       id={htmlFor}
+      name={name}
       type="text"
       placeholder={placeholder}
       className={cn(style.input, className, errorClassName)}
+      onChange={onChange}
       {...register(htmlFor, {
         required: "Заполни меня",
         minLength: minLength,
@@ -38,6 +42,8 @@ TextInput.propTypes = {
   htmlFor: PropTypes.string,
   className: PropTypes.string,
   errorClassName: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
   register: PropTypes.func,
   minLength: PropTypes.shape({
     value: PropTypes.number,

@@ -16,10 +16,11 @@ function PasswordInput({
   pattern,
   htmlFor,
   placeholder,
+  name,
   className,
-  errorClassName
+  errorClassName,
+  onChange,
 }) {
-  
   const [showPassword, setShowPassword] = useState(true);
 
   function togglePassword() {
@@ -29,10 +30,13 @@ function PasswordInput({
   return (
     <div className={cn(style.input, className)}>
       <input
+        autoComplete="on"
         id={htmlFor}
+        name={name}
         type={showPassword ? "password" : "text"}
         placeholder={placeholder}
         className={cn(style.input__element, errorClassName)}
+        onChange={onChange}
         {...register(htmlFor, {
           required: "Заполни меня",
           minLength: minLength,
@@ -56,6 +60,8 @@ PasswordInput.propTypes = {
   htmlFor: PropTypes.string,
   className: PropTypes.string,
   errorClassName: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string,
   register: PropTypes.func,
   minLength: PropTypes.shape({
     value: PropTypes.number,

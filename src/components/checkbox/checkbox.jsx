@@ -3,7 +3,7 @@
 /* eslint-disable react/self-closing-comp */
 import style from "./checkbox.module.css";
 
-function CheckBox({ register }) {
+function CheckBox({register}) {
   return (
     <label htmlFor="checkbox">
       <input

@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
 import { Link } from "react-router-dom";
-/* import Button from "../../components/button/button"; */
 import style from "./success-registration-page.module.css";
 
 function SuccessRegistrationPage() {
