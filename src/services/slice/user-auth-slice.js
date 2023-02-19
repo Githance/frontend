@@ -21,10 +21,13 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   "userAuthSlice/loginUser",
-  (userData) =>
-    api.userLoginRequest(userData).then((res) => {
-      token.setToken("accessToken", res.access_token);
-    })
+  (userData, { rejectWithValue }) =>
+    api
+      .userLoginRequest(userData)
+      .then((res) => {
+        token.setToken("accessToken", res.access_token);
+      })
+      .catch((err) => rejectWithValue(err.response.data))
 );
 
 export const logoutUser = createAsyncThunk("userAuthSlice/logoutUser", () =>

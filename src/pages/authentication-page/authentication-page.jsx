@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable react/self-closing-comp */
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -18,6 +20,7 @@ function AuthenticationPage() {
   const navigate = useNavigate();
   const {
     register,
+    setError,
     handleSubmit,
     formState: { errors, dirtyFields, isValid },
   } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
@@ -26,10 +29,20 @@ function AuthenticationPage() {
     oauthSignIn();
   };
 
-  const onSubmit = handleSubmit((data, e) => {
-    e.preventDefault();
-    dispatch(loginUser(data)).then(() => navigate("/"));
-  });
+  const onSubmit = handleSubmit((data) => {
+    dispatch(loginUser(data))
+      .unwrap()
+      .then(() => navigate("/"))
+      .catch((err) => {
+        console.log(err);
+        for (const key in err) {
+          setError(key, {
+            type: "server",
+            message: err[key],
+          });
+        }
+      });
+  });  
 
   return (
     <div className={style.container}>

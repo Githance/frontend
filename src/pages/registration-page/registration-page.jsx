@@ -48,7 +48,7 @@ function RegistrationPage() {
             type: "server",
             message: err[key],
           });
-        }        
+        }
       });
   });
 
