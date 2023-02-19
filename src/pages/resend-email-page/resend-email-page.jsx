@@ -3,7 +3,7 @@ import Form from "../../components/form/form";
 import Button from "../../components/button/button";
 import style from "./resend-email-page.module.css";
 import { getUserEmail } from "../../services/selectors/selectors";
-import { resendUserEmail } from "../../services/slice/user-auth-slice";
+import { resetUserPassword } from "../../services/slice/user-auth-slice";
 
 function ResendEmailPage() {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ function ResendEmailPage() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(resendUserEmail(userEmail));
+    dispatch(resetUserPassword(userEmail));
   };
 
   return (
