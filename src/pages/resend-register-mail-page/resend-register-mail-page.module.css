@@ -30,16 +30,32 @@
   color: var(--text-color-black);
 }
 
+.link {
+  margin-left: 4px;
+  display: inline;
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--bg-color-button-normal);
+}
+
+.link:hover {
+  color: var(--bg-color-button-hover);
+}
+
+.link:active {
+  color: var(--bg-color-button-pressed);
+}
+
 .text {
   margin: 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   color: var(--text-color-black);
+  display: inline;
 }
 
 .button {
-  margin-top: 14px;
   width: 100%;
   min-width: 300px;
   display: flex;

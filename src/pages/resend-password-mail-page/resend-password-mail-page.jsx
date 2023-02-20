@@ -1,16 +1,16 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useSelector, useDispatch } from "react-redux";
-import Form from "../../components/form/form";
-import Button from "../../components/button/button";
-import style from "./resend-email-page.module.css";
+import { Link } from "react-router-dom";
+import style from "./resend-password-mail-page.module.css";
 import { getUserEmail } from "../../services/selectors/selectors";
 import { resetUserPassword } from "../../services/slice/user-auth-slice";
 
-function ResendEmailPage() {
+function ResendPasswordMailPage() {
   const dispatch = useDispatch();
   const userEmail = useSelector(getUserEmail);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
     dispatch(resetUserPassword(userEmail));
   };
 
@@ -20,16 +20,17 @@ function ResendEmailPage() {
         <p className={style.title}>Письмо отправлено</p>
         <p className={style.text}>
           Если вы&nbsp;не&nbsp;получили письмо, проверьте папку
-          &laquo;спам&raquo; или попробуйте отправить запрос ещё раз
+          &laquo;спам&raquo; или попробуйте
+          <span onClick={onSubmit} className={style.link}>
+            отправить запрос ещё раз
+          </span>
         </p>
-        <Form onSubmit={onSubmit}>
-          <Button isValid type="submit" className={style.button}>
-            Ещё раз
-          </Button>
-        </Form>
+        <Link className={style.button} to="/">
+          К проектам
+        </Link>
       </div>
     </div>
   );
 }
 
-export default ResendEmailPage;
+export default ResendPasswordMailPage;

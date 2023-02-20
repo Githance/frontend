@@ -7,10 +7,10 @@ import RegistrationPage from "../../pages/registration-page/registration-page";
 import SuccessRegistrationPage from "../../pages/success-registration-page/success-registration-page";
 import VerifyEmailPage from "../../pages/verify-email-page/verify-email-page";
 import GoogleAuthPage from "../../pages/google-auth-page/google-auth-page";
-import InfoMailPage from "../../pages/info-mail-page/info-mail-page";
 import ForgotPasswordPage from "../../pages/forgot-password-page/forgot-password-page";
 import ResetPasswordPage from "../../pages/reset-password-page/reset-password-page";
-import ResendEmailPage from "../../pages/resend-email-page/resend-email-page";
+import ResendPasswordMailPage from "../../pages/resend-password-mail-page/resend-password-mail-page";
+import ResendRegisterMailPage from "../../pages/resend-register-mail-page/resend-register-mail-page";
 
 function App() {
   return (
@@ -29,8 +29,8 @@ function App() {
           element={<VerifyEmailPage />}
         />
         <Route path="mail" element={<AuthWrapper />}>
-          <Route path="info" element={<InfoMailPage />} />
-          <Route path="resend" element={<ResendEmailPage />} />
+          <Route path="resend-register" element={<ResendRegisterMailPage />} />
+          <Route path="resend-password" element={<ResendPasswordMailPage />} />
         </Route>
         <Route path="google/code/" element={<GoogleAuthPage />} />
         <Route path="success" element={<SuccessRegistrationPage />} />

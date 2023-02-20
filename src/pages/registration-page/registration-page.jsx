@@ -14,7 +14,7 @@ import AgreementRegister from "./agreement-register/agreement-register";
 import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-register";
 import Button from "../../components/button/button";
 import style from "./registration-page.module.css";
-import { registerUser } from "../../services/slice/user-auth-slice";
+import { registerUser, setEmail } from "../../services/slice/user-auth-slice";
 import oauthSignIn from "../../utils/google-request";
 
 function RegistrationPage() {
@@ -39,9 +39,10 @@ function RegistrationPage() {
   };
 
   const onSubmit = handleSubmit((data) => {
+    dispatch(setEmail({ email: data.email }));
     dispatch(registerUser(data))
       .unwrap()
-      .then(() => navigate("/auth/mail/info"))
+      .then(() => navigate("/auth/mail/resend-register"))
       .catch((err) => {
         for (const key in err) {
           setError(key, {
