@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import TimerToSubmit from "../../components/timer-to-submit/timer-to-submit";
 import style from "./resend-password-mail-page.module.css";
 import { getUserEmail } from "../../services/selectors/selectors";
 import { resetUserPassword } from "../../services/slice/user-auth-slice";
@@ -24,6 +25,7 @@ function ResendPasswordMailPage() {
           <span onClick={onSubmit} className={style.link}>
             отправить запрос ещё раз
           </span>
+          <TimerToSubmit />
         </p>
         <Link className={style.button} to="/">
           К проектам
