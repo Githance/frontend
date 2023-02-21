@@ -135,6 +135,7 @@ const userAuthSlice = createSlice({
     // TODO: Авторизация пользователя
     builder.addCase(loginUser.pending, (state) => {
       state.loginRequest = true;
+      state.loginErrorText = null;
     });
     builder.addCase(loginUser.fulfilled, (state) => {
       state.isAuth = true;

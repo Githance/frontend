@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/self-closing-comp */
@@ -32,17 +33,8 @@ function AuthenticationPage() {
   const onSubmit = handleSubmit((data) => {
     dispatch(loginUser(data))
       .unwrap()
-      .then(() => navigate("/"))
-      .catch((err) => {
-        console.log(err);
-        for (const key in err) {
-          setError(key, {
-            type: "server",
-            message: err[key],
-          });
-        }
-      });
-  });  
+      .then(() => navigate("/"))      
+  });
 
   return (
     <div className={style.container}>
