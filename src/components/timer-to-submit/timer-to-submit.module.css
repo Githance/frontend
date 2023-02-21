@@ -1,15 +1,6 @@
 .counter {
   margin-left: 4px;
-  display: inline;
-  cursor: pointer;
+  display: inline;  
   text-decoration: underline;
   color: var(--bg-color-button-normal);
-}
-
-.counter:hover {
-  color: var(--bg-color-button-hover);
-}
-
-.counter:active {
-  color: var(--bg-color-button-pressed);
 }
