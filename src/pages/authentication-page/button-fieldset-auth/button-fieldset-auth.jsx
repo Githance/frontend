@@ -14,7 +14,7 @@ function ButtonFieldsetAuth({ isValid }) {
   return (
     <fieldset className={cn(style.fieldset, style.container__buttons)}>
       {loginErrorText && (
-        <InputErrorText>{loginErrorText.non_field_errors}</InputErrorText>
+        <InputErrorText className={style.error}>{loginErrorText.non_field_errors}</InputErrorText>
       )}
       <Button
         className={`${style.button} ${
