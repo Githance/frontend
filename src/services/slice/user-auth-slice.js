@@ -21,10 +21,13 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   "userAuthSlice/loginUser",
-  (userData) =>
-    api.userLoginRequest(userData).then((res) => {
-      token.setToken("accessToken", res.access_token);
-    })
+  (userData, { rejectWithValue }) =>
+    api
+      .userLoginRequest(userData)
+      .then((res) => {
+        token.setToken("accessToken", res.access_token);
+      })
+      .catch((err) => rejectWithValue(err.response.data))
 );
 
 export const logoutUser = createAsyncThunk("userAuthSlice/logoutUser", () =>
@@ -70,6 +73,7 @@ const userAuthSlice = createSlice({
 
     loginRequest: null,
     loginError: null,
+    loginErrorText: null,
 
     logoutRequest: null,
     logoutError: null,
@@ -96,6 +100,9 @@ const userAuthSlice = createSlice({
     },
     resetEmail(state) {
       state.userEmail = null;
+    },
+    resetLoginError(state) {
+      state.loginError = null;
     },
   },
 
@@ -128,14 +135,18 @@ const userAuthSlice = createSlice({
     // TODO: Авторизация пользователя
     builder.addCase(loginUser.pending, (state) => {
       state.loginRequest = true;
+      state.loginErrorText = null;
     });
     builder.addCase(loginUser.fulfilled, (state) => {
       state.isAuth = true;
       state.loginRequest = null;
     });
-    builder.addCase(loginUser.rejected, (state) => {
+    builder.addCase(loginUser.rejected, (state, action) => {
       state.loginRequest = null;
       state.loginError = true;
+      if (action.payload.non_field_errors) {
+        state.loginErrorText = action.payload;
+      }
     });
 
     // TODO: Выход пользователя из аккаунта пользователя

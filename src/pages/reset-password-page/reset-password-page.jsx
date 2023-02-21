@@ -8,7 +8,10 @@ import Form from "../../components/form/form";
 import Button from "../../components/button/button";
 import PasswordFieldsetResetPassword from "./password-fieldset-reset-password/password-fieldset-reset-password";
 import style from "./reset-password-page.module.css";
-import { confirmUserPassword } from "../../services/slice/user-auth-slice";
+import {
+  confirmUserPassword,
+  resetEmail,
+} from "../../services/slice/user-auth-slice";
 
 function ResetPasswordPage() {
   const dispatch = useDispatch();
@@ -34,7 +37,7 @@ function ResetPasswordPage() {
       uid: id,
       token: confirmCode,
     };
-
+    dispatch(resetEmail());
     dispatch(confirmUserPassword(userData))
       .unwrap()
       .then(() => navigate("/"))

@@ -32,7 +32,7 @@ function ForgotPasswordPage() {
     dispatch(setEmail(data));
     dispatch(resetUserPassword(data))
       .unwrap()
-      .then(() => navigate("/auth/mail/resend"))
+      .then(() => navigate("/auth/mail/resend-password"))
       .catch((err) => {
         for (const key in err) {
           setError(key, {

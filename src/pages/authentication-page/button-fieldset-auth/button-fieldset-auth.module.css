@@ -53,3 +53,7 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+.error {
+  align-self: flex-start;
+}

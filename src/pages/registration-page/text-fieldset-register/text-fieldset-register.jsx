@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import InputLabel from "../../../components/input-label/input-label";
 import TextInput from "../../../components/text-input/text-input";
 import InputErrorText from "../../../components/input-error-text/input-error-text";
-import { registrationPageScheme } from "../../../utils/validation-scheme";
 import style from "./text-fieldset-register.module.css";
 
 function TextFieldsetRegister({
@@ -32,8 +31,7 @@ function TextFieldsetRegister({
             ? classNameFalse
             : classNameSuccess
         }
-        htmlFor="name"
-        {...registrationPageScheme.name}
+        htmlFor="name"        
       />
       {errors.name && <InputErrorText>{errors.name.message}</InputErrorText>}
     </fieldset>

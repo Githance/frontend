@@ -53,6 +53,7 @@ class Api {
       .post(this.#loginUser, userData)
       .then(this.checkResponse);
   }
+
   userLogoutRequest() {
     return this.#authAxios.post(this.#logoutUser).then(this.checkResponse);
   }
