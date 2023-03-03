@@ -14,7 +14,7 @@ function oauthSignIn() {
     client_id:
       "1000575426539-46q4dr57cr4hq4v2s648rfqie23ddjs9.apps.googleusercontent.com",
     /* redirect_uri: "http://localhost:3000/auth/google/code/", */
-    redirect_uri: "http://dev.githance.com/auth/google/code/",
+    redirect_uri: "https://dev.githance.com/auth/google/code/",
     response_type: "code",
     scope: "email profile",
     prompt: "consent",
