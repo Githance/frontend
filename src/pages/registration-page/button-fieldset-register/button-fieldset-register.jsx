@@ -14,7 +14,7 @@ function ButtonFieldsetRegister({ isValid }) {
         type="submit"
         isValid={isValid}
       >
-        Войти
+        Зарегистрироваться
       </Button>
       <p className={style.text}>или</p>
     </fieldset>
