@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  background: url(../../images/чиркаш.svg);
+  background: url(../../images/line.svg);
   background-repeat: no-repeat;
  background-position: 84% 0px;
 }
@@ -50,7 +50,7 @@
   height: 455px;
   right: -206px;
   bottom: -48px;
-  background: url(../../images/illustration\ woman.svg);
+  background: url(../../images/illustration_woman.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
