@@ -1,6 +1,8 @@
 .form {
+  display: flex;
+  justify-content: space-between;
   box-sizing: border-box;
-  padding: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border-input-color);
 }
 
@@ -8,10 +10,15 @@
   margin: 0;
   padding: 0;
   border: none;
-  outline: none;
+  /* outline: none; */
   font-family: inherit;
   cursor: text;
   color: var(--text-color-black);
+}
+
+.input:disabled {
+  background-color: var(--bg-color-form);
+  cursor: auto;
 }
 
 .input_type_primary {
