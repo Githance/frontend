@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import style from "./main-input.module.css";
+import IconPen from "../icon-pen/icon-pen";
 
 function MainInput({ text, onChange, type }) {
   const [disabledInput, setDisabledInput] = useState(true);
@@ -8,7 +9,7 @@ function MainInput({ text, onChange, type }) {
 
   const inputType = (type) => {
     return type === "primary" ? true : false;
-  }; 
+  };
 
   const changeInput = useCallback(() => {
     console.log("change");
@@ -30,8 +31,9 @@ function MainInput({ text, onChange, type }) {
   }, [disabledInput]);
 
   return (
-    <form className={style.form} onSubmit={onSubmit}>
+    <form className={style.form} onSubmit={onSubmit} noValidate>
       <input
+        maxLength="38"
         onBlur={blurInput}
         ref={inputRef}
         disabled={disabledInput}
@@ -46,7 +48,7 @@ function MainInput({ text, onChange, type }) {
       />
       {disabledInput ? (
         <button type="button" className={style.button} onClick={changeInput}>
-          Pen
+          <IconPen />
         </button>
       ) : (
         <button type="submit" className={style.button}>

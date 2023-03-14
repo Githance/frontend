@@ -10,8 +10,7 @@
   margin: 0;
   padding: 0;
   border: none;
-  /* outline: none; */
-  font-family: inherit;
+  outline: none;
   cursor: text;
   color: var(--text-color-black);
 }
@@ -31,4 +30,13 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  width: 16px;
+  height: 16px;
 }
