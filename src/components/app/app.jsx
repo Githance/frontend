@@ -11,6 +11,7 @@ import ForgotPasswordPage from "../../pages/forgot-password-page/forgot-password
 import ResetPasswordPage from "../../pages/reset-password-page/reset-password-page";
 import ResendPasswordMailPage from "../../pages/resend-password-mail-page/resend-password-mail-page";
 import ResendRegisterMailPage from "../../pages/resend-register-mail-page/resend-register-mail-page";
+import ProfilePage from "../../pages/profile-page/profile-page";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="google/code/" element={<GoogleAuthPage />} />
         <Route path="success" element={<SuccessRegistrationPage />} />
       </Route>
+      <Route path="/profile" element={<ProfilePage />} />
     </Routes>
   );
 }
