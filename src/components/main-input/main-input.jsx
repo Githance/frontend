@@ -1,8 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import cn from "classnames";
 import style from "./main-input.module.css";
-import IconCheck from "../icon-check/icon-check";
-import { PenIcon } from "../UI";
+import { PenIcon, CheckIcon } from "../UI";
 
 function MainInput({ value, type, onChange, onSubmit }) {
   const [disabledInput, setDisabledInput] = useState(true);
@@ -61,7 +60,7 @@ function MainInput({ value, type, onChange, onSubmit }) {
           </button>
         ) : (
           <button type="submit" className={style.button}>
-            <IconCheck className={style.button_iconCheck} />
+            <CheckIcon size="medium" />
           </button>
         )}
       </fieldset>
