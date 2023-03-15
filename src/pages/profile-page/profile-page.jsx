@@ -4,7 +4,7 @@ import MainInput from "../../components/main-input/main-input";
 function ProfilePage() {
   return (
     <div className={style.profile}>
-      <MainInput text="text"/>
+      <MainInput value="text"/>
     </div>
   );
 }

@@ -1,9 +1,23 @@
 .form {
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-input-color);
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
   display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
+  align-items: center;
+}
+
+.fieldset_type_primary {
+  padding-bottom: 20px;
+}
+
+.fieldset_type_secondary {
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-input-color);
 }
 
 .input {

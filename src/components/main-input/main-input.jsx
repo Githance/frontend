@@ -1,8 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import cn from "classnames";
 import style from "./main-input.module.css";
 import IconPen from "../icon-pen/icon-pen";
 
-function MainInput({ text, onChange, type }) {
+function MainInput({ value, onChange, type }) {
   const [disabledInput, setDisabledInput] = useState(true);
 
   const inputRef = useRef(null);
@@ -31,30 +32,37 @@ function MainInput({ text, onChange, type }) {
   }, [disabledInput]);
 
   return (
-    <form className={style.form} onSubmit={onSubmit} noValidate>
-      <input
-        maxLength="38"
-        onBlur={blurInput}
-        ref={inputRef}
-        disabled={disabledInput}
-        type="text"
-        value={text}
-        className={`${style.input} ${
-          inputType(type)
-            ? style.input_type_primary
-            : style.input_type_secondary
-        }`}
-        onChange={onChange}
-      />
-      {disabledInput ? (
-        <button type="button" className={style.button} onClick={changeInput}>
-          <IconPen />
-        </button>
-      ) : (
-        <button type="submit" className={style.button}>
-          Arrow
-        </button>
-      )}
+    <form className={style.form} onSubmit={onSubmit}>
+      <fieldset
+        className={cn(
+          style.fieldset,
+          inputType
+            ? style.fieldset_type_primary
+            : style.fieldset_type_secondary
+        )}
+      >
+        <input
+          onBlur={blurInput}
+          ref={inputRef}
+          disabled={disabledInput}
+          type="text"
+          value={value}
+          className={cn(
+            style.input,
+            inputType ? style.input_type_primary : style.input_type_secondary
+          )}
+          onChange={onChange}
+        />
+        {disabledInput ? (
+          <button type="button" className={style.button} onClick={changeInput}>
+            <IconPen />
+          </button>
+        ) : (
+          <button type="submit" className={style.button}>
+            Arrow
+          </button>
+        )}
+      </fieldset>
     </form>
   );
 }
