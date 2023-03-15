@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 
-type TProfileIcon = {type: 'default' | 'active'}
+type Props = {type: 'default' | 'active'}
 
-const ProfileIcon: FC<TProfileIcon> = ({ type }) => {
+const ProfileIcon: FC<Props> = ({ type }) => {
   switch (type) {
     case "default":
       return (

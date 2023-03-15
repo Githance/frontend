@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 
-type TNotificationIcon = {type: 'default' | 'active'}
+type Props = {type: 'default' | 'active'}
 
-const NotificationIcon: FC<TNotificationIcon> = ({ type }) => {
+const NotificationIcon: FC<Props> = ({ type }) => {
   switch (type) {
     case "default":
       return (

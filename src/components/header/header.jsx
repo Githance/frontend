@@ -5,7 +5,7 @@ import style from "./header.module.css";
 export default function Header() {
   return (
     <header className={style.header}>
-      <div className={style.nav_wrapper}>
+      <nav className={style.nav_wrapper}>
         <div className={style.nav_main}>
           <NavLink className={`${style.link} pr-6`} to="/">
             <Logo />
@@ -27,7 +27,7 @@ export default function Header() {
             Профиль
           </NavLink>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
