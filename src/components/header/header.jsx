@@ -1,26 +1,32 @@
 import { NavLink } from "react-router-dom";
+import { Logo, NotificationIcon, ProfileIcon } from "../UI";
 import style from "./header.module.css";
-import Logo from "../logo/logo";
-
 
 export default function Header() {
   return (
     <header className={style.header}>
-      <div className={style.container}>
-        <div className={style.nav_wrapper}>
-          <NavLink className={style.link} to="/">
-            О нас
+      <div className={style.nav_wrapper}>
+        <div className={style.nav_main}>
+          <NavLink className={`${style.link} pr-6`} to="/">
+            <Logo />
           </NavLink>
           <NavLink className={style.link} to="/">
-           Проекты
+            Мои проекты
+          </NavLink>
+          <NavLink className={style.link} to="/">
+            Мои заявки
           </NavLink>
         </div>
-        <div className={style.logo_wrapper}>
-          <Logo />
+        <div className={style.nav_profile}>
+          <NavLink className={style.profile_link} to="/auth">
+            <ProfileIcon type="default" />
+            Уведомления
+          </NavLink>
+          <NavLink className={style.profile_link} to="/auth">
+            <NotificationIcon type="default" />
+            Профиль
+          </NavLink>
         </div>
-        <NavLink className={style.link} to="/auth">
-          Войти
-        </NavLink>
       </div>
     </header>
   );
