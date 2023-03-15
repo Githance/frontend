@@ -1,6 +1,6 @@
 .header {
   background-color: var(--bg-color-form);
-  padding: 64px 167px 36px 185px;
+  padding: 64px 55px 36px;
   display: flex;
   max-width: 1480px;
   width: 100%;
@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 .nav_wrapper {
-  width: 100%;
+  max-width: 1110px;
   width: 100%;
   display: flex;
   justify-content: space-between;
