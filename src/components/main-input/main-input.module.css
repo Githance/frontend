@@ -53,4 +53,15 @@
   background-color: transparent;
   width: 16px;
   height: 16px;
+  cursor: pointer;
+}
+
+.button__iconPen {
+  width: 16px;
+  height: 16px;
+}
+
+.button_iconCheck {
+  width: 24px;
+  height: 18px;
 }
