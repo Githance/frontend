@@ -33,7 +33,7 @@
   align-items: center;
 }
 .profile_link {
-  composes: link;
+  composes: link; 
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
