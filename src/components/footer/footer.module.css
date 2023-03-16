@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   box-sizing: border-box;
+  margin: 0 auto;
+ 
 }
 .wrapper {
   max-width: 1110px;
