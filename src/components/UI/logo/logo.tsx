@@ -1,10 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable object-shorthand */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/self-closing-comp */
-
-import React from "react";
 import { FC } from "react";
 
 const Logo: FC = () => {
