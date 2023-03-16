@@ -12,30 +12,26 @@
   justify-self: center;
 }
 .empty_container {
-  background: url(../../images/cross.svg);
+  background: url(../../../../images/cross.svg);
   background-repeat: no-repeat;
   background-position: center;
   width: 93px;
   height: 93px;
   align-self: center;
-  
-  
 }
 .status {
   box-sizing: border-box;
   background: var(--text-color-white);
-  max-width: 90px;
-  padding: 4px;
-  margin-bottom: 16px;
   border-radius: 60px;
+  padding: 4px 8px;
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
   text-align: center;
   color: var(--bg-color-button-normal);
-  align-self: flex-end;
+  align-self: flex-start;
 }
-.title_wrapper {
+.wrapper {
   display: flex;
   justify-content: space-between;
 }
@@ -45,14 +41,9 @@
   font-size: 32px;
   line-height: 39px;
   padding-bottom: 8px;
+  padding-top: 35px;
 }
-.button {
-  background: url(../../images/row.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 40px;
-  height: 40px;
-}
+
 .subtitle {
   margin: 0;
   flex-grow: 1;
