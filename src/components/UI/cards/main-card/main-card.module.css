@@ -51,21 +51,23 @@
   font-size: 16px;
   line-height: 20px;
 }
-.progress_bar {
+.progress{
+  width: 100%;
+  height: 12px;
+  border: 0;
+}
+.progress::-webkit-progress-bar {
   width: 100%;
   background: var(--text-color-white);
-  border-radius: 80px;
+  border-radius: 8px;
   height: 12px;
   position: relative;
 }
-.load_bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 12px;
+.progress::-webkit-progress-value {
   background: var(--bg-color-button-pressed);
   border-radius: 80px;
 }
+
 .bar_description {
   padding-top: 4px;
   margin: 0;
