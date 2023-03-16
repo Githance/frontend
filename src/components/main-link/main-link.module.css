@@ -20,6 +20,18 @@
   padding-bottom: 10px;
 }
 
+.link {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--link-color-grey);
+  text-decoration: none;
+}
+
+.link {
+  color: var(--text-color-black);
+}
+
 .input {
   margin: 0;
   padding: 0;
@@ -27,6 +39,9 @@
   outline: none;
   cursor: text;
   color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .button {

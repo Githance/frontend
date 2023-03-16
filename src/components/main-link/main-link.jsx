@@ -40,7 +40,12 @@ const MainLink = ({ link, children, onChange, onSubmit, type }) => {
         )}
       >
         {disabledInput ? (
-          <a href={link}>{children}</a>
+          <a
+            href={link}
+            className={cn(style.link, !!link && style.link_active)}
+          >
+            {children}
+          </a>
         ) : (
           <input
             type="text"
