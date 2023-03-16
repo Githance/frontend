@@ -1,4 +1,5 @@
 @import url(./vendor/normalize.css);
+@import url(./vendor/box.css);
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 body {
@@ -6,6 +7,8 @@ body {
 }
 
 :root {
+  /* Базовое значение для системы отступов */
+  --offset-base-size: 5px;
   /* Переменные основных цветов фона */
   --bg-color-main: #171717;
   --bg-color-form: #ffffff;
@@ -38,3 +41,4 @@ body {
 
   --border-input-color: #dedede;
 }
+

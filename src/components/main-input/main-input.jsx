@@ -1,8 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import cn from "classnames";
 import style from "./main-input.module.css";
-import IconPen from "../icon-pen/icon-pen";
-import IconCheck from "../icon-check/icon-check";
+import { PenIcon, CheckIcon } from "../UI";
 
 function MainInput({ value, type, onChange, onSubmit }) {
   const [disabledInput, setDisabledInput] = useState(true);
@@ -21,7 +20,7 @@ function MainInput({ value, type, onChange, onSubmit }) {
   const blurInput = useCallback(() => {
     console.log("blur");
     setDisabledInput((prevValue) => !prevValue);
-  }, [disabledInput]);  
+  }, [disabledInput]);
 
   useEffect(() => {
     if (!disabledInput) {
@@ -54,13 +53,14 @@ function MainInput({ value, type, onChange, onSubmit }) {
           )}
           onChange={onChange}
         />
+
         {disabledInput ? (
           <button type="button" className={style.button} onClick={changeInput}>
-            <IconPen className={style.button__iconPen} />
+            <PenIcon size="medium" />
           </button>
         ) : (
           <button type="submit" className={style.button}>
-            <IconCheck className={style.button_iconCheck} />
+            <CheckIcon size="medium" />
           </button>
         )}
       </fieldset>
