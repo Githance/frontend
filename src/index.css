@@ -39,6 +39,9 @@ body {
   --text-color-red: #f9465c;
   --text-color-additional: rgba(255, 255, 255, 0.5);
 
+  /* Переменные цветов ссылок профиля */
+  --link-color-grey: #999999;
+
   --border-input-color: #dedede;
 }
 

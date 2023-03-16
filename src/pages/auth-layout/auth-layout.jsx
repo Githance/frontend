@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
-function AuthWrapper() {
+function AuthLayout() {
   return <Outlet />;
 }
 
-export default AuthWrapper;
+export default AuthLayout;
