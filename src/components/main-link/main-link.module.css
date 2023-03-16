@@ -11,3 +11,33 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.fieldset_type_primary {
+  padding-bottom: 20px;
+}
+
+.fieldset_type_secondary {
+  padding-bottom: 10px;
+}
+
+.input {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: text;
+  color: var(--text-color-black);
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

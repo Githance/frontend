@@ -9,7 +9,7 @@ function ProfilePage() {
   return (
     <div className={style.profile}>
       <MainInput value="text" type="primary" onSubmit={onSubmit} />
-      <MainLink link="link" onSubmit={onSubmit}>
+      <MainLink link="link" onSubmit={onSubmit} type="secondary">
         Портфолио
       </MainLink>
     </div>
