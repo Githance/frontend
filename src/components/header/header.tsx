@@ -19,11 +19,11 @@ const Header: FC = () => {
           </NavLink>
         </div>
         <div className={style.nav_profile}>
-          <NavLink className={style.profile_link} to="/auth">
+          <NavLink className={style.profile_link} to="/">
             <ProfileIcon type="default" />
             Уведомления
           </NavLink>
-          <NavLink className={style.profile_link} to="/auth/registration">
+          <NavLink className={style.profile_link} to="/auth">
             <NotificationIcon type="default" />
             Профиль
           </NavLink>

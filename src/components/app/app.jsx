@@ -12,15 +12,17 @@ import ResetPasswordPage from "../../pages/reset-password-page/reset-password-pa
 import ResendPasswordMailPage from "../../pages/resend-password-mail-page/resend-password-mail-page";
 import ResendRegisterMailPage from "../../pages/resend-register-mail-page/resend-register-mail-page";
 import ProfilePage from "../../pages/profile-page/profile-page";
-import Layout from '../../pages/layout/layout'
-
+import Layout from "../../pages/layout/layout";
+import AuthLayout from "../../pages/auth-layout/auth-layout";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-      <Route index element={<MainPage />} />
-      <Route path="/auth" element={<AuthWrapper />}>
+        <Route index element={<MainPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Route>
+      <Route path="/auth" element={<AuthLayout />}>
         <Route index element={<AuthenticationPage />} />
         <Route path="registration" element={<RegistrationPage />} />
         <Route path="password/reset" element={<ForgotPasswordPage />} />
@@ -38,8 +40,6 @@ function App() {
         </Route>
         <Route path="google/code/" element={<GoogleAuthPage />} />
         <Route path="success" element={<SuccessRegistrationPage />} />
-      </Route>
-      <Route path="/profile" element={<ProfilePage />} />
       </Route>
     </Routes>
   );
