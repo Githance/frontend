@@ -27,4 +27,4 @@ npm install
 ```
 npm run dev
 ```
-## [Правила оформления кода](./docs/codestyle.md)
+### [Правила оформления кода](./docs/codestyle.md)
