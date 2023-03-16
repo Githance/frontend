@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 import { Route, Routes } from "react-router-dom";
 import MainPage from "../../pages/main-page/main-page";
-import AuthWrapper from "../../pages/auth-wrapper";
+import AuthWrapper from "../../pages/auth-layout/auth-layout";
 import AuthenticationPage from "../../pages/authentication-page/authentication-page";
 import RegistrationPage from "../../pages/registration-page/registration-page";
 import SuccessRegistrationPage from "../../pages/success-registration-page/success-registration-page";
