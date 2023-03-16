@@ -32,12 +32,12 @@ const MainCard: FC<Props> = ({ status, title, subtitle, percent, empty }) => {
           </div>
           <h2 className={style.title}>{cutText(title, 30)}</h2>
           <p className={style.subtitle}>{cutText(subtitle, 142)}</p>
-          <div className={style.progress_bar}>
-            <div
-              className={style.load_bar}
-              style={{ width: `${percent}%` }}
-            ></div>
-          </div>
+          <progress
+            className={style.progress}
+            id="project"
+            max="100"
+            value={percent}
+          ></progress>
           <p
             className={style.bar_description}
           >{`${percent}% команды собрано`}</p>
