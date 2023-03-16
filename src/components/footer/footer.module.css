@@ -1,0 +1,32 @@
+.footer {
+  padding: 60px 55px;
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.wrapper {
+  max-width: 1110px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  justify-content: space-between;
+}
+.link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--text-color-black);
+}
+.link:nth-last-child(3) {
+  text-align: end;
+}
+.author {
+  composes: link;
+  margin: 0;
+  text-align: end;
+}
