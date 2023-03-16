@@ -4,7 +4,7 @@
 import Button from "../button/button";
 import style from "./card-table.module.css";
 import CustomSelect from "../custom-select/custom-select";
-import Card from "../card/card";
+import { MainCard, SecondaryCard } from "../UI";
 
 const options = [
   { value: "test", label: "test" },
@@ -18,10 +18,18 @@ export default function CardTable() {
     <section className={style.container}>
       <div className={style.selectors_wrapper}>
         <div className={style.btns_wrapper}>
-          <Button type='button' isValid={true} className={style.button}>Все проекты</Button>
-          <Button type='button' isValid={true} className={style.button}>Идёт набор</Button>
-          <Button type='button' isValid={true} className={style.button}>Завершённые проекты</Button>
-          <Button type='button' isValid={true} className={style.button}>Текущие проекты</Button>
+          <Button type="button" isValid={true} className={style.button}>
+            Все проекты
+          </Button>
+          <Button type="button" isValid={true} className={style.button}>
+            Идёт набор
+          </Button>
+          <Button type="button" isValid={true} className={style.button}>
+            Завершённые проекты
+          </Button>
+          <Button type="button" isValid={true} className={style.button}>
+            Текущие проекты
+          </Button>
         </div>
         <CustomSelect
           isClearable={true}
@@ -31,54 +39,48 @@ export default function CardTable() {
         />
       </div>
       <div className={style.cards_wrapper}>
-        <Card
+        <MainCard
           status="В процессе"
           title="Githance"
           subtitle="Сайт для создания проектов 
 в портфолио"
           percent="30"
           empty={true}
-          color="#e2e2f6"
         />
-        <Card
+        <MainCard
           status="В процессе"
           title="Маршруты
-моего города"
-          subtitle="Сайт для городских квестов, с простым конструктором и адаптивной формой для ответов"
-          color="#F6D2D1"
+моего города моего города"
+          subtitle="Сайт для городских квестов, с простым конструктором и адаптивной формой для ответов Сайт для городских квестов, с простым конструктором и адаптивной формой для ответов Сайт для городских квестов, с простым конструктором и адаптивной формой для ответов"
           percent="40"
         />
-        <Card
+        <MainCard
           status="В процессе"
           title="Githance"
           subtitle="Сайт для создания проектов 
 в портфолио"
           percent="80"
-          color="#e2e2f6"
         />
-        <Card
+        <MainCard
           status="В процессе"
           title="Githance"
           subtitle="Сайт для создания проектов 
 в портфолио"
           percent="90"
-          color="#e2e2f6"
         />
-        <Card
+        <MainCard
           status="В процессе"
           title="Githance"
           subtitle="Сайт для создания проектов 
 в портфолио"
           percent="10"
-          ccolor="#e2e2f6"
         />
-        <Card
+        <MainCard
           status="В процессе"
           title="Githance"
           subtitle="Сайт для создания проектов 
 в портфолио"
-          percent="30"
-          color="#e2e2f6"
+          percent="10"
         />
       </div>
     </section>
