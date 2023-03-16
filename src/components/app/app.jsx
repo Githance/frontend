@@ -12,11 +12,14 @@ import ResetPasswordPage from "../../pages/reset-password-page/reset-password-pa
 import ResendPasswordMailPage from "../../pages/resend-password-mail-page/resend-password-mail-page";
 import ResendRegisterMailPage from "../../pages/resend-register-mail-page/resend-register-mail-page";
 import ProfilePage from "../../pages/profile-page/profile-page";
+import Layout from '../../pages/layout/layout'
+
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route path="/" element={<Layout />}>
+      <Route index element={<MainPage />} />
       <Route path="/auth" element={<AuthWrapper />}>
         <Route index element={<AuthenticationPage />} />
         <Route path="registration" element={<RegistrationPage />} />
@@ -37,6 +40,7 @@ function App() {
         <Route path="success" element={<SuccessRegistrationPage />} />
       </Route>
       <Route path="/profile" element={<ProfilePage />} />
+      </Route>
     </Routes>
   );
 }

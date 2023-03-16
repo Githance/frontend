@@ -1,8 +1,9 @@
+import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { Logo, NotificationIcon, ProfileIcon } from "../UI";
 import style from "./header.module.css";
 
-export default function Header() {
+const Header: FC = () => {
   return (
     <header className={style.header}>
       <nav className={style.nav_wrapper}>
@@ -22,7 +23,7 @@ export default function Header() {
             <ProfileIcon type="default" />
             Уведомления
           </NavLink>
-          <NavLink className={style.profile_link} to="/auth">
+          <NavLink className={style.profile_link} to="/auth/registration">
             <NotificationIcon type="default" />
             Профиль
           </NavLink>
@@ -31,3 +32,4 @@ export default function Header() {
     </header>
   );
 }
+export default Header;

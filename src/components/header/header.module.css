@@ -6,6 +6,8 @@
   width: 100%;
   justify-content: center;
   box-sizing: border-box;
+  margin: 0 auto;
+
 }
 .nav_wrapper {
   max-width: 1110px;
