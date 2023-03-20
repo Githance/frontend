@@ -4,12 +4,12 @@
 }
 
 .fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0;
   padding: 0;
   border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .fieldset_type_primary {
@@ -21,38 +21,38 @@
 }
 
 .link {
+  color: var(--link-color-grey);
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: var(--link-color-grey);
   text-decoration: none;
 }
 
-.link {
+.link_active {
   color: var(--text-color-black);
 }
 
 .input {
   margin: 0;
   padding: 0;
-  border: none;
-  outline: none;
-  cursor: text;
   color: var(--text-color-black);
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
+  border: none;
+  outline: none;
+  cursor: text;
 }
 
 .button {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 22px;
   height: 22px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

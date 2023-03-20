@@ -1,6 +1,6 @@
 .counter {
+  display: inline;
   margin-left: 4px;
-  display: inline;  
+  color: var(--bg-color-button-normal);  
   text-decoration: underline;
-  color: var(--bg-color-button-normal);
 }
