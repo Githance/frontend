@@ -1,69 +1,59 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../api/Api";
-import token from "../../utils/token";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import api from '../../api/Api';
+import token from '../../utils/token';
 
-export const fetchGoogleDate = createAsyncThunk(
-  "userAuth/fetchGoogleDate",
-  (googleCode) =>
-    api.googleAuthRequest(googleCode).then((res) => {
-      token.setToken("accessToken", res.access_token);
-    })
+export const fetchGoogleDate = createAsyncThunk('userAuth/fetchGoogleDate', (googleCode) =>
+  api.googleAuthRequest(googleCode).then((res) => {
+    token.setToken('accessToken', res.access_token);
+  }),
 );
 
 export const registerUser = createAsyncThunk(
-  "userAuthSlice/registerUser",
+  'userAuthSlice/registerUser',
   (userData, { rejectWithValue }) =>
-    api
-      .userRegisterRequest(userData)
-      .catch((err) => rejectWithValue(err.response.data))
+    api.userRegisterRequest(userData).catch((err) => rejectWithValue(err.response.data)),
 );
 
 export const loginUser = createAsyncThunk(
-  "userAuthSlice/loginUser",
+  'userAuthSlice/loginUser',
   (userData, { rejectWithValue }) =>
     api
       .userLoginRequest(userData)
       .then((res) => {
-        token.setToken("accessToken", res.access_token);
+        token.setToken('accessToken', res.access_token);
       })
-      .catch((err) => rejectWithValue(err.response.data))
+      .catch((err) => rejectWithValue(err.response.data)),
 );
 
-export const logoutUser = createAsyncThunk("userAuthSlice/logoutUser", () =>
+export const logoutUser = createAsyncThunk('userAuthSlice/logoutUser', () =>
   api.userLogoutRequest().then(() => {
-    token.deleteToken("accessToken");
-  })
+    token.deleteToken('accessToken');
+  }),
 );
 
-export const confirmUserEmail = createAsyncThunk(
-  "userAuthSlice/confirmUserEmail",
-  (userEmail) => api.confirmEmailRequest(userEmail)
+export const confirmUserEmail = createAsyncThunk('userAuthSlice/confirmUserEmail', (userEmail) =>
+  api.confirmEmailRequest(userEmail),
 );
 
 export const resetUserPassword = createAsyncThunk(
-  "userAuthSlice/resetUserPassword",
+  'userAuthSlice/resetUserPassword',
   (userEmail, { rejectWithValue }) =>
-    api
-      .userResetPasswordRequest(userEmail)
-      .catch((err) => rejectWithValue(err.response.data))
+    api.userResetPasswordRequest(userEmail).catch((err) => rejectWithValue(err.response.data)),
 );
 
 export const confirmUserPassword = createAsyncThunk(
-  "userAuthSlice/confirmUserPassword",
+  'userAuthSlice/confirmUserPassword',
   (userData, { rejectWithValue }) =>
-    api
-      .userConfirmPasswordRequest(userData)
-      .catch((err) => rejectWithValue(err.response.data))
+    api.userConfirmPasswordRequest(userData).catch((err) => rejectWithValue(err.response.data)),
 );
 
-export const resendUserEmail = createAsyncThunk(
-  "userAuthSlice/resendUserEmail",
-  (userEmail) => api.resendEmailRequest(userEmail)
+export const resendUserEmail = createAsyncThunk('userAuthSlice/resendUserEmail', (userEmail) =>
+  api.resendEmailRequest(userEmail),
 );
 
 const userAuthSlice = createSlice({
-  name: "userAuth",
+  name: 'userAuth',
   initialState: {
     isAuth: false,
     userEmail: null,

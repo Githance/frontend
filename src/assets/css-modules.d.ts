@@ -1,4 +1,4 @@
-declare module "*.css" {
+declare module '*.css' {
   type ClassNames = {
     [className: string]: string;
   };
