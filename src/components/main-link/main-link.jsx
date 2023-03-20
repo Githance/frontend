@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback, useRef } from "react";
-import cn from "classnames";
-import style from "./main-link.module.css";
-import { AnchorIcon, CheckIcon } from "../UI";
+import { useState, useEffect, useCallback, useRef } from 'react';
+import cn from 'classnames';
+import style from './main-link.module.css';
+import { AnchorIcon, CheckIcon } from '../UI';
 
 const MainLink = ({ link, children, onChange, onSubmit, type }) => {
   const [disabledInput, setDisabledInput] = useState(true);
@@ -9,22 +9,22 @@ const MainLink = ({ link, children, onChange, onSubmit, type }) => {
   const inputRef = useRef(null);
 
   const inputType = (type) => {
-    return type === "primary" ? true : false;
+    return type === 'primary' ? true : false;
   };
 
   const changeInput = useCallback(() => {
-    console.log("change");
+    console.log('change');
     setDisabledInput((prevValue) => !prevValue);
   }, [disabledInput]);
 
   const blurInput = useCallback(() => {
-    console.log("blur");
+    console.log('blur');
     setDisabledInput((prevValue) => !prevValue);
   }, [disabledInput]);
 
   useEffect(() => {
     if (!disabledInput) {
-      console.log("focus");
+      console.log('focus');
       inputRef.current.focus();
     }
   }, [disabledInput]);
@@ -34,16 +34,11 @@ const MainLink = ({ link, children, onChange, onSubmit, type }) => {
       <fieldset
         className={cn(
           style.fieldset,
-          inputType(type)
-            ? style.fieldset_type_primary
-            : style.fieldset_type_secondary
+          inputType(type) ? style.fieldset_type_primary : style.fieldset_type_secondary,
         )}
       >
         {disabledInput ? (
-          <a
-            href={link}
-            className={cn(style.link, !!link && style.link_active)}
-          >
+          <a href={link} className={cn(style.link, !!link && style.link_active)}>
             {children}
           </a>
         ) : (

@@ -24,14 +24,8 @@ function App() {
         <Route index element={<AuthenticationPage />} />
         <Route path="registration" element={<RegistrationPage />} />
         <Route path="password/reset" element={<ForgotPasswordPage />} />
-        <Route
-          path="password/reset/confirm/:id/:confirmCode"
-          element={<ResetPasswordPage />}
-        />
-        <Route
-          path="email/confirm/:confirmCode"
-          element={<VerifyEmailPage />}
-        />
+        <Route path="password/reset/confirm/:id/:confirmCode" element={<ResetPasswordPage />} />
+        <Route path="email/confirm/:confirmCode" element={<VerifyEmailPage />} />
         <Route path="mail" element={<AuthLayout />}>
           <Route path="resend-register" element={<ResendRegisterMailPage />} />
           <Route path="resend-password" element={<ResendPasswordMailPage />} />
