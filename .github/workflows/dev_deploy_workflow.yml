@@ -75,4 +75,4 @@ jobs:
               docker compose -f docker-compose-frontend_dev.yml pull 
               docker compose -f docker-compose-frontend_dev.yml up --detach
 
-              docker image prune
+              docker image prune --force
