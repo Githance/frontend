@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import { Route, Routes } from 'react-router-dom';
 import MainPage from '../../pages/main-page/main-page';
 import AuthenticationPage from '../../pages/authentication-page/authentication-page';
