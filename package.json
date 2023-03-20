@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",    
-    "stylelint": "stylelint '**/*{.css,.scss}'", 
-    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix"
+    "stylelint": "stylelint \"src/**/*.css\"", 
+    "stylelint:fix": "stylelint \"src/**/*.css\" --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",

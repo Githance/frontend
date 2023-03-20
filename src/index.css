@@ -1,30 +1,31 @@
-@import url(./vendor/normalize.css);
-@import url(./vendor/box.css);
+@import url("./vendor/normalize.css");
+@import url("./vendor/box.css");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 :root {
   /* Базовое значение для системы отступов */
   --offset-base-size: 5px;
+
   /* Переменные основных цветов фона */
   --bg-color-main: #171717;
-  --bg-color-form: #ffffff;
+  --bg-color-form: #fff;
 
   /* Переменные основных цветов кнопок */
   --bg-color-button-normal: #5d5fef;
   --bg-color-button-hover: #7879f1;
   --bg-color-button-pressed: #5d5fef;
-  --bg-color-button-disabled: rgba(93, 95, 239, 0.5);
+  --bg-color-button-disabled: rgb(93 95 239 / 50%);
   --bg-color-button-focus: #050897;
 
   /* Переменные основных цветов для кнопки Google */
-  --bg-color-g-button-normal: rgba(93, 95, 239, 0.05);
-  --bg-color-g-button-hover: rgba(93, 95, 239, 0.2);
-  --bg-color-g-button-pressed: rgba(93, 95, 239, 0.05);
-  --bg-color-g-button-disabled: rgba(93, 95, 239, 0.05);
+  --bg-color-g-button-normal: rgb(93 95 239 / 5%);
+  --bg-color-g-button-hover: rgb(93 95 239 / 20%);
+  --bg-color-g-button-pressed: rgb(93 95 239 / 5%);
+  --bg-color-g-button-disabled: rgb(93 95 239 / 5%);
   --border-color-g-button: #7879f1;
 
   /* Перемнные основных цветов полей ввода */
@@ -33,15 +34,14 @@ body {
   --color-input-false: #f9465c;
 
   /* Переменные основных цветов текста */
-  --text-color-white: #ffffff;
+  --text-color-white: #fff;
   --text-color-black: #171717;
   --text-color-grey: #575656;
   --text-color-red: #f9465c;
-  --text-color-additional: rgba(255, 255, 255, 0.5);
+  --text-color-additional: rgb(255 255 255 / 50%);
 
   /* Переменные цветов ссылок профиля */
-  --link-color-grey: #999999;
-
+  --link-color-grey: #999;
   --border-input-color: #dedede;
 }
 
