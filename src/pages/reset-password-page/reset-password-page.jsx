@@ -5,8 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Form from '../../components/form/form';
-import { Button } from '../../components/UI/index';
-import PasswordFieldsetResetPassword from './password-fieldset-reset-password/password-fieldset-reset-password';
+import { Button, PasswordFieldset } from '../../components/UI/index';
 import style from './reset-password-page.module.css';
 import { confirmUserPassword, resetEmail } from '../../services/slice/user-auth-slice';
 
@@ -53,7 +52,7 @@ function ResetPasswordPage() {
       <div className={style.content}>
         <p className={style.title}>Новый пароль</p>
         <Form onSubmit={onSubmit}>
-          <PasswordFieldsetResetPassword
+          <PasswordFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}

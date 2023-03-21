@@ -25,3 +25,4 @@ export { default as EmailFieldset } from './form/fieldset/email-fieldset/email-f
 export { default as PasswordFieldset } from './form/fieldset/password-fieldset/password-fieldset';
 export { default as TextFieldset } from './form/fieldset/text-fieldset/text-fieldset';
 export { default as ButtonFieldset } from './form/fieldset/button-fieldset/button-fieldset';
+export { default as Agreement } from './form/agreement/agreement';

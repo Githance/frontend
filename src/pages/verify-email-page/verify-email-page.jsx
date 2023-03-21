@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
-import Loader from "../../components/loader/loader";
-import style from "./verify-email-page.module.css";
-import { confirmUserEmail } from "../../services/slice/user-auth-slice";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+import Loader from '../../components/UI/loader/loader';
+import style from './verify-email-page.module.css';
+import { confirmUserEmail } from '../../services/slice/user-auth-slice';
 
 function VerifyEmailPage() {
   const dispatch = useDispatch();
@@ -12,14 +12,12 @@ function VerifyEmailPage() {
 
   useEffect(() => {
     if (confirmCode) {
-      dispatch(confirmUserEmail(confirmCode)).then(() =>
-        navigate("/")
-      );
+      dispatch(confirmUserEmail(confirmCode)).then(() => navigate('/'));
     }
   }, []);
 
   return (
-    <div className={style.container}>      
+    <div className={style.container}>
       <Loader />
     </div>
   );

@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import TimerToSubmit from "../../components/timer-to-submit/timer-to-submit";
-import style from "./resend-register-mail-page.module.css";
-import { getUserEmail } from "../../services/selectors/selectors";
-import { resendUserEmail } from "../../services/slice/user-auth-slice";
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import TimerToSubmit from '../../components/timer-to-submit/timer-to-submit';
+import style from './resend-register-mail-page.module.css';
+import { getUserEmail } from '../../services/selectors/selectors';
+import { resendUserEmail } from '../../services/slice/user-auth-slice';
 
 function ResendRegisterMailPage() {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function ResendRegisterMailPage() {
   const userEmail = useSelector(getUserEmail);
 
   const onSubmit = () => {
-    dispatch(resendUserEmail(userEmail))
+    dispatch(resendUserEmail(userEmail));
     setLink(false);
   };
 
@@ -23,8 +23,7 @@ function ResendRegisterMailPage() {
       <div className={style.content}>
         <p className={style.title}>Письмо отправлено</p>
         <p className={style.text}>
-          Если вы&nbsp;не&nbsp;получили письмо, проверьте папку
-          &laquo;спам&raquo; или попробуйте
+          Если вы&nbsp;не&nbsp;получили письмо, проверьте папку &laquo;спам&raquo; или попробуйте
           {link ? (
             <span onClick={onSubmit} className={style.link}>
               отправить запрос ещё раз

@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Form from '../../components/form/form';
-import AgreementRegister from './agreement-register/agreement-register';
 import {
+  Agreement,
   ButtonFieldset,
   EmailFieldset,
   GoogleBtn,
@@ -79,7 +79,7 @@ function RegistrationPage() {
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
           />
-          <AgreementRegister register={register} />
+          <Agreement register={register} />
           <ButtonFieldset isValid={isValid} />
         </Form>
         <GoogleBtn onClick={handleGoogleSubmit} />
