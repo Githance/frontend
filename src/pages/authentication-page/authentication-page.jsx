@@ -2,19 +2,19 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/self-closing-comp */
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import cn from "classnames";
-import Form from "../../components/form/form";
-import FormTitle from "../../components/form-title/form-title";
-import Button from "../../components/button/button";
-import EmailFieldsetAuth from "./email-fieldset-auth/email-fieldset-auth";
-import PasswordFieldsetAuth from "./password-fieldset-auth/password-fieldset-auth";
-import ButtonFieldsetAuth from "./button-fieldset-auth/button-fieldset-auth";
-import style from "./authentication-page.module.css";
-import oauthSignIn from "../../utils/google-request";
-import { loginUser } from "../../services/slice/user-auth-slice";
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import cn from 'classnames';
+import Form from '../../components/form/form';
+import FormTitle from '../../components/form-title/form-title';
+import Button from '../../components/button/button';
+import EmailFieldsetAuth from './email-fieldset-auth/email-fieldset-auth';
+import PasswordFieldsetAuth from './password-fieldset-auth/password-fieldset-auth';
+import ButtonFieldsetAuth from './button-fieldset-auth/button-fieldset-auth';
+import style from './authentication-page.module.css';
+import oauthSignIn from '../../utils/google-request';
+import { loginUser } from '../../services/slice/user-auth-slice';
 
 function AuthenticationPage() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function AuthenticationPage() {
     setError,
     handleSubmit,
     formState: { errors, dirtyFields, isValid },
-  } = useForm({ mode: "onChange", defaultValues: { email: "", password: "" } });
+  } = useForm({ mode: 'onChange', defaultValues: { email: '', password: '' } });
 
   const handleGoogleSubmit = () => {
     oauthSignIn();
@@ -33,7 +33,7 @@ function AuthenticationPage() {
   const onSubmit = handleSubmit((data) => {
     dispatch(loginUser(data))
       .unwrap()
-      .then(() => navigate("/"))      
+      .then(() => navigate('/'));
   });
 
   return (

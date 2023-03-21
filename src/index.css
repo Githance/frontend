@@ -1,6 +1,6 @@
-@import url("./vendor/normalize.css");
-@import url("./vendor/box.css");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url('./vendor/normalize.css');
+@import url('./vendor/box.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 body {
   font-family: Montserrat, sans-serif;
@@ -37,11 +37,12 @@ body {
   --text-color-white: #fff;
   --text-color-black: #171717;
   --text-color-grey: #575656;
+  --text-color-light-grey: #999;
   --text-color-red: #f9465c;
   --text-color-additional: rgb(255 255 255 / 50%);
 
   /* Переменные цветов ссылок профиля */
   --link-color-grey: #999;
+  --border-textarea-color: #999;
   --border-input-color: #dedede;
 }
-

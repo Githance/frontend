@@ -1,29 +1,36 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useRef, useCallback, useEffect, FC } from 'react';
 import cn from 'classnames';
-import style from './main-link.module.css';
-import { AnchorIcon, CheckIcon } from '../UI';
+import style from './main-input.module.css';
+import { PenIcon, CheckIcon } from '../UI';
 
-const MainLink = ({ link, children, onChange, onSubmit, type }) => {
+type Props = {
+  value: string;
+  type: string;
+  onChange?: () => void;
+  onSubmit?: () => void;
+};
+
+const MainInput: FC<Props> = ({ value, type, onChange, onSubmit }) => {
   const [disabledInput, setDisabledInput] = useState(true);
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const inputType = (type) => {
+  const inputType = (type: string) => {
     return type === 'primary' ? true : false;
   };
 
   const changeInput = useCallback(() => {
     console.log('change');
     setDisabledInput((prevValue) => !prevValue);
-  }, [disabledInput]);
+  }, []);
 
   const blurInput = useCallback(() => {
     console.log('blur');
     setDisabledInput((prevValue) => !prevValue);
-  }, [disabledInput]);
+  }, []);
 
   useEffect(() => {
-    if (!disabledInput) {
+    if (!disabledInput && inputRef && inputRef.current) {
       console.log('focus');
       inputRef.current.focus();
     }
@@ -37,27 +44,26 @@ const MainLink = ({ link, children, onChange, onSubmit, type }) => {
           inputType(type) ? style.fieldset_type_primary : style.fieldset_type_secondary,
         )}
       >
-        {disabledInput ? (
-          <a href={link} className={cn(style.link, !!link && style.link_active)}>
-            {children}
-          </a>
-        ) : (
-          <input
-            type="text"
-            value={link}
-            className={style.input}
-            ref={inputRef}
-            onChange={onChange}
-            onBlur={blurInput}
-          />
-        )}
+        <input
+          onBlur={blurInput}
+          ref={inputRef}
+          disabled={disabledInput}
+          type="text"
+          value={value}
+          className={cn(
+            style.input,
+            inputType(type) ? style.input_type_primary : style.input_type_secondary,
+          )}
+          onChange={onChange}
+        />
+
         {disabledInput ? (
           <button type="button" className={style.button} onClick={changeInput}>
-            <AnchorIcon size="small" />
+            <PenIcon size="medium" />
           </button>
         ) : (
           <button type="submit" className={style.button}>
-            <CheckIcon size="small" />
+            <CheckIcon size="medium" />
           </button>
         )}
       </fieldset>
@@ -65,4 +71,4 @@ const MainLink = ({ link, children, onChange, onSubmit, type }) => {
   );
 };
 
-export default MainLink;
+export default MainInput;
