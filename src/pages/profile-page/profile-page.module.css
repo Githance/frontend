@@ -32,3 +32,14 @@
   font-size: 24px;
   line-height: 29px;
 }
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  background-color: transparent;
+}

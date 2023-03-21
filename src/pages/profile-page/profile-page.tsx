@@ -5,6 +5,7 @@ import MainLink from '~/components/main-link/main-link';
 import MainTextarea from '~/components/main-textarea/main-textarea';
 import Divider from '~/components/UI/divider/divider';
 import Button from '~/components/button/button';
+import ArrowRightIcon from '~/components/UI/icons/arrow-right-icon';
 
 function ProfilePage() {
   const onSubmit = useCallback((e: FormEvent) => e.preventDefault(), []);
@@ -32,12 +33,14 @@ function ProfilePage() {
         </div>
         <div>
           <p className={style.label}>Управление</p>
-          <Button type="button" isValid>
+          <Button className={style.button} type="button" isValid>
             Изменить пароль
+            <ArrowRightIcon size="small" />
           </Button>
           <Divider />
-          <Button type="button" isValid>
+          <Button className={style.button} type="button" isValid>
             Выйти из профиля
+            <ArrowRightIcon size="small" />
           </Button>
         </div>
       </div>
