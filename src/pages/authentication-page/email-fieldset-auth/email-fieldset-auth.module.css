@@ -2,9 +2,10 @@
   margin: 0;
   padding: 0;
   border: none;
+  padding-bottom: 25px;
 }
 
-.input {
+/* .input {
   margin-top: 8px;
   margin-bottom: 4px;
-}
+} */
