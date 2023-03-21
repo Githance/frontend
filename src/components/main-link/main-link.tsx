@@ -1,14 +1,22 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, ReactNode, FC } from 'react';
 import cn from 'classnames';
 import style from './main-link.module.css';
 import { AnchorIcon, CheckIcon } from '../UI';
 
-const MainLink = ({ link, children, onChange, onSubmit, type }) => {
+type Props = {
+  link: string;
+  children: ReactNode;
+  onChange: () => void;
+  onSubmit: () => void;
+  type: string;
+};
+
+const MainLink: FC<Props> = ({ link, children, onChange, onSubmit, type }) => {
   const [disabledInput, setDisabledInput] = useState(true);
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const inputType = (type) => {
+  const inputType = (type: string) => {
     return type === 'primary' ? true : false;
   };
 
@@ -23,7 +31,7 @@ const MainLink = ({ link, children, onChange, onSubmit, type }) => {
   }, [disabledInput]);
 
   useEffect(() => {
-    if (!disabledInput) {
+    if (!disabledInput && inputRef && inputRef.current) {
       console.log('focus');
       inputRef.current.focus();
     }
