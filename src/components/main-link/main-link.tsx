@@ -6,8 +6,8 @@ import { AnchorIcon, CheckIcon } from '../UI';
 type Props = {
   link: string;
   children: ReactNode;
-  onChange: () => void;
-  onSubmit: () => void;
+  onChange?: () => void;
+  onSubmit?: () => void;
   type: string;
 };
 

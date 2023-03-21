@@ -6,8 +6,8 @@ import { PenIcon, CheckIcon } from '../UI';
 type Props = {
   value: string;
   type: string;
-  onChange: () => void;
-  onSubmit: () => void;
+  onChange?: () => void;
+  onSubmit?: () => void;
 };
 
 const MainInput: FC<Props> = ({ value, type, onChange, onSubmit }) => {
