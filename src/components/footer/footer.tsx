@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import style from "./footer.module.css";
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import style from './footer.module.css';
 
 const Footer: FC = () => {
   return (

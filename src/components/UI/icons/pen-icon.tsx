@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-type Props = { size: "small" | "medium" | "large" };
+type Props = { size: 'small' | 'medium' | 'large' };
 
 const PenIcon: FC<Props> = ({ size }) => {
   switch (size) {
-    case "small":
+    case 'small':
       return (
         <svg
           width="12"
@@ -19,7 +19,7 @@ const PenIcon: FC<Props> = ({ size }) => {
           />
         </svg>
       );
-    case "medium":
+    case 'medium':
       return (
         <svg
           width="16"
@@ -34,7 +34,7 @@ const PenIcon: FC<Props> = ({ size }) => {
           />
         </svg>
       );
-    case "large":
+    case 'large':
       return (
         <svg
           width="24"

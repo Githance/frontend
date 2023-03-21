@@ -1,16 +1,16 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-boolean-value */
-import Button from "../button/button";
-import style from "./card-table.module.css";
-import CustomSelect from "../custom-select/custom-select";
-import { MainCard, SecondaryCard } from "../UI";
+import Button from '../button/button';
+import style from './card-table.module.css';
+import CustomSelect from '../custom-select/custom-select';
+import { MainCard, SecondaryCard } from '../UI';
 
 const options = [
-  { value: "test", label: "test" },
-  { value: "test1", label: "test1" },
-  { value: "test2", label: "test2" },
-  { value: "test3", label: "test3" },
+  { value: 'test', label: 'test' },
+  { value: 'test1', label: 'test1' },
+  { value: 'test2', label: 'test2' },
+  { value: 'test3', label: 'test3' },
 ];
 
 export default function CardTable() {

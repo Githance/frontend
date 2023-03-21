@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
 class Token {
   parseToken(name) {
-    const authToken = name.split("Bearer ")[1];
+    const authToken = name.split('Bearer ')[1];
     return authToken;
   }
 

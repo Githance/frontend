@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
-import { Logo, NotificationIcon, ProfileIcon } from "../UI";
-import style from "./header.module.css";
+import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Logo, NotificationIcon, ProfileIcon } from '../UI';
+import style from './header.module.css';
 
 const Header: FC = () => {
   return (
@@ -31,5 +31,5 @@ const Header: FC = () => {
       </nav>
     </header>
   );
-}
+};
 export default Header;

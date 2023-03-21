@@ -1,9 +1,9 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
-import PropTypes from "prop-types";
-import cn from "classnames";
-import style from "./button.module.css";
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+import style from './button.module.css';
 
 function Button({ type, isValid, className, children, onClick }) {
   return (
@@ -11,7 +11,7 @@ function Button({ type, isValid, className, children, onClick }) {
       disabled={!isValid}
       className={cn(style.button, className)}
       type={type}
-      onClick={onClick}      
+      onClick={onClick}
     >
       {children}
     </button>
@@ -22,7 +22,7 @@ Button.propTypes = {
   isValid: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  onClick: PropTypes.func,  
+  onClick: PropTypes.func,
 };
 
 export default Button;
