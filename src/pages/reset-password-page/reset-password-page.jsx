@@ -4,8 +4,7 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import Form from '../../components/form/form';
-import { Button, PasswordFieldset } from '../../components/UI/index';
+import { Button, Form, PasswordFieldset } from '../../components/UI/index';
 import style from './reset-password-page.module.css';
 import { confirmUserPassword, resetEmail } from '../../services/slice/user-auth-slice';
 

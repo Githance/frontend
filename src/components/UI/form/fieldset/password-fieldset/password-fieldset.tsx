@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import style from './password-fieldset.module.css';
-import { Label, PasswordInput, InputMessage } from '../../../index';
+import { Label, InputMessage } from '../../../index';
 import { Link } from 'react-router-dom';
+import PasswordInput from './password-input/password-input';
 
 type Props = {
   register: any;

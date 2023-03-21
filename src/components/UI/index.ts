@@ -13,10 +13,6 @@ export { default as SecondaryCard } from './cards/secondary-card/secondary-card'
 // КНОПКИ
 export { default as Button } from './button/button';
 export { default as GoogleBtn } from './button/google-btn/google-btn';
-// ИНПУТЫ
-export { default as EmailInput } from './inputs/email-input/email-input';
-export { default as PasswordInput } from './inputs/password-input/password-input';
-export { default as TextInput } from './inputs/text-input/text-input';
 // ЭЛЕМЕНТЫ ФОРМЫ
 export { default as Form } from './form/form';
 export { default as Label } from './form/label/label';

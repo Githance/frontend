@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
-import { Label, EmailInput, InputMessage } from '../../../index';
+import { FC } from 'react';
+import { Label, InputMessage } from '../../../index';
 import style from './email-fieldset.module.css';
+import EmailInput from './email-input/email-input';
 type Props = {
   register: any;
   errors?: any;

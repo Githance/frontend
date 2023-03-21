@@ -1,9 +1,11 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/self-closing-comp */
+import { FC } from 'react';
 import style from './checkbox.module.css';
 
-function CheckBox({ register }) {
+type Props = {
+  register: any;
+};
+
+const Checkbox: FC<Props> = ({ register }) => {
   return (
     <label htmlFor="checkbox">
       <input
@@ -16,6 +18,6 @@ function CheckBox({ register }) {
       <span className={style.custom}></span>
     </label>
   );
-}
+};
 
-export default CheckBox;
+export default Checkbox;

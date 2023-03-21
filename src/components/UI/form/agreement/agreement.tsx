@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import CheckBox from '~/components/checkbox/checkbox';
 import style from './agreement.module.css';
+import CheckBox from './checkbox/checkbox';
 type Props = {
   register: any;
 };

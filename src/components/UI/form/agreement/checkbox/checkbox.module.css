@@ -20,13 +20,13 @@
   display: inline-block;
   width: 11px;
   height: 8px;
-  background-image: url("../../images/checkbox.svg");
+  background-image: url('../../../../../images/checkbox.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   transform: translate(-50%, -50%) scale(0);
   transition: 0.2s ease-in-out;
-  content: "";  
+  content: '';
 }
 
 .real:checked + .custom::before {

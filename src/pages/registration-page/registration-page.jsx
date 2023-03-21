@@ -4,11 +4,11 @@
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import Form from '../../components/form/form';
 import {
   Agreement,
   ButtonFieldset,
   EmailFieldset,
+  Form,
   GoogleBtn,
   PasswordFieldset,
   TextFieldset,

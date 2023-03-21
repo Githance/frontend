@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import style from './text-fieldset.module.css';
-import { Label, TextInput, InputMessage } from '../../../index';
+import { Label, InputMessage } from '../../../index';
+import TextInput from './text-input/text-input';
 type Props = {
   register: any;
   errors?: any;
