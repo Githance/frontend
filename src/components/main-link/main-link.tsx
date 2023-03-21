@@ -39,12 +39,7 @@ const MainLink: FC<Props> = ({ link, children, onChange, onSubmit, type }) => {
 
   return (
     <form className={style.form} onSubmit={onSubmit}>
-      <fieldset
-        className={cn(
-          style.fieldset,
-          inputType(type) ? style.fieldset_type_primary : style.fieldset_type_secondary,
-        )}
-      >
+      <fieldset className={style.fieldset}>
         {disabledInput ? (
           <a href={link} className={cn(style.link, !!link && style.link_active)}>
             {children}
