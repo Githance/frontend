@@ -2,21 +2,21 @@ import { FC } from 'react';
 import cn from 'classnames';
 import style from './email-input.module.css';
 type Pattern = {
-  value: number;
-  message: string;
+  value?: number;
+  message?: string;
 };
 
 type Props = {
   placeholder: string;
   htmlFor: string;
   className: string;
-  errorClassName: string;
-  onChange: () => void;
-  name: string;
+  errorClassName?: string;
+  onChange?: () => void;
+  name?: string;
   register: any;
-  minLength: Pattern;
-  maxLength: Pattern;
-  pattern: Pattern;
+  minLength?: Pattern;
+  maxLength?: Pattern;
+  pattern?: Pattern;
 };
 
 const EmailInput: FC<Props> = ({

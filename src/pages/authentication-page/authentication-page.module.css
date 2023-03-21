@@ -36,16 +36,18 @@
   }
 }
 .title {
+  margin: 0;
   padding-bottom: 40px;
   color: var(--text-color-black);
   font-size: 22px;
   line-height: 27px;
   letter-spacing: 0.04em;
   text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 @media screen and (max-width: 768px) {
   .title {
-    font-weight: 700;
     font-size: 20px;
     line-height: 24px;
     padding-bottom: 15px;

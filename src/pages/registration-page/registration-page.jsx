@@ -4,15 +4,15 @@
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import cn from 'classnames';
 import Form from '../../components/form/form';
-import FormTitle from '../../components/form-title/form-title';
-import TextFieldsetRegister from './text-fieldset-register/text-fieldset-register';
-import EmailFieldsetRegister from './email-fieldset-register/email-fieldset-register';
-import PasswordFieldsetRegister from './password-fieldset-register/password-fieldset-register';
 import AgreementRegister from './agreement-register/agreement-register';
-import ButtonFieldsetRegister from './button-fieldset-register/button-fieldset-register';
-import { Button } from '../../components/UI/index';
+import {
+  ButtonFieldset,
+  EmailFieldset,
+  GoogleBtn,
+  PasswordFieldset,
+  TextFieldset,
+} from '../../components/UI/index';
 import style from './registration-page.module.css';
 import { registerUser, setEmail } from '../../services/slice/user-auth-slice';
 import oauthSignIn from '../../utils/google-request';
@@ -56,23 +56,23 @@ function RegistrationPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <FormTitle className={style.title}>Регистрация</FormTitle>
+        <h2 className={style.title}>Регистрация</h2>
         <Form onSubmit={onSubmit}>
-          <TextFieldsetRegister
+          <TextFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
           />
-          <EmailFieldsetRegister
+          <EmailFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
           />
-          <PasswordFieldsetRegister
+          <PasswordFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}
@@ -80,17 +80,9 @@ function RegistrationPage() {
             classNameSuccess={style.input_validation_success}
           />
           <AgreementRegister register={register} />
-          <ButtonFieldsetRegister isValid={isValid} />
+          <ButtonFieldset isValid={isValid} />
         </Form>
-        <Button
-          isValid
-          className={cn(style.button, style.button__google)}
-          type="button"
-          onClick={handleGoogleSubmit}
-        >
-          <span className={style.icon}></span>
-          Войти через Google
-        </Button>
+        <GoogleBtn onClick={handleGoogleSubmit} />
         <div className={style.container__text}>
           <p className={style.text}>Уже зарегистрированы? </p>
           <Link className={style.link} to="/auth">

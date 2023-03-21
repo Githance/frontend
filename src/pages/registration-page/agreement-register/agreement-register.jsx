@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/require-default-props */
-import PropTypes from "prop-types";
-import CheckBox from "../../../components/checkbox/checkbox";
-import style from "./agreement-register.module.css";
+import PropTypes from 'prop-types';
+import CheckBox from '../../../components/checkbox/checkbox';
+import style from './agreement-register.module.css';
 
 function AgreementRegister({ register }) {
   return (
@@ -13,8 +13,7 @@ function AgreementRegister({ register }) {
         <a className={style.agreement__link} href="#">
           условиями пользования
         </a>
-        платформой Githance и&nbsp;условиями обработки персональных данных на
-        условиях, определенных
+        платформой Githance и&nbsp;условиями обработки персональных данных на условиях, определенных
         <a className={style.agreement__link} href="#">
           Политикой конфиденциальности
         </a>

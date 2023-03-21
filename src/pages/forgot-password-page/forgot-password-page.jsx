@@ -4,8 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../components/form/form';
-import EmailFieldsetForgotPassword from './email-fieldset-forgot-password/email-fieldset-forgot-password';
-import { Button } from '../../components/UI/index';
+import { Button, EmailFieldset } from '../../components/UI/index';
 import style from './forgot-password-page.module.css';
 import { resetUserPassword, setEmail } from '../../services/slice/user-auth-slice';
 
@@ -49,7 +48,7 @@ function ForgotPasswordPage() {
           инструкцию для восстановления пароля
         </p>
         <Form onSubmit={onSubmit}>
-          <EmailFieldsetForgotPassword
+          <EmailFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}

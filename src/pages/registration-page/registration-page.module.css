@@ -17,6 +17,9 @@
 }
 
 .title {
+  margin: 0;
+  font-weight: 700;  
+  text-transform: uppercase;
   margin-bottom: 32px;
   color: var(--text-color-black);
   font-size: 22px;

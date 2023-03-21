@@ -3,24 +3,24 @@ import style from './password-input.module.css';
 import cn from 'classnames';
 
 type Pattern = {
-  value: number;
-  message: string;
+  value?: number;
+  message?: string;
 };
 
 type Props = {
   placeholder: string;
   htmlFor: string;
   className: string;
-  errorClassName: string;
-  onChange: () => void;
-  name: string;
+  errorClassName?: string;
+  onChange?: () => void;
+  name?: string;
   register: any;
-  minLength: Pattern;
-  maxLength: Pattern;
-  pattern: Pattern;
+  minLength?: Pattern;
+  maxLength?: Pattern;
+  pattern?: Pattern;
 };
 
-export const PasswordInput: FC<Props> = ({
+const PasswordInput: FC<Props> = ({
   register,
   minLength,
   maxLength,
@@ -34,9 +34,9 @@ export const PasswordInput: FC<Props> = ({
 }) => {
   const [showPassword, setShowPassword] = useState(true);
 
-  function togglePassword() {
+  /* function togglePassword() {
     setShowPassword((prevValue) => !prevValue);
-  }
+  } */
 
   return (
     <div className={cn(style.input, className)}>
@@ -60,8 +60,10 @@ export const PasswordInput: FC<Props> = ({
           showPassword ? style.input__button_close : style.input__button_open
         }`}
         type="button"
-        onClick={() => togglePassword()}
+        onClick={() => setShowPassword(!showPassword)}
       ></button>
     </div>
   );
 };
+
+export default PasswordInput;

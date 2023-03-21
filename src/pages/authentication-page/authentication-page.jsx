@@ -3,22 +3,19 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/self-closing-comp */
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import cn from 'classnames';
-import Form from '../../components/form/form';
-import FormTitle from '../../components/form-title/form-title';
-import EmailFieldsetAuth from './email-fieldset-auth/email-fieldset-auth';
-import PasswordFieldsetAuth from './password-fieldset-auth/password-fieldset-auth';
-import ButtonFieldsetAuth from './button-fieldset-auth/button-fieldset-auth';
+import { ButtonFieldset, EmailFieldset, PasswordFieldset } from '../../components/UI/index';
 import style from './authentication-page.module.css';
 import oauthSignIn from '../../utils/google-request';
 import { loginUser } from '../../services/slice/user-auth-slice';
-import { GoogleBtn } from '../../components/UI/index';
+import { GoogleBtn, Form } from '../../components/UI/index';
+import { getLoginErrorText } from '../../services/selectors/selectors';
 
 function AuthenticationPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const loginErrorText = useSelector(getLoginErrorText);
   const {
     register,
     setError,
@@ -39,27 +36,25 @@ function AuthenticationPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <FormTitle className={style.title}>Вход</FormTitle>
+        <h2 className={style.title}>Вход</h2>
         <Form onSubmit={onSubmit}>
-          <EmailFieldsetAuth
+          <EmailFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
           />
-          <PasswordFieldsetAuth
+          <PasswordFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
           />
-          <ButtonFieldsetAuth isValid={isValid} />
+          <ButtonFieldset isValid={isValid} error={loginErrorText} />
         </Form>
-
         <GoogleBtn onClick={handleGoogleSubmit} />
-
         <div className={style.container__text}>
           <p className={style.text}>Нет аккаунта?</p>
           <Link className={style.link} to="registration">

@@ -3,21 +3,21 @@ import cn from 'classnames';
 import style from './text-input.module.css';
 
 type Pattern = {
-  value: number;
-  message: string;
+  value?: number;
+  message?: string;
 };
 
 type Props = {
   placeholder: string;
   htmlFor: string;
   className: string;
-  errorClassName: string;
-  onChange: () => void;
-  name: string;
+  errorClassName?: string;
+  onChange?: () => void;
+  name?: string;
   register: any;
-  minLength: Pattern;
-  maxLength: Pattern;
-  pattern: Pattern;
+  minLength?: Pattern;
+  maxLength?: Pattern;
+  pattern?: Pattern;
 };
 
 const TextInput: FC<Props> = ({
