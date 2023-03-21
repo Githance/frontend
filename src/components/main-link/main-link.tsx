@@ -23,12 +23,12 @@ const MainLink: FC<Props> = ({ link, children, onChange, onSubmit, type }) => {
   const changeInput = useCallback(() => {
     console.log('change');
     setDisabledInput((prevValue) => !prevValue);
-  }, [disabledInput]);
+  }, []);
 
   const blurInput = useCallback(() => {
     console.log('blur');
     setDisabledInput((prevValue) => !prevValue);
-  }, [disabledInput]);
+  }, []);
 
   useEffect(() => {
     if (!disabledInput && inputRef && inputRef.current) {

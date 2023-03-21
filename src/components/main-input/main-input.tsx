@@ -1,30 +1,37 @@
-import { useState, useRef, useCallback, useEffect } from "react";
-import cn from "classnames";
-import style from "./main-input.module.css";
-import { PenIcon, CheckIcon } from "../UI";
+import { useState, useRef, useCallback, useEffect, FC } from 'react';
+import cn from 'classnames';
+import style from './main-input.module.css';
+import { PenIcon, CheckIcon } from '../UI';
 
-function MainInput({ value, type, onChange, onSubmit }) {
+type Props = {
+  value: string;
+  type: string;
+  onChange: () => void;
+  onSubmit: () => void;
+};
+
+const MainInput: FC<Props> = ({ value, type, onChange, onSubmit }) => {
   const [disabledInput, setDisabledInput] = useState(true);
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const inputType = (type) => {
-    return type === "primary" ? true : false;
+  const inputType = (type: string) => {
+    return type === 'primary' ? true : false;
   };
 
   const changeInput = useCallback(() => {
-    console.log("change");
+    console.log('change');
     setDisabledInput((prevValue) => !prevValue);
-  }, [disabledInput]);
+  }, []);
 
   const blurInput = useCallback(() => {
-    console.log("blur");
+    console.log('blur');
     setDisabledInput((prevValue) => !prevValue);
-  }, [disabledInput]);
+  }, []);
 
   useEffect(() => {
-    if (!disabledInput) {
-      console.log("focus");
+    if (!disabledInput && inputRef && inputRef.current) {
+      console.log('focus');
       inputRef.current.focus();
     }
   }, [disabledInput]);
@@ -34,9 +41,7 @@ function MainInput({ value, type, onChange, onSubmit }) {
       <fieldset
         className={cn(
           style.fieldset,
-          inputType(type)
-            ? style.fieldset_type_primary
-            : style.fieldset_type_secondary
+          inputType(type) ? style.fieldset_type_primary : style.fieldset_type_secondary,
         )}
       >
         <input
@@ -47,9 +52,7 @@ function MainInput({ value, type, onChange, onSubmit }) {
           value={value}
           className={cn(
             style.input,
-            inputType(type)
-              ? style.input_type_primary
-              : style.input_type_secondary
+            inputType(type) ? style.input_type_primary : style.input_type_secondary,
           )}
           onChange={onChange}
         />
@@ -66,6 +69,6 @@ function MainInput({ value, type, onChange, onSubmit }) {
       </fieldset>
     </form>
   );
-}
+};
 
 export default MainInput;
