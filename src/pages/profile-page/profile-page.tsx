@@ -1,12 +1,11 @@
-import { FormEvent, useCallback } from 'react';
+import { FC, FormEvent, useCallback } from 'react';
 import style from './profile-page.module.css';
 import MainInput from '~/components/main-input/main-input';
-import MainLink from '~/components/main-link/main-link';
 import MainTextarea from '~/components/main-textarea/main-textarea';
-import Divider from '~/components/UI/divider/divider';
 import FieldsetButton from './fieldset-button/fieldset-button';
+import FieldsetLinks from './fieldset-links/fieldset-links';
 
-function ProfilePage() {
+const ProfilePage: FC = () => {
   const onSubmit = useCallback((e: FormEvent) => e.preventDefault(), []);
 
   return (
@@ -20,16 +19,7 @@ function ProfilePage() {
           <MainInput value="text" type="secondary" onSubmit={(e: FormEvent) => onSubmit(e)} />
           <MainInput value="text" type="secondary" onSubmit={(e: FormEvent) => onSubmit(e)} />
         </div>
-        <div>
-          <p className={style.label}>Ссылки</p>
-          <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
-            Портфолио
-          </MainLink>
-          <Divider />
-          <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
-            Резюме
-          </MainLink>
-        </div>
+        <FieldsetLinks />
         <FieldsetButton />
       </div>
       <div className={style.profile__about}>
@@ -37,6 +27,6 @@ function ProfilePage() {
       </div>
     </main>
   );
-}
+};
 
 export default ProfilePage;
