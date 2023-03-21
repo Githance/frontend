@@ -1,16 +1,14 @@
 /* eslint-disable react/require-default-props */
-import PropTypes from "prop-types";
-import cn from "classnames";
-import Button from "../../../components/button/button";
-import style from "./button-fieldset-register.module.css";
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+import { Button } from '../../../components/UI/index';
+import style from './button-fieldset-register.module.css';
 
 function ButtonFieldsetRegister({ isValid }) {
   return (
     <fieldset className={cn(style.fieldset, style.container__buttons)}>
       <Button
-        className={`${style.button} ${
-          isValid ? style.button__main : style.button__main_noValid
-        }`}
+        className={`${style.button} ${isValid ? style.button__main : style.button__main_noValid}`}
         type="submit"
         isValid={isValid}
       >

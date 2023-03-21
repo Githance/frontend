@@ -7,3 +7,5 @@ export { default as Logo } from './logo/logo';
 export { default as MainCard } from './cards/main-card/main-card';
 export { default as SecondaryCard } from './cards/secondary-card/secondary-card';
 export { default as RowIcon } from './icons/row-icon';
+export { default as Button } from './button/button';
+export { default as GoogleBtn } from './button/google-btn/google-btn';

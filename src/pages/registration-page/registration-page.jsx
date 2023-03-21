@@ -1,21 +1,21 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 /* eslint-disable react/self-closing-comp */
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import cn from "classnames";
-import Form from "../../components/form/form";
-import FormTitle from "../../components/form-title/form-title";
-import TextFieldsetRegister from "./text-fieldset-register/text-fieldset-register";
-import EmailFieldsetRegister from "./email-fieldset-register/email-fieldset-register";
-import PasswordFieldsetRegister from "./password-fieldset-register/password-fieldset-register";
-import AgreementRegister from "./agreement-register/agreement-register";
-import ButtonFieldsetRegister from "./button-fieldset-register/button-fieldset-register";
-import Button from "../../components/button/button";
-import style from "./registration-page.module.css";
-import { registerUser, setEmail } from "../../services/slice/user-auth-slice";
-import oauthSignIn from "../../utils/google-request";
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import cn from 'classnames';
+import Form from '../../components/form/form';
+import FormTitle from '../../components/form-title/form-title';
+import TextFieldsetRegister from './text-fieldset-register/text-fieldset-register';
+import EmailFieldsetRegister from './email-fieldset-register/email-fieldset-register';
+import PasswordFieldsetRegister from './password-fieldset-register/password-fieldset-register';
+import AgreementRegister from './agreement-register/agreement-register';
+import ButtonFieldsetRegister from './button-fieldset-register/button-fieldset-register';
+import { Button } from '../../components/UI/index';
+import style from './registration-page.module.css';
+import { registerUser, setEmail } from '../../services/slice/user-auth-slice';
+import oauthSignIn from '../../utils/google-request';
 
 function RegistrationPage() {
   const dispatch = useDispatch();
@@ -26,11 +26,11 @@ function RegistrationPage() {
     handleSubmit,
     formState: { errors, dirtyFields, isValid },
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
-      name: "",
-      email: "",
-      password1: "",
+      name: '',
+      email: '',
+      password1: '',
     },
   });
 
@@ -42,11 +42,11 @@ function RegistrationPage() {
     dispatch(setEmail({ email: data.email }));
     dispatch(registerUser(data))
       .unwrap()
-      .then(() => navigate("/auth/mail/resend-register"))
+      .then(() => navigate('/auth/mail/resend-register'))
       .catch((err) => {
         for (const key in err) {
           setError(key, {
-            type: "server",
+            type: 'server',
             message: err[key],
           });
         }

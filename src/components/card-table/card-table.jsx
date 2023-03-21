@@ -1,10 +1,10 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-boolean-value */
-import Button from '../button/button';
+import { Button } from '../UI/index';
 import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
-import { MainCard, SecondaryCard } from '../UI';
+import { MainCard } from '../UI';
 
 const options = [
   { value: 'test', label: 'test' },

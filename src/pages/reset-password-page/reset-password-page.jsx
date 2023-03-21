@@ -1,17 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import Form from "../../components/form/form";
-import Button from "../../components/button/button";
-import PasswordFieldsetResetPassword from "./password-fieldset-reset-password/password-fieldset-reset-password";
-import style from "./reset-password-page.module.css";
-import {
-  confirmUserPassword,
-  resetEmail,
-} from "../../services/slice/user-auth-slice";
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import Form from '../../components/form/form';
+import { Button } from '../../components/UI/index';
+import PasswordFieldsetResetPassword from './password-fieldset-reset-password/password-fieldset-reset-password';
+import style from './reset-password-page.module.css';
+import { confirmUserPassword, resetEmail } from '../../services/slice/user-auth-slice';
 
 function ResetPasswordPage() {
   const dispatch = useDispatch();
@@ -24,9 +21,9 @@ function ResetPasswordPage() {
     handleSubmit,
     formState: { errors, dirtyFields, isValid },
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
-      new_password2: "",
+      new_password2: '',
     },
   });
 
@@ -40,11 +37,11 @@ function ResetPasswordPage() {
     dispatch(resetEmail());
     dispatch(confirmUserPassword(userData))
       .unwrap()
-      .then(() => navigate("/"))
+      .then(() => navigate('/'))
       .catch((err) => {
         for (const key in err) {
           setError(key, {
-            type: "server",
+            type: 'server',
             message: err[key],
           });
         }

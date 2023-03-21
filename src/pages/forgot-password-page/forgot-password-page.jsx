@@ -1,16 +1,13 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import Form from "../../components/form/form";
-import EmailFieldsetForgotPassword from "./email-fieldset-forgot-password/email-fieldset-forgot-password";
-import Button from "../../components/button/button";
-import style from "./forgot-password-page.module.css";
-import {
-  resetUserPassword,
-  setEmail,
-} from "../../services/slice/user-auth-slice";
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Form from '../../components/form/form';
+import EmailFieldsetForgotPassword from './email-fieldset-forgot-password/email-fieldset-forgot-password';
+import { Button } from '../../components/UI/index';
+import style from './forgot-password-page.module.css';
+import { resetUserPassword, setEmail } from '../../services/slice/user-auth-slice';
 
 function ForgotPasswordPage() {
   const dispatch = useDispatch();
@@ -22,9 +19,9 @@ function ForgotPasswordPage() {
     handleSubmit,
     formState: { errors, dirtyFields, isValid },
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
-      email: "",
+      email: '',
     },
   });
 
@@ -32,11 +29,11 @@ function ForgotPasswordPage() {
     dispatch(setEmail(data));
     dispatch(resetUserPassword(data))
       .unwrap()
-      .then(() => navigate("/auth/mail/resend-password"))
+      .then(() => navigate('/auth/mail/resend-password'))
       .catch((err) => {
         for (const key in err) {
           setError(key, {
-            type: "server",
+            type: 'server',
             message: err[key],
           });
         }
@@ -48,8 +45,8 @@ function ForgotPasswordPage() {
       <div className={style.content}>
         <p className={style.title}>Забыли пароль?</p>
         <p className={style.text}>
-          Пожалуйста, введите адрес электронной почты, на&nbsp;который
-          мы&nbsp;отправим вам инструкцию для восстановления пароля
+          Пожалуйста, введите адрес электронной почты, на&nbsp;который мы&nbsp;отправим вам
+          инструкцию для восстановления пароля
         </p>
         <Form onSubmit={onSubmit}>
           <EmailFieldsetForgotPassword

@@ -2,14 +2,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
-import PropTypes from "prop-types";
-import cn from "classnames";
-import InputLabel from "../../../components/input-label/input-label";
-import InputText from "../../../components/input-text/input-text";
-import PasswordInput from "../../../components/password-input/password-input";
-import InputErrorText from "../../../components/input-error-text/input-error-text";
-import { registrationPageScheme } from "../../../utils/validation-scheme";
-import style from "./password-fieldset-reset-password.module.css";
+import PropTypes from 'prop-types';
+import cn from 'classnames';
+import InputLabel from '../../../components/input-label/input-label';
+import InputText from '../../../components/input-text/input-text';
+import PasswordInput from '../../../components/password-input/password-input';
+import InputErrorText from '../../../components/input-error-text/input-error-text';
+import { registrationPageScheme } from '../../../utils/validation-scheme';
+import style from './password-fieldset-reset-password.module.css';
 
 function PasswordFieldsetResetPassword({
   register,
@@ -20,9 +20,7 @@ function PasswordFieldsetResetPassword({
 }) {
   return (
     <fieldset className={cn(style.fieldset, style.container__password)}>
-      <InputLabel htmlFor="new_password2">
-        Введите новый пароль
-      </InputLabel>
+      <InputLabel htmlFor="new_password2">Введите новый пароль</InputLabel>
       <PasswordInput
         placeholder="Password"
         register={register}
