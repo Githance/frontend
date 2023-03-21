@@ -4,6 +4,7 @@ import MainInput from '~/components/main-input/main-input';
 import MainTextarea from '~/components/main-textarea/main-textarea';
 import FieldsetButton from './fieldset-button/fieldset-button';
 import FieldsetLinks from './fieldset-links/fieldset-links';
+import FieldsetInfo from './fieldset-info/fieldset-info';
 
 const ProfilePage: FC = () => {
   const onSubmit = useCallback((e: FormEvent) => e.preventDefault(), []);
@@ -14,11 +15,7 @@ const ProfilePage: FC = () => {
         <MainInput value="text" type="primary" onSubmit={(e: FormEvent) => onSubmit(e)} />
       </div>
       <div className={style.profile__info}>
-        <div>
-          <p className={style.label}>Контакты</p>
-          <MainInput value="text" type="secondary" onSubmit={(e: FormEvent) => onSubmit(e)} />
-          <MainInput value="text" type="secondary" onSubmit={(e: FormEvent) => onSubmit(e)} />
-        </div>
+        <FieldsetInfo />
         <FieldsetLinks />
         <FieldsetButton />
       </div>
