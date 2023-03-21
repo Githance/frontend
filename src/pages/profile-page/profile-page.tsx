@@ -1,8 +1,9 @@
 import { FormEvent, useCallback } from 'react';
 import style from './profile-page.module.css';
-import MainInput from '../../components/main-input/main-input';
-import MainLink from '../../components/main-link/main-link';
+import MainInput from '~/components/main-input/main-input';
+import MainLink from '~/components/main-link/main-link';
 import MainTextarea from '~/components/main-textarea/main-textarea';
+import Divider from '~/components/UI/divider/divider';
 
 function ProfilePage() {
   const onSubmit = useCallback((e: FormEvent) => e.preventDefault(), []);
@@ -23,6 +24,7 @@ function ProfilePage() {
           <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
             Портфолио
           </MainLink>
+          <Divider />
           <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
             Резюме
           </MainLink>
