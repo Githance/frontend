@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef, ReactNode, FC } from 'react';
+import { useState, useEffect, useCallback, useRef, ReactNode, FC, FormEvent } from 'react';
 import cn from 'classnames';
 import style from './main-link.module.css';
 import { AnchorIcon, CheckIcon } from '../UI';
@@ -7,7 +7,7 @@ type Props = {
   link: string;
   children: ReactNode;
   onChange?: () => void;
-  onSubmit?: () => void;
+  onSubmit?: (e: FormEvent) => void;
   type: string;
 };
 

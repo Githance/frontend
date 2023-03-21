@@ -9,11 +9,11 @@ function ProfilePage() {
 
   return (
     <div className={style.profile}>
-      <MainInput value="text" type="primary" onSubmit={() => onSubmit} />
-      <MainLink link="link" onSubmit={() => onSubmit} type="secondary">
+      <MainInput value="text" type="primary" onSubmit={(e: FormEvent) => onSubmit(e)} />
+      <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
         Портфолио
       </MainLink>
-      <MainTextarea />
+      <MainTextarea about="Информация" isValid onSubmit={(e: FormEvent) => onSubmit(e)} />
     </div>
   );
 }
