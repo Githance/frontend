@@ -4,7 +4,7 @@ import AuthenticationPage from '../../pages/auth/authentication-page/authenticat
 import RegistrationPage from '../../pages/auth/registration-page/registration-page';
 import SuccessRegistrationPage from '../../pages/auth/success-registration-page/success-registration-page';
 import VerifyEmailPage from '../../pages/auth/verify-email-page/verify-email-page';
-import GoogleAuthPage from '../../pages/google-auth-page/google-auth-page';
+import GoogleAuthPage from '../../pages/auth/google-auth-page/google-auth-page';
 import ForgotPasswordPage from '../../pages/auth/forgot-password-page/forgot-password-page';
 import ResetPasswordPage from '../../pages/auth/reset-password-page/reset-password-page';
 import ProfilePage from '../../pages/profile-page/profile-page';
