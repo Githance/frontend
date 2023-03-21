@@ -8,13 +8,33 @@ function ProfilePage() {
   const onSubmit = useCallback((e: FormEvent) => e.preventDefault(), []);
 
   return (
-    <div className={style.profile}>
-      <MainInput value="text" type="primary" onSubmit={(e: FormEvent) => onSubmit(e)} />
-      <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
-        Портфолио
-      </MainLink>
-      <MainTextarea about="Информация" isValid onSubmit={(e: FormEvent) => onSubmit(e)} />
-    </div>
+    <main className={style.profile}>
+      <div className={style.profile__name}>
+        <MainInput value="text" type="primary" onSubmit={(e: FormEvent) => onSubmit(e)} />
+      </div>
+      <div className={style.profile__info}>
+        <div>
+          <p className={style.label}>Контакты</p>
+          <MainInput value="text" type="secondary" onSubmit={(e: FormEvent) => onSubmit(e)} />
+          <MainInput value="text" type="secondary" onSubmit={(e: FormEvent) => onSubmit(e)} />
+        </div>
+        <div>
+          <p className={style.label}>Ссылки</p>
+          <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
+            Портфолио
+          </MainLink>
+          <MainLink link="link" onSubmit={(e: FormEvent) => onSubmit(e)} type="secondary">
+            Резюме
+          </MainLink>
+        </div>
+        <div>
+          <p className={style.label}>Управление</p>
+        </div>
+      </div>
+      <div className={style.profile__about}>
+        <MainTextarea about="Информация" isValid onSubmit={(e: FormEvent) => onSubmit(e)} />
+      </div>
+    </main>
   );
 }
 
