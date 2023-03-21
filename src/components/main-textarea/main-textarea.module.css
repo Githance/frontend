@@ -26,6 +26,7 @@
 }
 
 .textarea {
+  box-sizing: border-box;
   max-width: 540px;
   height: 540px;
   margin: 0;
