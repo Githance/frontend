@@ -5,12 +5,12 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { ButtonFieldset, EmailFieldset, PasswordFieldset } from '../../components/UI/index';
+import { ButtonFieldset, EmailFieldset, PasswordFieldset } from '../../../components/UI/index';
 import style from './authentication-page.module.css';
-import oauthSignIn from '../../utils/google-request';
-import { loginUser } from '../../services/slice/user-auth-slice';
-import { GoogleBtn, Form } from '../../components/UI/index';
-import { getLoginErrorText } from '../../services/selectors/selectors';
+import oauthSignIn from '../../../utils/google-request';
+import { loginUser } from '../../../services/slice/user-auth-slice';
+import { GoogleBtn, Form } from '../../../components/UI/index';
+import { getLoginErrorText } from '../../../services/selectors/selectors';
 
 function AuthenticationPage() {
   const dispatch = useDispatch();

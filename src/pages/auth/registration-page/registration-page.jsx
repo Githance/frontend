@@ -12,10 +12,10 @@ import {
   GoogleBtn,
   PasswordFieldset,
   TextFieldset,
-} from '../../components/UI/index';
+} from '../../../components/UI/index';
 import style from './registration-page.module.css';
-import { registerUser, setEmail } from '../../services/slice/user-auth-slice';
-import oauthSignIn from '../../utils/google-request';
+import { registerUser, setEmail } from '../../../services/slice/user-auth-slice';
+import oauthSignIn from '../../../utils/google-request';
 
 function RegistrationPage() {
   const dispatch = useDispatch();

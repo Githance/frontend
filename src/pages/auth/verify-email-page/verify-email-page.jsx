@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import Loader from '../../components/UI/loader/loader';
+import Loader from '../../../components/UI/loader/loader';
 import style from './verify-email-page.module.css';
-import { confirmUserEmail } from '../../services/slice/user-auth-slice';
+import { confirmUserEmail } from '../../../services/slice/user-auth-slice';
 
 function VerifyEmailPage() {
   const dispatch = useDispatch();

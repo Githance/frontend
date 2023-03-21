@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Button, Form, PasswordFieldset } from '../../components/UI/index';
-import style from './reset-password-page.module.css';
-import { confirmUserPassword, resetEmail } from '../../services/slice/user-auth-slice';
+import { useNavigate } from 'react-router-dom';
+import { Button, EmailFieldset, Form } from '../../../components/UI/index';
+import style from './forgot-password-page.module.css';
+import { resetUserPassword, setEmail } from '../../../services/slice/user-auth-slice';
 
-function ResetPasswordPage() {
+function ForgotPasswordPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id, confirmCode } = useParams();
 
   const {
     register,
@@ -21,21 +19,15 @@ function ResetPasswordPage() {
   } = useForm({
     mode: 'onChange',
     defaultValues: {
-      new_password2: '',
+      email: '',
     },
   });
 
   const onSubmit = handleSubmit((data) => {
-    const userData = {
-      new_password1: data.new_password2,
-      new_password2: data.new_password2,
-      uid: id,
-      token: confirmCode,
-    };
-    dispatch(resetEmail());
-    dispatch(confirmUserPassword(userData))
+    dispatch(setEmail(data));
+    dispatch(resetUserPassword(data))
       .unwrap()
-      .then(() => navigate('/'))
+      .then(() => navigate('/auth/mail/resend-password'))
       .catch((err) => {
         for (const key in err) {
           setError(key, {
@@ -49,9 +41,13 @@ function ResetPasswordPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <p className={style.title}>Новый пароль</p>
+        <p className={style.title}>Забыли пароль?</p>
+        <p className={style.text}>
+          Пожалуйста, введите адрес электронной почты, на&nbsp;который мы&nbsp;отправим вам
+          инструкцию для восстановления пароля
+        </p>
         <Form onSubmit={onSubmit}>
-          <PasswordFieldset
+          <EmailFieldset
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}
@@ -65,7 +61,7 @@ function ResetPasswordPage() {
             type="submit"
             isValid={isValid}
           >
-            Сохранить
+            Отправить
           </Button>
         </Form>
       </div>
@@ -73,4 +69,4 @@ function ResetPasswordPage() {
   );
 }
 
-export default ResetPasswordPage;
+export default ForgotPasswordPage;

@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import MainPage from '../../pages/main-page/main-page';
-import AuthenticationPage from '../../pages/authentication-page/authentication-page';
-import RegistrationPage from '../../pages/registration-page/registration-page';
-import SuccessRegistrationPage from '../../pages/success-registration-page/success-registration-page';
-import VerifyEmailPage from '../../pages/verify-email-page/verify-email-page';
+import AuthenticationPage from '../../pages/auth/authentication-page/authentication-page';
+import RegistrationPage from '../../pages/auth/registration-page/registration-page';
+import SuccessRegistrationPage from '../../pages/auth/success-registration-page/success-registration-page';
+import VerifyEmailPage from '../../pages/auth/verify-email-page/verify-email-page';
 import GoogleAuthPage from '../../pages/google-auth-page/google-auth-page';
-import ForgotPasswordPage from '../../pages/forgot-password-page/forgot-password-page';
-import ResetPasswordPage from '../../pages/reset-password-page/reset-password-page';
+import ForgotPasswordPage from '../../pages/auth/forgot-password-page/forgot-password-page';
+import ResetPasswordPage from '../../pages/auth/reset-password-page/reset-password-page';
 import ProfilePage from '../../pages/profile-page/profile-page';
 import Layout from '../../pages/layout/layout';
-import AuthLayout from '../../pages/auth-layout/auth-layout';
-import ResendPage from '../../pages/resend-page/resend-page';
+import AuthLayout from '../../pages/auth/layout';
+import ResendPage from '../../pages/auth/resend-page/resend-page';
 
 function App() {
   return (

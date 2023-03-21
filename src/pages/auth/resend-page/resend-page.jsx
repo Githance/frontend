@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resendUserEmail } from '../../services/slice/user-auth-slice';
-import { resetUserPassword } from '../../services/slice/user-auth-slice';
-import { getUserEmail } from '../../services/selectors/selectors';
-import TimerToSubmit from '../../components/timer-to-submit/timer-to-submit';
+import { resendUserEmail } from '../../../services/slice/user-auth-slice';
+import { resetUserPassword } from '../../../services/slice/user-auth-slice';
+import { getUserEmail } from '../../../services/selectors/selectors';
+import TimerToSubmit from '../../../components/timer-to-submit/timer-to-submit';
 import style from './resend-page.module.css';
 import { Link } from 'react-router-dom';
 
