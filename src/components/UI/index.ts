@@ -9,3 +9,4 @@ export { default as SecondaryCard } from './cards/secondary-card/secondary-card'
 export { default as RowIcon } from './icons/row-icon';
 export { default as Button } from './button/button';
 export { default as GoogleBtn } from './button/google-btn/google-btn';
+export { default as EmailInput } from './inputs/email-input/email-input';
