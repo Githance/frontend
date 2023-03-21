@@ -13,7 +13,10 @@ type Props = {
 const MainTextarea: FC<Props> = ({ isValid, children, onChange, onSubmit }) => {
   return (
     <form className={style.form} onSubmit={onSubmit}>
-      <fieldset className={style.fieldset}>
+      <label htmlFor="textarea" className={style.label}>
+        О себе <span className={style.label_color_grey}>(максимум 1000 символов)</span>
+      </label>
+      <fieldset id="textarea" className={style.fieldset}>
         <textarea className={style.textarea} onChange={onChange}>
           {children}
         </textarea>
