@@ -47,6 +47,7 @@
 }
 
 .text {
+  display: inline;
   margin: 0;
   color: var(--text-color-black);
   font-weight: 500;
@@ -60,8 +61,8 @@
   justify-content: center;
   width: 100%;
   min-width: 300px;
-  margin-top: 14px;
   padding: 16px 0;
+  margin-top: 16px;
   color: var(--text-color-white);
   font-weight: 600;
   font-size: 18px;

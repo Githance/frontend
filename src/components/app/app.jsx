@@ -7,11 +7,10 @@ import VerifyEmailPage from '../../pages/verify-email-page/verify-email-page';
 import GoogleAuthPage from '../../pages/google-auth-page/google-auth-page';
 import ForgotPasswordPage from '../../pages/forgot-password-page/forgot-password-page';
 import ResetPasswordPage from '../../pages/reset-password-page/reset-password-page';
-import ResendPasswordMailPage from '../../pages/resend-password-mail-page/resend-password-mail-page';
-import ResendRegisterMailPage from '../../pages/resend-register-mail-page/resend-register-mail-page';
 import ProfilePage from '../../pages/profile-page/profile-page';
 import Layout from '../../pages/layout/layout';
 import AuthLayout from '../../pages/auth-layout/auth-layout';
+import ResendPage from '../../pages/resend-page/resend-page';
 
 function App() {
   return (
@@ -27,8 +26,8 @@ function App() {
         <Route path="password/reset/confirm/:id/:confirmCode" element={<ResetPasswordPage />} />
         <Route path="email/confirm/:confirmCode" element={<VerifyEmailPage />} />
         <Route path="mail" element={<AuthLayout />}>
-          <Route path="resend-register" element={<ResendRegisterMailPage />} />
-          <Route path="resend-password" element={<ResendPasswordMailPage />} />
+          <Route path="resend-register" element={<ResendPage base="mail" />} />
+          <Route path="resend-password" element={<ResendPage base="password" />} />
         </Route>
         <Route path="google/code/" element={<GoogleAuthPage />} />
         <Route path="success" element={<SuccessRegistrationPage />} />

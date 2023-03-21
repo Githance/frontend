@@ -28,7 +28,7 @@ const EmailFieldset: FC<Props> = ({
           !dirtyFields.email ? undefined : errors.email ? classNameFalse : classNameSuccess
         }
       />
-      {errors.email && <InputMessage message={errors.email.message} />}
+      {errors.email && <InputMessage type="error" message={errors.email.message} />}
     </fieldset>
   );
 };
