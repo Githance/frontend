@@ -1,40 +1,38 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-boolean-value */
-import Button from '../button/button';
+import { Button } from '../UI/index';
 import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
-import { MainCard, SecondaryCard } from '../UI';
-
-const options = [
-  { value: 'test', label: 'test' },
-  { value: 'test1', label: 'test1' },
-  { value: 'test2', label: 'test2' },
-  { value: 'test3', label: 'test3' },
-];
+import { MainCard } from '../UI';
 
 export default function CardTable() {
+  const selectorOptions = [
+    { value: 'test', label: 'test' },
+    { value: 'test1', label: 'test1' },
+    { value: 'test2', label: 'test2' },
+    { value: 'test3', label: 'test3' },
+  ];
+  const navBarOptions = [
+    { name: 'Все проекты' },
+    { name: 'Идёт набор' },
+    { name: 'Завершённые проекты' },
+    { name: 'Текущие проекты' },
+  ];
   return (
     <section className={style.container}>
       <div className={style.selectors_wrapper}>
         <div className={style.btns_wrapper}>
-          <Button type="button" isValid={true} className={style.button}>
-            Все проекты
-          </Button>
-          <Button type="button" isValid={true} className={style.button}>
-            Идёт набор
-          </Button>
-          <Button type="button" isValid={true} className={style.button}>
-            Завершённые проекты
-          </Button>
-          <Button type="button" isValid={true} className={style.button}>
-            Текущие проекты
-          </Button>
+          {navBarOptions.map((option, index) => (
+            <Button key={index} type="button" isValid={true} className={style.button}>
+              {option.name}
+            </Button>
+          ))}
         </div>
         <CustomSelect
           isClearable={true}
           isSeacheble={false}
-          options={options}
+          options={selectorOptions}
           placeholder="выбрать профессию"
         />
       </div>

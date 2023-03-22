@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import style from './fieldset-button.module.css';
-import Button from '~/components/button/button';
+import { Button } from '~/components/UI';
 import ArrowRightIcon from '~/components/UI/icons/arrow-right-icon';
 import Divider from '~/components/UI/divider/divider';
 

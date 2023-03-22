@@ -26,6 +26,6 @@
       "~/*": ["src/*"]
     }
   },
-  "include": ["vite.config.ts", "**/*.ts", "**/*.tsx", "src/components/app/app.tsx"],
+  "include": ["vite.config.ts", "**/*.ts", "**/*.tsx", "src/components/app/app.jsx"],
   "exclude": ["node_modules"]
 }

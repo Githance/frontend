@@ -1,0 +1,29 @@
+.agreement {
+  display: flex;
+  gap: 11px;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 488px) {
+  .container {
+    margin-top: 12px;
+  }
+}
+
+.agreement__text {
+  display: inline-block;
+  margin: 0;
+  color: var(--text-color-grey);
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.agreement__link {
+  display: inline-block;
+  margin: 0 4px;
+  color: var(--text-color-grey);
+}
+
+.agreement__text a:last-child {
+  margin: 0;
+}
