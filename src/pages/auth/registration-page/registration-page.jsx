@@ -73,6 +73,7 @@ function RegistrationPage() {
             classNameSuccess={style.input_validation_success}
           />
           <PasswordFieldset
+            validationSchema={{ minLength: { value: 8, message: 'Минимум 8 символов' } }}
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}

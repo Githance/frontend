@@ -58,7 +58,7 @@ function AuthenticationPage() {
         </Form>
         <GoogleBtn onClick={handleGoogleSubmit} />
         <p className={style.text}>
-          Нет аккаунта?{' '}
+          Нет аккаунта?
           <Link className={style.link} to="registration">
             Зарегистрироваться
           </Link>

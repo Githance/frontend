@@ -15,16 +15,16 @@ type Props = {
   onChange?: () => void;
   name?: string;
   register: any;
-  minLength?: Pattern;
-  maxLength?: Pattern;
-  pattern?: Pattern;
+  validationSchema?: {
+    minLength?: Pattern;
+    maxLength?: Pattern;
+    pattern?: Pattern;
+  };
 };
 
 const PasswordInput: FC<Props> = ({
   register,
-  minLength,
-  maxLength,
-  pattern,
+  validationSchema,
   htmlFor,
   placeholder,
   name,
@@ -46,9 +46,9 @@ const PasswordInput: FC<Props> = ({
         onChange={onChange}
         {...register(htmlFor, {
           required: 'Заполни меня',
-          minLength: minLength,
-          maxLength: maxLength,
-          pattern: pattern,
+          minLength: validationSchema?.minLength,
+          maxLength: validationSchema?.maxLength,
+          pattern: validationSchema?.pattern,
         })}
       />
       <button

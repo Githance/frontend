@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import PasswordInput from './password-input/password-input';
 
 type Props = {
+  validationSchema?: any;
   register: any;
   errors?: any;
   dirtyFields?: any;
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const PasswordFieldset: FC<Props> = ({
+  validationSchema,
   register,
   dirtyFields,
   errors,
@@ -40,7 +42,7 @@ const PasswordFieldset: FC<Props> = ({
         className={style.input}
         htmlFor={htmlFor}
         register={register}
-        minLength={{ value: 8, message: 'Минимум 8 символов' }}
+        validationSchema={validationSchema}
         errorClassName={
           !dirtyFields[htmlFor] ? undefined : errors[htmlFor] ? classNameFalse : classNameSuccess
         }
