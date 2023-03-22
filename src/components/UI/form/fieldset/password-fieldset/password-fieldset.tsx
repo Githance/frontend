@@ -42,11 +42,11 @@ const PasswordFieldset: FC<Props> = ({
         register={register}
         minLength={{ value: 8, message: 'Минимум 8 символов' }}
         errorClassName={
-          !dirtyFields.password1 ? undefined : errors.password1 ? classNameFalse : classNameSuccess
+          !dirtyFields[htmlFor] ? undefined : errors[htmlFor] ? classNameFalse : classNameSuccess
         }
       />
-      {errors.password1 ? (
-        <InputMessage type="error" message={errors.password1.message} />
+      {errors[htmlFor] ? (
+        <InputMessage type="error" message={errors[htmlFor].message} />
       ) : (
         !isLogginPage && (
           <InputMessage
