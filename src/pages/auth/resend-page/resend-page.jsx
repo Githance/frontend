@@ -17,8 +17,9 @@ const ResendPage = ({ base }) => {
     if (base === 'mail') {
       dispatch(resendUserEmail(userEmail));
       setLink(false);
+    } else {
+      dispatch(resetUserPassword(userEmail)).then(() => setLink(false));
     }
-    dispatch(resetUserPassword(userEmail)).then(() => setLink(false));
   };
   return (
     <div className={style.container}>
