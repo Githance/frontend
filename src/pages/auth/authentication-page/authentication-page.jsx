@@ -30,7 +30,15 @@ function AuthenticationPage() {
   const onSubmit = handleSubmit((data) => {
     dispatch(loginUser(data))
       .unwrap()
-      .then(() => navigate('/'));
+      .then(() => navigate('/'))
+      .catch((err) => {
+        if (err?.email) {
+          setError('email', {
+            type: 'server',
+            message: err.email,
+          });
+        }
+      });
   });
 
   return (
