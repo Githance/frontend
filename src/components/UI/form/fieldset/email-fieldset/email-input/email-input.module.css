@@ -11,16 +11,13 @@
   border-radius: 6px;
   cursor: text;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 488px) {
   .input {
-    font-size: 14px;
-    line-height: 17px;
     height: 40px;
   }
   .input::placeholder {
     font-size: 14px;
     line-height: 17px;
-    height: 40px;
   }
 }
 .input_validation_success {

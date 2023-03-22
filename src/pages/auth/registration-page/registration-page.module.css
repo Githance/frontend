@@ -3,7 +3,11 @@
   height: 100vh;
   background-color: var(--bg-color-main);
 }
-
+@media screen and (max-width: 488px) {
+  .container {
+    background-color: var(--bg-color-form);
+  }
+}
 .content {
   position: fixed;
   top: 50%;
@@ -26,8 +30,20 @@
   line-height: 27px;
   letter-spacing: 0.04em;
   text-align: center;
-  
-}
+  }
+  @media screen and (max-width: 768px) {
+    .title {
+      font-size: 28px;
+      line-height: 34px;
+          }
+  }
+  @media screen and (max-width: 488px) {
+    .title {
+      font-size: 20px;
+      line-height: 24px;
+      padding-bottom: 15px;
+    }
+  }
 
 .fieldset {
   margin: 0;

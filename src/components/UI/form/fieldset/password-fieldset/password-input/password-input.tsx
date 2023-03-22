@@ -39,14 +39,14 @@ const PasswordInput: FC<Props> = ({
   } */
 
   return (
-    <div className={cn(style.input, className)}>
+    <div className={cn(style.container, className)}>
       <input
         autoComplete="on"
         id={htmlFor}
         name={name}
         type={showPassword ? 'password' : 'text'}
         placeholder={placeholder}
-        className={cn(style.input__element, errorClassName)}
+        className={cn(style.input, errorClassName)}
         onChange={onChange}
         {...register(htmlFor, {
           required: 'Заполни меня',

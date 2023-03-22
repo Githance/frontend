@@ -9,7 +9,7 @@ import ForgotPasswordPage from '../../pages/auth/forgot-password-page/forgot-pas
 import ResetPasswordPage from '../../pages/auth/reset-password-page/reset-password-page';
 import ProfilePage from '../../pages/profile-page/profile-page';
 import Layout from '../../pages/layout/layout';
-import AuthLayout from '../../pages/auth/layout';
+import AuthLayout from '../../pages/auth/layout/layout';
 import ResendPage from '../../pages/auth/resend-page/resend-page';
 
 function App() {

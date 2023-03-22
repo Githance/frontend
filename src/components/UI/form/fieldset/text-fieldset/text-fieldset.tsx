@@ -8,6 +8,7 @@ type Props = {
   dirtyFields?: any;
   classNameSuccess?: string;
   classNameFalse?: string;
+  label?: string;
 };
 const TextFieldset: FC<Props> = ({
   register,
@@ -15,11 +16,12 @@ const TextFieldset: FC<Props> = ({
   errors,
   classNameSuccess,
   classNameFalse,
+  label = 'Имя пользователя',
 }) => {
   return (
     <fieldset className={style.fieldset}>
       <Label htmlFor="name" required>
-        Имя пользователя
+        {label}
       </Label>
       <TextInput
         placeholder="Jack Sparrow"

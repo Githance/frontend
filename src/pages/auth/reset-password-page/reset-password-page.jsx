@@ -49,7 +49,7 @@ function ResetPasswordPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <p className={style.title}>Новый пароль</p>
+        <h2 className={style.title}>Новый пароль</h2>
         <Form onSubmit={onSubmit}>
           <PasswordFieldset
             register={register}

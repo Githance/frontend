@@ -10,6 +10,7 @@ type Props = {
   dirtyFields?: any;
   classNameSuccess?: string;
   classNameFalse?: string;
+  label?: string;
 };
 
 const PasswordFieldset: FC<Props> = ({
@@ -18,11 +19,12 @@ const PasswordFieldset: FC<Props> = ({
   errors,
   classNameSuccess,
   classNameFalse,
+  label = 'Пароль',
 }) => {
   return (
     <fieldset className={style.fieldset}>
       <div className={style.container__password}>
-        <Label htmlFor="password">Пароль</Label>
+        <Label htmlFor="password">{label}</Label>
         <Link className={style.link} to="password/reset">
           Забыли пароль?
         </Link>

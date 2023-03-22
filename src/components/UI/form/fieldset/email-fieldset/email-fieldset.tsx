@@ -8,6 +8,7 @@ type Props = {
   dirtyFields?: any;
   classNameSuccess?: string;
   classNameFalse?: string;
+  label?: string;
 };
 const EmailFieldset: FC<Props> = ({
   register,
@@ -15,10 +16,11 @@ const EmailFieldset: FC<Props> = ({
   errors,
   classNameSuccess,
   classNameFalse,
+  label = 'Электронная почта',
 }) => {
   return (
     <fieldset className={style.fieldset}>
-      <Label htmlFor="email">Электронная почта</Label>
+      <Label htmlFor="email">{label}</Label>
       <EmailInput
         placeholder="Email"
         className={style.input}
