@@ -45,9 +45,14 @@ const PasswordFieldset: FC<Props> = ({
         }
       />
       {errors[htmlFor] ? (
-        <InputMessage type="error" message={errors[htmlFor].message} />
+        <InputMessage type="error" message={errors[htmlFor]?.message} />
       ) : (
-        !isLogginPage && <InputMessage type="warning" message={errors[htmlFor]?.message} />
+        !isLogginPage && (
+          <InputMessage
+            type="warning"
+            message="Минимум 8 символов, должен включать цифры и буквы"
+          />
+        )
       )}
     </fieldset>
   );
