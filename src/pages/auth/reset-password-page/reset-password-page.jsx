@@ -58,6 +58,7 @@ function ResetPasswordPage() {
             errors={errors}
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
+            htmlFor={'new_password2'}
           />
           <Button
             className={cn(style.button, isValid ? style.button__main : style.button__main_noValid)}

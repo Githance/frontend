@@ -12,7 +12,7 @@ type Props = {
   classNameFalse?: string;
   label?: string;
   isLogginPage?: boolean;
-  htmlFor?: string;
+  htmlFor: string;
 };
 
 const PasswordFieldset: FC<Props> = ({
@@ -22,7 +22,7 @@ const PasswordFieldset: FC<Props> = ({
   classNameSuccess,
   classNameFalse,
   label = 'Пароль',
-  htmlFor = 'password',
+  htmlFor,
   isLogginPage,
 }) => {
   return (
@@ -44,7 +44,11 @@ const PasswordFieldset: FC<Props> = ({
           !dirtyFields.password ? undefined : errors.password ? classNameFalse : classNameSuccess
         }
       />
-      {errors.password && <InputMessage type="error" message={errors.password.message} />}
+      {errors[htmlFor] ? (
+        <InputMessage type="error" message={errors[htmlFor].message} />
+      ) : (
+        !isLogginPage && <InputMessage type="warning" message={errors[htmlFor]?.message} />
+      )}
     </fieldset>
   );
 };
