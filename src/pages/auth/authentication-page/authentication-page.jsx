@@ -52,7 +52,7 @@ function AuthenticationPage() {
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
             isLogginPage={true}
-            htmlFor="password1"
+            htmlFor="password"
           />
           <ButtonFieldset isValid={isValid} error={loginErrorText} />
         </Form>
