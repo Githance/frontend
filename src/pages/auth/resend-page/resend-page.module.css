@@ -32,10 +32,11 @@
   line-height: 27px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-align: center;
 }
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 28px;
+    font-size: 22px;
     line-height: 34px;
         }
 }
@@ -84,7 +85,7 @@
   width: 100%;
   min-width: 300px;
   padding: 16px 0;
-  margin-top: 16px;
+  margin-top: 32px;
   color: var(--text-color-white);
   font-weight: 600;
   font-size: 18px;
@@ -93,7 +94,12 @@
   background-color: var(--bg-color-button-normal);
   border-radius: 10px;
 }
-
+@media screen and (max-width: 488px) {
+  .button {
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+}
 .button:hover {
   background-color: var(--bg-color-button-hover);
 }

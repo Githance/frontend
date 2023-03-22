@@ -41,7 +41,7 @@ function ForgotPasswordPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <p className={style.title}>Забыли пароль?</p>
+        <h2 className={style.title}>Забыли пароль?</h2>
         <p className={style.text}>
           Пожалуйста, введите адрес электронной почты, на&nbsp;который мы&nbsp;отправим вам
           инструкцию для восстановления пароля

@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form, PasswordFieldset } from '../../../components/UI/index';
 import style from './reset-password-page.module.css';
 import { confirmUserPassword, resetEmail } from '../../../services/slice/user-auth-slice';
-
+import cn from 'classnames';
 function ResetPasswordPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -52,6 +52,7 @@ function ResetPasswordPage() {
         <h2 className={style.title}>Новый пароль</h2>
         <Form onSubmit={onSubmit}>
           <PasswordFieldset
+            label="Введите новый пароль"
             register={register}
             dirtyFields={dirtyFields}
             errors={errors}
@@ -59,9 +60,7 @@ function ResetPasswordPage() {
             classNameSuccess={style.input_validation_success}
           />
           <Button
-            className={`${style.button} ${
-              isValid ? style.button__main : style.button__main_noValid
-            }`}
+            className={cn(style.button, isValid ? style.button__main : style.button__main_noValid)}
             type="submit"
             isValid={isValid}
           >

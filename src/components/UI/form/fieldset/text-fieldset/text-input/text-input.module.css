@@ -15,6 +15,10 @@
   .input {
     height: 40px;
   }
+  .input::placeholder {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 .input_validation_success {
   composes: input;

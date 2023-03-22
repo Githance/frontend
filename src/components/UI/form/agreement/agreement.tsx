@@ -1,14 +1,16 @@
+import cn from 'classnames';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import style from './agreement.module.css';
 import CheckBox from './checkbox/checkbox';
 type Props = {
   register: any;
+  className?: string;
 };
 
-const Agreement: FC<Props> = ({ register }) => {
+const Agreement: FC<Props> = ({ register, className }) => {
   return (
-    <div className={style.agreement}>
+    <div className={cn(style.agreement, className)}>
       <CheckBox register={register} />
       <p className={style.agreement__text}>
         Согласен с

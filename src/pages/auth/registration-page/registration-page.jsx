@@ -57,7 +57,7 @@ function RegistrationPage() {
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Регистрация</h2>
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} className={style.fieldset__container}>
           <TextFieldset
             register={register}
             dirtyFields={dirtyFields}
@@ -79,7 +79,7 @@ function RegistrationPage() {
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
           />
-          <Agreement register={register} />
+          <Agreement register={register} className={style.agreement} />
           <ButtonFieldset isValid={isValid} />
         </Form>
         <GoogleBtn onClick={handleGoogleSubmit} />

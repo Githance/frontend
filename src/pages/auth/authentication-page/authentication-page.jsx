@@ -37,7 +37,7 @@ function AuthenticationPage() {
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Вход</h2>
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} className={style.fieldset__container}>
           <EmailFieldset
             register={register}
             dirtyFields={dirtyFields}
