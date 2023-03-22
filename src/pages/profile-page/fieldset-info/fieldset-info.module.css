@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container__input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.label {
+  margin: 0;
+  color: var(--text-color-light-grey);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.email {
+  margin: 0;
+  padding-bottom: 10px;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  border-bottom: 1px solid var(--border-input-color);
+}

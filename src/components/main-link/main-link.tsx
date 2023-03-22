@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef, ReactNode, FC } from 'react';
+import { useState, useEffect, useCallback, useRef, ReactNode, FC, FormEvent } from 'react';
 import cn from 'classnames';
 import style from './main-link.module.css';
 import { AnchorIcon, CheckIcon } from '../UI';
@@ -7,7 +7,7 @@ type Props = {
   link: string;
   children: ReactNode;
   onChange?: () => void;
-  onSubmit?: () => void;
+  onSubmit?: (e: FormEvent) => void;
   type: string;
 };
 
@@ -39,12 +39,7 @@ const MainLink: FC<Props> = ({ link, children, onChange, onSubmit, type }) => {
 
   return (
     <form className={style.form} onSubmit={onSubmit}>
-      <fieldset
-        className={cn(
-          style.fieldset,
-          inputType(type) ? style.fieldset_type_primary : style.fieldset_type_secondary,
-        )}
-      >
+      <fieldset className={style.fieldset}>
         {disabledInput ? (
           <a href={link} className={cn(style.link, !!link && style.link_active)}>
             {children}
