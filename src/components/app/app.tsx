@@ -12,6 +12,7 @@ import ResendRegisterMailPage from '../../pages/resend-register-mail-page/resend
 import ProfilePage from '../../pages/profile-page/profile-page';
 import Layout from '../../pages/layout/layout';
 import AuthLayout from '../../pages/auth-layout/auth-layout';
+import UserPage from '~/pages/user-page/user-page';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/user" element={<UserPage />} />
       </Route>
       <Route path="/auth" element={<AuthLayout />}>
         <Route index element={<AuthenticationPage />} />
