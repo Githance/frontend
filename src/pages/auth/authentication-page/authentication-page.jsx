@@ -55,12 +55,12 @@ function AuthenticationPage() {
           <ButtonFieldset isValid={isValid} error={loginErrorText} />
         </Form>
         <GoogleBtn onClick={handleGoogleSubmit} />
-        <div className={style.container__text}>
-          <p className={style.text}>Нет аккаунта?</p>
+        <p className={style.text}>
+          Нет аккаунта?{' '}
           <Link className={style.link} to="registration">
             Зарегистрироваться
           </Link>
-        </div>
+        </p>
       </div>
     </div>
   );

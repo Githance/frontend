@@ -70,7 +70,13 @@
   font-size: 18px;
   line-height: 22px;
 }
-
+@media screen and (max-width: 488px) {
+  .text {
+    font-size: 16px;
+    line-height: 20px;
+    padding-bottom: 10px;
+  }
+}
 .button {
   display: flex;
   align-items: center;

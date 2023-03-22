@@ -5,7 +5,7 @@ function SuccessRegistrationPage() {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <p className={style.title}>вы зарегистрированы</p>
+        <h2 className={style.title}>вы зарегистрированы</h2>
         <p className={style.text}>
           Теперь вы&nbsp;можете создавать проекты и&nbsp;присоединяться к&nbsp;существующим
         </p>

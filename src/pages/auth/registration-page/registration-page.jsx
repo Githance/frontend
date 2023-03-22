@@ -83,12 +83,12 @@ function RegistrationPage() {
           <ButtonFieldset isValid={isValid} />
         </Form>
         <GoogleBtn onClick={handleGoogleSubmit} />
-        <div className={style.container__text}>
-          <p className={style.text}>Уже зарегистрированы? </p>
+        <p className={style.text}>
+          Уже зарегистрированы?{' '}
           <Link className={style.link} to="/auth">
             Войти
           </Link>
-        </div>
+        </p>
       </div>
     </div>
   );

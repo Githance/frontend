@@ -45,24 +45,6 @@
     }
   }
 
-.fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.container__email {
-  margin-top: 16px;
-}
-
-.container__password {
-  margin-top: 16px;
-}
-
-.input {
-  margin-top: 8px;
-  margin-bottom: 4px;
-}
 
 .input_validation_success {
   border: 1px solid var(--color-input-true);
@@ -72,84 +54,19 @@
   border: 1px solid var(--color-input-false);
 }
 
-.container__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  box-sizing: border-box;
-  margin-top: 28px;
-}
-
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-width: 300px;
-  padding: 16px 0;
-  border-radius: 10px;
-}
-
-.button__main {
-  color: var(--text-color-white);
-  background-color: var(--bg-color-button-normal);
-}
-
-.button__main_noValid {
-  color: var(--text-color-additional);
-  background-color: var(--bg-color-button-disabled);
-  cursor: auto;
-}
-
-.button__main_noValid:hover {
-  background-color: var(--bg-color-button-disabled);
-}
-
-.button__main:hover {
-  background-color: var(--bg-color-button-hover);
-}
-
-.button__main:active {
-  background-color: var(--bg-color-button-normal);
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-  background-image: url("../../images/google-icon.svg");
-  background-position: center;
-}
-
-.button__google {
-  margin-top: 12px;
-  padding: 15px 0;
-  color: var(--text-color-black);
-  background-color: var(--bg-color-g-button-normal);
-  border: 1px solid var(--border-color-g-button);
-}
-
-.button__google:hover {
-  background-color: var(--bg-color-g-button-hover);
-}
-
-.button__google:active {
-  background-color: var(--bg-color-g-button-normal);
-}
-
-.container__text {
+.text {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-}
-
-.text {
-  display: inline-block;
-  margin: 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
+}
+@media screen and (max-width: 488px) {
+  .text {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .link {

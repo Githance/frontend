@@ -23,7 +23,7 @@ const ResendPage = ({ base }) => {
   return (
     <div className={style.container}>
       <div className={style.content}>
-        <p className={style.title}>Письмо отправлено</p>
+        <h2 className={style.title}>Письмо отправлено</h2>
         <p className={style.text}>
           Если вы&nbsp;не&nbsp;получили письмо, проверьте папку &laquo;спам&raquo; или попробуйте
           {link ? (

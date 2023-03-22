@@ -54,16 +54,6 @@
     padding-bottom: 15px;
   }
 }
-.fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.input {
-  margin-top: 8px;
-  margin-bottom: 4px;
-}
 
 .input_validation_success {
   border: 1px solid var(--color-input-true);
@@ -96,90 +86,15 @@
   color: var(--bg-color-button-pressed);
 }
 
-.container__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  box-sizing: border-box;
-  margin-top: 28px;
-}
-
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-width: 300px;
-  border-radius: 10px;
-}
-
-.button__main {
-  color: var(--text-color-white);
-  background-color: var(--bg-color-button-normal);
-}
-
-.button__main_noValid {
-  color: var(--text-color-additional);
-  background-color: var(--bg-color-button-disabled);
-  cursor: auto;
-}
-
-.button__main_noValid:hover {
-  background-color: var(--bg-color-button-disabled);
-}
-
-.button__main:hover {
-  background-color: var(--bg-color-button-hover);
-}
-
-.button__main:active {
-  background-color: var(--bg-color-button-normal);
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-  background-image: url('../../images/google-icon.svg');
-  background-position: center;
-}
-
-.button__google {
-  margin-top: 12px;
-  padding: 15px 0;
-  color: var(--text-color-black);
-  background-color: var(--bg-color-g-button-normal);
-  border: 1px solid var(--border-color-g-button);
-}
-
-.button__google:hover {
-  background-color: var(--bg-color-g-button-hover);
-}
-@media screen and (max-width: 768px) {
-  .button__google {
-    margin-top: 10px;
-    padding: 7px 0;
-  }
-}
-.button__google:active {
-  background-color: var(--bg-color-g-button-normal);
-}
-
-.container__text {
+.text {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-}
-
-.text {
-  display: inline-block;
-  margin: 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 488px) {
   .text {
     font-size: 16px;
     line-height: 20px;
