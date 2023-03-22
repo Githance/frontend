@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect, FC } from 'react';
+import { useState, useRef, useCallback, useEffect, FC, FormEvent } from 'react';
 import cn from 'classnames';
 import style from './main-input.module.css';
 import { PenIcon, CheckIcon } from '../UI';
@@ -7,7 +7,7 @@ type Props = {
   value: string;
   type: string;
   onChange?: () => void;
-  onSubmit?: () => void;
+  onSubmit?: (e: FormEvent) => void;
 };
 
 const MainInput: FC<Props> = ({ value, type, onChange, onSubmit }) => {

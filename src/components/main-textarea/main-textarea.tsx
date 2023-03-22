@@ -1,16 +1,16 @@
-import { FC, ReactNode } from 'react';
+import { FC, FormEvent } from 'react';
 import cn from 'classnames';
 import style from './main-textarea.module.css';
 import { Button } from '../UI/index';
 
 type Props = {
   isValid: boolean;
-  children: ReactNode;
-  onChange: () => void;
-  onSubmit: () => void;
+  about: string;
+  onChange?: () => void;
+  onSubmit?: (e: FormEvent) => void;
 };
 
-const MainTextarea: FC<Props> = ({ isValid, children, onChange, onSubmit }) => {
+const MainTextarea: FC<Props> = ({ isValid, about, onChange, onSubmit }) => {
   return (
     <form className={style.form} onSubmit={onSubmit}>
       <label htmlFor="textarea" className={style.label}>
@@ -18,7 +18,7 @@ const MainTextarea: FC<Props> = ({ isValid, children, onChange, onSubmit }) => {
       </label>
       <fieldset id="textarea" className={style.fieldset}>
         <textarea className={style.textarea} onChange={onChange}>
-          {children}
+          {about}
         </textarea>
         <Button
           type="submit"

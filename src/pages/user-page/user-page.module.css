@@ -1,0 +1,98 @@
+.userPage {
+  display: grid;
+  grid-template-areas:
+    'name name name name name name name name name name name name'
+    'info info info info about about about about about about about about'
+    'projects projects projects projects projects projects projects projects projects projects projects projects';
+  grid-template-columns: repeat(12, 1fr);
+  box-sizing: border-box;
+  max-width: 1110px;
+  margin: 0 auto;
+  padding-top: 30px;
+  column-gap: 30px;
+  row-gap: 60px;
+}
+
+.userPage__container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.userPage__container_position_info {
+  grid-area: info;
+  gap: 60px;
+}
+
+.userPage__container_position_about {
+  grid-area: about;
+}
+
+.userPage__container_position_projects {
+  grid-area: projects;
+  margin-top: 110px;
+}
+
+.userPage__container_position_links {
+  gap: 10px;
+}
+
+.userPage__container_position_contacts {
+  gap: 5px;
+}
+
+.userPage__name {
+  grid-area: name;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px 0;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  border-top: 1px solid var(--border-input-color);
+  border-bottom: 1px solid var(--border-input-color);
+}
+
+.title {
+  margin: 0;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.text {
+  box-sizing: border-box;
+  max-width: 730px;
+  margin: 0;
+  padding: 11px 10px;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  hyphens: auto;
+  border: 1px solid var(--border-input-color);
+  border-radius: 10px;
+}
+
+.label {
+  margin: 0;
+  color: var(--text-color-light-grey);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.label_color_black {
+  color: var(--text-color-black);
+  word-break: break-all
+}
+
+.link {
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+}
