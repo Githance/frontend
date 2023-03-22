@@ -3,11 +3,13 @@
   padding: 7px 0 12px;
   border: none;
 }
+
 @media screen and (max-width: 488px) {
   .fieldset{
     padding: 5px 0 10px;
   }
 }
+
 .container__buttons {
   display: flex;
   flex-direction: column;
@@ -25,11 +27,13 @@
   padding: 16px 0;
   border-radius: 10px;
 }
+
 @media screen and (max-width: 488px) {
   .button {
     padding: 10px 0;
   }
 }
+
 .button__main {
   color: var(--text-color-white);
   background-color: var(--bg-color-button-normal);
@@ -60,12 +64,14 @@
   font-size: 18px;
   line-height: 22px;
 }
+
 @media screen and (max-width: 488px) {
   .text {
     font-size: 16px;
     line-height: 20px;
   }
 }
+
 .error {
   align-self: flex-start;
 }

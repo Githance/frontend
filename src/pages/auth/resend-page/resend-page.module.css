@@ -3,11 +3,13 @@
   height: 100vh;
   background-color: var(--bg-color-main);
 }
+
 @media screen and (max-width: 488px) {
   .container {
     background-color: var(--bg-color-form);
   }
 }
+
 .content {
   position: fixed;
   top: 50%;
@@ -31,22 +33,25 @@
   font-size: 22px;
   line-height: 27px;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   text-align: center;
+  text-transform: uppercase;
 }
+
 @media screen and (max-width: 768px) {
   .title {
     font-size: 22px;
     line-height: 34px;
         }
 }
+
 @media screen and (max-width: 488px) {
   .title {
+    padding-bottom: 15px;
     font-size: 20px;
     line-height: 24px;
-    padding-bottom: 15px;
   }
 }
+
 .link {
   display: inline;
   margin-left: 4px;
@@ -71,21 +76,23 @@
   font-size: 18px;
   line-height: 22px;
 }
+
 @media screen and (max-width: 488px) {
   .text {
+    padding-bottom: 10px;
     font-size: 16px;
     line-height: 20px;
-    padding-bottom: 10px;
   }
 }
+
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   min-width: 300px;
-  padding: 16px 0;
   margin-top: 32px;
+  padding: 16px 0;
   color: var(--text-color-white);
   font-weight: 600;
   font-size: 18px;
@@ -94,12 +101,14 @@
   background-color: var(--bg-color-button-normal);
   border-radius: 10px;
 }
+
 @media screen and (max-width: 488px) {
   .button {
     margin-top: 20px;
     padding: 10px 0;
   }
 }
+
 .button:hover {
   background-color: var(--bg-color-button-hover);
 }

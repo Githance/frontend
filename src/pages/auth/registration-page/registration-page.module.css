@@ -3,11 +3,13 @@
   height: 100vh;
   background-color: var(--bg-color-main);
 }
+
 @media screen and (max-width: 488px) {
   .container {
     background-color: var(--bg-color-form);
   }
 }
+
 .content {
   position: fixed;
   top: 50%;
@@ -19,36 +21,41 @@
   border-radius: 20px;
   transform: translate(-50%, -50%);
 }
+
 .fieldset__container {
   gap: 16px;
 }
+
 @media screen and (max-width: 768px) {
   .fieldset__container {
     gap: 15px;
   }
 }
+
 .title {
   margin: 0;
   padding-bottom: 32px;
-  font-weight: 700;
-  text-transform: uppercase;
   color: var(--text-color-black);
+  font-weight: 700;
   font-size: 22px;
   line-height: 27px;
   letter-spacing: 0.04em;
   text-align: center;
+  text-transform: uppercase;
 }
+
 @media screen and (max-width: 768px) {
   .title {
     font-size: 28px;
     line-height: 34px;
   }
 }
+
 @media screen and (max-width: 488px) {
   .title {
+    padding-bottom: 15px;
     font-size: 20px;
     line-height: 24px;
-    padding-bottom: 15px;
   }
 }
 
@@ -68,6 +75,7 @@
   font-size: 18px;
   line-height: 22px;
 }
+
 @media screen and (max-width: 488px) {
   .text {
     font-size: 16px;
@@ -84,12 +92,14 @@
   line-height: 22px;
   text-decoration: none;
 }
+
 @media screen and (max-width: 488px) {
   .link {
     font-size: 16px;
     line-height: 20px;
   }
 }
+
 .link:hover {
   color: var(--bg-color-button-hover);
 }

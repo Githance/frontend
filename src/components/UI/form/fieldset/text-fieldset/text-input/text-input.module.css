@@ -3,7 +3,7 @@
   width: 368px;
   height: 46px;
   margin: 0;
-  padding: 0 0 0 12px;
+  padding: 0 42px 0 12px;
   color: var(--text-color-grey);
   font-size: 18px;
   line-height: 22px;
@@ -11,15 +11,18 @@
   border-radius: 6px;
   cursor: text;
 }
+
 @media screen and (max-width: 488px) {
   .input {
     height: 40px;
   }
+
   .input::placeholder {
     font-size: 14px;
     line-height: 17px;
   }
 }
+
 .input_validation_success {
   composes: input;
   border: 1px solid var(--color-input-true);

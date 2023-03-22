@@ -4,12 +4,13 @@
   justify-content: center;
   width: 100%;
   min-width: 300px;
-  border-radius: 10px;
   padding: 15px 0;
   color: var(--text-color-black);
   background-color: var(--bg-color-g-button-normal);
   border: 1px solid var(--border-color-g-button);
+  border-radius: 10px;
 }
+
 .icon {
   width: 24px;
   height: 24px;
@@ -21,11 +22,13 @@
 .button:hover {
   background-color: var(--bg-color-g-button-hover);
 }
+
 @media screen and (max-width: 488px) {
   .button {
        padding: 7px 0;
   }
 }
+
 .button:active {
   background-color: var(--bg-color-g-button-normal);
 }

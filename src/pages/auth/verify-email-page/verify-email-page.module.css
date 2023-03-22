@@ -6,6 +6,7 @@
   height: 100vh;
   background-color: var(--bg-color-main);
 }
+
 @media screen and (max-width: 488px) {
   .container {
     background-color: var(--bg-color-form);
