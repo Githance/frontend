@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button, InputMessage } from '~/components/UI/index';
+import { Button, InputMessage } from '../../../index';
 import style from './button-fieldset.module.css';
 import cn from 'classnames';
 
