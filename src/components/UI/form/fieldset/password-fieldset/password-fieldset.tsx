@@ -40,12 +40,13 @@ const PasswordFieldset: FC<Props> = ({
         className={style.input}
         htmlFor={htmlFor}
         register={register}
+        maxLength={{ value: 8, message: 'Минимум 8 символов' }}
         errorClassName={
-          !dirtyFields.password ? undefined : errors.password ? classNameFalse : classNameSuccess
+          !dirtyFields.password1 ? undefined : errors.password1 ? classNameFalse : classNameSuccess
         }
       />
-      {errors[htmlFor] ? (
-        <InputMessage type="error" message={errors[htmlFor]?.message} />
+      {errors.password1 ? (
+        <InputMessage type="error" message={errors.password1?.message} />
       ) : (
         !isLogginPage && (
           <InputMessage
