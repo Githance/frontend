@@ -13,7 +13,6 @@ import AuthLayout from '../../pages/auth/layout/layout';
 import ResendPage from '../../pages/auth/resend-page/resend-page';
 import UserPage from '../../pages/user-page/user-page';
 
-
 function App() {
   return (
     <Routes>

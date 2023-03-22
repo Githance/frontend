@@ -34,10 +34,6 @@ const PasswordInput: FC<Props> = ({
 }) => {
   const [showPassword, setShowPassword] = useState(true);
 
-  /* function togglePassword() {
-    setShowPassword((prevValue) => !prevValue);
-  } */
-
   return (
     <div className={cn(style.container, className)}>
       <input
