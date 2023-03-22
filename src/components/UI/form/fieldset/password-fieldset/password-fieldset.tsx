@@ -11,6 +11,8 @@ type Props = {
   classNameSuccess?: string;
   classNameFalse?: string;
   label?: string;
+  isLogginPage?: boolean;
+  htmlFor?: string;
 };
 
 const PasswordFieldset: FC<Props> = ({
@@ -20,19 +22,23 @@ const PasswordFieldset: FC<Props> = ({
   classNameSuccess,
   classNameFalse,
   label = 'Пароль',
+  htmlFor = 'password',
+  isLogginPage,
 }) => {
   return (
     <fieldset className={style.fieldset}>
       <div className={style.container__password}>
-        <Label htmlFor="password">{label}</Label>
-        <Link className={style.link} to="password/reset">
-          Забыли пароль?
-        </Link>
+        <Label htmlFor={htmlFor}>{label}</Label>
+        {isLogginPage && (
+          <Link className={style.link} to="password/reset">
+            Забыли пароль?
+          </Link>
+        )}
       </div>
       <PasswordInput
         placeholder="Password"
         className={style.input}
-        htmlFor="password"
+        htmlFor={htmlFor}
         register={register}
         errorClassName={
           !dirtyFields.password ? undefined : errors.password ? classNameFalse : classNameSuccess

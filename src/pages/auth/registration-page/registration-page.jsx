@@ -78,6 +78,7 @@ function RegistrationPage() {
             errors={errors}
             classNameFalse={style.input_validation_false}
             classNameSuccess={style.input_validation_success}
+            htmlFor="password1"
           />
           <Agreement register={register} className={style.agreement} />
           <ButtonFieldset isValid={isValid} />
