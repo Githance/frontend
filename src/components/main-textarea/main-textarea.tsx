@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import cn from 'classnames';
 import style from './main-textarea.module.css';
-import Button from '../button/button';
+import { Button } from '../UI/index';
 
 type Props = {
   isValid: boolean;
