@@ -1,20 +1,18 @@
-/* eslint-disable no-undef */
-/* eslint-disable class-methods-use-this */
 class Token {
-  parseToken(name) {
+  parseToken(name: string) {
     const authToken = name.split('Bearer ')[1];
     return authToken;
   }
 
-  getToken(name) {
+  getToken(name: string) {
     return localStorage.getItem(name);
   }
 
-  setToken(name, value) {
+  setToken(name: string, value: string) {
     localStorage.setItem(name, value);
   }
 
-  deleteToken(name) {
+  deleteToken(name: string) {
     localStorage.removeItem(name);
   }
 }
