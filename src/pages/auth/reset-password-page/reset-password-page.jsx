@@ -52,6 +52,7 @@ function ResetPasswordPage() {
         <h2 className={style.title}>Новый пароль</h2>
         <Form onSubmit={onSubmit}>
           <PasswordFieldset
+            validationSchema={{ minLength: { value: 8, message: 'Минимум 8 символов' } }}
             label="Введите новый пароль"
             register={register}
             dirtyFields={dirtyFields}
