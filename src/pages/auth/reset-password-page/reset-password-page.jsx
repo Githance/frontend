@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form, PasswordFieldset } from '../../../components/UI/index';
 import style from './reset-password-page.module.css';
-import { confirmUserPassword, resetEmail } from '../../../services/slice/user-auth-slice';
+import { confirmUserPassword, resetEmail } from '../../../services/slice/auth/user-auth-slice';
 import cn from 'classnames';
 function ResetPasswordPage() {
   const dispatch = useDispatch();

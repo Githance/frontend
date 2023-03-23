@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button, EmailFieldset, Form } from '../../../components/UI/index';
 import style from './forgot-password-page.module.css';
-import { resetUserPassword, setEmail } from '../../../services/slice/user-auth-slice';
+import { resetUserPassword, setEmail } from '../../../services/slice/auth/user-auth-slice';
 
 function ForgotPasswordPage() {
   const dispatch = useDispatch();
