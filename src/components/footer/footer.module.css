@@ -1,12 +1,12 @@
 .footer {
   display: flex;
+  flex: 0 0 auto;
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   padding: 60px 55px;
- 
 }
 
 .wrapper {
