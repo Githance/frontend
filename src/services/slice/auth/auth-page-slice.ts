@@ -13,9 +13,14 @@ export const logiWithGoogle = createAsyncThunk(
     }),
 );
 
+type LoginType = {
+  email: string;
+  password: string;
+};
+
 export const loginUser = createAsyncThunk(
   'authPageSLice/loginUser',
-  (userData, { rejectWithValue, dispatch }) =>
+  (userData: LoginType, { rejectWithValue, dispatch }) =>
     api
       .userLoginRequest(userData)
       .then((res) => {
@@ -37,7 +42,7 @@ type InitialState = {
   googleError: boolean | null;
   loginRequest: boolean | null;
   loginError: boolean | null;
-  loginErrorText: boolean | null;
+  loginErrorText: string | null;
   logoutRequest: boolean | null;
   logoutError: boolean | null;
 };

@@ -3,14 +3,14 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/self-closing-comp */
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { ButtonFieldset, EmailFieldset, PasswordFieldset } from '../../../components/UI/index';
 import style from './authentication-page.module.css';
 import oauthSignIn from '../../../utils/google-request';
-import { loginUser } from '../../../services/slice/auth/user-auth-slice';
+import { loginUser } from '~/services/slice/auth/auth-page-slice';
 import { GoogleBtn, Form } from '../../../components/UI/index';
-import { getLoginErrorText } from '../../../services/selectors';
+import { getLoginErrorText } from '~/services/slice/auth/auth-page-slice';
 
 function AuthenticationPage() {
   const dispatch = useDispatch();
