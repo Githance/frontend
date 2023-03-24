@@ -10,7 +10,7 @@ import style from './authentication-page.module.css';
 import oauthSignIn from '../../../utils/google-request';
 import { loginUser } from '../../../services/slice/auth/user-auth-slice';
 import { GoogleBtn, Form } from '../../../components/UI/index';
-import { getLoginErrorText } from '../../../services/selectors/selectors';
+import { getLoginErrorText } from '../../../services/selectors';
 
 function AuthenticationPage() {
   const dispatch = useDispatch();

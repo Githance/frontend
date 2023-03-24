@@ -18,7 +18,7 @@ const initialState: InitialState = {
 
 const userSlice = createSlice({
   name: 'userSlice',
-  initialState: initialState,
+  initialState,
   reducers: {
     userIsAuth(state) {
       state.isAuth = true;
