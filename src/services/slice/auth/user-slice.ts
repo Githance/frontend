@@ -3,6 +3,11 @@ import { RootState } from '~/services';
 import api from '../../../api/Api';
 import token from '../../../utils/token';
 
+/* Слайс предназначен для хранения состояний пользователя, 
+ которые используются глобально в приложении. Статус авторизации,
+ уровень доступа и т.п
+ */
+
 type InitialState = {
   isAuth: boolean;
 };
