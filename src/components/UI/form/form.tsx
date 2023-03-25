@@ -3,7 +3,7 @@ import cn from 'classnames';
 import style from './form.module.css';
 type Props = {
   children: ReactNode;
-  className: string;
+  className?: string;
   onSubmit: () => void;
 };
 
