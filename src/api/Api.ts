@@ -1,6 +1,37 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable lines-between-class-members */
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+
+export type LoginType = {
+  email: string;
+  password: string;
+};
+
+export type RegisterType = {
+  email: string;
+  password1: string;
+  password2: string;
+  name: string;
+};
+
+export type ResetPasswordType = {
+  email: string;
+};
+
+export type ConfirmPasswordType = {
+  new_password1: string;
+  new_password2: string;
+  uid: string;
+  token: string;
+};
+
+export type ConfirmEmailType = {
+  key: string;
+};
+
+export type ResendEmail = {
+  email: string;
+};
 
 class Api {
   #authAxios;
@@ -27,15 +58,15 @@ class Api {
     this.#resendEmail = '/resend-email/';
   }
 
-  checkResponse(res) {
+  checkResponse(res: AxiosResponse) {
     return res.data;
   }
 
-  googleAuthRequest(googleCode) {
+  googleAuthRequest(googleCode: string) {
     return this.#authAxios.post(this.#googleAuthUrl, { code: googleCode }).then(this.checkResponse);
   }
 
-  userRegisterRequest(userData) {
+  userRegisterRequest(userData: RegisterType) {
     return this.#authAxios
       .post(this.#registerUser, {
         email: userData.email,
@@ -46,7 +77,7 @@ class Api {
       .then(this.checkResponse);
   }
 
-  userLoginRequest(userData) {
+  userLoginRequest(userData: LoginType) {
     return this.#authAxios.post(this.#loginUser, userData).then(this.checkResponse);
   }
 
@@ -54,19 +85,19 @@ class Api {
     return this.#authAxios.post(this.#logoutUser).then(this.checkResponse);
   }
 
-  userResetPasswordRequest(userEmail) {
+  userResetPasswordRequest(userEmail: ResetPasswordType) {
     return this.#authAxios.post(this.#resetPassword, userEmail).then(this.checkResponse);
   }
 
-  userConfirmPasswordRequest(userData) {
+  userConfirmPasswordRequest(userData: ConfirmPasswordType) {
     return this.#authAxios.post(this.#confirmNewPassword, userData).then(this.checkResponse);
   }
 
-  confirmEmailRequest(userEmail) {
+  confirmEmailRequest(userEmail: ConfirmEmailType) {
     return this.#authAxios.post(this.#confirmEmail, { key: userEmail }).then(this.checkResponse);
   }
 
-  resendEmailRequest(userEmail) {
+  resendEmailRequest(userEmail: ResendEmail) {
     return this.#authAxios.post(this.#resendEmail, userEmail).then(this.checkResponse);
   }
 }

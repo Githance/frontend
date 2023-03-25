@@ -1,22 +1,20 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { userIsAuth, userNotAuth } from './user-slice';
 import { RootState } from '~/services';
-import api from '../../../api/Api';
+import api, { LoginType } from '../../../api/Api';
 import token from '../../../utils/token';
 
-export const logiWithGoogle = createAsyncThunk(
-  'authPageSLice/logiWithGoogle',
-  (googleCode, { dispatch }) =>
-    api.googleAuthRequest(googleCode).then((res) => {
-      token.setToken('accessToken', res.access_token);
-      dispatch(userIsAuth());
-    }),
+export const logiWithGoogle = createAsyncThunk<
+  // Return type of the payload creator
+  unknown,
+  // First argument to the payload creator
+  string
+>('authPageSLice/logiWithGoogle', (googleCode, { dispatch }) =>
+  api.googleAuthRequest(googleCode).then((res) => {
+    token.setToken('accessToken', res.access_token);
+    dispatch(userIsAuth());
+  }),
 );
-
-type LoginType = {
-  email: string;
-  password: string;
-};
 
 type LoginRejectValue = {
   email?: string[] | undefined;
@@ -25,7 +23,7 @@ type LoginRejectValue = {
 
 export const loginUser = createAsyncThunk<
   // Return type of the payload creator
-  unknown,
+  void,
   // First argument to the payload creator
   LoginType,
   // Types for ThunkAPI
