@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './slice/auth/user-slice';
-import authPageSlice from './slice/auth/auth-page-slice';
 import userEmailSlice from './slice/auth/user-email-slice';
+import authPageSlice from './slice/auth/auth-page-slice';
+import registerPageSlice from './slice/auth/register-page-slice';
 import userAuthSlice from './slice/auth/user-auth-slice';
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
     user: userSlice,
     userEmail: userEmailSlice,
     authUser: authPageSlice,
+    registerUser: registerPageSlice,
     userAuth: userAuthSlice,
   },
 });
