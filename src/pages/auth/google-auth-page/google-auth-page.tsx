@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '~/services/hooks';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import Loader from '../../../components/UI/loader/loader';
 import style from './google-auth-page.module.css';
-import { fetchGoogleDate } from '../../../services/slice/auth/user-auth-slice';
+import { loginWithGoogle } from '~/services/slice/auth/auth-page-slice';
 
 function GoogleAuthPage() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ function GoogleAuthPage() {
   useEffect(() => {
     const code = searchCode.get('code');
     if (code) {
-      dispatch(fetchGoogleDate(code)).then(() => navigate('/'));
+      dispatch(loginWithGoogle(code)).then(() => navigate('/'));
     }
   }, []);
 

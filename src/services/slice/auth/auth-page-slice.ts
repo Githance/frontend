@@ -4,9 +4,9 @@ import { RootState } from '~/services';
 import api, { LoginType } from '../../../api/Api';
 import token from '../../../utils/token';
 
-export const logiWithGoogle = createAsyncThunk<
+export const loginWithGoogle = createAsyncThunk<
   // Return type of the payload creator
-  unknown,
+  void,
   // First argument to the payload creator
   string
 >('authPageSLice/logiWithGoogle', (googleCode, { dispatch }) =>
@@ -78,13 +78,13 @@ const authPageSLice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(logiWithGoogle.pending, (state) => {
+    builder.addCase(loginWithGoogle.pending, (state) => {
       state.googleRequest = true;
     });
-    builder.addCase(logiWithGoogle.fulfilled, (state) => {
+    builder.addCase(loginWithGoogle.fulfilled, (state) => {
       state.googleRequest = null;
     });
-    builder.addCase(logiWithGoogle.rejected, (state) => {
+    builder.addCase(loginWithGoogle.rejected, (state) => {
       state.googleRequest = null;
       state.googleError = true;
     });

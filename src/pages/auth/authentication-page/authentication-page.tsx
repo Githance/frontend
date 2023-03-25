@@ -1,7 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable react/self-closing-comp */
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
