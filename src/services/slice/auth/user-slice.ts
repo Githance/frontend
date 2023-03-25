@@ -1,7 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '~/services';
-import api from '../../../api/Api';
-import token from '../../../utils/token';
 
 /* Слайс предназначен для хранения состояний пользователя, 
  которые используются глобально в приложении. Статус авторизации,

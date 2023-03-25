@@ -1,34 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../../api/Api';
-import token from '../../../utils/token';
-
-export const fetchGoogleDate = createAsyncThunk('userAuth/fetchGoogleDate', (googleCode) =>
-  api.googleAuthRequest(googleCode).then((res) => {
-    token.setToken('accessToken', res.access_token);
-  }),
-);
 
 export const registerUser = createAsyncThunk(
   'userAuthSlice/registerUser',
   (userData, { rejectWithValue }) =>
     api.userRegisterRequest(userData).catch((err) => rejectWithValue(err.response.data)),
-);
-
-export const loginUser = createAsyncThunk(
-  'userAuthSlice/loginUser',
-  (userData, { rejectWithValue }) =>
-    api
-      .userLoginRequest(userData)
-      .then((res) => {
-        token.setToken('accessToken', res.access_token);
-      })
-      .catch((err) => rejectWithValue(err.response.data)),
-);
-
-export const logoutUser = createAsyncThunk('userAuthSlice/logoutUser', () =>
-  api.userLogoutRequest().then(() => {
-    token.deleteToken('accessToken');
-  }),
 );
 
 export const confirmUserEmail = createAsyncThunk('userAuthSlice/confirmUserEmail', (userEmail) =>
@@ -54,19 +30,6 @@ export const resendUserEmail = createAsyncThunk('userAuthSlice/resendUserEmail',
 const userAuthSlice = createSlice({
   name: 'userAuth',
   initialState: {
-    isAuth: false,
-    userEmail: null,
-
-    googleRequest: null,
-    googleError: null,
-
-    loginRequest: null,
-    loginError: null,
-    loginErrorText: null,
-
-    logoutRequest: null,
-    logoutError: null,
-
     registerRequest: null,
     registerError: null,
 
@@ -83,32 +46,9 @@ const userAuthSlice = createSlice({
     resendEmailError: null,
   },
 
-  reducers: {
-    setEmail(state, action) {
-      state.userEmail = action.payload;
-    },
-    resetEmail(state) {
-      state.userEmail = null;
-    },
-    resetLoginError(state) {
-      state.loginError = null;
-    },
-  },
+  reducers: {},
 
   extraReducers: (builder) => {
-    // TODO: Регистрация через Google аккаунт
-    builder.addCase(fetchGoogleDate.pending, (state) => {
-      state.googleRequest = true;
-    });
-    builder.addCase(fetchGoogleDate.fulfilled, (state) => {
-      state.isAuth = true;
-      state.googleRequest = null;
-    });
-    builder.addCase(fetchGoogleDate.rejected, (state) => {
-      state.googleRequest = null;
-      state.googleError = true;
-    });
-
     // TODO: Регистрация с помощью почты и пароля
     builder.addCase(registerUser.pending, (state) => {
       state.registerRequest = true;
@@ -119,36 +59,6 @@ const userAuthSlice = createSlice({
     builder.addCase(registerUser.rejected, (state) => {
       state.registerRequest = null;
       state.registerError = true;
-    });
-
-    // TODO: Авторизация пользователя
-    builder.addCase(loginUser.pending, (state) => {
-      state.loginRequest = true;
-      state.loginErrorText = null;
-    });
-    builder.addCase(loginUser.fulfilled, (state) => {
-      state.isAuth = true;
-      state.loginRequest = null;
-    });
-    builder.addCase(loginUser.rejected, (state, action) => {
-      state.loginRequest = null;
-      state.loginError = true;
-      if (action.payload.non_field_errors) {
-        state.loginErrorText = action.payload;
-      }
-    });
-
-    // TODO: Выход пользователя из аккаунта пользователя
-    builder.addCase(logoutUser.pending, (state) => {
-      state.logoutRequest = true;
-    });
-    builder.addCase(logoutUser.fulfilled, (state) => {
-      state.isAuth = false;
-      state.logoutRequest = null;
-    });
-    builder.addCase(logoutUser.rejected, (state) => {
-      state.logoutRequest = null;
-      state.logoutError = true;
     });
 
     // TODO: Подтверждение почты пользователя
@@ -201,7 +111,5 @@ const userAuthSlice = createSlice({
     });
   },
 });
-
-export const { setEmail, resetEmail } = userAuthSlice.actions;
 
 export default userAuthSlice.reducer;
