@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 
-const AuthLayout = () => {
+const AuthLayout: FC = () => {
   return <Outlet />;
 };
 

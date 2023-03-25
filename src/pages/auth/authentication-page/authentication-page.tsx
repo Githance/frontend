@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,7 +9,7 @@ import { loginUser } from '~/services/slice/auth/auth-page-slice';
 import { GoogleBtn, Form } from '../../../components/UI/index';
 import { getLoginErrorText } from '~/services/slice/auth/auth-page-slice';
 
-function AuthenticationPage() {
+const AuthenticationPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginErrorText = useSelector(getLoginErrorText);
@@ -71,6 +72,6 @@ function AuthenticationPage() {
       </div>
     </div>
   );
-}
+};
 
 export default AuthenticationPage;

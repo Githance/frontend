@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import { useDispatch } from '~/services/hooks';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import Loader from '../../../components/UI/loader/loader';
 import style from './google-auth-page.module.css';
 import { loginWithGoogle } from '~/services/slice/auth/auth-page-slice';
 
-function GoogleAuthPage() {
+const GoogleAuthPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchCode] = useSearchParams();
@@ -22,6 +22,6 @@ function GoogleAuthPage() {
       <Loader />
     </div>
   );
-}
+};
 
 export default GoogleAuthPage;
