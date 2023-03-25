@@ -1,16 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../../api/Api';
 
-export const registerUser = createAsyncThunk(
-  'userAuthSlice/registerUser',
-  (userData, { rejectWithValue }) =>
-    api.userRegisterRequest(userData).catch((err) => rejectWithValue(err.response.data)),
-);
-
-export const confirmUserEmail = createAsyncThunk('userAuthSlice/confirmUserEmail', (userEmail) =>
-  api.confirmEmailRequest(userEmail),
-);
-
 export const resetUserPassword = createAsyncThunk(
   'userAuthSlice/resetUserPassword',
   (userEmail, { rejectWithValue }) =>
@@ -30,12 +20,6 @@ export const resendUserEmail = createAsyncThunk('userAuthSlice/resendUserEmail',
 const userAuthSlice = createSlice({
   name: 'userAuth',
   initialState: {
-    registerRequest: null,
-    registerError: null,
-
-    confirmEmailRequest: null,
-    confirmEmailError: null,
-
     resetPasswordRequest: null,
     resetPasswordError: null,
 
@@ -49,31 +33,6 @@ const userAuthSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    // TODO: Регистрация с помощью почты и пароля
-    builder.addCase(registerUser.pending, (state) => {
-      state.registerRequest = true;
-    });
-    builder.addCase(registerUser.fulfilled, (state) => {
-      state.registerRequest = null;
-    });
-    builder.addCase(registerUser.rejected, (state) => {
-      state.registerRequest = null;
-      state.registerError = true;
-    });
-
-    // TODO: Подтверждение почты пользователя
-    builder.addCase(confirmUserEmail.pending, (state) => {
-      state.confirmEmailRequest = true;
-    });
-    builder.addCase(confirmUserEmail.fulfilled, (state) => {
-      state.isAuth = true;
-      state.confirmEmailRequest = null;
-    });
-    builder.addCase(confirmUserEmail.rejected, (state) => {
-      state.confirmEmailRequest = null;
-      state.confirmEmailError = true;
-    });
-
     // TODO: Запрос смены пароля
     builder.addCase(resetUserPassword.pending, (state) => {
       state.resetPasswordRequest = true;

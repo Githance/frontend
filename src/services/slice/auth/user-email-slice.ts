@@ -10,7 +10,7 @@ const initialState: InitialState = {
 };
 
 const userEmailSlice = createSlice({
-  name: 'authPageSLice',
+  name: 'userEmailSlice',
   initialState,
   reducers: {
     setEmail(state, action) {
