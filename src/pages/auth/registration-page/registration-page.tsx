@@ -1,7 +1,4 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-/* eslint-disable react/self-closing-comp */
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
@@ -14,7 +11,8 @@ import {
   TextFieldset,
 } from '../../../components/UI/index';
 import style from './registration-page.module.css';
-import { registerUser, setEmail } from '../../../services/slice/auth/user-auth-slice';
+import { registerUser } from '../../../services/slice/auth/register-page-slice';
+import { setEmail } from '~/services/slice/auth/user-email-slice';
 import oauthSignIn from '../../../utils/google-request';
 
 function RegistrationPage() {
