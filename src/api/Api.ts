@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable lines-between-class-members */
 import axios, { AxiosResponse } from 'axios';
 
 export type LoginType = {
