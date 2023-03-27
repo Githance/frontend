@@ -1,12 +1,10 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable react/jsx-boolean-value */
+import { FC } from 'react';
 import { Button } from '../UI/index';
 import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
 import { MainCard } from '../UI';
 
-export default function CardTable() {
+const CardTable: FC = () => {
   const selectorOptions = [
     { value: 'test', label: 'test' },
     { value: 'test1', label: 'test1' },
@@ -83,4 +81,6 @@ export default function CardTable() {
       </div>
     </section>
   );
-}
+};
+
+export default CardTable;
