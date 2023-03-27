@@ -1,14 +1,14 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '~/services/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form, PasswordFieldset } from '../../../components/UI/index';
 import style from './reset-password-page.module.css';
-import { confirmUserPassword, resetEmail } from '../../../services/slice/auth/user-auth-slice';
+import { confirmUserPassword } from '../../../services/slice/auth/reset-page-slice';
+import { resetEmail } from '~/services/actions';
 import cn from 'classnames';
-function ResetPasswordPage() {
+
+const ResetPasswordPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id, confirmCode } = useParams();
@@ -72,6 +72,6 @@ function ResetPasswordPage() {
       </div>
     </div>
   );
-}
+};
 
 export default ResetPasswordPage;

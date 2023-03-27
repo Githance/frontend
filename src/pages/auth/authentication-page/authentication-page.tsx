@@ -7,7 +7,7 @@ import style from './authentication-page.module.css';
 import oauthSignIn from '../../../utils/google-request';
 import { loginUser } from '~/services/slice/auth/auth-page-slice';
 import { GoogleBtn, Form } from '../../../components/UI/index';
-import { getLoginErrorText } from '~/services/slice/auth/auth-page-slice';
+import { getLoginErrorText } from '~/services/selectors';
 
 const AuthenticationPage: FC = () => {
   const dispatch = useDispatch();

@@ -9,11 +9,11 @@ import {
   GoogleBtn,
   PasswordFieldset,
   TextFieldset,
-} from '../../../components/UI/index';
+} from '~/components/UI/index';
 import style from './registration-page.module.css';
-import { registerUser } from '../../../services/slice/auth/register-page-slice';
-import { setEmail } from '~/services/slice/auth/user-email-slice';
-import oauthSignIn from '../../../utils/google-request';
+import { registerUser } from '~/services/slice/auth/register-page-slice';
+import { setEmail } from '~/services/actions';
+import oauthSignIn from '~/utils/google-request';
 
 function RegistrationPage() {
   const dispatch = useDispatch();
@@ -42,12 +42,14 @@ function RegistrationPage() {
       .unwrap()
       .then(() => navigate('/auth/mail/resend-register'))
       .catch((err) => {
-        for (const key in err) {
+        console.log(err);
+
+        /* for (const key in err) {
           setError(key, {
             type: 'server',
             message: err[key],
           });
-        }
+        } */
       });
   });
 

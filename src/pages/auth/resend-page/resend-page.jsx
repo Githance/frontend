@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resendUserEmail } from '../../../services/slice/auth/user-auth-slice';
-import { resetUserPassword } from '../../../services/slice/auth/user-auth-slice';
+import { resendUserEmail } from '../../../services/slice/auth/reset-page-slice';
+import { resetUserPassword } from '../../../services/slice/auth/reset-page-slice';
 import { getUserEmail } from '../../../services/selectors';
 import TimerToSubmit from '../../../components/timer-to-submit/timer-to-submit';
 import style from './resend-page.module.css';

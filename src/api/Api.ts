@@ -17,10 +17,10 @@ export type ResetPasswordType = {
 };
 
 export type ConfirmPasswordType = {
-  new_password1: string;
-  new_password2: string;
-  uid: string;
-  token: string;
+  new_password1: string | undefined;
+  new_password2: string | undefined;
+  uid: string | undefined;
+  token: string | undefined;
 };
 
 export type ConfirmEmailType = {

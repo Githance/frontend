@@ -3,7 +3,7 @@ import { useDispatch } from '~/services/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Button, EmailFieldset, Form } from '../../../components/UI/index';
 import style from './forgot-password-page.module.css';
-import { resetUserPassword } from '../../../services/slice/auth/user-auth-slice';
+import { resetUserPassword } from '../../../services/slice/auth/reset-page-slice';
 import { setEmail } from '~/services/slice/auth/user-email-slice';
 
 function ForgotPasswordPage() {
