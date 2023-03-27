@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 function oauthSignIn() {
   // Google's OAuth 2.0 endpoint for requesting an access token
   const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
