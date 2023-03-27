@@ -2,9 +2,9 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from '~/services/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button, Form, PasswordFieldset } from '../../../components/UI/index';
+import { Button, Form, PasswordFieldset } from '~/components/UI/index';
 import style from './reset-password-page.module.css';
-import { confirmUserPassword } from '../../../services/slice/auth/reset-page-slice';
+import { confirmUserPassword } from '~/services/slice/auth/reset-page-slice';
 import { resetEmail } from '~/services/actions';
 import cn from 'classnames';
 
