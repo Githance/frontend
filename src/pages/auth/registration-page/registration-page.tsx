@@ -37,7 +37,7 @@ function RegistrationPage() {
   };
 
   const onSubmit = handleSubmit((data) => {
-    dispatch(setEmail({ email: data.email }));
+    dispatch(setEmail(data.email));
     dispatch(registerUser(data))
       .unwrap()
       .then(() => navigate('/auth/mail/resend-register'))
