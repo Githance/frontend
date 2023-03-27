@@ -29,7 +29,7 @@ function ForgotPasswordPage() {
       .then(() => navigate('/auth/mail/resend-password'))
       .catch((err) => {
         for (const key in err) {
-          setError(`root.${key}`, {
+          setError('email', {
             type: 'server',
             message: err[key],
           });

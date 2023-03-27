@@ -42,10 +42,20 @@ function RegistrationPage() {
       .unwrap()
       .then(() => navigate('/auth/mail/resend-register'))
       .catch((err) => {
-        for (const key in err) {
-          setError(`root.${key}`, {
+        if (err?.name) {
+          setError('name', {
             type: 'server',
-            message: err[key],
+            message: err['name'],
+          });
+        } else if (err?.email) {
+          setError('email', {
+            type: 'server',
+            message: err['email'],
+          });
+        } else if (err?.password1) {
+          setError('password1', {
+            type: 'server',
+            message: err['password1'],
           });
         }
       });
