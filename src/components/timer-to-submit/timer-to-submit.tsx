@@ -10,7 +10,6 @@ const TimerToSubmit: FC<Props> = ({ setLink }) => {
   const [timer, setTimer] = useState(60);
 
   useEffect(() => {
-    console.log(timer);
     if (timer > 0) {
       setTimeout(() => {
         setTimer(() => timer - 1);
