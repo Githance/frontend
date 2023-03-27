@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, FC } from 'react';
 import { useDispatch } from '~/services/hooks';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../../../components/UI/loader/loader';
 import style from './verify-email-page.module.css';
 import { confirmUserEmail } from '~/services/slice/auth/register-page-slice';
 
-function VerifyEmailPage() {
+const VerifyEmailPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { confirmCode } = useParams();
@@ -21,6 +21,6 @@ function VerifyEmailPage() {
       <Loader />
     </div>
   );
-}
+};
 
 export default VerifyEmailPage;

@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import style from './success-registration-page.module.css';
 
-function SuccessRegistrationPage() {
+const SuccessRegistrationPage: FC = () => {
   return (
     <div className={style.container}>
       <div className={style.content}>
@@ -15,6 +16,6 @@ function SuccessRegistrationPage() {
       </div>
     </div>
   );
-}
+};
 
 export default SuccessRegistrationPage;
