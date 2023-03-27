@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 function oauthSignIn() {
   // Google's OAuth 2.0 endpoint for requesting an access token
   const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -9,7 +8,7 @@ function oauthSignIn() {
   form.setAttribute('action', oauth2Endpoint);
 
   // Parameters to pass to OAuth 2.0 endpoint.
-  const params = {
+  const params: any = {
     client_id: '1000575426539-46q4dr57cr4hq4v2s648rfqie23ddjs9.apps.googleusercontent.com',
     /* redirect_uri: "http://localhost:3000/auth/google/code/", */
     redirect_uri: 'https://dev.githance.com/auth/google/code/',

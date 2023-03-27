@@ -1,14 +1,16 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { resendUserEmail } from '../../../services/slice/user-auth-slice';
-import { resetUserPassword } from '../../../services/slice/user-auth-slice';
-import { getUserEmail } from '../../../services/selectors/selectors';
+import { useState, FC } from 'react';
+import { useDispatch, useSelector } from '~/services/hooks';
+import { resendUserEmail, resetUserPassword } from '../../../services/slice/auth/reset-page-slice';
+import { getUserEmail } from '../../../services/selectors';
 import TimerToSubmit from '../../../components/timer-to-submit/timer-to-submit';
 import style from './resend-page.module.css';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line react/prop-types
-const ResendPage = ({ base }) => {
+type Props = {
+  base: string;
+};
+
+const ResendPage: FC<Props> = ({ base }) => {
   const dispatch = useDispatch();
   const [link, setLink] = useState(true);
   const userEmail = useSelector(getUserEmail);
@@ -33,7 +35,7 @@ const ResendPage = ({ base }) => {
               отправить запрос ещё раз
             </span>
           ) : (
-            <TimerToSubmit setLink={setLink} />
+            <TimerToSubmit setLink={() => setLink(true)} />
           )}
         </p>
         <Link className={style.button} to="/">

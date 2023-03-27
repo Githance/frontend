@@ -1,7 +1,4 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-/* eslint-disable react/self-closing-comp */
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
@@ -12,10 +9,11 @@ import {
   GoogleBtn,
   PasswordFieldset,
   TextFieldset,
-} from '../../../components/UI/index';
+} from '~/components/UI/index';
 import style from './registration-page.module.css';
-import { registerUser, setEmail } from '../../../services/slice/user-auth-slice';
-import oauthSignIn from '../../../utils/google-request';
+import { registerUser } from '~/services/slice/auth/register-page-slice';
+import { setEmail } from '~/services/actions';
+import oauthSignIn from '~/utils/google-request';
 
 function RegistrationPage() {
   const dispatch = useDispatch();
@@ -39,15 +37,25 @@ function RegistrationPage() {
   };
 
   const onSubmit = handleSubmit((data) => {
-    dispatch(setEmail({ email: data.email }));
+    dispatch(setEmail(data.email));
     dispatch(registerUser(data))
       .unwrap()
       .then(() => navigate('/auth/mail/resend-register'))
       .catch((err) => {
-        for (const key in err) {
-          setError(key, {
+        if (err?.name) {
+          setError('name', {
             type: 'server',
-            message: err[key],
+            message: err['name'],
+          });
+        } else if (err?.email) {
+          setError('email', {
+            type: 'server',
+            message: err['email'],
+          });
+        } else if (err?.password1) {
+          setError('password1', {
+            type: 'server',
+            message: err['password1'],
           });
         }
       });

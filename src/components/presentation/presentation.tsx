@@ -1,9 +1,8 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable react/jsx-boolean-value */
+import { FC } from 'react';
 import { Button } from '../UI/index';
 import style from './presentation.module.css';
 
-export default function Presentation() {
+const Presentation: FC = () => {
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -20,4 +19,6 @@ export default function Presentation() {
       </div>
     </div>
   );
-}
+};
+
+export default Presentation;
