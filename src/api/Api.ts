@@ -12,9 +12,7 @@ export type RegisterType = {
   name: string;
 };
 
-export type ResetPasswordType = {
-  email: string;
-};
+export type ResetPasswordType = string | null;
 
 export type ConfirmPasswordType = {
   new_password1: string;
@@ -25,9 +23,7 @@ export type ConfirmPasswordType = {
 
 export type ConfirmEmailType = string;
 
-export type ResendEmail = {
-  email: string;
-};
+export type ResendEmailType = string | null;
 
 class Api {
   #authAxios;
@@ -82,19 +78,19 @@ class Api {
   }
 
   userResetPasswordRequest(userEmail: ResetPasswordType) {
-    return this.#authAxios.post(this.#resetPassword, userEmail).then(this.checkResponse);
+    return this.#authAxios.post(this.#resetPassword, { email: userEmail }).then(this.checkResponse);
   }
 
   userConfirmPasswordRequest(userData: ConfirmPasswordType) {
     return this.#authAxios.post(this.#confirmNewPassword, userData).then(this.checkResponse);
   }
 
-  confirmEmailRequest(userEmail: ConfirmEmailType) {
-    return this.#authAxios.post(this.#confirmEmail, { key: userEmail }).then(this.checkResponse);
+  confirmEmailRequest(userKey: ConfirmEmailType) {
+    return this.#authAxios.post(this.#confirmEmail, { key: userKey }).then(this.checkResponse);
   }
 
-  resendEmailRequest(userEmail: ResendEmail) {
-    return this.#authAxios.post(this.#resendEmail, userEmail).then(this.checkResponse);
+  resendEmailRequest(userEmail: ResendEmailType) {
+    return this.#authAxios.post(this.#resendEmail, { email: userEmail }).then(this.checkResponse);
   }
 }
 

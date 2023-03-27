@@ -23,8 +23,8 @@ function ForgotPasswordPage() {
   });
 
   const onSubmit = handleSubmit((data) => {
-    dispatch(setEmail(data));
-    dispatch(resetUserPassword(data))
+    dispatch(setEmail(data.email));
+    dispatch(resetUserPassword(data.email))
       .unwrap()
       .then(() => navigate('/auth/mail/resend-password'))
       .catch((err) => {

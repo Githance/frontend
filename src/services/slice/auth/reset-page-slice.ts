@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import api, { ResendEmail, ResetPasswordType, ConfirmPasswordType } from '../../../api/Api';
+import api, { ResendEmailType, ResetPasswordType, ConfirmPasswordType } from '../../../api/Api';
 
 type ResetUserRejectValue = {
   email: string;
@@ -39,7 +39,7 @@ export const resendUserEmail = createAsyncThunk<
   // Return type of the payload creator
   void,
   // First argument to the payload creator
-  ResendEmail
+  ResendEmailType
 >('resetPageSlice/resendUserEmail', (userEmail) => api.resendEmailRequest(userEmail));
 
 type InitialState = {

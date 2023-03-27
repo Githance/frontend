@@ -16,7 +16,7 @@ const TimerToSubmit: FC<Props> = ({ setLink }) => {
         setTimer(() => timer - 1);
       }, 1000);
     } else {
-      setLink(true);
+      setLink();
     }
   }, [timer]);
 
