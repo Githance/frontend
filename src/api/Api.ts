@@ -17,15 +17,13 @@ export type ResetPasswordType = {
 };
 
 export type ConfirmPasswordType = {
-  new_password1: string | undefined;
-  new_password2: string | undefined;
-  uid: string | undefined;
-  token: string | undefined;
+  new_password1: string;
+  new_password2: string;
+  uid?: string;
+  token?: string;
 };
 
-export type ConfirmEmailType = {
-  key: string;
-};
+export type ConfirmEmailType = string;
 
 export type ResendEmail = {
   email: string;
