@@ -38,7 +38,7 @@ const ResetPasswordPage: FC = () => {
       .then(() => navigate('/'))
       .catch((err) => {
         for (const key in err) {
-          setError(key, {
+          setError(`root.${key}`, {
             type: 'server',
             message: err[key],
           });

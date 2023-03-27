@@ -42,14 +42,12 @@ function RegistrationPage() {
       .unwrap()
       .then(() => navigate('/auth/mail/resend-register'))
       .catch((err) => {
-        console.log(err);
-
-        /* for (const key in err) {
-          setError(key, {
+        for (const key in err) {
+          setError(`root.${key}`, {
             type: 'server',
             message: err[key],
           });
-        } */
+        }
       });
   });
 
