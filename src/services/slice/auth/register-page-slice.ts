@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { userIsAuth } from './user-slice';
+import { userIsAuth } from '../../actions';
 import api, { RegisterType, ConfirmEmailType } from '../../../api/Api';
 
 type RegisterRejectValue = {

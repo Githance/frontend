@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { userIsAuth, userNotAuth } from './user-slice';
+import { userIsAuth, userNotAuth } from '../../actions';
 import { RootState } from '~/services';
 import api, { LoginType } from '../../../api/Api';
 import token from '../../../utils/token';
