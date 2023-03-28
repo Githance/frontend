@@ -1,31 +1,14 @@
 import axios, { AxiosResponse } from 'axios';
+import {
+  LoginType,
+  RegisterType,
+  ResetPasswordType,
+  ConfirmPasswordType,
+  ConfirmEmailType,
+  ResendEmailType,
+} from '../api-types';
 
-export type LoginType = {
-  email: string;
-  password: string;
-};
-
-export type RegisterType = {
-  email: string;
-  password1: string;
-  password2?: string;
-  name: string;
-};
-
-export type ResetPasswordType = string | null;
-
-export type ConfirmPasswordType = {
-  new_password1: string;
-  new_password2: string;
-  uid?: string;
-  token?: string;
-};
-
-export type ConfirmEmailType = string;
-
-export type ResendEmailType = string | null;
-
-class Api {
+class Auth {
   private authAxios = axios.create({
     baseURL: 'https://dev.githance.com/api/v1/auth',
   });
@@ -82,4 +65,4 @@ class Api {
   }
 }
 
-export default new Api();
+export default Auth;

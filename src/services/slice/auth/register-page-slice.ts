@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { userIsAuth } from '../../actions';
-import api, { RegisterType, ConfirmEmailType } from '../../../api/Api';
+import { auth } from '~/api';
+import { ConfirmEmailType, RegisterType } from '~/api/api-types';
 
 type RegisterRejectValue = {
   name?: string[] | undefined;
@@ -18,7 +19,7 @@ export const registerUser = createAsyncThunk<
     rejectValue: RegisterRejectValue;
   }
 >('userAuthSlice/registerUser', (userData, { rejectWithValue }) =>
-  api.userRegisterRequest(userData).catch((err) => rejectWithValue(err.response.data)),
+  auth.userRegisterRequest(userData).catch((err) => rejectWithValue(err.response.data)),
 );
 
 export const confirmUserEmail = createAsyncThunk<
@@ -27,7 +28,7 @@ export const confirmUserEmail = createAsyncThunk<
   // First argument to the payload creator
   ConfirmEmailType
 >('userAuthSlice/confirmUserEmail', (userEmail, { dispatch }) => {
-  api.confirmEmailRequest(userEmail);
+  auth.confirmEmailRequest(userEmail);
   dispatch(userIsAuth());
 });
 

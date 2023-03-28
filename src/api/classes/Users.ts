@@ -17,4 +17,4 @@ class Users {
   }
 }
 
-export default new Users();
+export default Users;

@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { userIsAuth, userNotAuth, addUserId } from '../../actions';
 import { RootState } from '~/services';
-import api, { LoginType } from '../../../api/Api';
+import { auth } from '~/api';
+import { LoginType } from '~/api/api-types';
 import token from '../../../utils/token';
 
 export const loginWithGoogle = createAsyncThunk<
@@ -10,7 +11,7 @@ export const loginWithGoogle = createAsyncThunk<
   // First argument to the payload creator
   string
 >('authPageSLice/logiWithGoogle', (googleCode, { dispatch }) =>
-  api.googleAuthRequest(googleCode).then((res) => {
+  auth.googleAuthRequest(googleCode).then((res) => {
     token.setToken('accessToken', res.access_token);
     dispatch(userIsAuth());
   }),
@@ -31,7 +32,7 @@ export const loginUser = createAsyncThunk<
     rejectValue: LoginRejectValue;
   }
 >('authPageSLice/loginUser', (userData, { rejectWithValue, dispatch }) =>
-  api
+  auth
     .userLoginRequest(userData)
     .then((res) => {
       const tokenData = token.parseToken(res.access_token);
@@ -43,7 +44,7 @@ export const loginUser = createAsyncThunk<
 );
 
 export const logoutUser = createAsyncThunk('authPageSLice/logoutUser', (_, { dispatch }) =>
-  api.userLogoutRequest().then(() => {
+  auth.userLogoutRequest().then(() => {
     token.deleteToken('accessToken');
     dispatch(userNotAuth());
   }),
