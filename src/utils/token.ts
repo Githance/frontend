@@ -1,7 +1,20 @@
 class Token {
   parseToken(name: string) {
-    const authToken = name.split('Bearer ')[1];
-    return authToken;
+    const base64Url = name.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split('')
+        .map(function (c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join(''),
+    );
+
+    const token = JSON.parse(jsonPayload);
+    console.log(token);
+    return token;
   }
 
   getToken(name: string) {
