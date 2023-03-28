@@ -22,3 +22,5 @@ export { default as PasswordFieldset } from './form/fieldset/password-fieldset/p
 export { default as TextFieldset } from './form/fieldset/text-fieldset/text-fieldset';
 export { default as ButtonFieldset } from './form/fieldset/button-fieldset/button-fieldset';
 export { default as Agreement } from './form/agreement/agreement';
+export { default as SubmitBtn } from './button/submit-btn/submit-btn';
+export { default as Input } from './input/input';

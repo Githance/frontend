@@ -2,29 +2,39 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
-import { ButtonFieldset, EmailFieldset, PasswordFieldset } from '../../../components/UI/index';
+import {
+  Button,
+  ButtonFieldset,
+  EmailFieldset,
+  Label,
+  PasswordFieldset,
+  SubmitBtn,
+} from '../../../components/UI/index';
 import style from './authentication-page.module.css';
 import oauthSignIn from '../../../utils/google-request';
 import { loginUser } from '~/services/slice/auth/auth-page-slice';
 import { GoogleBtn, Form } from '../../../components/UI/index';
 import { getLoginErrorText } from '~/services/selectors';
+import Input from '../../../components/UI/input/input';
+import PasswordInput from '../../../components/form-inputs/password-input';
+import EmailInput from '../../../components/form-inputs/email-input';
+import cn from 'classnames';
 
 const AuthenticationPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginErrorText = useSelector(getLoginErrorText);
-  const {
-    register,
-    setError,
-    handleSubmit,
-    formState: { errors, dirtyFields, isValid },
-  } = useForm({ mode: 'onChange', defaultValues: { email: '', password: '' } });
+  const { setError, handleSubmit, control, formState } = useForm({
+    mode: 'onChange',
+    defaultValues: { email: '', password: '' },
+  });
 
   const handleGoogleSubmit = () => {
     oauthSignIn();
   };
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = (data: any) => {
+    console.log(data);
     dispatch(loginUser(data))
       .unwrap()
       .then(() => navigate('/'))
@@ -36,31 +46,30 @@ const AuthenticationPage: FC = () => {
           });
         }
       });
-  });
+  };
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Вход</h2>
-        <Form onSubmit={onSubmit} className={style.fieldset__container}>
-          <EmailFieldset
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-          />
-          <PasswordFieldset
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-            isLogginPage={true}
-            htmlFor="password"
-          />
-          <ButtonFieldset isValid={isValid} error={loginErrorText} />
+        <Form onSubmit={handleSubmit(onSubmit)} className={style.fieldset__container}>
+          <fieldset className="--fieldset">
+            <Label>Электронная почта</Label>
+            <EmailInput control={control} name="email" />
+          </fieldset>
+          <fieldset className="--fieldset">
+            <Label>
+              Пароль
+              <Link className={style.link} to="password/reset">
+                Забыли пароль?
+              </Link>
+            </Label>
+            <PasswordInput control={control} name="password" />
+          </fieldset>
+
+          <SubmitBtn isValid={formState.isValid}>войти</SubmitBtn>
         </Form>
+        <p className={cn(style.text, style.or)}>или</p>
         <GoogleBtn onClick={handleGoogleSubmit} />
         <p className={style.text}>
           Нет аккаунта?

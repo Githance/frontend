@@ -34,7 +34,7 @@
   }
 }
 
-.fieldset__container{
+.fieldset__container {
   gap: 25px;
 }
 
@@ -60,7 +60,7 @@
   .title {
     font-size: 28px;
     line-height: 34px;
-    }
+  }
 }
 
 @media screen and (max-width: 488px) {
@@ -112,11 +112,17 @@
   font-size: 18px;
   line-height: 22px;
 }
-
+.or {
+  margin: 0;
+  padding: 12px 0;
+}
 @media screen and (max-width: 488px) {
   .text {
     margin: 30px 0 0;
     font-size: 16px;
     line-height: 20px;
+  }
+  .or {
+    padding: 10px 0;
   }
 }

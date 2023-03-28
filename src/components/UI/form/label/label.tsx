@@ -4,7 +4,7 @@ import style from './label.module.css';
 
 type Props = {
   children: any;
-  htmlFor: string;
+  htmlFor?: string;
   className?: string;
   required?: boolean;
 };

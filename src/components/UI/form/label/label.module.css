@@ -1,5 +1,6 @@
 .label {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
   padding-bottom: 8px;
   color: var(--text-color-black);
   font-weight: 500;
