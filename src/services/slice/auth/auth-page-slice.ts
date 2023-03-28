@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { userIsAuth, userNotAuth } from '../../actions';
+import { userIsAuth, userNotAuth, addUserId } from '../../actions';
 import { RootState } from '~/services';
 import api, { LoginType } from '../../../api/Api';
 import token from '../../../utils/token';
@@ -34,7 +34,9 @@ export const loginUser = createAsyncThunk<
   api
     .userLoginRequest(userData)
     .then((res) => {
+      const tokenData = token.parseToken(res.access_token);
       token.setToken('accessToken', res.access_token);
+      dispatch(addUserId(tokenData.user_id));
       dispatch(userIsAuth());
     })
     .catch((err) => rejectWithValue(err.response.data)),
