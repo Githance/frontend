@@ -7,7 +7,7 @@ import { Input, InputMessage } from '../UI';
 const EmailInput: FC<any> = ({ control, name, placeholder = 'Email' }) => {
   const {
     field,
-    fieldState,
+    fieldState: { invalid, isTouched },
     formState: { errors, dirtyFields, isValid },
   } = useController({
     control,
@@ -20,7 +20,7 @@ const EmailInput: FC<any> = ({ control, name, placeholder = 'Email' }) => {
       }, */
     },
   });
-  console.log(errors);
+
   return (
     <div>
       <Input
@@ -28,7 +28,7 @@ const EmailInput: FC<any> = ({ control, name, placeholder = 'Email' }) => {
         placeholder={placeholder}
         field={field}
         className={cn(
-          fieldState.invalid ? style.input_validation_false : style.input_validation_success,
+          invalid ? style.validation_false : isTouched ? style.validation_success : undefined,
         )}
       />
       {errors?.email?.message && <InputMessage type="error" message={errors?.email?.message} />}

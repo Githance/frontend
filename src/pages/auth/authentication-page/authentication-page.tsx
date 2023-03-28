@@ -17,7 +17,7 @@ const AuthenticationPage: FC = () => {
   const navigate = useNavigate();
   const loginErrorText = useSelector(getLoginErrorText);
   const { setError, handleSubmit, control, formState } = useForm({
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: { email: '', password: '' },
   });
 

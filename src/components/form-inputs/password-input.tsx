@@ -10,14 +10,14 @@ const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password' }) => 
 
   const {
     field,
-    fieldState,
+    fieldState: { invalid, isTouched },
     formState: { errors, dirtyFields, isValid },
   } = useController({
     control,
     name,
     rules: { required: 'Заполни меня', minLength: { value: 8, message: 'Минимум 8 символов' } },
   });
-  console.log(dirtyFields);
+  
   return (
     <div>
       <div className={style.container}>
@@ -26,7 +26,7 @@ const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password' }) => 
           placeholder={placeholder}
           field={field}
           className={cn(
-            fieldState.invalid ? style.input_validation_false : style.input_validation_success,
+            invalid ? style.validation_false : isTouched ? style.validation_success : undefined,
           )}
         />
         <button

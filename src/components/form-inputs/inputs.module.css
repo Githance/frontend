@@ -1,8 +1,8 @@
-.input_validation_success {
+.validation_success {
   border: 1px solid var(--color-input-true);
 }
 
-.input_validation_false {
+.validation_false {
   border: 1px solid var(--color-input-false);
 }
 .container {
