@@ -15,6 +15,10 @@ class Users {
   private checkResponse(res: AxiosResponse) {
     return res.data;
   }
+
+  public getCurrenUserDataRequest(id: number) {
+    return this.usersAxios(this.selectedUser(id)).then(this.checkResponse);
+  }
 }
 
 export default Users;
