@@ -2,20 +2,12 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  Button,
-  ButtonFieldset,
-  EmailFieldset,
-  Label,
-  PasswordFieldset,
-  SubmitBtn,
-} from '../../../components/UI/index';
+import { InputMessage, Label, SubmitBtn } from '../../../components/UI/index';
 import style from './authentication-page.module.css';
 import oauthSignIn from '../../../utils/google-request';
 import { loginUser } from '~/services/slice/auth/auth-page-slice';
 import { GoogleBtn, Form } from '../../../components/UI/index';
 import { getLoginErrorText } from '~/services/selectors';
-import Input from '../../../components/UI/input/input';
 import PasswordInput from '../../../components/form-inputs/password-input';
 import EmailInput from '../../../components/form-inputs/email-input';
 import cn from 'classnames';
@@ -25,7 +17,7 @@ const AuthenticationPage: FC = () => {
   const navigate = useNavigate();
   const loginErrorText = useSelector(getLoginErrorText);
   const { setError, handleSubmit, control, formState } = useForm({
-    mode: 'onChange',
+    mode: 'onBlur',
     defaultValues: { email: '', password: '' },
   });
 
@@ -66,7 +58,9 @@ const AuthenticationPage: FC = () => {
             </Label>
             <PasswordInput control={control} name="password" />
           </fieldset>
-
+          {loginErrorText?.non_field_errors && (
+            <InputMessage type="error" message={loginErrorText?.non_field_errors[0]} />
+          )}
           <SubmitBtn isValid={formState.isValid}>войти</SubmitBtn>
         </Form>
         <p className={cn(style.text, style.or)}>или</p>

@@ -14,10 +14,10 @@ const EmailInput: FC<any> = ({ control, name, placeholder = 'Email' }) => {
     name,
     rules: {
       required: 'Заполни меня',
-      pattern: {
+      /* pattern: {
         value: /^\w+([.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
         message: 'Введите корректный адрес почты',
-      },
+      }, */
     },
   });
   console.log(errors);
