@@ -13,7 +13,7 @@ class Token {
     );
 
     const token = JSON.parse(jsonPayload);
-    console.log(token);
+
     return token;
   }
 
