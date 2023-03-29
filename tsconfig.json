@@ -26,6 +26,6 @@
       "~/*": ["src/*"]
     }
   },
-  "include": ["vite.config.ts", "**/*.ts", "**/*.tsx", "src/components/app/app.jsx", "src/pages/index.ts", "src/components/UI/input/input.tsx"],
+  "include": ["vite.config.ts", "**/*.ts", "**/*.tsx", "src/components/app/app.jsx", "src/pages/index.ts", "src/components/UI/form/input/input.tsx"],
   "exclude": ["node_modules"]
 }

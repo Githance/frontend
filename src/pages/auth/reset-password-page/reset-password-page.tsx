@@ -47,7 +47,7 @@ const ResetPasswordPage: FC = () => {
         <h2 className={style.title}>Новый пароль</h2>
         <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <fieldset className={style.fieldset}>
-            <Label>Пароль</Label>
+            <Label>Введите новый пароль</Label>
             <PasswordInput control={control} name="password" />
           </fieldset>
           <SubmitBtn isValid={formState.isValid}>Сохранить</SubmitBtn>

@@ -19,7 +19,7 @@ const ForgotPasswordPage: FC = () => {
     },
   });
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = (data: any) => {
     dispatch(setEmail(data.email));
     dispatch(resetUserPassword(data.email))
       .unwrap()
@@ -32,13 +32,13 @@ const ForgotPasswordPage: FC = () => {
           });
         }
       });
-  });
+  };
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Забыли пароль?</h2>
-        <Form onSubmit={onSubmit} className={style.form}>
+        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <p className={style.text}>
             Пожалуйста, введите адрес электронной почты, на&nbsp;который мы&nbsp;отправим вам
             инструкцию для восстановления пароля
