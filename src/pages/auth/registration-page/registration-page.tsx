@@ -10,6 +10,7 @@ import PasswordInput from '../../../components/form-inputs/password-input';
 import CommonInput from '../../../components/form-inputs/common-input';
 import cn from 'classnames';
 import { FC } from 'react';
+import { PassValidationScheme } from '~/utils/validation-scheme';
 
 const RegistrationPage: FC = () => {
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const RegistrationPage: FC = () => {
           </fieldset>
           <fieldset className={style.fieldset}>
             <Label required={true}>Пароль</Label>
-            <PasswordInput control={control} name="password1" />
+            <PasswordInput control={control} name="password1" validation={PassValidationScheme} />
           </fieldset>
           <Agreement register={register} className={style.agreement} />
           <SubmitBtn isValid={formState.isValid}>Зарегистрироваться</SubmitBtn>

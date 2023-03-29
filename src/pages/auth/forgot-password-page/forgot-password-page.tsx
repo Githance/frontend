@@ -47,7 +47,7 @@ const ForgotPasswordPage: FC = () => {
             <Label className={style.label}>Электронная почта</Label>
             <CommonInput control={control} name="email" />
           </fieldset>
-          <SubmitBtn isValid={formState.isValid}>отправить</SubmitBtn>
+          <SubmitBtn isValid={formState.isValid}>Отправить</SubmitBtn>
         </Form>
       </div>
     </div>

@@ -3,8 +3,15 @@ import { useController } from 'react-hook-form';
 import style from './inputs.module.css';
 import cn from 'classnames';
 import { InputForm, InputMessage } from '../UI';
+import { RequireValidationScheme } from '../../utils/validation-scheme';
 
-const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password', isLogginPage }) => {
+const PasswordInput: FC<any> = ({
+  control,
+  name,
+  placeholder = 'Password',
+  isLogginPage,
+  validation = RequireValidationScheme,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -14,7 +21,7 @@ const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password', isLog
   } = useController({
     control,
     name,
-    rules: { required: 'Заполни меня', minLength: { value: 8, message: 'Минимум 8 символов' } },
+    rules: validation,
   });
 
   return (

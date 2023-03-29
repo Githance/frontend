@@ -3,8 +3,14 @@ import { useController } from 'react-hook-form';
 import style from './inputs.module.css';
 import cn from 'classnames';
 import { InputForm, InputMessage } from '../UI';
+import { RequireValidationScheme } from '../../utils/validation-scheme';
 
-const CommonInput: FC<any> = ({ control, name, placeholder = 'Email', pattern }) => {
+const CommonInput: FC<any> = ({
+  control,
+  name,
+  placeholder = 'Email',
+  validation = RequireValidationScheme,
+}) => {
   const inputType = name === 'email' ? 'email' : 'text';
   const {
     field,
@@ -13,10 +19,7 @@ const CommonInput: FC<any> = ({ control, name, placeholder = 'Email', pattern })
   } = useController({
     control,
     name,
-    rules: {
-      required: 'Заполни меня',
-      pattern: pattern,
-    },
+    rules: validation,
   });
 
   return (

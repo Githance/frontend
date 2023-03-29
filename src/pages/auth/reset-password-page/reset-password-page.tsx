@@ -7,6 +7,7 @@ import style from './reset-password-page.module.css';
 import { confirmUserPassword } from '~/services/slice/auth/reset-page-slice';
 import { resetEmail } from '~/services/actions';
 import PasswordInput from '../../../components/form-inputs/password-input';
+import { PassValidationScheme } from '~/utils/validation-scheme';
 
 const ResetPasswordPage: FC = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,11 @@ const ResetPasswordPage: FC = () => {
         <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <fieldset className={style.fieldset}>
             <Label>Введите новый пароль</Label>
-            <PasswordInput control={control} name="new_password2" />
+            <PasswordInput
+              control={control}
+              name="new_password2"
+              validation={PassValidationScheme}
+            />
           </fieldset>
           <SubmitBtn isValid={formState.isValid}>Сохранить</SubmitBtn>
         </Form>
