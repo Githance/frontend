@@ -4,7 +4,7 @@ import style from './profile-page-content.module.css';
 import PageInput from '~/components/UI/page-elements/page-input/page-input';
 
 const ProfilePageContent: FC = () => {
-  const { setError, handleSubmit, control, formState } = useForm({
+  const { handleSubmit, control } = useForm({
     mode: 'onChange',
     defaultValues: {
       name: '',
@@ -17,7 +17,7 @@ const ProfilePageContent: FC = () => {
 
   return (
     <form className={style.form}>
-      <PageInput iconSize="medium" inputSize="large" control={control} />
+      <PageInput iconSize="medium" inputSize="large" control={control} name="name" />
     </form>
   );
 };

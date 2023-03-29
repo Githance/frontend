@@ -3,7 +3,7 @@ import cn from 'classnames';
 import style from './page-base-input.module.css';
 
 type Props = {
-  control: any;
+  field: any;
   disabled?: boolean;
   size: 'large' | 'medium' | 'small';
 };
@@ -12,7 +12,7 @@ const PageBaseInput: FC<Props> = ({ ...props }) => {
   return (
     <input
       type="text"
-      {...props.control}
+      {...props.field}
       disabled={props.disabled}
       autoComplete="on"
       className={cn(
