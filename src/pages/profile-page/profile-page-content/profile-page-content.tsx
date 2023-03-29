@@ -9,7 +9,7 @@ const ProfilePageContent: FC = () => {
   const { handleSubmit, control } = useForm({
     mode: 'onChange',
     defaultValues: {
-      name: '',
+      name: 'Имя пользователя',
       telegram: '',
       portfolio_url: '',
       summary_url: '',
