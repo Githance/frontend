@@ -1,13 +1,15 @@
 .label {
   display: flex;
-  position: relative;
-  justify-content: space-between;
   padding-bottom: 8px;
   color: var(--text-color-black);
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
 }
+.tag {
+  color: var(--text-color-red);
+  padding-left: 5px;
+ }
 
 @media screen and (max-width: 488px) {
   .label {
@@ -15,11 +17,4 @@
     font-size: 14px;
     line-height: 17px;
   }
-}
-
-.tag {
-  color: var(--text-color-red);
-  position: absolute;
-  top: 0;
-  right: 0;
 }
