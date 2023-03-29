@@ -28,6 +28,7 @@ const RegistrationPage: FC = () => {
   };
 
   const onSubmit = (data: any) => {
+    console.log(data);
     dispatch(setEmail(data.email));
     dispatch(registerUser(data))
       .unwrap()
@@ -59,7 +60,7 @@ const RegistrationPage: FC = () => {
         <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <fieldset className={style.fieldset}>
             <Label required={true}>Имя пользователя</Label>
-            <CommonInput control={control} name="text" placeholder="Name" />
+            <CommonInput control={control} name="name" placeholder="Name" />
           </fieldset>
           <fieldset className={style.fieldset}>
             <Label required={true}>Электронная почта</Label>
@@ -67,10 +68,10 @@ const RegistrationPage: FC = () => {
           </fieldset>
           <fieldset className={style.fieldset}>
             <Label required={true}>Пароль</Label>
-            <PasswordInput control={control} name="password" />
+            <PasswordInput control={control} name="password1" />
           </fieldset>
           <Agreement register={register} className={style.agreement} />
-          <SubmitBtn isValid={formState.isValid}>зарегистрироваться</SubmitBtn>
+          <SubmitBtn isValid={formState.isValid}>Зарегистрироваться</SubmitBtn>
         </Form>
         <p className={cn(style.text, style.or)}>или</p>
         <GoogleBtn onClick={handleGoogleSubmit} />

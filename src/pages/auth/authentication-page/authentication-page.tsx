@@ -25,7 +25,6 @@ const AuthenticationPage: FC = () => {
   };
 
   const onSubmit = (data: any) => {
-    console.log(data);
     dispatch(loginUser(data))
       .unwrap()
       .then(() => navigate('/'))
@@ -51,7 +50,7 @@ const AuthenticationPage: FC = () => {
           <fieldset className={style.fieldset}>
             <Label>
               Пароль
-              <Link className={style.link} to="password/reset">
+              <Link className={cn(style.link, style.passLink)} to="password/reset">
                 Забыли пароль?
               </Link>
             </Label>
@@ -60,7 +59,7 @@ const AuthenticationPage: FC = () => {
           {loginErrorText?.non_field_errors && (
             <InputMessage type="error" message={loginErrorText?.non_field_errors[0]} />
           )}
-          <SubmitBtn isValid={formState.isValid}>войти</SubmitBtn>
+          <SubmitBtn isValid={formState.isValid}>Войти</SubmitBtn>
         </Form>
         <p className={cn(style.text, style.or)}>или</p>
         <GoogleBtn onClick={handleGoogleSubmit} />

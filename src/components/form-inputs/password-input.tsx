@@ -34,8 +34,8 @@ const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password', isLog
           onClick={() => setShowPassword(!showPassword)}
         ></button>
       </div>
-      {errors?.password?.message ? (
-        <InputMessage type="error" message={errors?.password?.message} />
+      {errors[name]?.message ? (
+        <InputMessage type="error" message={errors[name]?.message} />
       ) : isLogginPage ? undefined : (
         <InputMessage type="warning" message="Минимум 8 символов, должен включать цифры и буквы" />
       )}

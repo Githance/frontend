@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { InputForm, InputMessage } from '../UI';
 
 const CommonInput: FC<any> = ({ control, name, placeholder = 'Email', pattern }) => {
+  const inputType = name === 'email' ? 'email' : 'text';
   const {
     field,
     fieldState: { invalid, isDirty },
@@ -21,7 +22,7 @@ const CommonInput: FC<any> = ({ control, name, placeholder = 'Email', pattern })
   return (
     <div>
       <InputForm
-        type={name}
+        type={inputType}
         placeholder={placeholder}
         field={field}
         className={cn(
