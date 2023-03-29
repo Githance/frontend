@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback, useState } from 'react';
 import cn from 'classnames';
 import style from './page-input.module.css';
 import Button from '../../button/button';
@@ -15,6 +15,13 @@ type Props = {
 };
 
 const PageInput: FC<Props> = ({ control, inputSize, iconSize }) => {
+  const [disabledInput, setDisabledInput] = useState(true);
+
+  const disableInput = useCallback(() => {
+    console.log('change');
+    setDisabledInput((prevValue) => !prevValue);
+  }, []);
+
   return (
     <div
       className={cn(
@@ -24,13 +31,16 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize }) => {
         inputSize === 'small' ? style.pageInput_size_small : undefined,
       )}
     >
-      <PageBaseInput size={inputSize} control={control} />
-      <Button type="button" isValid>
-        <PenIcon size={iconSize} />
-      </Button>
-      <Button type="button" isValid>
-        <CheckIcon size={iconSize} />
-      </Button>
+      <PageBaseInput size={inputSize} control={control} disabled={disabledInput} />
+      {disabledInput ? (
+        <Button type="button" onClick={disableInput} className={style.button} isValid>
+          <PenIcon size={iconSize} />
+        </Button>
+      ) : (
+        <Button type="button" className={style.button} isValid>
+          <CheckIcon size={iconSize} />
+        </Button>
+      )}
     </div>
   );
 };
