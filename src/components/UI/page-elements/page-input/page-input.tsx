@@ -12,9 +12,10 @@ type Props = {
   control?: any;
   inputSize: Size;
   iconSize: Size;
+  className?: string;
 };
 
-const PageInput: FC<Props> = ({ control, inputSize, iconSize }) => {
+const PageInput: FC<Props> = ({ control, inputSize, iconSize, className }) => {
   const [disabledInput, setDisabledInput] = useState(true);
 
   const disableInput = useCallback(() => {
@@ -26,6 +27,7 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize }) => {
     <div
       className={cn(
         style.pageInput,
+        className,
         inputSize === 'large' ? style.pageInput_size_large : undefined,
         inputSize === 'medium' ? style.pageInput_size_medium : undefined,
         inputSize === 'small' ? style.pageInput_size_small : undefined,
