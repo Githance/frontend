@@ -10,6 +10,30 @@
   column-gap: 30px;
 }
 
+.title {
+  margin: 0;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.label {
+  margin: 0;
+  color: var(--text-color-light-grey);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.email {
+  margin: 0;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
 .form__name {
   display: flex;
   flex-direction: column;
@@ -26,4 +50,18 @@
 
 .form__about {
   grid-area: about;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container__item {
+  gap: 10px;
+}
+
+.container__inputs {
+  gap: 5px;
 }
