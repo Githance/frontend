@@ -1,4 +1,4 @@
-.profile {
+/* .profile {
   display: grid;
   grid-template-areas:
     'name name name name name name name name name name name name'
@@ -23,4 +23,4 @@
 
 .profile__about {
   grid-area: about;
-}
+} */

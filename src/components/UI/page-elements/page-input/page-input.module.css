@@ -1,0 +1,18 @@
+.pageInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--border-input-color);
+}
+
+.pageInput_size_large {
+  padding-bottom: 20px;
+}
+
+.pageInput_size_medium {
+  padding-bottom: 10px;
+}
