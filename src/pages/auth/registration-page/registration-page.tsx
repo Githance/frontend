@@ -1,26 +1,17 @@
 import { useDispatch } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import {
-  Agreement,
-  ButtonFieldset,
-  EmailFieldset,
-  Form,
-  GoogleBtn,
-  PasswordFieldset,
-  TextFieldset,
-  InputMessage,
-  Label,
-  SubmitBtn,
-} from '~/components/UI/index';
+import { Agreement, Form, GoogleBtn, Label, SubmitBtn } from '~/components/UI/index';
 import style from './registration-page.module.css';
 import { registerUser } from '~/services/slice/auth/register-page-slice';
 import { setEmail } from '~/services/actions';
 import oauthSignIn from '~/utils/google-request';
 import PasswordInput from '../../../components/form-inputs/password-input';
-import EmailInput from '../../../components/form-inputs/email-input';
+import CommonInput from '../../../components/form-inputs/common-input';
+import cn from 'classnames';
+import { FC } from 'react';
 
-function RegistrationPage() {
+const RegistrationPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, control, setError, handleSubmit, formState } = useForm({
@@ -68,19 +59,18 @@ function RegistrationPage() {
         <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <fieldset className={style.fieldset}>
             <Label>Имя пользователя</Label>
-            <EmailInput control={control} name="text" />
+            <CommonInput control={control} name="text" placeholder="Name" />
           </fieldset>
           <fieldset className={style.fieldset}>
             <Label>Электронная почта</Label>
-            <EmailInput control={control} name="email" />
+            <CommonInput control={control} name="email" />
           </fieldset>
           <fieldset className={style.fieldset}>
             <Label>Пароль</Label>
             <PasswordInput control={control} name="password" />
           </fieldset>
-
           <Agreement register={register} className={style.agreement} />
-          <SubmitBtn isValid={formState.isValid}>войти</SubmitBtn>
+          <SubmitBtn isValid={formState.isValid}>зарегистрироваться</SubmitBtn>
         </Form>
         <p className={cn(style.text, style.or)}>или</p>
         <GoogleBtn onClick={handleGoogleSubmit} />
@@ -93,6 +83,6 @@ function RegistrationPage() {
       </div>
     </div>
   );
-}
+};
 
 export default RegistrationPage;

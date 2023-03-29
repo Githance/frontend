@@ -4,7 +4,7 @@ import style from './inputs.module.css';
 import cn from 'classnames';
 import { Input, InputMessage } from '../UI';
 
-const EmailInput: FC<any> = ({ control, name, placeholder = 'Email', pattern }) => {
+const CommonInput: FC<any> = ({ control, name, placeholder = 'Email', pattern }) => {
   const {
     field,
     fieldState: { invalid, isDirty },
@@ -33,4 +33,4 @@ const EmailInput: FC<any> = ({ control, name, placeholder = 'Email', pattern }) 
   );
 };
 
-export default EmailInput;
+export default CommonInput;

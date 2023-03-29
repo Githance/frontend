@@ -8,7 +8,7 @@ import { loginUser } from '~/services/slice/auth/auth-page-slice';
 import { GoogleBtn, Form, InputMessage, Label, SubmitBtn } from '../../../components/UI/index';
 import { getLoginErrorText } from '~/services/selectors';
 import PasswordInput from '../../../components/form-inputs/password-input';
-import EmailInput from '../../../components/form-inputs/email-input';
+import CommonInput from '../../../components/form-inputs/common-input';
 import cn from 'classnames';
 
 const AuthenticationPage: FC = () => {
@@ -46,7 +46,7 @@ const AuthenticationPage: FC = () => {
         <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <fieldset className={style.fieldset}>
             <Label>Электронная почта</Label>
-            <EmailInput control={control} name="email" />
+            <CommonInput control={control} name="email" />
           </fieldset>
           <fieldset className={style.fieldset}>
             <Label>
@@ -55,7 +55,7 @@ const AuthenticationPage: FC = () => {
                 Забыли пароль?
               </Link>
             </Label>
-            <PasswordInput control={control} name="password" />
+            <PasswordInput control={control} name="password" isLogginPage={true} />
           </fieldset>
           {loginErrorText?.non_field_errors && (
             <InputMessage type="error" message={loginErrorText?.non_field_errors[0]} />

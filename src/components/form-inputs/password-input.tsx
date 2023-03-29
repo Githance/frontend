@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { Input, InputMessage } from '../UI';
 import { Link } from 'react-router-dom';
 
-const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password' }) => {
+const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password', isLogginPage }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -35,8 +35,10 @@ const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password' }) => 
           onClick={() => setShowPassword(!showPassword)}
         ></button>
       </div>
-      {errors?.password?.message && (
+      {errors?.password?.message ? (
         <InputMessage type="error" message={errors?.password?.message} />
+      ) : isLogginPage ? undefined : (
+        <InputMessage type="warning" message="Минимум 8 символов, должен включать цифры и буквы" />
       )}
     </div>
   );
