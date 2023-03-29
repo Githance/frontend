@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from '~/services/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -14,7 +14,7 @@ const ResetPasswordPage: FC = () => {
   const navigate = useNavigate();
   const { id, confirmCode } = useParams();
 
-  const { control, setError, handleSubmit, formState } = useForm({
+  const { control, setError, handleSubmit, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
       new_password2: '',
@@ -41,7 +41,9 @@ const ResetPasswordPage: FC = () => {
         }
       });
   };
-
+  useEffect(() => {
+    setFocus('new_password2');
+  }, [setFocus]);
   return (
     <div className={style.container}>
       <div className={style.content}>

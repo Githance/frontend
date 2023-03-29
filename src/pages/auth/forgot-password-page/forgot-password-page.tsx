@@ -6,13 +6,13 @@ import CommonInput from '../../../components/form-inputs/common-input';
 import style from './forgot-password-page.module.css';
 import { resetUserPassword } from '../../../services/slice/auth/reset-page-slice';
 import { setEmail } from '~/services/slice/auth/user-email-slice';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 const ForgotPasswordPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { setError, handleSubmit, formState, control } = useForm({
+  const { setError, handleSubmit, formState, control, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
       email: '',
@@ -33,7 +33,9 @@ const ForgotPasswordPage: FC = () => {
         }
       });
   };
-
+  useEffect(() => {
+    setFocus('email');
+  }, [setFocus]);
   return (
     <div className={style.container}>
       <div className={style.content}>

@@ -9,13 +9,13 @@ import oauthSignIn from '~/utils/google-request';
 import PasswordInput from '../../../components/form-inputs/password-input';
 import CommonInput from '../../../components/form-inputs/common-input';
 import cn from 'classnames';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { PassValidationScheme } from '~/utils/validation-scheme';
 
 const RegistrationPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { register, control, setError, handleSubmit, formState } = useForm({
+  const { register, control, setError, handleSubmit, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
       name: '',
@@ -53,7 +53,9 @@ const RegistrationPage: FC = () => {
         }
       });
   };
-
+  useEffect(() => {
+    setFocus('name');
+  }, [setFocus]);
   return (
     <div className={style.container}>
       <div className={style.content}>

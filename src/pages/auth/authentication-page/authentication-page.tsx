@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ const AuthenticationPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginErrorText = useSelector(getLoginErrorText);
-  const { setError, handleSubmit, control, formState } = useForm({
+  const { setError, handleSubmit, control, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: { email: '', password: '' },
   });
@@ -37,7 +37,9 @@ const AuthenticationPage: FC = () => {
         }
       });
   };
-
+  useEffect(() => {
+    setFocus('email');
+  }, [setFocus]);
   return (
     <div className={style.container}>
       <div className={style.content}>
