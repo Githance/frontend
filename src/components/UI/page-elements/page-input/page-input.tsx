@@ -13,12 +13,11 @@ type Props = {
   control?: any;
   inputSize: Size;
   iconSize: Size;
-  className?: string;
   name: string;
   rules?: RegisterOptions;
 };
 
-const PageInput: FC<Props> = ({ control, inputSize, iconSize, className, name, rules }) => {
+const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => {
   const [disabledInput, setDisabledInput] = useState(true);
 
   const {
@@ -42,15 +41,7 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, className, name, r
   }, []);
 
   return (
-    <div
-      className={cn(
-        style.pageInput,
-        className,
-        inputSize === 'large' ? style.pageInput_size_large : undefined,
-        inputSize === 'medium' ? style.pageInput_size_medium : undefined,
-        inputSize === 'small' ? style.pageInput_size_small : undefined,
-      )}
-    >
+    <fieldset className={cn(style.pageInput)}>
       <PageBaseInput size={inputSize} field={field} disabled={disabledInput} />
       {disabledInput ? (
         <Button type="button" onClick={disableInput} className={style.button} isValid>
@@ -61,7 +52,7 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, className, name, r
           <CheckIcon size={iconSize} active={isSubmitSuccessful} />
         </Button>
       )}
-    </div>
+    </fieldset>
   );
 };
 
