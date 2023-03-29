@@ -1,9 +1,8 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { useController } from 'react-hook-form';
 import style from './inputs.module.css';
 import cn from 'classnames';
-import { Input, InputMessage } from '../UI';
-import { Link } from 'react-router-dom';
+import { InputForm, InputMessage } from '../UI';
 
 const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password', isLogginPage }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +20,7 @@ const PasswordInput: FC<any> = ({ control, name, placeholder = 'Password', isLog
   return (
     <div>
       <div className={style.container}>
-        <Input
+        <InputForm
           type={showPassword ? 'text' : 'password'}
           placeholder={placeholder}
           field={field}

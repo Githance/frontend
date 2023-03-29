@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { useController } from 'react-hook-form';
 import style from './inputs.module.css';
 import cn from 'classnames';
-import { Input, InputMessage } from '../UI';
+import { InputForm, InputMessage } from '../UI';
 
 const CommonInput: FC<any> = ({ control, name, placeholder = 'Email', pattern }) => {
   const {
@@ -20,7 +20,7 @@ const CommonInput: FC<any> = ({ control, name, placeholder = 'Email', pattern })
 
   return (
     <div>
-      <Input
+      <InputForm
         type={name}
         placeholder={placeholder}
         field={field}
