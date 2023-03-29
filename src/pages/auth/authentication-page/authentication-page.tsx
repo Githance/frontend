@@ -2,11 +2,10 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
-import { InputMessage, Label, SubmitBtn } from '../../../components/UI/index';
 import style from './authentication-page.module.css';
 import oauthSignIn from '../../../utils/google-request';
 import { loginUser } from '~/services/slice/auth/auth-page-slice';
-import { GoogleBtn, Form } from '../../../components/UI/index';
+import { GoogleBtn, Form, InputMessage, Label, SubmitBtn } from '../../../components/UI/index';
 import { getLoginErrorText } from '~/services/selectors';
 import PasswordInput from '../../../components/form-inputs/password-input';
 import EmailInput from '../../../components/form-inputs/email-input';
@@ -44,12 +43,12 @@ const AuthenticationPage: FC = () => {
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Вход</h2>
-        <Form onSubmit={handleSubmit(onSubmit)} className={style.fieldset__container}>
-          <fieldset className="--fieldset">
+        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+          <fieldset className={style.fieldset}>
             <Label>Электронная почта</Label>
             <EmailInput control={control} name="email" />
           </fieldset>
-          <fieldset className="--fieldset">
+          <fieldset className={style.fieldset}>
             <Label>
               Пароль
               <Link className={style.link} to="password/reset">

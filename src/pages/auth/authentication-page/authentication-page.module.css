@@ -3,13 +3,6 @@
   height: 100vh;
   background-color: var(--bg-color-main);
 }
-
-@media screen and (max-width: 488px) {
-  .container {
-    background-color: var(--bg-color-form);
-  }
-}
-
 .content {
   position: fixed;
   top: 50%;
@@ -21,29 +14,14 @@
   border-radius: 20px;
   transform: translate(-50%, -50%);
 }
-
-@media screen and (max-width: 768px) {
-  .content {
-    padding: 66px;
-  }
-}
-
-@media screen and (max-width: 488px) {
-  .content {
-    padding: 80px;
-  }
-}
-
-.fieldset__container {
+.form {
   gap: 25px;
 }
-
-@media screen and (max-width: 488px) {
-  .fieldset__container {
-    gap: 15px;
-  }
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
 }
-
 .title {
   margin: 0;
   padding-bottom: 40px;
@@ -55,30 +33,6 @@
   text-align: center;
   text-transform: uppercase;
 }
-
-@media screen and (max-width: 768px) {
-  .title {
-    font-size: 28px;
-    line-height: 34px;
-  }
-}
-
-@media screen and (max-width: 488px) {
-  .title {
-    padding-bottom: 15px;
-    font-size: 20px;
-    line-height: 24px;
-  }
-}
-
-.input_validation_success {
-  border: 1px solid var(--color-input-true);
-}
-
-.input_validation_false {
-  border: 1px solid var(--color-input-false);
-}
-
 .link {
   display: inline-block;
   margin-left: 5px;
@@ -88,22 +42,6 @@
   line-height: 22px;
   text-decoration: none;
 }
-
-@media screen and (max-width: 488px) {
-  .link {
-    font-size: 16px;
-    line-height: 20px;
-  }
-}
-
-.link:hover {
-  color: var(--bg-color-button-hover);
-}
-
-.link:active {
-  color: var(--bg-color-button-pressed);
-}
-
 .text {
   display: flex;
   justify-content: center;
@@ -116,7 +54,34 @@
   margin: 0;
   padding: 12px 0;
 }
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 66px;
+  }
+  .title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
 @media screen and (max-width: 488px) {
+  .container {
+    background-color: var(--bg-color-form);
+  }
+  .content {
+    padding: 80px;
+  }
+  .form {
+    gap: 15px;
+  }
+  .title {
+    padding-bottom: 15px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .link {
+    font-size: 16px;
+    line-height: 20px;
+  }
   .text {
     margin: 30px 0 0;
     font-size: 16px;
@@ -125,4 +90,20 @@
   .or {
     padding: 10px 0;
   }
+}
+
+.input_validation_success {
+  border: 1px solid var(--color-input-true);
+}
+
+.input_validation_false {
+  border: 1px solid var(--color-input-false);
+}
+
+.link:hover {
+  color: var(--bg-color-button-hover);
+}
+
+.link:active {
+  color: var(--bg-color-button-pressed);
 }

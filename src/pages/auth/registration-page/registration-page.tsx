@@ -9,21 +9,21 @@ import {
   GoogleBtn,
   PasswordFieldset,
   TextFieldset,
+  InputMessage,
+  Label,
+  SubmitBtn,
 } from '~/components/UI/index';
 import style from './registration-page.module.css';
 import { registerUser } from '~/services/slice/auth/register-page-slice';
 import { setEmail } from '~/services/actions';
 import oauthSignIn from '~/utils/google-request';
+import PasswordInput from '../../../components/form-inputs/password-input';
+import EmailInput from '../../../components/form-inputs/email-input';
 
 function RegistrationPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    register,
-    setError,
-    handleSubmit,
-    formState: { errors, dirtyFields, isValid },
-  } = useForm({
+  const { register, control, setError, handleSubmit, formState } = useForm({
     mode: 'onChange',
     defaultValues: {
       name: '',
@@ -36,7 +36,7 @@ function RegistrationPage() {
     oauthSignIn();
   };
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = (data: any) => {
     dispatch(setEmail(data.email));
     dispatch(registerUser(data))
       .unwrap()
@@ -59,42 +59,33 @@ function RegistrationPage() {
           });
         }
       });
-  });
+  };
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Регистрация</h2>
-        <Form onSubmit={onSubmit} className={style.fieldset__container}>
-          <TextFieldset
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-          />
-          <EmailFieldset
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-          />
-          <PasswordFieldset
-            validationSchema={{ minLength: { value: 8, message: 'Минимум 8 символов' } }}
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-            htmlFor="password1"
-          />
+        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+          <fieldset className={style.fieldset}>
+            <Label>Имя пользователя</Label>
+            <EmailInput control={control} name="text" />
+          </fieldset>
+          <fieldset className={style.fieldset}>
+            <Label>Электронная почта</Label>
+            <EmailInput control={control} name="email" />
+          </fieldset>
+          <fieldset className={style.fieldset}>
+            <Label>Пароль</Label>
+            <PasswordInput control={control} name="password" />
+          </fieldset>
+
           <Agreement register={register} className={style.agreement} />
-          <ButtonFieldset isValid={isValid} />
+          <SubmitBtn isValid={formState.isValid}>войти</SubmitBtn>
         </Form>
+        <p className={cn(style.text, style.or)}>или</p>
         <GoogleBtn onClick={handleGoogleSubmit} />
         <p className={style.text}>
-          Уже зарегистрированы?{' '}
+          Уже зарегистрированы?
           <Link className={style.link} to="/auth">
             Войти
           </Link>
