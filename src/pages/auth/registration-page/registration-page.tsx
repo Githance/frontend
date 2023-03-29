@@ -58,15 +58,15 @@ const RegistrationPage: FC = () => {
         <h2 className={style.title}>Регистрация</h2>
         <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
           <fieldset className={style.fieldset}>
-            <Label>Имя пользователя</Label>
+            <Label required={true}>Имя пользователя</Label>
             <CommonInput control={control} name="text" placeholder="Name" />
           </fieldset>
           <fieldset className={style.fieldset}>
-            <Label>Электронная почта</Label>
+            <Label required={true}>Электронная почта</Label>
             <CommonInput control={control} name="email" />
           </fieldset>
           <fieldset className={style.fieldset}>
-            <Label>Пароль</Label>
+            <Label required={true}>Пароль</Label>
             <PasswordInput control={control} name="password" />
           </fieldset>
           <Agreement register={register} className={style.agreement} />
