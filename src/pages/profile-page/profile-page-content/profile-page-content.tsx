@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import style from './profile-page-content.module.css';
 import PageInput from '~/components/UI/page-elements/page-input/page-input';
 import PageLink from '~/components/UI/page-elements/page-link/page-link';
-import Divider from '~/components/UI/divider/divider';
+import { Divider, Button, ArrowRightIcon } from '~/components/UI/index';
 
 const ProfilePageContent: FC = () => {
   const {
@@ -78,6 +78,15 @@ const ProfilePageContent: FC = () => {
         </div>
         <div className={style.container}>
           <p className={style.title}>Управление</p>
+          <div className={cn(style.container, style.container__inputs)}>
+            <Button type="button" className={style.button} isValid>
+              Изменить пароль <ArrowRightIcon size="small" />
+            </Button>
+            <Divider />
+            <Button type="button" className={style.button} isValid>
+              Выйти из профиля <ArrowRightIcon size="small" />
+            </Button>
+          </div>
         </div>
       </div>
     </form>
