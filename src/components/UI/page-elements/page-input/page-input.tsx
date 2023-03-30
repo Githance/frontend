@@ -10,7 +10,6 @@ import CheckIcon from '../../icons/check-icon';
 type Size = 'large' | 'medium' | 'small';
 
 type Props = {
-  setFocus?: any;
   control?: any;
   inputSize: Size;
   iconSize: Size;
@@ -18,7 +17,7 @@ type Props = {
   rules?: RegisterOptions;
 };
 
-const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules, setFocus }) => {
+const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
