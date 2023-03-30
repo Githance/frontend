@@ -24,7 +24,7 @@ const AuthenticationPage: FC = () => {
     oauthSignIn();
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = handleSubmit((data) => {
     dispatch(loginUser(data))
       .unwrap()
       .then(() => navigate('/'))
@@ -36,7 +36,7 @@ const AuthenticationPage: FC = () => {
           });
         }
       });
-  };
+  });
   useEffect(() => {
     setFocus('email');
   }, [setFocus]);
@@ -44,13 +44,13 @@ const AuthenticationPage: FC = () => {
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Вход</h2>
-        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+        <Form onSubmit={onSubmit} className={style.form}>
           <fieldset className={style.fieldset}>
-            <Label>Электронная почта</Label>
+            <Label htmlFor="email">Электронная почта</Label>
             <CommonInput control={control} name="email" />
           </fieldset>
           <fieldset className={style.fieldset}>
-            <Label>
+            <Label htmlFor="password">
               Пароль
               <Link className={cn(style.link, style.passLink)} to="password/reset">
                 Забыли пароль?

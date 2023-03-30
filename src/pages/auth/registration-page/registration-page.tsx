@@ -28,7 +28,7 @@ const RegistrationPage: FC = () => {
     oauthSignIn();
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = handleSubmit((data) => {
     console.log(data);
     dispatch(setEmail(data.email));
     dispatch(registerUser(data))
@@ -52,7 +52,7 @@ const RegistrationPage: FC = () => {
           });
         }
       });
-  };
+  });
   useEffect(() => {
     setFocus('name');
   }, [setFocus]);
@@ -60,17 +60,23 @@ const RegistrationPage: FC = () => {
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Регистрация</h2>
-        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+        <Form onSubmit={onSubmit} className={style.form}>
           <fieldset className={style.fieldset}>
-            <Label required={true}>Имя пользователя</Label>
+            <Label required={true} htmlFor="name">
+              Имя пользователя
+            </Label>
             <CommonInput control={control} name="name" placeholder="Name" />
           </fieldset>
           <fieldset className={style.fieldset}>
-            <Label required={true}>Электронная почта</Label>
+            <Label required={true} htmlFor="email">
+              Электронная почта
+            </Label>
             <CommonInput control={control} name="email" />
           </fieldset>
           <fieldset className={style.fieldset}>
-            <Label required={true}>Пароль</Label>
+            <Label required={true} htmlFor="password1">
+              Пароль
+            </Label>
             <PasswordInput control={control} name="password1" validation={PassValidationScheme} />
           </fieldset>
           <Agreement register={register} className={style.agreement} />
