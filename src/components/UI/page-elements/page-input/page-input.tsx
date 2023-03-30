@@ -19,38 +19,56 @@ type Props = {
 
 const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => {
   const [disabledInput, setDisabledInput] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
   const {
     field,
-    formState: { isSubmitSuccessful },
+    formState: { isSubmitSuccessful, isSubmitting },
   } = useController({
     control,
     name,
     rules: rules,
   });
 
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      disableInput();
+  const checkButtonActivity = async () => {
+    /* console.log('isSubmitting'); */
+    if (isSubmitting) {
+      await setTimeout(() => {
+        setIsActive(true);
+      }, 2000);
     }
-  }, [isSubmitSuccessful]);
 
-  const disableInput = useCallback(() => {
-    console.log('change');
-    setDisabledInput((prevValue) => !prevValue);
-  }, []);
+    if (isSubmitSuccessful) {
+      /* console.log('isSubmitSuccessful'); */
+      await setTimeout(() => {
+        setIsActive(false);
+        setDisabledInput(true);
+      }, 3000);
+    }
+  };
+
+  console.log(isSubmitting, isSubmitSuccessful);
+
+  useEffect(() => {
+    checkButtonActivity();
+  }, [isSubmitting, isSubmitSuccessful]);
 
   return (
     <fieldset className={cn(style.pageInput)}>
       <PageBaseInput size={inputSize} field={field} disabled={disabledInput} />
       {disabledInput ? (
-        <Button type="button" onClick={disableInput} className={style.button} isValid>
+        <Button
+          type="button"
+          onClick={() => setDisabledInput(false)}
+          className={style.button}
+          isValid
+        >
           <PenIcon size={iconSize} />
         </Button>
       ) : (
-        <Button type="button" className={style.button} isValid>
-          <CheckIcon size={iconSize} active={isSubmitSuccessful} />
-        </Button>
+        <button type="submit" className={style.button}>
+          <CheckIcon size={iconSize} active={isActive} />
+        </button>
       )}
     </fieldset>
   );

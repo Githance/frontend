@@ -6,10 +6,15 @@ import PageInput from '~/components/UI/page-elements/page-input/page-input';
 import Divider from '~/components/UI/divider/divider';
 
 const ProfilePageContent: FC = () => {
-  const { handleSubmit, control } = useForm({
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { touchedFields },
+  } = useForm({
     mode: 'onChange',
     defaultValues: {
-      name: '',
+      name: 'Имя пользователя',
       telegram: '',
       portfolio_url: '',
       summary_url: '',
@@ -17,8 +22,17 @@ const ProfilePageContent: FC = () => {
     },
   });
 
+  // Возможно стоит подумать над использованием touchedFields,
+  // для выбора только измененных полей для отправки.
+  // touchedFields возвращает объект с именем поля и значением boolean
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+    reset();
+  });
+
   return (
-    <form className={style.form}>
+    <form className={style.form} onSubmit={onSubmit}>
       <div className={style.form__name}>
         <PageInput iconSize="medium" inputSize="large" control={control} name="name" />
         <Divider />
