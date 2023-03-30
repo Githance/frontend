@@ -35,7 +35,7 @@ const ProfilePageContent: FC = () => {
   });
 
   const focusCurrentInput = (name: Name) => {
-    setFocus(`${name}`);
+    setFocus(name);
   };
 
   return (
