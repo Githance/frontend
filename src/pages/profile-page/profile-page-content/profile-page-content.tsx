@@ -4,15 +4,11 @@ import { useForm } from 'react-hook-form';
 import style from './profile-page-content.module.css';
 import PageInput from '~/components/UI/page-elements/page-input/page-input';
 import PageLink from '~/components/UI/page-elements/page-link/page-link';
-import { Divider, Button, ArrowRightIcon } from '~/components/UI/index';
+import PageBaseTextarea from '~/components/UI/page-elements/page-base-elements/page-base-textarea/page-base-textarea';
+import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/index';
 
 const ProfilePageContent: FC = () => {
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { touchedFields },
-  } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     mode: 'onChange',
     defaultValues: {
       name: 'name',
@@ -88,6 +84,11 @@ const ProfilePageContent: FC = () => {
             </Button>
           </div>
         </div>
+      </div>
+      <div className={style.form__about}>
+        <p className={style.title}>О&nbsp;себе (максимум 1000&nbsp;символов)</p>
+        <PageBaseTextarea name="bio" control={control} className={style.textarea} />
+        <SubmitBtn className={style.submit}>Сохранить</SubmitBtn>
       </div>
     </form>
   );

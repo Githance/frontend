@@ -49,7 +49,10 @@
 }
 
 .form__about {
+  display: flex;
+  flex-direction: column;
   grid-area: about;
+  gap: 30px;
 }
 
 .container {
@@ -77,4 +80,12 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.textarea {
+  height: 540px;
+}
+
+.submit {
+  width: 348px;
 }
