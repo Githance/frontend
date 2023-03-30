@@ -1,4 +1,4 @@
-import { FC, useCallback, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useController, RegisterOptions } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
@@ -10,6 +10,7 @@ import CheckIcon from '../../icons/check-icon';
 type Size = 'large' | 'medium' | 'small';
 
 type Props = {
+  setFocus?: any;
   control?: any;
   inputSize: Size;
   iconSize: Size;
@@ -17,7 +18,7 @@ type Props = {
   rules?: RegisterOptions;
 };
 
-const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => {
+const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules, setFocus }) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
@@ -44,6 +45,12 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => 
       }, 3000);
     }
   };
+
+  useEffect(() => {
+    if (!disabledInput) {
+      setFocus && setFocus(name);
+    }
+  }, [disabledInput]);
 
   useEffect(() => {
     checkButtonActivity();
