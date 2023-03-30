@@ -3,8 +3,8 @@ import cn from 'classnames';
 import style from './input-message.module.css';
 
 type Props = {
-  type?: 'error' | 'warning';
-  message?: string | string[];
+  type: 'error' | 'warning';
+  message?: any;
   className?: string;
 };
 

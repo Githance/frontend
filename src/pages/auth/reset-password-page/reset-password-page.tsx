@@ -1,31 +1,27 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from '~/services/hooks';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button, Form, PasswordFieldset } from '~/components/UI/index';
+import { Form, Label, SubmitBtn } from '~/components/UI/index';
 import style from './reset-password-page.module.css';
 import { confirmUserPassword } from '~/services/slice/auth/reset-page-slice';
 import { resetEmail } from '~/services/actions';
-import cn from 'classnames';
+import PasswordInput from '../../../components/form-inputs/password-input';
+import { PassValidationScheme } from '~/utils/validation-scheme';
 
 const ResetPasswordPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id, confirmCode } = useParams();
 
-  const {
-    register,
-    setError,
-    handleSubmit,
-    formState: { errors, dirtyFields, isValid },
-  } = useForm({
+  const { control, setError, handleSubmit, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
       new_password2: '',
     },
   });
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = (data: any) => {
     const userData = {
       new_password1: data.new_password2,
       new_password2: data.new_password2,
@@ -44,30 +40,24 @@ const ResetPasswordPage: FC = () => {
           });
         }
       });
-  });
-
+  };
+  useEffect(() => {
+    setFocus('new_password2');
+  }, [setFocus]);
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Новый пароль</h2>
-        <Form onSubmit={onSubmit}>
-          <PasswordFieldset
-            validationSchema={{ minLength: { value: 8, message: 'Минимум 8 символов' } }}
-            label="Введите новый пароль"
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-            htmlFor={'new_password2'}
-          />
-          <Button
-            className={cn(style.button, isValid ? style.button__main : style.button__main_noValid)}
-            type="submit"
-            isValid={isValid}
-          >
-            Сохранить
-          </Button>
+        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+          <fieldset className={style.fieldset}>
+            <Label>Введите новый пароль</Label>
+            <PasswordInput
+              control={control}
+              name="new_password2"
+              validation={PassValidationScheme}
+            />
+          </fieldset>
+          <SubmitBtn isValid={formState.isValid}>Сохранить</SubmitBtn>
         </Form>
       </div>
     </div>

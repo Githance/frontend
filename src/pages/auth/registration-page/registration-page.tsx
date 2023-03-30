@@ -1,29 +1,21 @@
 import { useDispatch } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import {
-  Agreement,
-  ButtonFieldset,
-  EmailFieldset,
-  Form,
-  GoogleBtn,
-  PasswordFieldset,
-  TextFieldset,
-} from '~/components/UI/index';
+import { Agreement, Form, GoogleBtn, Label, SubmitBtn } from '~/components/UI/index';
 import style from './registration-page.module.css';
 import { registerUser } from '~/services/slice/auth/register-page-slice';
 import { setEmail } from '~/services/actions';
 import oauthSignIn from '~/utils/google-request';
+import PasswordInput from '../../../components/form-inputs/password-input';
+import CommonInput from '../../../components/form-inputs/common-input';
+import cn from 'classnames';
+import { FC, useEffect } from 'react';
+import { PassValidationScheme } from '~/utils/validation-scheme';
 
-function RegistrationPage() {
+const RegistrationPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    register,
-    setError,
-    handleSubmit,
-    formState: { errors, dirtyFields, isValid },
-  } = useForm({
+  const { register, control, setError, handleSubmit, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
       name: '',
@@ -36,7 +28,8 @@ function RegistrationPage() {
     oauthSignIn();
   };
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = (data: any) => {
+    console.log(data);
     dispatch(setEmail(data.email));
     dispatch(registerUser(data))
       .unwrap()
@@ -59,42 +52,34 @@ function RegistrationPage() {
           });
         }
       });
-  });
-
+  };
+  useEffect(() => {
+    setFocus('name');
+  }, [setFocus]);
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Регистрация</h2>
-        <Form onSubmit={onSubmit} className={style.fieldset__container}>
-          <TextFieldset
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-          />
-          <EmailFieldset
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-          />
-          <PasswordFieldset
-            validationSchema={{ minLength: { value: 8, message: 'Минимум 8 символов' } }}
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-            htmlFor="password1"
-          />
+        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+          <fieldset className={style.fieldset}>
+            <Label required={true}>Имя пользователя</Label>
+            <CommonInput control={control} name="name" placeholder="Name" />
+          </fieldset>
+          <fieldset className={style.fieldset}>
+            <Label required={true}>Электронная почта</Label>
+            <CommonInput control={control} name="email" />
+          </fieldset>
+          <fieldset className={style.fieldset}>
+            <Label required={true}>Пароль</Label>
+            <PasswordInput control={control} name="password1" validation={PassValidationScheme} />
+          </fieldset>
           <Agreement register={register} className={style.agreement} />
-          <ButtonFieldset isValid={isValid} />
+          <SubmitBtn isValid={formState.isValid}>Зарегистрироваться</SubmitBtn>
         </Form>
+        <p className={cn(style.text, style.or)}>или</p>
         <GoogleBtn onClick={handleGoogleSubmit} />
         <p className={style.text}>
-          Уже зарегистрированы?{' '}
+          Уже зарегистрированы?
           <Link className={style.link} to="/auth">
             Войти
           </Link>
@@ -102,6 +87,6 @@ function RegistrationPage() {
       </div>
     </div>
   );
-}
+};
 
 export default RegistrationPage;
