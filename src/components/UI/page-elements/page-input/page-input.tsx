@@ -1,4 +1,4 @@
-import { FC, useCallback, useState, useEffect, useRef } from 'react';
+import { FC, useCallback, useState, useEffect } from 'react';
 import { useController, RegisterOptions } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
@@ -19,10 +19,9 @@ type Props = {
 
 const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => {
   const [disabledInput, setDisabledInput] = useState(true);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const {
-    field: { name: filedName, onBlur, onChange, ref, value },
+    field,
     formState: { isSubmitSuccessful },
   } = useController({
     control,
@@ -30,43 +29,20 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => 
     rules: rules,
   });
 
-  /* ref(inputRef); */
-
-  const disableInput = useCallback(() => {
-    console.log('changeInput');
-    setDisabledInput((prevValue) => !prevValue);
-  }, []);
-
   useEffect(() => {
     if (isSubmitSuccessful) {
       disableInput();
     }
   }, [isSubmitSuccessful]);
 
-  useEffect(() => {
-    if (!disabledInput && inputRef && inputRef.current) {
-      console.log('focusInput');
-      inputRef.current.focus();
-    }
-  }, [disabledInput]);
-
-  const handleOnBlur = useCallback(() => {
-    console.log('onBlurInput');
-    onBlur();
-    disableInput();
+  const disableInput = useCallback(() => {
+    console.log('change');
+    setDisabledInput((prevValue) => !prevValue);
   }, []);
 
   return (
     <fieldset className={cn(style.pageInput)}>
-      <PageBaseInput
-        ref={inputRef}
-        size={inputSize}
-        name={filedName}
-        value={value}
-        onChange={onChange}
-        onBlur={handleOnBlur}
-        disabled={disabledInput}
-      />
+      <PageBaseInput size={inputSize} field={field} disabled={disabledInput} />
       {disabledInput ? (
         <Button type="button" onClick={disableInput} className={style.button} isValid>
           <PenIcon size={iconSize} />
