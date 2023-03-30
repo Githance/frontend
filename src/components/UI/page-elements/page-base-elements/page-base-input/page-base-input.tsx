@@ -20,6 +20,9 @@ const PageBaseInput: FC<Props> = ({ ...props }) => {
     }
   }, [props.disabled]);
 
+  /* TODO Необходимо подумать над реализацией функции onBlur, сейчас работает 
+не слишком очевидно. Лучше реализовать через проверку данных и отправку только измененных полей */
+
   return (
     <input
       type="text"
@@ -28,7 +31,7 @@ const PageBaseInput: FC<Props> = ({ ...props }) => {
         ref(e);
         firstNameRef.current = e;
       }}
-      onBlur={() => props.setDisable()}
+      /* onBlur={() => props.setDisable()} */
       disabled={props.disabled}
       autoComplete="on"
       className={cn(

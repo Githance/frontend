@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { useForm } from 'react-hook-form';
 import style from './profile-page-content.module.css';
 import PageInput from '~/components/UI/page-elements/page-input/page-input';
+import PageLink from '~/components/UI/page-elements/page-link/page-link';
 import Divider from '~/components/UI/divider/divider';
 
 const ProfilePageContent: FC = () => {
@@ -14,11 +15,11 @@ const ProfilePageContent: FC = () => {
   } = useForm({
     mode: 'onChange',
     defaultValues: {
-      name: 'Имя пользователя',
-      telegram: '@name',
-      portfolio_url: '',
-      summary_url: '',
-      bio: '',
+      name: 'name',
+      telegram: '@telegram',
+      portfolio_url: 'portfolio_url',
+      summary_url: 'summary_url',
+      bio: 'bio',
     },
   });
 
@@ -55,6 +56,25 @@ const ProfilePageContent: FC = () => {
         </div>
         <div className={style.container}>
           <p className={style.title}>Ссылки</p>
+          <div className={cn(style.container, style.container__item)}>
+            <div className={cn(style.container, style.container__inputs)}>
+              <PageLink
+                iconSize="small"
+                inputSize="medium"
+                control={control}
+                name="portfolio_url"
+                linkName="Портфолио"
+              />
+              <Divider />
+              <PageLink
+                iconSize="small"
+                inputSize="medium"
+                control={control}
+                name="summary_url"
+                linkName="Резюме"
+              />
+            </div>
+          </div>
         </div>
         <div className={style.container}>
           <p className={style.title}>Управление</p>

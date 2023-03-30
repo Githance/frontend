@@ -2,10 +2,8 @@ import { FC, useState, useEffect } from 'react';
 import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
-import Button from '../../button/button';
 import PageBaseInput from '../page-base-elements/page-base-input/page-base-input';
-import PenIcon from '../../icons/pen-icon';
-import CheckIcon from '../../icons/check-icon';
+import { PenIcon, Button, CheckIcon } from '~/components/UI/index';
 
 type Size = 'large' | 'medium' | 'small';
 
