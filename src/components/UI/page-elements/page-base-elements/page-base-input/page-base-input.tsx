@@ -1,18 +1,34 @@
-import { FC } from 'react';
+import { FC, useRef, useEffect } from 'react';
+import { ControllerRenderProps } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-base-input.module.css';
 
 type Props = {
-  field: any;
+  field: ControllerRenderProps;
+  setDisable: () => void;
   disabled?: boolean;
   size: 'large' | 'medium' | 'small';
 };
 
 const PageBaseInput: FC<Props> = ({ ...props }) => {
+  const firstNameRef = useRef<HTMLInputElement | null>(null);
+  const { ref, ...rest } = props.field;
+
+  useEffect(() => {
+    if (!props.disabled) {
+      firstNameRef.current?.focus();
+    }
+  }, [props.disabled]);
+
   return (
     <input
       type="text"
-      {...props.field}
+      {...rest}
+      ref={(e) => {
+        ref(e);
+        firstNameRef.current = e; // you can still assign to ref
+      }}
+      onBlur={() => props.setDisable()}
       disabled={props.disabled}
       autoComplete="on"
       className={cn(

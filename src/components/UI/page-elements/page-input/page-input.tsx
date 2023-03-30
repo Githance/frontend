@@ -46,11 +46,9 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules, setFo
     }
   };
 
-  useEffect(() => {
-    if (!disabledInput) {
-      setFocus && setFocus(name);
-    }
-  }, [disabledInput]);
+  const setDisable = () => {
+    setDisabledInput(true);
+  };
 
   useEffect(() => {
     checkButtonActivity();
@@ -58,7 +56,12 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules, setFo
 
   return (
     <fieldset className={cn(style.pageInput)}>
-      <PageBaseInput size={inputSize} field={field} disabled={disabledInput} />
+      <PageBaseInput
+        size={inputSize}
+        field={field}
+        disabled={disabledInput}
+        setDisable={setDisable}
+      />
       {disabledInput ? (
         <Button
           type="button"
