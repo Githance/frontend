@@ -31,7 +31,6 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => 
   });
 
   const checkButtonActivity = async () => {
-    /* console.log('isSubmitting'); */
     if (isSubmitting) {
       await setTimeout(() => {
         setIsActive(true);
@@ -39,15 +38,12 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, rules }) => 
     }
 
     if (isSubmitSuccessful) {
-      /* console.log('isSubmitSuccessful'); */
       await setTimeout(() => {
         setIsActive(false);
         setDisabledInput(true);
       }, 3000);
     }
   };
-
-  console.log(isSubmitting, isSubmitSuccessful);
 
   useEffect(() => {
     checkButtonActivity();
