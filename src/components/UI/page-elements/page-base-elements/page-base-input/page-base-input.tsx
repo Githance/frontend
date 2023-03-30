@@ -26,7 +26,7 @@ const PageBaseInput: FC<Props> = ({ ...props }) => {
       {...rest}
       ref={(e) => {
         ref(e);
-        firstNameRef.current = e; // you can still assign to ref
+        firstNameRef.current = e;
       }}
       onBlur={() => props.setDisable()}
       disabled={props.disabled}
