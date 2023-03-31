@@ -1,21 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from '~/services/hooks';
 import { useNavigate } from 'react-router-dom';
-import { Button, EmailFieldset, Form } from '../../../components/UI/index';
+import { Form, Label, SubmitBtn } from '../../../components/UI/index';
+import CommonInput from '../../../components/form-inputs/common-input';
 import style from './forgot-password-page.module.css';
 import { resetUserPassword } from '../../../services/slice/auth/reset-page-slice';
 import { setEmail } from '~/services/slice/auth/user-email-slice';
+import { FC, useEffect } from 'react';
 
-function ForgotPasswordPage() {
+const ForgotPasswordPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {
-    register,
-    setError,
-    handleSubmit,
-    formState: { errors, dirtyFields, isValid },
-  } = useForm({
+  const { setError, handleSubmit, formState, control, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
       email: '',
@@ -36,36 +33,29 @@ function ForgotPasswordPage() {
         }
       });
   });
-
+  useEffect(() => {
+    setFocus('email');
+  }, [setFocus]);
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Забыли пароль?</h2>
-        <p className={style.text}>
-          Пожалуйста, введите адрес электронной почты, на&nbsp;который мы&nbsp;отправим вам
-          инструкцию для восстановления пароля
-        </p>
-        <Form onSubmit={onSubmit}>
-          <EmailFieldset
-            register={register}
-            dirtyFields={dirtyFields}
-            errors={errors}
-            classNameFalse={style.input_validation_false}
-            classNameSuccess={style.input_validation_success}
-          />
-          <Button
-            className={`${style.button} ${
-              isValid ? style.button__main : style.button__main_noValid
-            }`}
-            type="submit"
-            isValid={isValid}
-          >
-            Отправить
-          </Button>
+        <Form onSubmit={onSubmit} className={style.form}>
+          <p className={style.text}>
+            Пожалуйста, введите адрес электронной почты, на&nbsp;который мы&nbsp;отправим вам
+            инструкцию для восстановления пароля
+          </p>
+          <fieldset className={style.fieldset}>
+            <Label className={style.label} htmlFor="email">
+              Электронная почта
+            </Label>
+            <CommonInput control={control} name="email" />
+          </fieldset>
+          <SubmitBtn isValid={formState.isValid}>Отправить</SubmitBtn>
         </Form>
       </div>
     </div>
   );
-}
+};
 
 export default ForgotPasswordPage;

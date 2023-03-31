@@ -1,9 +1,9 @@
 export const PATH = {
-  HOME: '/',
+  HOME: '/', // BASIC
+  AUTH: '/auth', // BASIC
+  AUTH_MAIL: '/auth/mail', // BASIC
   PROFILE: 'profile',
   USER: 'user',
-  AUTH: '/auth',
-  AUTH_MAIL: '/auth/mail',
   REGISTRATION: 'registration',
   PASSWORD_RESET: 'password/reset',
   PASSWORD_RESET_CONFIRM_D: 'password/reset/confirm/:id/:confirmCode',
