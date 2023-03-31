@@ -39,12 +39,14 @@ const RegistrationPage: FC = () => {
             type: 'server',
             message: err['name'],
           });
-        } else if (err?.email) {
+        }
+        if (err?.email) {
           setError('email', {
             type: 'server',
             message: err['email'],
           });
-        } else if (err?.password1) {
+        }
+        if (err?.password1) {
           setError('password1', {
             type: 'server',
             message: err['password1'],
@@ -52,6 +54,7 @@ const RegistrationPage: FC = () => {
         }
       });
   });
+
   useEffect(() => {
     setFocus('name');
   }, [setFocus]);
