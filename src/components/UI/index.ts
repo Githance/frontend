@@ -22,3 +22,4 @@ export { default as InputMessage } from './form/input-message/input-message';
 export { default as Agreement } from './form/agreement/agreement';
 export { default as InputForm } from './form/input-form/input-form';
 export { default as Divider } from './divider/divider';
+export { default as CheckBox } from './form/checkbox/checkbox';

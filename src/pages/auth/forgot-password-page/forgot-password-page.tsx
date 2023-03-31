@@ -19,7 +19,7 @@ const ForgotPasswordPage: FC = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = handleSubmit((data) => {
     dispatch(setEmail(data.email));
     dispatch(resetUserPassword(data.email))
       .unwrap()
@@ -32,21 +32,25 @@ const ForgotPasswordPage: FC = () => {
           });
         }
       });
-  };
+  });
+
   useEffect(() => {
     setFocus('email');
   }, [setFocus]);
+
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Забыли пароль?</h2>
-        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+        <Form onSubmit={onSubmit} className={style.form}>
           <p className={style.text}>
             Пожалуйста, введите адрес электронной почты, на&nbsp;который мы&nbsp;отправим вам
             инструкцию для восстановления пароля
           </p>
           <fieldset className={style.fieldset}>
-            <Label className={style.label}>Электронная почта</Label>
+            <Label className={style.label} htmlFor="email">
+              Электронная почта
+            </Label>
             <CommonInput control={control} name="email" />
           </fieldset>
           <SubmitBtn isValid={formState.isValid}>Отправить</SubmitBtn>

@@ -21,7 +21,7 @@ const ResetPasswordPage: FC = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = handleSubmit((data) => {
     const userData = {
       new_password1: data.new_password2,
       new_password2: data.new_password2,
@@ -40,17 +40,19 @@ const ResetPasswordPage: FC = () => {
           });
         }
       });
-  };
+  });
+
   useEffect(() => {
     setFocus('new_password2');
   }, [setFocus]);
+
   return (
     <div className={style.container}>
       <div className={style.content}>
         <h2 className={style.title}>Новый пароль</h2>
-        <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
+        <Form onSubmit={onSubmit} className={style.form}>
           <fieldset className={style.fieldset}>
-            <Label>Введите новый пароль</Label>
+            <Label htmlFor="new_password2">Введите новый пароль</Label>
             <PasswordInput
               control={control}
               name="new_password2"

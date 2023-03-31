@@ -25,6 +25,7 @@ const CommonInput: FC<any> = ({
   return (
     <div>
       <InputForm
+        id={name}
         type={inputType}
         placeholder={placeholder}
         field={field}

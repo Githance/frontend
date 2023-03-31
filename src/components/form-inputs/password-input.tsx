@@ -28,6 +28,7 @@ const PasswordInput: FC<any> = ({
     <div>
       <div className={style.container}>
         <InputForm
+          id={name}
           type={showPassword ? 'text' : 'password'}
           placeholder={placeholder}
           field={field}

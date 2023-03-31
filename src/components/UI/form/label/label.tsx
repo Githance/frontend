@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import cn from 'classnames';
 import style from './label.module.css';
 
 type Props = {
-  children: any;
+  children: ReactNode;
   htmlFor?: string;
   className?: string;
   required?: boolean;
