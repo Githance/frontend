@@ -7,6 +7,8 @@ type Props = {
   field: ControllerRenderProps;
   setDisable: () => void;
   disabled?: boolean;
+  minLength?: number;
+  maxLength?: number;
   size: 'large' | 'medium' | 'small';
 };
 
@@ -25,6 +27,8 @@ const PageBaseInput: FC<Props> = ({ ...props }) => {
 
   return (
     <input
+      minLength={props.minLength}
+      maxLength={props.maxLength}
       type="text"
       {...rest}
       ref={(e) => {

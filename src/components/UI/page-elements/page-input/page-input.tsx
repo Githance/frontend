@@ -12,9 +12,11 @@ type Props = {
   inputSize: Size;
   iconSize: Size;
   name: string;
+  minLength?: number;
+  maxLength?: number;
 };
 
-const PageInput: FC<Props> = ({ control, inputSize, iconSize, name }) => {
+const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, minLength, maxLength }) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
@@ -56,6 +58,8 @@ const PageInput: FC<Props> = ({ control, inputSize, iconSize, name }) => {
         field={field}
         disabled={disabledInput}
         setDisable={setDisable}
+        minLength={minLength}
+        maxLength={maxLength}
       />
       {disabledInput ? (
         <Button

@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { FC } from 'react';
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
+
 import style from './profile-page-content.module.css';
 import PageInput from '~/components/UI/page-elements/page-input/page-input';
 import PageLink from '~/components/UI/page-elements/page-link/page-link';
@@ -29,9 +31,15 @@ const ProfilePageContent: FC = () => {
   });
 
   return (
-    <form className={style.form} onSubmit={onSubmit}>
+    <form className={style.form} onSubmit={onSubmit} noValidate>
       <div className={style.form__name}>
-        <PageInput iconSize="medium" inputSize="large" control={control} name="name" />
+        <PageInput
+          iconSize="medium"
+          inputSize="large"
+          control={control}
+          name="name"
+          maxLength={5}
+        />
         <Divider />
       </div>
       <div className={style.form__info}>
@@ -87,7 +95,12 @@ const ProfilePageContent: FC = () => {
       </div>
       <div className={style.form__about}>
         <p className={style.title}>О&nbsp;себе (максимум 1000&nbsp;символов)</p>
-        <PageBaseTextarea name="bio" control={control} className={style.textarea} />
+        <PageBaseTextarea
+          name="bio"
+          control={control}
+          className={style.textarea}
+          maxLength={1000}
+        />
         <SubmitBtn className={style.submit}>Сохранить</SubmitBtn>
       </div>
     </form>

@@ -13,9 +13,19 @@ type Props = {
   iconSize: Size;
   name: string;
   linkName: string;
+  minLength?: number;
+  maxLength?: number;
 };
 
-const PageLink: FC<Props> = ({ control, inputSize, iconSize, name, linkName }) => {
+const PageLink: FC<Props> = ({
+  control,
+  inputSize,
+  iconSize,
+  name,
+  linkName,
+  maxLength,
+  minLength,
+}) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const [isActive, setIsActive] = useState(false);
 
@@ -69,6 +79,8 @@ const PageLink: FC<Props> = ({ control, inputSize, iconSize, name, linkName }) =
           field={field}
           disabled={disabledInput}
           setDisable={setDisable}
+          maxLength={maxLength}
+          minLength={minLength}
         />
       )}
       {disabledInput ? (
