@@ -20,6 +20,7 @@ class Auth {
   private registerUser = '/registration/';
   private confirmEmail = '/verify-email/';
   private resendEmail = '/resend-email/';
+  private refreshToken = '/token/refresh/';
 
   private checkResponse(res: AxiosResponse) {
     return res.data;
@@ -62,6 +63,10 @@ class Auth {
 
   public resendEmailRequest(userEmail: ResendEmailType) {
     return this.authAxios.post(this.resendEmail, { email: userEmail }).then(this.checkResponse);
+  }
+
+  public refreshTokenRequest() {
+    return this.authAxios.post(this.refreshToken).then(this.checkResponse);
   }
 }
 

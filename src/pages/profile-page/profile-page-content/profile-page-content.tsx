@@ -90,6 +90,10 @@ const ProfilePageContent: FC = () => {
             <Button type="button" className={style.button} isValid>
               Выйти из профиля <ArrowRightIcon size="small" />
             </Button>
+            <Divider />
+            <Button type="button" className={style.button} isValid>
+              Обновить токен <ArrowRightIcon size="small" />
+            </Button>
           </div>
         </div>
       </div>
