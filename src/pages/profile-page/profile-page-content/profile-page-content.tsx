@@ -2,12 +2,12 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
-
 import style from './profile-page-content.module.css';
 import PageInput from '~/components/UI/page-elements/page-input/page-input';
 import PageLink from '~/components/UI/page-elements/page-link/page-link';
 import PageBaseTextarea from '~/components/UI/page-elements/page-base-elements/page-base-textarea/page-base-textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/index';
+import { auth } from '~/api';
 
 const ProfilePageContent: FC = () => {
   const { handleSubmit, control, reset } = useForm({
@@ -20,6 +20,10 @@ const ProfilePageContent: FC = () => {
       bio: 'bio',
     },
   });
+
+  const onClick = () => {
+    auth.refreshTokenRequest();
+  };
 
   // Возможно стоит подумать над использованием touchedFields,
   // для выбора только измененных полей для отправки.
@@ -91,7 +95,7 @@ const ProfilePageContent: FC = () => {
               Выйти из профиля <ArrowRightIcon size="small" />
             </Button>
             <Divider />
-            <Button type="button" className={style.button} isValid>
+            <Button type="button" className={style.button} isValid onClick={onClick}>
               Обновить токен <ArrowRightIcon size="small" />
             </Button>
           </div>
