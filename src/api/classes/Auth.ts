@@ -11,6 +11,7 @@ import {
 class Auth {
   private authAxios = axios.create({
     baseURL: 'https://dev.githance.com/api/v1/auth',
+    /* withCredentials: true, */
   });
   private googleAuth = '/google/login/';
   private loginUser = '/login/';
@@ -41,8 +42,29 @@ class Auth {
       .then(this.checkResponse);
   }
 
+  /* TODO Разобраться с опцией credentials в axios */
+
+  /* public userLoginRequest(userData: LoginType) {
+    return this.authAxios
+      .post(this.loginUser, userData, { withCredentials: true })
+      .then(this.checkResponse);
+  } */
+
   public userLoginRequest(userData: LoginType) {
-    return this.authAxios.post(this.loginUser, userData).then(this.checkResponse);
+    return fetch('https://dev.githance.com/api/v1/auth/login/', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: userData.email, password: userData.password }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        Promise.reject(`Ошибка: ${res.status}`);
+      }
+    });
   }
 
   public userLogoutRequest() {
