@@ -8,7 +8,7 @@ type Size = 'large' | 'medium' | 'small';
 type Divider = 'bold';
 
 type Props = {
-  control?: any;
+  control: any;
   inputSize: Size;
   name: string;
   minLength?: number;
