@@ -54,12 +54,12 @@ const ProfilePageContent: FC = () => {
               <p className={style.label}>Электронная почта (видна только вам)</p>
               <p className={style.email}>Email</p>
             </div>
-            <Divider />
+            <Divider weight="bold" />
             <div className={cn(style.container, style.container__inputs)}>
               <p className={style.label}>Ник в Telegram</p>
               <PageInput iconSize="small" inputSize="medium" control={control} name="telegram" />
             </div>
-            <Divider />
+            <Divider weight="bold" />
           </div>
         </div>
         <div className={style.container}>
@@ -73,7 +73,7 @@ const ProfilePageContent: FC = () => {
                 name="portfolio_url"
                 linkName="Портфолио"
               />
-              <Divider />
+              <Divider weight="bold" />
               <PageLink
                 iconSize="small"
                 inputSize="medium"
@@ -90,11 +90,11 @@ const ProfilePageContent: FC = () => {
             <Button type="button" className={style.button} isValid>
               Изменить пароль <ArrowRightIcon size="small" />
             </Button>
-            <Divider />
+            <Divider weight="bold" />
             <Button type="button" className={style.button} isValid>
               Выйти из профиля <ArrowRightIcon size="small" />
             </Button>
-            <Divider />
+            <Divider weight="bold" />
             <Button type="button" className={style.button} isValid onClick={onClick}>
               Обновить токен <ArrowRightIcon size="small" />
             </Button>
