@@ -4,7 +4,7 @@ import cn from 'classnames';
 import style from './page-link.module.css';
 import { AnchorIcon, Button, Divider } from '~/components/UI/index';
 
-type Size = 'large' | 'medium' | 'small';
+type Size = /* 'large' | 'medium' | */ 'small';
 type Divider = 'bold';
 
 type Props = {
@@ -50,8 +50,8 @@ const PageLink: FC<Props> = ({
     <fieldset
       className={cn(
         style.pageLink,
-        inputSize === 'large' ? style.pageLink_size_large : undefined,
-        inputSize === 'medium' ? style.pageLink_size_medium : undefined,
+        /* inputSize === 'large' ? style.pageLink_size_large : undefined,
+        inputSize === 'medium' ? style.pageLink_size_medium : undefined, */
         inputSize === 'small' ? style.pageLink_size_small : undefined,
       )}
     >
@@ -61,7 +61,13 @@ const PageLink: FC<Props> = ({
             href={value}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(style.link, !!value && style.link_active)}
+            className={cn(
+              style.link,
+              /* inputSize === 'large' ? style.link_size_large : undefined,
+              inputSize === 'medium' ? style.link_size_medium : undefined, */
+              inputSize === 'small' ? style.link_size_small : undefined,
+              !!value && style.link_active,
+            )}
           >
             {linkName}
           </a>
@@ -80,8 +86,8 @@ const PageLink: FC<Props> = ({
             }}
             className={cn(
               style.input,
-              inputSize === 'large' ? style.input_size_large : undefined,
-              inputSize === 'medium' ? style.input_size_medium : undefined,
+              /* inputSize === 'large' ? style.input_size_large : undefined,
+              inputSize === 'medium' ? style.input_size_medium : undefined, */
               inputSize === 'small' ? style.input_size_small : undefined,
             )}
           />

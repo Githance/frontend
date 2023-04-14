@@ -4,7 +4,7 @@ import cn from 'classnames';
 import style from './page-input.module.css';
 import { PenIcon, Button, Divider } from '~/components/UI/index';
 
-type Size = 'large' | 'medium' | 'small';
+type Size = 'large' | /* 'medium' | */ 'small';
 type Divider = 'bold';
 
 type Props = {
@@ -42,7 +42,7 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, 
       className={cn(
         style.pageInput,
         inputSize === 'large' ? style.pageInput_size_large : undefined,
-        inputSize === 'medium' ? style.pageInput_size_medium : undefined,
+        /* inputSize === 'medium' ? style.pageInput_size_medium : undefined, */
         inputSize === 'small' ? style.pageInput_size_small : undefined,
       )}
     >
@@ -61,7 +61,7 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, 
           className={cn(
             style.input,
             inputSize === 'large' ? style.input_size_large : undefined,
-            inputSize === 'medium' ? style.input_size_medium : undefined,
+            /* inputSize === 'medium' ? style.input_size_medium : undefined, */
             inputSize === 'small' ? style.input_size_small : undefined,
           )}
         />

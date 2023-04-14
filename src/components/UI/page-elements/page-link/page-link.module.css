@@ -26,14 +26,17 @@
 
 .link {
   color: var(--link-color-grey);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
   text-decoration: none;
 }
 
 .link_active {
   color: var(--text-color-black);
+}
+
+.link_size_small {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .input {
