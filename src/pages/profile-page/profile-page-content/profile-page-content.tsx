@@ -10,7 +10,12 @@ import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/inde
 import { auth } from '~/api';
 
 const ProfilePageContent: FC = () => {
-  const { handleSubmit, control, reset } = useForm({
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { isDirty },
+  } = useForm({
     mode: 'onChange',
     defaultValues: {
       name: 'name',
@@ -46,8 +51,8 @@ const ProfilePageContent: FC = () => {
             <div className={cn(style.container, style.container__inputs)}>
               <p className={style.label}>Электронная почта (видна только вам)</p>
               <p className={style.email}>Email</p>
+              <Divider weight="bold" />
             </div>
-            <Divider weight="bold" />
             <div className={cn(style.container, style.container__inputs)}>
               <p className={style.label}>Ник в Telegram</p>
               <PageInput inputSize="small" control={control} name="telegram" divider="bold" />
@@ -57,22 +62,20 @@ const ProfilePageContent: FC = () => {
         <div className={style.container}>
           <p className={style.title}>Ссылки</p>
           <div className={cn(style.container, style.container__item)}>
-            <div className={cn(style.container, style.container__inputs)}>
-              <PageLink
-                inputSize="small"
-                control={control}
-                name="portfolio_url"
-                linkName="Портфолио"
-                divider="bold"
-              />
-              <PageLink
-                inputSize="small"
-                control={control}
-                name="summary_url"
-                linkName="Резюме"
-                divider="bold"
-              />
-            </div>
+            <PageLink
+              inputSize="small"
+              control={control}
+              name="portfolio_url"
+              linkName="Портфолио"
+              divider="bold"
+            />
+            <PageLink
+              inputSize="small"
+              control={control}
+              name="summary_url"
+              linkName="Резюме"
+              divider="bold"
+            />
           </div>
         </div>
         <div className={style.container}>
@@ -100,7 +103,9 @@ const ProfilePageContent: FC = () => {
           className={style.textarea}
           maxLength={1000}
         />
-        <SubmitBtn className={style.submit}>Сохранить</SubmitBtn>
+        <SubmitBtn isValid={isDirty} className={style.submit}>
+          Сохранить
+        </SubmitBtn>
       </div>
     </form>
   );

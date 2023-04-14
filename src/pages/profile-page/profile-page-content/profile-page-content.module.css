@@ -27,7 +27,7 @@
 }
 
 .email {
-  margin: 0;
+  margin: 0 0 5px;
   color: var(--text-color-black);
   font-weight: 500;
   font-size: 18px;
@@ -62,7 +62,7 @@
 }
 
 .container__item {
-  gap: 10px;
+  gap: 15px;
 }
 
 .container__inputs {
