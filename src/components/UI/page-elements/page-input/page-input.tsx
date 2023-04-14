@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
 import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
@@ -10,71 +10,56 @@ type Size = 'large' | 'medium' | 'small';
 type Props = {
   control?: any;
   inputSize: Size;
-  iconSize: Size;
   name: string;
   minLength?: number;
   maxLength?: number;
 };
 
-const PageInput: FC<Props> = ({ control, inputSize, iconSize, name, minLength, maxLength }) => {
+const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength }) => {
   const [disabledInput, setDisabledInput] = useState(true);
-  const [isActive, setIsActive] = useState(false);
+  const firstNameRef = useRef<HTMLInputElement | null>(null);
 
   const {
-    field,
-    formState: { isSubmitSuccessful, isSubmitting },
+    field: { ref, ...rest },
   } = useController({
     control,
     name,
   });
 
-  const checkButtonActivity = async () => {
-    if (isSubmitting) {
-      await setTimeout(() => {
-        setIsActive(true);
-      }, 2000);
+  useEffect(() => {
+    if (!disabledInput) {
+      firstNameRef.current?.focus();
     }
-
-    if (isSubmitSuccessful) {
-      await setTimeout(() => {
-        setIsActive(false);
-        setDisabledInput(true);
-      }, 3000);
-    }
-  };
+  }, [disabledInput]);
 
   const setDisable = () => {
-    setDisabledInput(true);
+    setDisabledInput((prevValue) => !prevValue);
   };
-
-  useEffect(() => {
-    checkButtonActivity();
-  }, [isSubmitting, isSubmitSuccessful]);
 
   return (
     <fieldset className={cn(style.pageInput)}>
-      <PageBaseInput
-        size={inputSize}
-        field={field}
-        disabled={disabledInput}
-        setDisable={setDisable}
+      <input
+        type="text"
+        autoComplete="on"
         minLength={minLength}
         maxLength={maxLength}
+        disabled={disabledInput}
+        {...rest}
+        ref={(e) => {
+          ref(e);
+          firstNameRef.current = e;
+        }}
+        className={cn(
+          style.input,
+          inputSize === 'large' ? style.input_size_large : undefined,
+          inputSize === 'medium' ? style.input_size_medium : undefined,
+          inputSize === 'small' ? style.input_size_small : undefined,
+        )}
       />
-      {disabledInput ? (
-        <Button
-          type="button"
-          onClick={() => setDisabledInput(false)}
-          className={style.button}
-          isValid
-        >
-          <PenIcon size={iconSize} />
-        </Button>
-      ) : (
-        <button type="submit" className={style.button}>
-          <CheckIcon size={iconSize} active={isActive} />
-        </button>
-      )}
+
+      <Button type="button" onClick={setDisable} className={style.button} isValid>
+        <PenIcon size={inputSize} />
+      </Button>
     </fieldset>
   );
 };
