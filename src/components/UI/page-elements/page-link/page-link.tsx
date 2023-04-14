@@ -1,102 +1,97 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useRef } from 'react';
 import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-link.module.css';
-import PageBaseInput from '../page-base-elements/page-base-input/page-base-input';
-import { AnchorIcon, Button, CheckIcon } from '~/components/UI/index';
+import { AnchorIcon, Button, Divider } from '~/components/UI/index';
 
 type Size = 'large' | 'medium' | 'small';
+type Divider = 'bold';
 
 type Props = {
   control?: any;
   inputSize: Size;
-  iconSize: Size;
   name: string;
   linkName: string;
   minLength?: number;
   maxLength?: number;
+  divider?: Divider;
 };
 
 const PageLink: FC<Props> = ({
   control,
   inputSize,
-  iconSize,
   name,
   linkName,
   maxLength,
   minLength,
+  divider,
 }) => {
   const [disabledInput, setDisabledInput] = useState(true);
-  const [isActive, setIsActive] = useState(false);
+  const firstNameRef = useRef<HTMLInputElement | null>(null);
 
   const {
-    field,
-    formState: { isSubmitSuccessful, isSubmitting },
+    field: { ref, value, ...rest },
   } = useController({
     control,
     name,
   });
 
-  const { value } = field;
-
-  const checkButtonActivity = async () => {
-    if (isSubmitting) {
-      await setTimeout(() => {
-        setIsActive(true);
-      }, 2000);
+  useEffect(() => {
+    if (!disabledInput) {
+      firstNameRef.current?.focus();
     }
-
-    if (isSubmitSuccessful) {
-      await setTimeout(() => {
-        setIsActive(false);
-        setDisabledInput(true);
-      }, 3000);
-    }
-  };
+  }, [disabledInput]);
 
   const setDisable = () => {
-    setDisabledInput(true);
+    setDisabledInput((prevValue) => !prevValue);
   };
 
-  useEffect(() => {
-    checkButtonActivity();
-  }, [isSubmitting, isSubmitSuccessful]);
-
   return (
-    <fieldset className={style.pageLink}>
-      {disabledInput ? (
-        <a
-          href={value}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(style.link, !!value && style.link_active)}
-        >
-          {linkName}
-        </a>
-      ) : (
-        <PageBaseInput
-          size={inputSize}
-          field={field}
-          disabled={disabledInput}
-          setDisable={setDisable}
-          maxLength={maxLength}
-          minLength={minLength}
-        />
+    <fieldset
+      className={cn(
+        style.pageLink,
+        inputSize === 'large' ? style.pageLink_size_large : undefined,
+        inputSize === 'medium' ? style.pageLink_size_medium : undefined,
+        inputSize === 'small' ? style.pageLink_size_small : undefined,
       )}
-      {disabledInput ? (
-        <Button
-          type="button"
-          onClick={() => setDisabledInput(false)}
-          className={style.button}
-          isValid
-        >
-          <AnchorIcon size={iconSize} />
+    >
+      <div className={style.pageLink__container}>
+        {disabledInput ? (
+          <a
+            href={value}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(style.link, !!value && style.link_active)}
+          >
+            {linkName}
+          </a>
+        ) : (
+          <input
+            type="text"
+            autoComplete="on"
+            minLength={minLength}
+            maxLength={maxLength}
+            disabled={disabledInput}
+            value={value}
+            {...rest}
+            ref={(e) => {
+              ref(e);
+              firstNameRef.current = e;
+            }}
+            className={cn(
+              style.input,
+              inputSize === 'large' ? style.input_size_large : undefined,
+              inputSize === 'medium' ? style.input_size_medium : undefined,
+              inputSize === 'small' ? style.input_size_small : undefined,
+            )}
+          />
+        )}
+        <Button type="button" onClick={setDisable} className={style.button} isValid>
+          <AnchorIcon size={inputSize} active={!disabledInput} />
         </Button>
-      ) : (
-        <button type="submit" className={style.button}>
-          <CheckIcon size={iconSize} active={isActive} />
-        </button>
-      )}
+      </div>
+
+      <Divider active={!disabledInput} weight={divider} />
     </fieldset>
   );
 };

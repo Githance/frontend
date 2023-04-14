@@ -1,10 +1,27 @@
 .pageLink {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   border: none;
+}
+
+.pageLink_size_large {
+  gap: 20px;
+}
+
+.pageLink_size_medium {
+  gap: 15px;
+}
+
+.pageLink_size_small {
+  gap: 10px;
+}
+
+.pageLink__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .link {
@@ -17,6 +34,27 @@
 
 .link_active {
   color: var(--text-color-black);
+}
+
+.input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color-black);
+  border: none;
+  outline: none;
+  cursor: text;
+}
+
+.input:disabled {
+  background-color: var(--bg-color-form);
+  cursor: auto;
+}
+
+.input_size_small {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .button {

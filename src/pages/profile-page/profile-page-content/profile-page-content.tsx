@@ -59,19 +59,18 @@ const ProfilePageContent: FC = () => {
           <div className={cn(style.container, style.container__item)}>
             <div className={cn(style.container, style.container__inputs)}>
               <PageLink
-                iconSize="small"
-                inputSize="medium"
+                inputSize="small"
                 control={control}
                 name="portfolio_url"
                 linkName="Портфолио"
+                divider="bold"
               />
-              <Divider weight="bold" />
               <PageLink
-                iconSize="small"
-                inputSize="medium"
+                inputSize="small"
                 control={control}
                 name="summary_url"
                 linkName="Резюме"
+                divider="bold"
               />
             </div>
           </div>
