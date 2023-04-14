@@ -6,9 +6,10 @@
   font-size: 18px;
   line-height: 22px;
 }
+
 .tag {
-  color: var(--text-color-red);
   padding-left: 5px;
+  color: var(--text-color-red);
  }
 
 @media screen and (max-width: 488px) {
