@@ -3,11 +3,11 @@ import cn from 'classnames';
 import style from './divider.module.css';
 
 type Props = {
-  weight?: 'regular' | 'bold';
+  weight?: 'bold';
   active?: boolean;
 };
 
-const Divider: FC<Props> = ({ weight = 'regular', active = false }) => {
+const Divider: FC<Props> = ({ weight, active = false }) => {
   return (
     <div
       className={cn(
