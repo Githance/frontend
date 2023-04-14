@@ -2,8 +2,7 @@ import { FC, useState, useEffect, useRef } from 'react';
 import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
-import PageBaseInput from '../page-base-elements/page-base-input/page-base-input';
-import { PenIcon, Button, CheckIcon } from '~/components/UI/index';
+import { PenIcon, Button } from '~/components/UI/index';
 
 type Size = 'large' | 'medium' | 'small';
 
@@ -56,7 +55,6 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength }
           inputSize === 'small' ? style.input_size_small : undefined,
         )}
       />
-
       <Button type="button" onClick={setDisable} className={style.button} isValid>
         <PenIcon size={inputSize} />
       </Button>

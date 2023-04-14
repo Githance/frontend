@@ -17,6 +17,7 @@ body {
 
   /* Переменные основных цветов фона */
   --bg-color-main: #171717;
+  --bg-color-grey: #999;
   --bg-color-form: #fff;
 
   /* Переменные основных цветов кнопок */
@@ -57,4 +58,3 @@ body {
   flex-direction: column;
   height: 100%;
 }
-
