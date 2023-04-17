@@ -29,7 +29,6 @@ const RegistrationPage: FC = () => {
   };
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     dispatch(setEmail(data.email));
     dispatch(registerUser(data))
       .unwrap()
@@ -40,12 +39,14 @@ const RegistrationPage: FC = () => {
             type: 'server',
             message: err['name'],
           });
-        } else if (err?.email) {
+        }
+        if (err?.email) {
           setError('email', {
             type: 'server',
             message: err['email'],
           });
-        } else if (err?.password1) {
+        }
+        if (err?.password1) {
           setError('password1', {
             type: 'server',
             message: err['password1'],
@@ -53,9 +54,11 @@ const RegistrationPage: FC = () => {
         }
       });
   });
+
   useEffect(() => {
     setFocus('name');
   }, [setFocus]);
+
   return (
     <div className={style.container}>
       <div className={style.content}>

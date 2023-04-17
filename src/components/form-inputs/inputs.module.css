@@ -1,6 +1,7 @@
 .container {
   position: relative;
 }
+
 .validation_success {
   border: 1px solid var(--color-input-true);
 }
@@ -8,6 +9,7 @@
 .validation_false {
   border: 1px solid var(--color-input-false);
 }
+
 .icon {
   position: absolute;
   right: 12.5px;
@@ -22,11 +24,13 @@
   outline: none;
   cursor: pointer;
 }
+
 .icon_close {
   top: 20px;
   background-image: url('../../images/input-icon-close.svg');
   transition: 0.1s ease-in-out;
 }
+
 .icon_open {
   top: 18px;
   background-image: url('../../images/input-icon-open.svg');

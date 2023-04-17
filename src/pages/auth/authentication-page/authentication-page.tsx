@@ -37,9 +37,11 @@ const AuthenticationPage: FC = () => {
         }
       });
   });
+
   useEffect(() => {
     setFocus('email');
   }, [setFocus]);
+
   return (
     <div className={style.container}>
       <div className={style.content}>

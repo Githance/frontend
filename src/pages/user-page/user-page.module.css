@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas:
     'name name name name name name name name name name name name'
-    'info info info info about about about about about about about about'
+    'info info info info info . about about about about about about'
     'projects projects projects projects projects projects projects projects projects projects projects projects';
   grid-template-columns: repeat(12, 1fr);
   box-sizing: border-box;
@@ -30,10 +30,14 @@
 
 .userPage__container_position_projects {
   grid-area: projects;
-  margin-top: 110px;
+  margin-top: 20px;
 }
 
 .userPage__container_position_links {
+  gap: 15px;
+}
+
+.userPage__container_position_link {
   gap: 10px;
 }
 
@@ -47,10 +51,9 @@
   margin: 0;
   padding: 20px 0;
   color: var(--text-color-black);
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  border-top: 1px solid var(--border-input-color);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
   border-bottom: 1px solid var(--border-input-color);
 }
 
@@ -86,7 +89,7 @@
 
 .label_color_black {
   color: var(--text-color-black);
-  word-break: break-all
+  word-break: break-all;
 }
 
 .link {

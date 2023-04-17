@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import api, { ResendEmailType, ResetPasswordType, ConfirmPasswordType } from '../../../api/Api';
+import { auth } from '~/api';
+import { ResetPasswordType, ResendEmailType, ConfirmPasswordType } from '~/api/api-types';
 
 type ResetUserRejectValue = {
   email: string;
@@ -19,7 +20,7 @@ export const resetUserPassword = createAsyncThunk<
     rejectValue: ResetUserRejectValue;
   }
 >('resetPageSlice/resetUserPassword', (userEmail, { rejectWithValue }) =>
-  api.userResetPasswordRequest(userEmail).catch((err) => rejectWithValue(err.response.data)),
+  auth.userResetPasswordRequest(userEmail).catch((err) => rejectWithValue(err.response.data)),
 );
 
 export const confirmUserPassword = createAsyncThunk<
@@ -32,7 +33,7 @@ export const confirmUserPassword = createAsyncThunk<
     rejectValue: ConfirmUserPasswordRejectValue;
   }
 >('resetPageSlice/confirmUserPassword', (userData, { rejectWithValue }) =>
-  api.userConfirmPasswordRequest(userData).catch((err) => rejectWithValue(err.response.data)),
+  auth.userConfirmPasswordRequest(userData).catch((err) => rejectWithValue(err.response.data)),
 );
 
 export const resendUserEmail = createAsyncThunk<
@@ -40,7 +41,7 @@ export const resendUserEmail = createAsyncThunk<
   void,
   // First argument to the payload creator
   ResendEmailType
->('resetPageSlice/resendUserEmail', (userEmail) => api.resendEmailRequest(userEmail));
+>('resetPageSlice/resendUserEmail', (userEmail) => auth.resendEmailRequest(userEmail));
 
 type InitialState = {
   resetPasswordRequest: boolean | null;

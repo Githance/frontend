@@ -15,19 +15,27 @@ const UserPage: FC = () => {
             className={cn(style.userPage__container, style.userPage__container_position_contacts)}
           >
             <p className={style.label}>Ник в Telegram</p>
-            <p className={cn(style.label, style.label_color_black)}>Lorem ipsum dolor sit amet</p>
+            <div className={cn(style.userPage__container, style.userPage__container_position_link)}>
+              <p className={cn(style.label, style.label_color_black)}>Lorem ipsum dolor sit amet</p>
+              <Divider weight="bold" />
+            </div>
           </div>
         </div>
         <div className={style.userPage__container}>
           <p className={style.title}>Ссылки</p>
           <div className={cn(style.userPage__container, style.userPage__container_position_links)}>
-            <a href="#" target="_blank" className={style.link}>
-              Портфолио
-            </a>
-            <Divider />
-            <a href="#" target="_blank" className={style.link}>
-              Резюме
-            </a>
+            <div className={cn(style.userPage__container, style.userPage__container_position_link)}>
+              <a href="#" target="_blank" className={style.link}>
+                Портфолио
+              </a>
+              <Divider weight="bold" />
+            </div>
+            <div className={cn(style.userPage__container, style.userPage__container_position_link)}>
+              <a href="#" target="_blank" className={style.link}>
+                Резюме
+              </a>
+              <Divider weight="bold" />
+            </div>
           </div>
         </div>
       </div>

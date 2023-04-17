@@ -1,0 +1,91 @@
+.form {
+  display: grid;
+  grid-template-areas:
+    'name name name name name name name name name name name name'
+    'info info info info info . about about about about about about';
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 1110px;
+  margin: 0 auto;
+  row-gap: 60px;
+  column-gap: 30px;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.label {
+  margin: 0;
+  color: var(--text-color-light-grey);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.email {
+  margin: 0 0 5px;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.form__name {
+  display: flex;
+  flex-direction: column;
+  grid-area: name;
+  gap: 20px;
+}
+
+.form__info {
+  display: flex;
+  flex-direction: column;
+  grid-area: info;
+  gap: 50px;
+}
+
+.form__about {
+  display: flex;
+  flex-direction: column;
+  grid-area: about;
+  gap: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container__item {
+  gap: 15px;
+}
+
+.container__inputs {
+  gap: 5px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.textarea {
+  height: 540px;
+}
+
+.submit {
+  width: 348px;
+}

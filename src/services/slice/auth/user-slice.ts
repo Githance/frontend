@@ -8,10 +8,12 @@ import { RootState } from '~/services';
 
 type InitialState = {
   isAuth: boolean;
+  userId: number | null;
 };
 
 const initialState: InitialState = {
   isAuth: false,
+  userId: null,
 };
 
 const userSlice = createSlice({
@@ -24,14 +26,21 @@ const userSlice = createSlice({
     userNotAuth(state) {
       state.isAuth = false;
     },
+    addUserId(state, action) {
+      state.userId = action.payload;
+    },
+    deleteUserId(state) {
+      state.userId = null;
+    },
   },
 });
 
 // Actions
-export const { userIsAuth, userNotAuth } = userSlice.actions;
+export const { userIsAuth, userNotAuth, addUserId, deleteUserId } = userSlice.actions;
 
 // Selectors
 export const checkAuth = (state: RootState) => state.user.isAuth;
+export const getUserId = (state: RootState) => state.user.userId;
 
 // Reducers
 export default userSlice.reducer;

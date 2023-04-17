@@ -33,17 +33,19 @@ const ResetPasswordPage: FC = () => {
       .unwrap()
       .then(() => navigate('/'))
       .catch((err) => {
-        for (const key in err) {
+        if (err?.new_password2) {
           setError('new_password2', {
             type: 'server',
-            message: err[key],
+            message: err['new_password2'],
           });
         }
       });
   });
+
   useEffect(() => {
     setFocus('new_password2');
   }, [setFocus]);
+
   return (
     <div className={style.container}>
       <div className={style.content}>
