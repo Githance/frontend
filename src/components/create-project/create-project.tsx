@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import CommonInput from '../form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '../UI';
@@ -6,13 +6,19 @@ import Textarea from '../UI/form/textarea/textarea';
 import style from './create-project.module.css';
 
 const CreateProject: FC = () => {
-  const onSubmit = () => {
-    console.log('тест');
-  };
-  const { setError, handleSubmit, control, formState, setFocus } = useForm({
+  const { /* setError, */ handleSubmit, control, formState, setFocus } = useForm({
     mode: 'onChange',
-    defaultValues: { email: '', password: '' },
+    defaultValues: { name: '', bio: '', email: '', telegram: '' },
   });
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
+  useEffect(() => {
+    setFocus('name');
+  }, [setFocus]);
+
   return (
     <Form onSubmit={onSubmit} className={style.form}>
       <fieldset className={style.fieldset}>
@@ -28,7 +34,7 @@ const CreateProject: FC = () => {
         <Label htmlFor="name" required={true}>
           Краткое описание
         </Label>
-        <Textarea name="bio" control={control} className={style.textarea} maxLength={1000} />
+        <Textarea name="bio" control={control} className={style.textarea} maxLength={300} />
         <p className={style.message}>
           Коротко опишите о чем ваш проект. Эта информация будет видна на главной странице. Вы
           сможете изменить описание после создания проекта.

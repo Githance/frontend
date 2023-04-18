@@ -16,6 +16,7 @@ export { default as SecondaryCard } from './cards/secondary-card/secondary-card'
 export { default as Button } from './button/button';
 export { default as GoogleBtn } from './button/google-btn/google-btn';
 export { default as SubmitBtn } from './button/submit-btn/submit-btn';
+export { default as Tab } from './button/tab/tab';
 // ЭЛЕМЕНТЫ ФОРМЫ
 export { default as Form } from './form/form';
 export { default as Label } from './form/label/label';
