@@ -6,6 +6,7 @@ export { default as CheckIcon } from './icons/check-icon';
 export { default as AnchorIcon } from './icons/anchor-icon';
 export { default as RowIcon } from './icons/row-icon';
 export { default as ArrowRightIcon } from './icons/arrow-right-icon';
+export { default as CloseIcon } from './icons/close-icon';
 // ЛОГОТИП
 export { default as Logo } from './logo/logo';
 // КАРТОЧКИ

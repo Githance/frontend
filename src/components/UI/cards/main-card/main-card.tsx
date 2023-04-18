@@ -10,15 +10,16 @@ type Props = {
   subtitle: string;
   percent: string;
   empty?: boolean;
+  onClick?: any;
 };
 
-const MainCard: FC<Props> = ({ status, title, subtitle, percent, empty }) => {
+const MainCard: FC<Props> = ({ status, title, subtitle, percent, empty, onClick }) => {
   const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
   const randomColor = colors[Math.floor(Math.random() * 4)];
   return (
     <article className={style.container} style={{ backgroundColor: `${randomColor}` }}>
       {empty ? (
-        <div className={style.empty_container}></div>
+        <div className={style.empty_container} onClick={onClick} aria-hidden="true"></div>
       ) : (
         <>
           <div className={style.wrapper}>

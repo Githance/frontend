@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import { useController } from 'react-hook-form';
-import style from './page-textarea.module.css';
+import style from './textarea.module.css';
 
 type Props = {
   control?: any;
@@ -11,7 +11,7 @@ type Props = {
   maxLength?: number;
 };
 
-const PageTextarea: FC<Props> = ({ control, name, className, minLength, maxLength }) => {
+const Textarea: FC<Props> = ({ control, name, className, minLength, maxLength }) => {
   const { field } = useController({
     control,
     name,
@@ -27,4 +27,4 @@ const PageTextarea: FC<Props> = ({ control, name, className, minLength, maxLengt
   );
 };
 
-export default PageTextarea;
+export default Textarea;

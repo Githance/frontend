@@ -1,10 +1,13 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Button } from '../UI/index';
 import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
 import { MainCard } from '../UI';
+import Modal from '../UI/modal/modal';
+import CreateProject from '../create-project/create-project';
 
 const CardTable: FC = () => {
+  const [openModal, setOpenModal] = useState(false);
   const selectorOptions = [
     { value: 'test', label: 'test' },
     { value: 'test1', label: 'test1' },
@@ -17,6 +20,7 @@ const CardTable: FC = () => {
     { name: 'Завершённые проекты' },
     { name: 'Текущие проекты' },
   ];
+  console.log(openModal);
   return (
     <section className={style.container}>
       <div className={style.selectors_wrapper}>
@@ -35,14 +39,16 @@ const CardTable: FC = () => {
         />
       </div>
       <div className={style.cards_wrapper}>
-        <MainCard
-          status="В процессе"
-          title="Githance"
-          subtitle="Сайт для создания проектов 
+        <div onClick={() => setOpenModal(true)} aria-hidden="true">
+          <MainCard
+            status="В процессе"
+            title="Githance"
+            subtitle="Сайт для создания проектов 
 в портфолио"
-          percent="30"
-          empty={true}
-        />
+            percent="30"
+            empty={true}
+          />
+        </div>
         <MainCard
           status="В процессе"
           title="Маршруты
@@ -79,6 +85,11 @@ const CardTable: FC = () => {
           percent="10"
         />
       </div>
+      {openModal && (
+        <Modal onClose={() => setOpenModal(false)}>
+          <CreateProject />
+        </Modal>
+      )}
     </section>
   );
 };
