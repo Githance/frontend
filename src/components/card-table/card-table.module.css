@@ -30,8 +30,8 @@
   justify-content: space-between;
   width: 100%;
   max-width: 812px;
-  list-style: none;
   padding: 0;
+  list-style: none;
 }
 
 .cards_wrapper {

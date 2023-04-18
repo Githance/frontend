@@ -1,37 +1,43 @@
 .form {
   gap: 40px;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 }
+
 .title {
   margin: 0;
+  padding-bottom: 30px;
   font-weight: 600;
   font-size: 28px;
   line-height: 34px;
   text-align: center;
-  padding-bottom: 30px;
 }
+
 .fieldset {
   margin: 0;
   padding: 0;
   border: none;
 }
+
 .message {
   display: inline-block;
   margin: 0;
+  padding-top: 10px;
   color: var(--text-color-grey);
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  padding-top: 10px;
 }
+
 .message:nth-last-child(1){
   padding-top: 5px;
 }
+
 .submitBtn {
-  max-width: 368px;
   align-self: center;
+  max-width: 368px;
 }
+
 .textarea {
   height: 86px;
   border: 1px solid var(--color-input-normal);

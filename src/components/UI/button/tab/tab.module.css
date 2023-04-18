@@ -9,10 +9,12 @@
   border: 1px solid #171717;
   border-radius: 60px;
 }
+
 .button:hover {
   border: 1px solid var(--bg-color-button-normal);
   scale: 1.05;
 }
+
 .activeButton {
   composes: button;
   color: var(--bg-color-button-normal);

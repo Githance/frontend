@@ -13,6 +13,7 @@
   cursor: pointer;
   transition: all 1s ease-out;
 }
+
 .container:hover{
   scale: 1.1;
 }

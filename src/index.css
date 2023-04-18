@@ -51,8 +51,7 @@ body {
   --link-color-grey: #999;
   --border-textarea-color: #999;
   --border-input-color: #dedede;
-
-  --color-background-overlay: rgba(0, 0, 0, 0.6)
+  --color-background-overlay: rgb(0 0 0 / 60%)
 }
 
 #root {
