@@ -1,11 +1,13 @@
 import { FC, useState } from 'react';
 import cn from 'classnames';
+
 import { useForm } from 'react-hook-form';
 import style from './project-page.module.css';
 import PageInput from '~/components/UI/page-elements/page-input/page-input';
 import PageLink from '~/components/UI/page-elements/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn, Tab, Label } from '~/components/UI/index';
+import Notiflix from 'notiflix';
 
 const tabOptions = [{ name: 'Информация о проекте' }, { name: 'Команда' }, { name: 'Вакансии' }];
 
@@ -35,6 +37,29 @@ const ProjectPage: FC = () => {
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
+  const confirmDelete = () => {
+    Notiflix.Confirm.show(
+      'Удалить проект?',
+      'Убедитесь, что вы оповестили всех участников проекта или в проекте нет участников.',
+      'Да',
+      'Нет',
+      function okCb() {
+        alert('😡 NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!');
+      },
+      function cancelCb() {
+        alert('😪 ...');
+      },
+      {
+        width: '320px',
+        borderRadius: '20px',
+        titleColor: 'var(--text-color-black)',
+        okButtonBackground: 'var(--bg-color-form)',
+        okButtonColor: 'var(--bg-color-button-normal)',
+        cancelButtonBackground: 'var(--color-input-false)',
+        cssAnimationStyle: 'zoom',
+      },
+    );
+  };
   return (
     <>
       <ul className={style.btns_wrapper}>
@@ -50,10 +75,15 @@ const ProjectPage: FC = () => {
         </fieldset>
 
         <fieldset className={style.form__info}>
-
           <h3 className={style.title}>Контакты создателя проекта</h3>
           <Label className={style.label}>Электронная почта</Label>
-          <PageInput inputSize="small" control={control} name="email" divider="bold" />
+          <PageInput
+            classname={style.input}
+            inputSize="small"
+            control={control}
+            name="email"
+            divider="bold"
+          />
           <Label className={style.label}>Ник в Telegram</Label>
           <PageInput inputSize="small" control={control} name="telegram" divider="bold" />
 
@@ -61,7 +91,13 @@ const ProjectPage: FC = () => {
             Контакты менеджера <span className={style.span}>(если менеджер назначен)</span>
           </h3>
           <Label className={style.label}>Электронная почта</Label>
-          <PageInput inputSize="small" control={control} name="email1" divider="bold" />
+          <PageInput
+            classname={style.input}
+            inputSize="small"
+            control={control}
+            name="email1"
+            divider="bold"
+          />
           <Label className={style.label}>Ник в Telegram</Label>
           <PageInput inputSize="small" control={control} name="telegram1" divider="bold" />
 
@@ -88,14 +124,11 @@ const ProjectPage: FC = () => {
             divider="bold"
           />
 
-
           <h3 className={style.title}>Управление</h3>
-          <Button type="button" className={style.button} isValid>
+          <Button type="button" className={style.button} isValid onClick={confirmDelete}>
             Удалить проект <ArrowRightIcon size="small" />
           </Button>
           <Divider weight="bold" />
-
-
         </fieldset>
 
         <fieldset className={style.form__about}>
