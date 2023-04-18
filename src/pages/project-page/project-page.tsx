@@ -108,7 +108,7 @@ const ProjectPage: FC = () => {
           />
           <Label className={style.title}>Подробное описание проекта</Label>
           <Textarea name="area" control={control} className={style.textarea} maxLength={1000} />
-          <SubmitBtn isValid={isDirty} className={style.submit}>
+          <SubmitBtn isValid={isDirty} className={cn(style.submit, 'mt-6')}>
             Сохранить
           </SubmitBtn>
         </fieldset>

@@ -6,7 +6,7 @@
   grid-template-columns: repeat(12, 1fr);
   max-width: 1110px;
   margin: 0 auto;
-  row-gap: 60px;
+  row-gap: 40px;
   column-gap: 30px;
 }
 
@@ -30,22 +30,29 @@
   display: flex;
   flex-direction: column;
   grid-area: about;
-  gap: 30px;
+  
   padding: 0;
   border: none;
 }
 
 .title {
   margin: 0;
-padding-bottom: 30px;
+  padding-bottom: 30px;
   color: var(--text-color-black);
   font-weight: 500;
-font-size: 24px;
-line-height: 29px;
+  font-size: 24px;
+  line-height: 29px;
+}
+.title:not(:nth-child(1))
+{
+  padding-top: 50px;
+}
+.title:last-of-type{
+  padding-top: 25px;
 }
 
-.span{
-  color: #999
+.span {
+  color: #999;
 }
 
 .label {
@@ -101,17 +108,17 @@ line-height: 29px;
 
 .submit {
   grid-area: about;
-  width: 348px;
+  width: 365px;
 }
 
 .btns_wrapper {
   display: flex;
-  gap: 30px;
+  gap: 16px;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
   max-width: 1110px;
   margin: 0 auto;
-  padding: 10px 0 60px;
+  padding: 20px 0 60px;
   list-style: none;
 }

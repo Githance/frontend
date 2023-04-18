@@ -38,7 +38,7 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, 
   };
 
   return (
-    <fieldset
+    <div
       className={cn(
         style.pageInput,
         inputSize === 'large' ? style.pageInput_size_large : undefined,
@@ -70,7 +70,7 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, 
         </Button>
       </div>
       <Divider active={!disabledInput} weight={divider} />
-    </fieldset>
+    </div>
   );
 };
 
