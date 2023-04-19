@@ -2,6 +2,8 @@ import { FC } from 'react';
 import cn from 'classnames';
 import { useController } from 'react-hook-form';
 import style from './textarea.module.css';
+import InputMessage from '../input-message/input-message';
+import { RequireValidationScheme } from '~/utils/validation-scheme';
 
 type Props = {
   control?: any;
@@ -9,21 +11,41 @@ type Props = {
   className?: string;
   minLength?: number;
   maxLength?: number;
+  validation?: any
 };
 
-const Textarea: FC<Props> = ({ control, name, className, minLength, maxLength }) => {
-  const { field } = useController({
+const Textarea: FC<Props> = ({
+  control,
+  name,
+  className,
+  minLength,
+  maxLength,
+  validation = RequireValidationScheme,
+}) => {
+  const {
+    field,
+    fieldState: { invalid, isDirty },
+    formState: { errors },
+  } = useController({
     control,
     name,
+    rules: validation,
   });
-
+  console.log(invalid);
   return (
-    <textarea
-      {...field}
-      className={cn(style.textarea, className)}
-      minLength={minLength}
-      maxLength={maxLength}
-    ></textarea>
+    <>
+      <textarea
+        {...field}
+        className={cn(
+          invalid ? undefined : className,
+          invalid ? style.validation_false : isDirty ? style.validation_success : undefined,
+          style.textarea,
+        )}
+        minLength={minLength}
+        maxLength={maxLength}
+      ></textarea>
+      {errors[name]?.message && <InputMessage type="error" message={errors[name]?.message} />}
+    </>
   );
 };
 

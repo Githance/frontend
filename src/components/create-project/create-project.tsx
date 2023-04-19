@@ -1,18 +1,46 @@
+import axios from 'axios';
 import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from '~/services/hooks';
+import { createProject, setProject } from '~/services/slice/project/project-slice';
+import token from '../../utils/token';
 import CommonInput from '../form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '../UI';
 import Textarea from '../UI/form/textarea/textarea';
 import style from './create-project.module.css';
 
 const CreateProject: FC = () => {
-  const { /* setError, */ handleSubmit, control, formState, setFocus } = useForm({
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { setError, handleSubmit, control, formState, setFocus } = useForm({
     mode: 'onChange',
-    defaultValues: { name: '', bio: '', email: '', telegram: '' },
+    defaultValues: {
+      name: 'string',
+      intro: 'string',
+      description: 'string',
+      status: 'idea',
+      telegram: 'string',
+      email: 'user@example.com',
+    },
   });
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    dispatch(createProject(data))
+      .unwrap()
+      .then((res: any) => {
+        dispatch(setProject(res));
+        console.log(res);
+        navigate(`/project/${res.id}`);
+      })
+      .catch((err) => {
+        setError('name', {
+          type: 'server',
+          message: err['name'],
+        });
+
+        console.log(err);
+      });
   });
 
   useEffect(() => {
@@ -31,10 +59,10 @@ const CreateProject: FC = () => {
 
       <fieldset className={style.fieldset}>
         <h2 className={style.title}>Опишите свой проект</h2>
-        <Label htmlFor="name" required={true}>
+        <Label htmlFor="intro" required={true}>
           Краткое описание
         </Label>
-        <Textarea name="bio" control={control} className={style.textarea} maxLength={300} />
+        <Textarea name="intro" control={control} className={style.textarea} maxLength={300} />
         <p className={style.message}>
           Коротко опишите о чем ваш проект. Эта информация будет видна на главной странице. Вы
           сможете изменить описание после создания проекта.

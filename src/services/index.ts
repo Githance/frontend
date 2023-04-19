@@ -4,6 +4,7 @@ import userEmailSlice from './slice/auth/user-email-slice';
 import authPageSlice from './slice/auth/auth-page-slice';
 import registerPageSlice from './slice/auth/register-page-slice';
 import resetPageSlice from './slice/auth/reset-page-slice';
+import projectSlice from './slice/project/project-slice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     authUser: authPageSlice,
     registerUser: registerPageSlice,
     resetUser: resetPageSlice,
+    project: projectSlice,
   },
 });
 
