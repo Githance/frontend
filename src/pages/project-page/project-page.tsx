@@ -73,7 +73,8 @@ const ProjectPage: FC = () => {
         alert('😪 ...');
       },
       {
-        width: '320px',
+        className: 'notiflix-confirm',
+        width: '540px',
         borderRadius: '20px',
         titleColor: 'var(--text-color-black)',
         okButtonBackground: 'var(--bg-color-form)',
