@@ -43,7 +43,7 @@
 }
 
 .noBtn {
-  composes: yesbtn;
+  composes: yesBtn;
   color: var(--text-color-white);
   background: var(--color-input-false);
 }
