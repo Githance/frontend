@@ -57,7 +57,11 @@ const ProjectPage: FC = () => {
     console.log(data);
   });
   // УДАЛЕНИЕ
-
+  const handleDeleteProject = () => {
+    dispatch(deleteUserProjectByID(id))
+      .then(() => navigate('/'))
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <ul className={style.btns_wrapper}>
@@ -143,8 +147,8 @@ const ProjectPage: FC = () => {
             <Divider weight="bold" />
           </fieldset>
           {isOpen && (
-            <Modal onClose={closeModal} closeIcon={false}>
-              <ConfirmDelete onConfirm={() => console.log('YES')} onCancel={closeModal} />
+            <Modal  onClose={closeModal} closeIcon={false}>
+              <ConfirmDelete onConfirm={handleDeleteProject} onCancel={closeModal} />
             </Modal>
           )}
 
