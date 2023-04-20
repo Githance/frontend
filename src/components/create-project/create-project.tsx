@@ -1,10 +1,8 @@
-import axios from 'axios';
 import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from '~/services/hooks';
 import { createProject, setProject } from '~/services/slice/project/project-slice';
-import token from '../../utils/token';
 import CommonInput from '../form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '../UI';
 import Textarea from '../UI/form/textarea/textarea';
@@ -16,12 +14,12 @@ const CreateProject: FC = () => {
   const { setError, handleSubmit, control, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
-      name: 'string',
-      intro: 'string',
-      description: 'string',
+      name: '',
+      intro: '',
+      description: '',
       status: 'idea',
-      telegram: 'string',
-      email: 'user@example.com',
+      telegram: '',
+      email: '',
     },
   });
 
@@ -30,7 +28,6 @@ const CreateProject: FC = () => {
       .unwrap()
       .then((res: any) => {
         dispatch(setProject(res));
-        console.log(res);
         navigate(`/project/${res.id}`);
       })
       .catch((err) => {
@@ -75,11 +72,21 @@ const CreateProject: FC = () => {
       <fieldset className={style.fieldset}>
         <h2 className={style.title}>Оставьте свои контакты</h2>
         <Label htmlFor="email">Электронная почта</Label>
-        <CommonInput control={control} name="email" placeholder="" />
+        <CommonInput
+          control={control}
+          name="email"
+          placeholder=""
+          validation={{ required: false }}
+        />
         <Label htmlFor="telegram" className="pt-3">
           Ник в Telegram
         </Label>
-        <CommonInput control={control} name="telegram" placeholder="" />
+        <CommonInput
+          control={control}
+          name="telegram"
+          placeholder=""
+          validation={{ required: false }}
+        />
         <p className={style.message}>
           Ваши контакты будут видны специалистам, откликнувшимся на «вакансию». Это нужно для того,
           чтобы специалист смог уточнить у вас недостающую информацию по проекту.

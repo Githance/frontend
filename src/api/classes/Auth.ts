@@ -44,13 +44,13 @@ class Auth {
 
   /* TODO Разобраться с опцией credentials в axios */
 
-   public userLoginRequest(userData: LoginType) {
+/*   public userLoginRequest(userData: LoginType) {
     return this.authAxios
       .post(this.loginUser, userData, { withCredentials: true })
       .then(this.checkResponse);
-  }  
+  } */
 
-  /* public userLoginRequest(userData: LoginType) {
+   public userLoginRequest(userData: LoginType) {
     return fetch('https://dev.githance.com/api/v1/auth/login/', {
       method: 'POST',
       credentials: 'include',
@@ -66,7 +66,7 @@ class Auth {
         Promise.reject(`Ошибка: ${res.status}`);
       }
     });
-  }  */
+  }  
 
   public userLogoutRequest() {
     return this.authAxios.post(this.logoutUser).then(this.checkResponse);

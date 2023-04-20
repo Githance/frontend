@@ -11,7 +11,8 @@ type Props = {
   className?: string;
   minLength?: number;
   maxLength?: number;
-  validation?: any
+  validation?: any;
+  value?: string;
 };
 
 const Textarea: FC<Props> = ({
@@ -21,6 +22,7 @@ const Textarea: FC<Props> = ({
   minLength,
   maxLength,
   validation = RequireValidationScheme,
+  value,
 }) => {
   const {
     field,
@@ -41,6 +43,7 @@ const Textarea: FC<Props> = ({
           invalid ? style.validation_false : isDirty ? style.validation_success : undefined,
           style.textarea,
         )}
+        defaultValue={value}
         minLength={minLength}
         maxLength={maxLength}
       ></textarea>

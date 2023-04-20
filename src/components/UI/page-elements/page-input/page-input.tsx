@@ -15,9 +15,19 @@ type Props = {
   minLength?: number;
   maxLength?: number;
   divider?: Divider;
+  value?: any;
 };
 
-const PageInput: FC<Props> = ({ classname, control, inputSize, name, minLength, maxLength, divider }) => {
+const PageInput: FC<Props> = ({
+  classname,
+  control,
+  inputSize,
+  name,
+  minLength,
+  maxLength,
+  divider,
+  value
+}) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
 
@@ -46,6 +56,7 @@ const PageInput: FC<Props> = ({ classname, control, inputSize, name, minLength, 
         minLength={minLength}
         maxLength={maxLength}
         disabled={disabledInput}
+        defaultValue={value}
         {...rest}
         ref={(e) => {
           ref(e);

@@ -1,15 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import token from '../../utils/token';
 
-import {
-  LoginType,
-  RegisterType,
-  ResetPasswordType,
-  ConfirmPasswordType,
-  ConfirmEmailType,
-  ResendEmailType,
-} from '../api-types';
-
 class Project {
   private token = `Bearer ${token.getToken('accessToken')}`;
   private projectAxios = axios.create({
@@ -19,15 +10,27 @@ class Project {
       Authorization: this.token,
     },
   });
-
+  private projectID(id: number) {
+    return `/${id}/`;
+  }
   private checkResponse(res: AxiosResponse) {
     console.log(res);
     return res.data;
   }
-  public getProjectsRequest = () => this.projectAxios.get('/').then(this.checkResponse);
+  public getAllProjectsRequest = () => this.projectAxios.get('/').then(this.checkResponse);
 
   public createProjectRequest(data: any) {
     return this.projectAxios.post('/', data).then(this.checkResponse);
+  }
+
+  public getProjectByIDRequest(id: any) {
+    return this.projectAxios.get(this.projectID(id)).then(this.checkResponse);
+  }
+  public updateProjectByIDRequest({ id, data }: any) {
+    return this.projectAxios.patch(this.projectID(id), data).then(this.checkResponse);
+  }
+  public deleteProjectByIDRequest(id: any) {
+    return this.projectAxios.delete(this.projectID(id)).then(this.checkResponse);
   }
 }
 
