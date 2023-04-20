@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { FormState, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from '~/services/hooks';
 import { createProject, setProject } from '~/services/slice/project/project-slice';
@@ -32,8 +32,7 @@ const CreateProject: FC = () => {
         navigate(`/project/${res.id}`);
       })
       .catch((err) => {
-        handleErrors(err, setError)
-        console.log(err);
+        handleErrors(err, setError);
       });
   });
 

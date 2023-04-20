@@ -20,6 +20,7 @@ import {
 import useModal from '~/hook/useModal';
 import Modal from '~/components/UI/modal/modal';
 import ConfirmDelete from '~/components/modal/confirm-delete/confirm-delete';
+import { handleErrors } from '~/utils/handleErrors';
 
 const tabOptions = [{ name: 'Информация о проекте' }, { name: 'Команда' }, { name: 'Вакансии' }];
 
@@ -31,7 +32,7 @@ const ProjectPage: FC = () => {
   const { id } = useParams();
   const project = useSelector(getProject);
 
-  const { /* setError, */ handleSubmit, control, formState } = useForm({
+  const { setError, handleSubmit, control, formState } = useForm({
     mode: 'onChange',
     defaultValues: {
       email1: '',
@@ -63,7 +64,7 @@ const ProjectPage: FC = () => {
         dispatch(setProject(res));
       })
       .catch((err) => {
-        console.log(err);
+        handleErrors(err, setError);
       });
     console.log(data);
   });

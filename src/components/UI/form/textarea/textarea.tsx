@@ -33,7 +33,7 @@ const Textarea: FC<Props> = ({
     name,
     rules: validation,
   });
-  console.log(invalid);
+
   return (
     <>
       <textarea
