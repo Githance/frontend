@@ -66,7 +66,6 @@ const ProjectPage: FC = () => {
       .catch((err) => {
         handleErrors(err, setError);
       });
-    console.log(data);
   });
   // УДАЛЕНИЕ
   const handleDeleteProject = () => {

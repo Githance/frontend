@@ -3,7 +3,7 @@ import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
 import { PenIcon, Button, Divider } from '~/components/UI/index';
-
+import { InputMessage } from '../../index';
 type Size = 'large' | /* 'medium' | */ 'small';
 type Divider = 'bold';
 
@@ -33,6 +33,7 @@ const PageInput: FC<Props> = ({
 
   const {
     field: { ref, value, ...rest },
+    formState: { errors },
   } = useController({
     control,
     name,
@@ -49,30 +50,33 @@ const PageInput: FC<Props> = ({
   }, []);
 
   return (
-    <div className={cn(classname, disabledInput ? style.wrapper : style.wrapperActive)}>
-      <input
-        type="text"
-        autoComplete="on"
-        minLength={minLength}
-        maxLength={maxLength}
-        disabled={disabledInput}
-        value={value || ''}
-        {...rest}
-        ref={(e) => {
-          ref(e);
-          firstNameRef.current = e;
-        }}
-        className={cn(
-          style.input,
-          inputSize === 'large' ? style.input_size_large : undefined,
-          /* inputSize === 'medium' ? style.input_size_medium : undefined, */
-          inputSize === 'small' ? style.input_size_small : undefined,
-        )}
-      />
-      <Button type="button" onClick={toggleInput} className={style.button} isValid>
-        <PenIcon size={inputSize} active={!disabledInput} />
-      </Button>
-    </div>
+    <>
+      <div className={cn(classname, disabledInput ? style.wrapper : style.wrapperActive)}>
+        <input
+          type="text"
+          autoComplete="on"
+          minLength={minLength}
+          maxLength={maxLength}
+          disabled={disabledInput}
+          value={value || ''}
+          {...rest}
+          ref={(e) => {
+            ref(e);
+            firstNameRef.current = e;
+          }}
+          className={cn(
+            style.input,
+            inputSize === 'large' ? style.input_size_large : undefined,
+            /* inputSize === 'medium' ? style.input_size_medium : undefined, */
+            inputSize === 'small' ? style.input_size_small : undefined,
+          )}
+        />
+        <Button type="button" onClick={toggleInput} className={style.button} isValid>
+          <PenIcon size={inputSize} active={!disabledInput} />
+        </Button>
+      </div>{' '}
+      {errors[name]?.message && <InputMessage type="error" message={errors[name]?.message} />}
+    </>
   );
 };
 
