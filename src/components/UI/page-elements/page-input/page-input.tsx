@@ -1,4 +1,3 @@
-
 import { FC, useState, useEffect, useRef, useCallback } from 'react';
 import { useController } from 'react-hook-form';
 import cn from 'classnames';
@@ -27,13 +26,13 @@ const PageInput: FC<Props> = ({
   minLength,
   maxLength,
   divider,
-  value,
+  /* value, */
 }) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
 
   const {
-    field: { ref, ...rest },
+    field: { ref, value, ...rest },
   } = useController({
     control,
     name,
@@ -57,7 +56,7 @@ const PageInput: FC<Props> = ({
         minLength={minLength}
         maxLength={maxLength}
         disabled={disabledInput}
-        defaultValue={value}
+        value={value || ''}
         {...rest}
         ref={(e) => {
           ref(e);

@@ -124,7 +124,7 @@ const projectSlice = createSlice({
       state.deleteProjectByIDError = true;
     });
     // ОБНОВИТЬ ПРОЕКТ
-    /*    builder.addCase(updateUserProjectByID.pending, (state) => {
+    builder.addCase(updateUserProjectByID.pending, (state) => {
       state.updateProjectByIDRequest = true;
     });
     builder.addCase(updateUserProjectByID.fulfilled, (state) => {
@@ -133,7 +133,7 @@ const projectSlice = createSlice({
     builder.addCase(updateUserProjectByID.rejected, (state) => {
       state.updateProjectByIDRequest = null;
       state.updateProjectByIDError = true;
-    }); */
+    });
   },
 });
 

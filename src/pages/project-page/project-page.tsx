@@ -15,6 +15,7 @@ import {
   deleteUserProjectByID,
   getProjectByID,
   setProject,
+  updateUserProjectByID,
 } from '~/services/slice/project/project-slice';
 import useModal from '~/hook/useModal';
 import Modal from '~/components/UI/modal/modal';
@@ -33,12 +34,14 @@ const ProjectPage: FC = () => {
   const { /* setError, */ handleSubmit, control, formState } = useForm({
     mode: 'onChange',
     defaultValues: {
-      ...project,
       email1: '',
       telegram1: '',
       link1_url: null,
       link2_url: null,
       link3_url: null,
+    },
+    values: {
+      ...project,
     },
   });
 
@@ -54,6 +57,14 @@ const ProjectPage: FC = () => {
   }, [dispatch, id]);
 
   const onSubmit = handleSubmit((data) => {
+    dispatch(updateUserProjectByID({ id, data }))
+      .unwrap()
+      .then((res: any) => {
+        dispatch(setProject(res));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     console.log(data);
   });
   // УДАЛЕНИЕ
@@ -71,7 +82,7 @@ const ProjectPage: FC = () => {
           </li>
         ))}
       </ul>
-      {project && (
+      {project?.id && (
         <form className={style.form} onSubmit={onSubmit} noValidate>
           <fieldset className={style.form__name}>
             <PageInput
@@ -147,7 +158,7 @@ const ProjectPage: FC = () => {
             <Divider weight="bold" />
           </fieldset>
           {isOpen && (
-            <Modal  onClose={closeModal} closeIcon={false}>
+            <Modal onClose={closeModal} closeIcon={false}>
               <ConfirmDelete onConfirm={handleDeleteProject} onCancel={closeModal} />
             </Modal>
           )}

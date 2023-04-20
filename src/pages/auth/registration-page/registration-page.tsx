@@ -11,6 +11,7 @@ import CommonInput from '../../../components/form-inputs/common-input';
 import cn from 'classnames';
 import { FC, useEffect } from 'react';
 import { PassValidationScheme } from '~/utils/validation-scheme';
+import { handleErrors } from '~/utils/handleErrors';
 
 const RegistrationPage: FC = () => {
   const dispatch = useDispatch();
@@ -34,24 +35,7 @@ const RegistrationPage: FC = () => {
       .unwrap()
       .then(() => navigate('/auth/mail/resend-register'))
       .catch((err) => {
-        if (err?.name) {
-          setError('name', {
-            type: 'server',
-            message: err['name'],
-          });
-        }
-        if (err?.email) {
-          setError('email', {
-            type: 'server',
-            message: err['email'],
-          });
-        }
-        if (err?.password1) {
-          setError('password1', {
-            type: 'server',
-            message: err['password1'],
-          });
-        }
+        handleErrors(err, setError)
       });
   });
 

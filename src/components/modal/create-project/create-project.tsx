@@ -1,8 +1,9 @@
 import { FC, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { FormState, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from '~/services/hooks';
 import { createProject, setProject } from '~/services/slice/project/project-slice';
+import { handleErrors } from '~/utils/handleErrors';
 import CommonInput from '../../form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '../../UI';
 import Textarea from '../../UI/form/textarea/textarea';
@@ -31,24 +32,7 @@ const CreateProject: FC = () => {
         navigate(`/project/${res.id}`);
       })
       .catch((err) => {
-        if (err?.name) {
-          setError('name', {
-            type: 'server',
-            message: err['name'],
-          });
-        }
-        if (err?.telegram) {
-          setError('telegram', {
-            type: 'server',
-            message: err['telegram'],
-          });
-        }
-        if (err?.email) {
-          setError('email', {
-            type: 'server',
-            message: err['email'],
-          });
-        }
+        handleErrors(err, setError)
         console.log(err);
       });
   });

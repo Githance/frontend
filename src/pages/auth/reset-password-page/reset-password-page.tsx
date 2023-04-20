@@ -8,6 +8,7 @@ import { confirmUserPassword } from '~/services/slice/auth/reset-page-slice';
 import { resetEmail } from '~/services/actions';
 import PasswordInput from '../../../components/form-inputs/password-input';
 import { PassValidationScheme } from '~/utils/validation-scheme';
+import { handleErrors } from '~/utils/handleErrors';
 
 const ResetPasswordPage: FC = () => {
   const dispatch = useDispatch();
@@ -33,12 +34,7 @@ const ResetPasswordPage: FC = () => {
       .unwrap()
       .then(() => navigate('/'))
       .catch((err) => {
-        if (err?.new_password2) {
-          setError('new_password2', {
-            type: 'server',
-            message: err['new_password2'],
-          });
-        }
+        handleErrors(err, setError)
       });
   });
 

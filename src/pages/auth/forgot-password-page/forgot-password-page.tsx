@@ -7,6 +7,7 @@ import style from './forgot-password-page.module.css';
 import { resetUserPassword } from '../../../services/slice/auth/reset-page-slice';
 import { setEmail } from '~/services/slice/auth/user-email-slice';
 import { FC, useEffect } from 'react';
+import { handleErrors } from '~/utils/handleErrors';
 
 const ForgotPasswordPage: FC = () => {
   const dispatch = useDispatch();
@@ -25,12 +26,7 @@ const ForgotPasswordPage: FC = () => {
       .unwrap()
       .then(() => navigate('/auth/mail/resend-password'))
       .catch((err) => {
-        for (const key in err) {
-          setError('email', {
-            type: 'server',
-            message: err[key],
-          });
-        }
+        handleErrors(err, setError)
       });
   });
 
