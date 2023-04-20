@@ -1,4 +1,5 @@
-import { FC, useState, useEffect, useRef } from 'react';
+
+import { FC, useState, useEffect, useRef, useCallback } from 'react';
 import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
@@ -26,7 +27,7 @@ const PageInput: FC<Props> = ({
   minLength,
   maxLength,
   divider,
-  value
+  value,
 }) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
@@ -44,9 +45,9 @@ const PageInput: FC<Props> = ({
     }
   }, [disabledInput]);
 
-  const setDisable = () => {
-    setDisabledInput((prevValue) => !prevValue);
-  };
+  const toggleInput = useCallback(() => {
+    setDisabledInput((prev) => !prev);
+  }, []);
 
   return (
     <div className={cn(classname, disabledInput ? style.wrapper : style.wrapperActive)}>
@@ -69,7 +70,7 @@ const PageInput: FC<Props> = ({
           inputSize === 'small' ? style.input_size_small : undefined,
         )}
       />
-      <Button type="button" onClick={setDisable} className={style.button} isValid>
+      <Button type="button" onClick={toggleInput} className={style.button} isValid>
         <PenIcon size={inputSize} active={!disabledInput} />
       </Button>
     </div>

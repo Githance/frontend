@@ -31,11 +31,24 @@ const CreateProject: FC = () => {
         navigate(`/project/${res.id}`);
       })
       .catch((err) => {
-        setError('name', {
-          type: 'server',
-          message: err['name'],
-        });
-
+        if (err?.name) {
+          setError('name', {
+            type: 'server',
+            message: err['name'],
+          });
+        }
+        if (err?.telegram) {
+          setError('telegram', {
+            type: 'server',
+            message: err['telegram'],
+          });
+        }
+        if (err?.email) {
+          setError('email', {
+            type: 'server',
+            message: err['email'],
+          });
+        }
         console.log(err);
       });
   });
