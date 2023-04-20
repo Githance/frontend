@@ -1,0 +1,43 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.btnWrapper {
+  display: flex;
+  gap: 20px;
+}
+.title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+}
+.text {
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.yesBtn {
+  width: 215px;
+  padding: 16px 0;
+  border: 1px solid var(--bg-color-button-normal);
+  color: var(--bg-color-button-normal);
+  border-radius: 10px;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  
+}
+.yesBtn:hover{
+  scale: 1.05
+}
+.noBtn {
+  composes: yesBtn;
+  background: var(--color-input-false);
+  color: var(--text-color-white);
+}

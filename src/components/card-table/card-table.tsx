@@ -4,7 +4,8 @@ import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
 import { MainCard } from '../UI';
 import Modal from '../UI/modal/modal';
-import CreateProject from '../create-project/create-project';
+import CreateProject from '../modal/create-project/create-project';
+import useModal from '~/hook/useModal';
 
 const selectorOptions = [
   { value: 'test', label: 'test' },
@@ -20,7 +21,7 @@ const tabOptions = [
 ];
 
 const CardTable: FC = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const [isOpen, openModal, closeModal] = useModal(false);
   const [tab, setTab] = useState('Все проекты');
 
   return (
@@ -41,7 +42,7 @@ const CardTable: FC = () => {
         />
       </div>
       <div className={style.cards_wrapper}>
-        <div onClick={() => setOpenModal(true)} aria-hidden="true">
+        <div onClick={openModal} aria-hidden="true">
           <MainCard
             status="В процессе"
             title="Githance"
@@ -87,8 +88,8 @@ const CardTable: FC = () => {
           percent="10"
         />
       </div>
-      {openModal && (
-        <Modal onClose={() => setOpenModal(false)}>
+      {isOpen && (
+        <Modal onClose={closeModal}>
           <CreateProject />
         </Modal>
       )}

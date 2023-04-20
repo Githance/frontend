@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from '~/services/hooks';
 import { createProject, setProject } from '~/services/slice/project/project-slice';
-import CommonInput from '../form-inputs/common-input';
-import { Form, Label, SubmitBtn } from '../UI';
-import Textarea from '../UI/form/textarea/textarea';
+import CommonInput from '../../form-inputs/common-input';
+import { Form, Label, SubmitBtn } from '../../UI';
+import Textarea from '../../UI/form/textarea/textarea';
 import style from './create-project.module.css';
 
 const CreateProject: FC = () => {

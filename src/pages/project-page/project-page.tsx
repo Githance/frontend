@@ -7,7 +7,6 @@ import PageInput from '~/components/UI/page-elements/page-input/page-input';
 import PageLink from '~/components/UI/page-elements/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn, Tab, Label } from '~/components/UI/index';
-import Notiflix from 'notiflix';
 import { useSelector } from 'react-redux';
 import { getProject } from '~/services/selectors';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -17,12 +16,16 @@ import {
   getProjectByID,
   setProject,
 } from '~/services/slice/project/project-slice';
+import useModal from '~/hook/useModal';
+import Modal from '~/components/UI/modal/modal';
+import ConfirmDelete from '~/components/modal/confirm-delete/confirm-delete';
 
 const tabOptions = [{ name: 'Информация о проекте' }, { name: 'Команда' }, { name: 'Вакансии' }];
 
 const ProjectPage: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isOpen, openModal, closeModal] = useModal(false);
   const [tab, setTab] = useState('Информация о проекте');
   const { id } = useParams();
   const project = useSelector(getProject);
@@ -54,36 +57,7 @@ const ProjectPage: FC = () => {
     console.log(data);
   });
   // УДАЛЕНИЕ
-  const confirmDelete = () => {
-    Notiflix.Confirm.show(
-      'Удалить проект?',
-      'Убедитесь, что вы оповестили всех участников проекта или в проекте нет участников.',
-      'Да',
-      'Нет',
-      function okCb() {
-        dispatch(deleteUserProjectByID(id))
-          .then(() => {
-            navigate('/');
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      },
-      function cancelCb() {
-        alert('😪 ...');
-      },
-      {
-        className: 'notiflix-confirm',
-        width: '540px',
-        borderRadius: '20px',
-        titleColor: 'var(--text-color-black)',
-        okButtonBackground: 'var(--bg-color-form)',
-        okButtonColor: 'var(--bg-color-button-normal)',
-        cancelButtonBackground: 'var(--color-input-false)',
-        cssAnimationStyle: 'zoom',
-      },
-    );
-  };
+
   return (
     <>
       <ul className={style.btns_wrapper}>
@@ -163,11 +137,16 @@ const ProjectPage: FC = () => {
             />
 
             <h3 className={style.title}>Управление</h3>
-            <Button type="button" className={style.button} isValid onClick={confirmDelete}>
+            <Button type="button" className={style.button} isValid onClick={openModal}>
               Удалить проект <ArrowRightIcon size="small" />
             </Button>
             <Divider weight="bold" />
           </fieldset>
+          {isOpen && (
+            <Modal onClose={closeModal} closeIcon={false}>
+              <ConfirmDelete onConfirm={() => console.log('YES')} onCancel={closeModal} />
+            </Modal>
+          )}
 
           <fieldset className={style.form__about}>
             <Label className={style.title}>Краткое описание проекта</Label>
