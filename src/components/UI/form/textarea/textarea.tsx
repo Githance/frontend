@@ -39,7 +39,7 @@ const Textarea: FC<Props> = ({
       <textarea
         {...field}
         className={cn(
-          invalid ? undefined : className,
+          className,
           invalid ? style.validation_false : isDirty ? style.validation_success : undefined,
           style.textarea,
         )}

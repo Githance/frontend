@@ -1,18 +1,6 @@
-.pageInput {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
 .pageInput_size_large {
   gap: 20px;
 }
-
-/* .pageInput_size_medium {
-  gap: 15px;
-} */
 
 .pageInput_size_small {
   gap: 10px;

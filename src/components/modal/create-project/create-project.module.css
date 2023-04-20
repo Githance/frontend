@@ -40,5 +40,5 @@
 
 .textarea {
   height: 86px;
-  /* border: 1px solid var(--color-input-normal); */
+ border: 1px solid var(--color-input-normal); 
 }

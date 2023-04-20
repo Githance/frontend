@@ -3,8 +3,8 @@ import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
 import { PenIcon, Button, Divider } from '~/components/UI/index';
-import { InputMessage } from '../../index';
-type Size = 'large' | /* 'medium' | */ 'small';
+import { InputMessage } from '../UI/index';
+type Size = 'large' | 'small';
 type Divider = 'bold';
 
 type Props = {
@@ -26,7 +26,6 @@ const PageInput: FC<Props> = ({
   minLength,
   maxLength,
   divider,
-  /* value, */
 }) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
@@ -64,12 +63,10 @@ const PageInput: FC<Props> = ({
             ref(e);
             firstNameRef.current = e;
           }}
-          className={cn(
-            style.input,
-            inputSize === 'large' ? style.input_size_large : undefined,
-            /* inputSize === 'medium' ? style.input_size_medium : undefined, */
-            inputSize === 'small' ? style.input_size_small : undefined,
-          )}
+          className={cn(style.input, {
+            [style.input_size_large]: inputSize === 'large',
+            [style.input_size_small]: inputSize === 'small',
+          })}
         />
         <Button type="button" onClick={toggleInput} className={style.button} isValid>
           <PenIcon size={inputSize} active={!disabledInput} />
