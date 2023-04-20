@@ -10,6 +10,7 @@
   border-radius: 10px;
   resize: none;
 }
+
 .validation_success {
   border: 1px solid var(--color-input-true)!important;
 }

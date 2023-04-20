@@ -26,7 +26,7 @@ const ForgotPasswordPage: FC = () => {
       .unwrap()
       .then(() => navigate('/auth/mail/resend-password'))
       .catch((err) => {
-        handleErrors(err, setError)
+        handleErrors(err, setError);
       });
   });
 

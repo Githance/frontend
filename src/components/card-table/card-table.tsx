@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Button, Tab } from '../UI/index';
+import { Tab } from '../UI/index';
 import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
 import { MainCard } from '../UI';

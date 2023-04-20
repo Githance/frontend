@@ -30,7 +30,7 @@ const AuthenticationPage: FC = () => {
       .unwrap()
       .then(() => navigate('/'))
       .catch((err) => {
-        handleErrors(err, setError)
+        handleErrors(err, setError);
       });
   });
 

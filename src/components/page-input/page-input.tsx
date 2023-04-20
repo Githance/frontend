@@ -18,15 +18,7 @@ type Props = {
   value?: any;
 };
 
-const PageInput: FC<Props> = ({
-  classname,
-  control,
-  inputSize,
-  name,
-  minLength,
-  maxLength,
-  divider,
-}) => {
+const PageInput: FC<Props> = ({ classname, control, inputSize, name, minLength, maxLength }) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
 

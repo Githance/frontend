@@ -1,11 +1,11 @@
 .error {
   display: block;
   margin: 0;
+  padding: 5px 0 0;
   color: var(--text-color-red);
   font-weight: 500;
   font-size: 12px;
-  line-height: 15px;
-  padding: 5px 0 0 0
+  line-height: 15px
 }
 
 .warning {

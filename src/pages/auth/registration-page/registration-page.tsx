@@ -35,7 +35,7 @@ const RegistrationPage: FC = () => {
       .unwrap()
       .then(() => navigate('/auth/mail/resend-register'))
       .catch((err) => {
-        handleErrors(err, setError)
+        handleErrors(err, setError);
       });
   });
 

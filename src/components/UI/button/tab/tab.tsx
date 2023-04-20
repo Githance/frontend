@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Button from '../button';
 import style from './tab.module.css';
 import cn from 'classnames';
