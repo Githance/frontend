@@ -10,12 +10,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border-input-color);
+  border-bottom: 2px solid var(--border-input-color);
 }
 
 .wrapperActive{
   composes: wrapper;
-  border-bottom: 1px solid var(--bg-color-main);
+  border-bottom: 2px solid var(--bg-color-main);
 }
 
 .input {
@@ -47,6 +47,7 @@
 }
 
 .button {
+  
   display: flex;
   align-items: center;
   justify-content: center;

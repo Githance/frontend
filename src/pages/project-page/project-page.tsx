@@ -21,15 +21,17 @@ import useModal from '~/hook/useModal';
 import Modal from '~/components/UI/modal/modal';
 import ConfirmDelete from '~/components/modal/confirm-delete/confirm-delete';
 import { handleErrors } from '~/utils/handleErrors';
+import useProject from '~/hook/useProject'; 
 
 const tabOptions = [{ name: 'Информация о проекте' }, { name: 'Команда' }, { name: 'Вакансии' }];
 
 const ProjectPage: FC = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpen, openModal, closeModal] = useModal(false);
   const [tab, setTab] = useState('Информация о проекте');
-  const { id } = useParams();
+
   const project = useSelector(getProject);
 
   const { setError, handleSubmit, control, formState } = useForm({
@@ -45,8 +47,8 @@ const ProjectPage: FC = () => {
       ...project,
     },
   });
-
-  useEffect(() => {
+  const { onSubmit, handleDeleteProject } = useProject(id, setError); 
+    /*  useEffect(() => {
     dispatch(getProjectByID(id))
       .unwrap()
       .then((res: any) => {
@@ -67,12 +69,12 @@ const ProjectPage: FC = () => {
         handleErrors(err, setError);
       });
   });
-  // УДАЛЕНИЕ
+ 
   const handleDeleteProject = () => {
     dispatch(deleteUserProjectByID(id))
       .then(() => navigate('/'))
       .catch((err) => console.log(err));
-  };
+  };   */
   return (
     <>
       <ul className={style.btns_wrapper}>
@@ -83,7 +85,7 @@ const ProjectPage: FC = () => {
         ))}
       </ul>
       {project?.id && (
-        <form className={style.form} onSubmit={onSubmit} noValidate>
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)} noValidate>
           <fieldset className={style.form__name}>
             <PageInput
               inputSize="large"
@@ -169,7 +171,7 @@ const ProjectPage: FC = () => {
               value={project.intro}
               name="intro"
               control={control}
-              className={cn(style.shortTextarea, 'mb-4')}
+              className={cn(style.shortTextarea)}
               maxLength={300}
             />
             <Label className={style.title}>Подробное описание проекта</Label>
