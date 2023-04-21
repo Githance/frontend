@@ -28,9 +28,9 @@ const ProjectPage: FC = () => {
     defaultValues: {
       email1: '',
       telegram1: '',
-      link1_url: null,
-      link2_url: null,
-      link3_url: null,
+      link1_url: '',
+      link2_url: '',
+      link3_url: '',
     },
     values: {
       ...project,
@@ -53,6 +53,7 @@ const ProjectPage: FC = () => {
         <form className={style.form} onSubmit={handleSubmit(onSubmit)} noValidate>
           <fieldset className={style.form__name}>
             <PageInput
+              hasErrorMessage={true}
               inputSize="large"
               control={control}
               name="name"
@@ -65,6 +66,7 @@ const ProjectPage: FC = () => {
             <h3 className={style.title}>Контакты создателя проекта</h3>
             <Label className={style.label}>Электронная почта</Label>
             <PageInput
+              hasErrorMessage={true}
               value={project.email}
               classname={style.input}
               inputSize="small"
@@ -74,6 +76,7 @@ const ProjectPage: FC = () => {
             />
             <Label className={style.label}>Ник в Telegram</Label>
             <PageInput
+              hasErrorMessage={true}
               value={project.telegram}
               inputSize="small"
               control={control}
@@ -86,6 +89,7 @@ const ProjectPage: FC = () => {
             </h3>
             <Label className={style.label}>Электронная почта</Label>
             <PageInput
+              hasErrorMessage={true}
               classname={style.input}
               inputSize="small"
               control={control}
@@ -93,7 +97,13 @@ const ProjectPage: FC = () => {
               divider="bold"
             />
             <Label className={style.label}>Ник в Telegram</Label>
-            <PageInput inputSize="small" control={control} name="telegram1" divider="bold" />
+            <PageInput
+              hasErrorMessage={true}
+              inputSize="small"
+              control={control}
+              name="telegram1"
+              divider="bold"
+            />
 
             <h3 className={style.title}>Ссылки</h3>
             <PageLink

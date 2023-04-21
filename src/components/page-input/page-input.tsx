@@ -8,17 +8,27 @@ type Size = 'large' | 'small';
 type Divider = 'bold';
 
 type Props = {
-  classname?: string;
   control: any;
   inputSize: Size;
   name: string;
   minLength?: number;
   maxLength?: number;
   divider?: Divider;
-  value?: any;
+  classname?: string;
+  value?: string;
+  hasErrorMessage?: boolean;
 };
 
-const PageInput: FC<Props> = ({ classname, control, inputSize, name, minLength, maxLength }) => {
+const PageInput: FC<Props> = ({
+  classname,
+  control,
+  inputSize,
+  name,
+  minLength,
+  maxLength,
+  divider,
+  hasErrorMessage = false,
+}) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
 
@@ -41,8 +51,16 @@ const PageInput: FC<Props> = ({ classname, control, inputSize, name, minLength, 
   }, []);
 
   return (
-    <>
-      <div className={cn(classname, disabledInput ? style.wrapper : style.wrapperActive)}>
+    <fieldset
+      className={cn(
+        classname,
+        style.pageInput,
+        inputSize === 'large' ? style.pageInput_size_large : undefined,
+        /* inputSize === 'medium' ? style.pageInput_size_medium : undefined, */
+        inputSize === 'small' ? style.pageInput_size_small : undefined,
+      )}
+    >
+      <div className={style.pageInput__container}>
         <input
           type="text"
           autoComplete="on"
@@ -55,31 +73,23 @@ const PageInput: FC<Props> = ({ classname, control, inputSize, name, minLength, 
             ref(e);
             firstNameRef.current = e;
           }}
-          className={cn(style.input, {
-            [style.input_size_large]: inputSize === 'large',
-            [style.input_size_small]: inputSize === 'small',
-          })}
+          className={cn(
+            style.input,
+            inputSize === 'large' ? style.input_size_large : undefined,
+            /* inputSize === 'medium' ? style.input_size_medium : undefined, */
+            inputSize === 'small' ? style.input_size_small : undefined,
+          )}
         />
         <Button type="button" onClick={toggleInput} className={style.button} isValid>
           <PenIcon size={inputSize} active={!disabledInput} />
         </Button>
-      </div>{' '}
-      {errors[name]?.message && <InputMessage type="error" message={errors[name]?.message} />}
-    </>
+      </div>
+      <Divider active={!disabledInput} weight={divider} />
+      {hasErrorMessage && errors[name]?.message && (
+        <InputMessage className={style.error} type="error" message={errors[name]?.message} />
+      )}
+    </fieldset>
   );
 };
 
 export default PageInput;
-
-/*  <div
-      className={cn(
-        style.pageInput,
-        inputSize === 'large' ? style.pageInput_size_large : undefined,
-        inputSize === 'small' ? style.pageInput_size_small : undefined,
-      )}
-    > */
-
-{
-  /* <Divider active={!disabledInput} weight={divider} /> */
-}
-/* </div> */

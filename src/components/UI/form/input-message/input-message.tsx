@@ -11,6 +11,18 @@ type Props = {
 const InputMessage: FC<Props> = ({ type, message, className }) => {
   return (
     <>
+      <p className={cn(className, type === 'error' ? style.error : style.warning)}>
+        {typeof message === 'string' ? message : message.map((el: string) => `${el} `)}
+      </p>
+    </>
+  );
+};
+
+export default InputMessage;
+
+// ВАРИАНТ СТОЛБЦОМ
+{
+  /* <>
       {typeof message === 'string' ? (
         <p className={cn(className, type === 'error' ? style.error : style.warning)}>{message}</p>
       ) : (
@@ -20,8 +32,5 @@ const InputMessage: FC<Props> = ({ type, message, className }) => {
           </p>
         ))
       )}
-    </>
-  );
-};
-
-export default InputMessage;
+    </> */
+}
