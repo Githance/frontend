@@ -36,9 +36,7 @@ const ProjectPage: FC = () => {
       ...project,
     },
   });
-  const { onSubmit, handleDeleteProject } = useProject(id, setError, {
-    deletePath: '/',
-  });
+  const { onSubmit, handleDeleteProject } = useProject(setError, { deletePath: '/' }, id);
 
   return (
     <>

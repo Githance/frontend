@@ -18,9 +18,7 @@ const CreateProject: FC = () => {
       email: '',
     },
   });
-  const { onSubmit } = useProject(null, setError, {
-    deletePath: null,
-  });
+  const { onSubmit } = useProject(setError, { deletePath: null }, null);
 
   useEffect(() => {
     setFocus('name');

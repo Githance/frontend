@@ -55,7 +55,7 @@ export const updateUserProjectByID = createAsyncThunk<
     })
     .catch((err) => rejectWithValue(err.response.data)),
 );
-type Project = {
+export type Project = {
   id: number;
   name: string;
   intro: string;
