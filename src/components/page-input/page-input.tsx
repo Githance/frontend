@@ -15,7 +15,6 @@ type Props = {
   maxLength?: number;
   divider?: Divider;
   classname?: string;
-  value?: string;
   hasErrorMessage?: boolean;
 };
 
@@ -67,7 +66,7 @@ const PageInput: FC<Props> = ({
           minLength={minLength}
           maxLength={maxLength}
           disabled={disabledInput}
-          value={value || ''}
+          defaultValue={value}
           {...rest}
           ref={(e) => {
             ref(e);

@@ -55,7 +55,7 @@ export const updateUserProjectByID = createAsyncThunk<
     })
     .catch((err) => rejectWithValue(err.response.data)),
 );
-export type Project = {
+export type TProject = {
   id: number;
   name: string;
   intro: string;
@@ -77,7 +77,7 @@ type InitialState = {
   deleteProjectByIDError: boolean | null;
   updateProjectByIDRequest: boolean | null;
   updateProjectByIDError: boolean | null;
-  project: Project | null;
+  project: TProject | null;
 };
 
 const initialState: InitialState = {

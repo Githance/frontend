@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import token from '../../utils/token';
-
+import { TProject } from '../../services/slice/project/project-slice';
 class Project {
   private token = `Bearer ${token.getToken('accessToken')}`;
   private projectAxios = axios.create({
@@ -19,7 +19,7 @@ class Project {
   }
   public getAllProjectsRequest = () => this.projectAxios.get('/').then(this.checkResponse);
 
-  public createProjectRequest(data: any) {
+  public createProjectRequest(data: TProject) {
     return this.projectAxios.post('/', data).then(this.checkResponse);
   }
 
