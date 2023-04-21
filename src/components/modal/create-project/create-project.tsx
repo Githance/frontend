@@ -1,17 +1,12 @@
 import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from '~/services/hooks';
-import { createProject, setProject } from '~/services/slice/project/project-slice';
-import { handleErrors } from '~/utils/handleErrors';
+import useProject from '~/hook/useProject';
 import CommonInput from '../../form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '../../UI';
 import Textarea from '../../UI/form/textarea/textarea';
 import style from './create-project.module.css';
 
 const CreateProject: FC = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { setError, handleSubmit, control, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -23,17 +18,8 @@ const CreateProject: FC = () => {
       email: '',
     },
   });
-
-  const onSubmit = handleSubmit((data) => {
-    dispatch(createProject(data))
-      .unwrap()
-      .then((res: any) => {
-        dispatch(setProject(res));
-        navigate(`/project/${res.id}`);
-      })
-      .catch((err) => {
-        handleErrors(err, setError);
-      });
+  const { onSubmit } = useProject(null, setError, {
+    deletePath: null,
   });
 
   useEffect(() => {
@@ -41,7 +27,7 @@ const CreateProject: FC = () => {
   }, [setFocus]);
 
   return (
-    <Form onSubmit={onSubmit} className={style.form}>
+    <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
       <fieldset className={style.fieldset}>
         <h2 className={style.title}>Назовите свой проект</h2>
         <Label htmlFor="name" required={true}>

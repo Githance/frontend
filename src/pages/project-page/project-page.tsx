@@ -1,6 +1,5 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import cn from 'classnames';
-
 import { useForm } from 'react-hook-form';
 import style from './project-page.module.css';
 import PageInput from '~/components/page-input/page-input';
@@ -9,26 +8,16 @@ import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn, Tab, Label } from '~/components/UI/index';
 import { useSelector } from 'react-redux';
 import { getProject } from '~/services/selectors';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch } from '~/services/hooks';
-import {
-  deleteUserProjectByID,
-  getProjectByID,
-  setProject,
-  updateUserProjectByID,
-} from '~/services/slice/project/project-slice';
+import { useParams } from 'react-router-dom';
 import useModal from '~/hook/useModal';
 import Modal from '~/components/UI/modal/modal';
 import ConfirmDelete from '~/components/modal/confirm-delete/confirm-delete';
-import { handleErrors } from '~/utils/handleErrors';
-import useProject from '~/hook/useProject'; 
+import useProject from '~/hook/useProject';
 
 const tabOptions = [{ name: 'Информация о проекте' }, { name: 'Команда' }, { name: 'Вакансии' }];
 
 const ProjectPage: FC = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [isOpen, openModal, closeModal] = useModal(false);
   const [tab, setTab] = useState('Информация о проекте');
 
@@ -47,34 +36,10 @@ const ProjectPage: FC = () => {
       ...project,
     },
   });
-  const { onSubmit, handleDeleteProject } = useProject(id, setError); 
-    /*  useEffect(() => {
-    dispatch(getProjectByID(id))
-      .unwrap()
-      .then((res: any) => {
-        dispatch(setProject(res));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [dispatch, id]);
-
-  const onSubmit = handleSubmit((data) => {
-    dispatch(updateUserProjectByID({ id, data }))
-      .unwrap()
-      .then((res: any) => {
-        dispatch(setProject(res));
-      })
-      .catch((err) => {
-        handleErrors(err, setError);
-      });
+  const { onSubmit, handleDeleteProject } = useProject(id, setError, {
+    deletePath: '/',
   });
- 
-  const handleDeleteProject = () => {
-    dispatch(deleteUserProjectByID(id))
-      .then(() => navigate('/'))
-      .catch((err) => console.log(err));
-  };   */
+
   return (
     <>
       <ul className={style.btns_wrapper}>

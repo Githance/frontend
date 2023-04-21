@@ -1,25 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { unwrapResult } from '@reduxjs/toolkit';
 
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from '~/services/hooks';
 import { handleErrors } from '~/utils/handleErrors';
 import {
+  createProject,
   deleteUserProjectByID,
   getProjectByID,
   setProject,
   updateUserProjectByID,
 } from '~/services/slice/project/project-slice';
 
-interface Props {
-  id: string;
-  data: any;
-  setError: any;
-}
-
-const useProject = (id: any, setError: any) => {
+const useProject = (id: any, setError: any, { deletePath }: any) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
     id &&
       dispatch(getProjectByID(id))
@@ -33,19 +29,29 @@ const useProject = (id: any, setError: any) => {
   }, [dispatch, id]);
 
   const onSubmit = (data: any) => {
-    dispatch(updateUserProjectByID({ id, data }))
-      .then(unwrapResult)
-      .then((res: any) => {
-        dispatch(setProject(res));
-      })
-      .catch((err: any) => {
-        handleErrors(err, setError);
-      });
+    id
+      ? dispatch(updateUserProjectByID({ id, data }))
+          .then(unwrapResult)
+          .then((res: any) => {
+            dispatch(setProject(res));
+          })
+          .catch((err: any) => {
+            handleErrors(err, setError);
+          })
+      : dispatch(createProject(data))
+          .unwrap()
+          .then((res: any) => {
+            dispatch(setProject(res));
+            navigate(`/project/${res.id}`);
+          })
+          .catch((err) => {
+            handleErrors(err, setError);
+          });
   };
 
   const handleDeleteProject = () => {
     dispatch(deleteUserProjectByID(id))
-      .then(() => navigate('/'))
+      .then(() => navigate(deletePath))
       .catch((err: any) => console.log(err));
   };
 
