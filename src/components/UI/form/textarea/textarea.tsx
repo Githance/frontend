@@ -19,10 +19,8 @@ const Textarea: FC<Props> = ({
   control,
   name,
   className,
-  minLength,
-  maxLength,
   validation = RequireValidationScheme,
-  value,
+  ...props
 }) => {
   const {
     field,
@@ -43,9 +41,9 @@ const Textarea: FC<Props> = ({
           invalid ? style.validation_false : isDirty ? style.validation_success : undefined,
           style.textarea,
         )}
-        defaultValue={value}
-        minLength={minLength}
-        maxLength={maxLength}
+        defaultValue={props.value}
+        minLength={props.minLength}
+        maxLength={props.maxLength}
       ></textarea>
       {errors[name]?.message && <InputMessage type="error" message={errors[name]?.message} />}
     </>
