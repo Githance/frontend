@@ -10,6 +10,7 @@ import { getLoginErrorText } from '~/services/selectors';
 import PasswordInput from '../../../components/form-inputs/password-input';
 import CommonInput from '../../../components/form-inputs/common-input';
 import cn from 'classnames';
+import { handleErrors } from '~/utils/handleErrors';
 
 const AuthenticationPage: FC = () => {
   const dispatch = useDispatch();
@@ -29,12 +30,7 @@ const AuthenticationPage: FC = () => {
       .unwrap()
       .then(() => navigate('/'))
       .catch((err) => {
-        if (err?.email) {
-          setError('email', {
-            type: 'server',
-            message: err.email,
-          });
-        }
+        handleErrors(err, setError);
       });
   });
 

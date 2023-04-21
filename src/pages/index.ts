@@ -2,6 +2,7 @@
 export { default as Layout } from './layout/layout';
 export { default as UserPage } from './user-page/user-page';
 export { default as ProfilePage } from './profile-page/profile-page';
+export { default as ProjectPage } from './project-page/project-page';
 export { default as MainPage } from './main-page/main-page';
 // АТОРИЗАЦИЯ
 export { default as AuthLayout } from './auth/layout/layout';
