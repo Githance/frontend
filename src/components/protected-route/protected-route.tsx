@@ -10,7 +10,7 @@ interface IProtectedRoute {
 
 const ProtectedRoute: FC<IProtectedRoute> = ({ children, to }) => {
   const isAuth = useSelector(checkAuth);
-  return <>{isAuth ? children : <Navigate to={to} replace />}</>;
+  return <>{!isAuth ? children : <Navigate to={to} replace />}</>;
 };
 
 export default ProtectedRoute;

@@ -15,6 +15,7 @@ import {
   SuccessRegistrationPage,
   VerifyEmailPage,
 } from '../pages/index';
+import ProtectedRoute from '~/components/protected-route/protected-route';
 
 const mainRoutes = [
   {
@@ -78,7 +79,11 @@ export const router = createBrowserRouter([
   },
   {
     path: PATH.AUTH,
-    element: <AuthLayout />,
+    element: (
+      <ProtectedRoute to="/profile">
+        <AuthLayout />
+      </ProtectedRoute>
+    ),
     children: authRoutes,
   },
   {
