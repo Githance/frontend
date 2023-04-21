@@ -8,8 +8,14 @@ export const createProject = createAsyncThunk<
   {
     rejectValue: any;
   }
->('projectSlice/createProject', (data, { rejectWithValue }) =>
-  project.createProjectRequest(data).catch((err) => rejectWithValue(err.response.data)),
+>('projectSlice/createProject', (data, { rejectWithValue, dispatch }) =>
+  project
+    .createProjectRequest(data)
+    .then((res) => {
+      dispatch(setProject(res));
+      return res;
+    })
+    .catch((err) => rejectWithValue(err.response.data)),
 );
 
 export const getProjectByID = createAsyncThunk<
@@ -18,8 +24,13 @@ export const getProjectByID = createAsyncThunk<
   {
     rejectValue: any;
   }
->('projectSlice/getProjectByID', (id, { rejectWithValue }) =>
-  project.getProjectByIDRequest(id).catch((err) => rejectWithValue(err.response.data)),
+>('projectSlice/getProjectByID', (id, { rejectWithValue, dispatch }) =>
+  project
+    .getProjectByIDRequest(id)
+    .then((res) => {
+      dispatch(setProject(res));
+    })
+    .catch((err) => rejectWithValue(err.response.data)),
 );
 export const deleteUserProjectByID = createAsyncThunk<
   void,
@@ -36,8 +47,13 @@ export const updateUserProjectByID = createAsyncThunk<
   {
     rejectValue: any;
   }
->('projectSlice/updateProjectByID', ({ id, data }, { rejectWithValue }) =>
-  project.updateProjectByIDRequest({ id, data }).catch((err) => rejectWithValue(err.response.data)),
+>('projectSlice/updateProjectByID', ({ id, data }, { rejectWithValue, dispatch }) =>
+  project
+    .updateProjectByIDRequest({ id, data })
+    .then((res) => {
+      dispatch(setProject(res));
+    })
+    .catch((err) => rejectWithValue(err.response.data)),
 );
 type Project = {
   id: number;

@@ -20,9 +20,6 @@ const useProject = (id: any, setError: any, { deletePath }: any) => {
     id &&
       dispatch(getProjectByID(id))
         .then(unwrapResult)
-        .then((res: any) => {
-          dispatch(setProject(res));
-        })
         .catch((err: any) => {
           console.log(err);
         });
@@ -32,16 +29,13 @@ const useProject = (id: any, setError: any, { deletePath }: any) => {
     id
       ? dispatch(updateUserProjectByID({ id, data }))
           .then(unwrapResult)
-          .then((res: any) => {
-            dispatch(setProject(res));
-          })
+
           .catch((err: any) => {
             handleErrors(err, setError);
           })
       : dispatch(createProject(data))
-          .unwrap()
+          .then(unwrapResult)
           .then((res: any) => {
-            dispatch(setProject(res));
             navigate(`/project/${res.id}`);
           })
           .catch((err) => {
