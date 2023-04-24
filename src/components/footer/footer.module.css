@@ -20,7 +20,7 @@
 }
 
 .link {
-  color: var(--text-color-black);
+  color: var(--bg-color-button-normal);
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;

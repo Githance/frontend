@@ -1,0 +1,133 @@
+.form {
+  display: grid;
+  grid-template-areas:
+    'name name name name name name name name name name name name'
+    'info info info info info . about about about about about about';
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 1110px;
+  margin: 0 auto;
+  row-gap: 40px;
+  column-gap: 30px;
+}
+
+.form__name {
+  display: flex;
+  flex-direction: column;
+  grid-area: name;
+  padding: 0;
+  border: none;
+}
+
+.form__info {
+  display: flex;
+  flex-direction: column;
+  grid-area: info;
+  padding: 0;
+  border: none;
+}
+
+.form__about {
+  display: flex;
+  flex-direction: column;
+  grid-area: about;
+  padding: 0;
+  border: none;
+}
+
+.title {
+  margin: 0;
+  padding-bottom: 30px;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.title:not(:nth-child(1))
+{
+  padding-top: 50px;
+}
+
+.title:last-of-type{
+  padding-top: 50px;
+}
+
+.span {
+  color: #999;
+}
+
+.label {
+  margin: 0;
+  color: var(--text-color-light-grey);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.email {
+  margin: 0 0 5px;
+  color: var(--text-color-black);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.container__item {
+  gap: 15px;
+}
+
+.container__inputs {
+  gap: 5px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.shortTextarea {
+  height: 133px;
+  border: 1px solid var(--border-input-color);
+}
+
+.textarea {
+  height: 538px;
+  border: 1px solid var(--border-input-color);
+}
+
+.submit {
+  grid-area: about;
+  width: 365px;
+}
+
+.btns_wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 20px 0 60px;
+  list-style: none;
+}
+
+.input{
+  margin-bottom: 15px;
+}
+
+

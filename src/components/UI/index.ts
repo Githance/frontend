@@ -6,6 +6,8 @@ export { default as CheckIcon } from './icons/check-icon';
 export { default as AnchorIcon } from './icons/anchor-icon';
 export { default as RowIcon } from './icons/row-icon';
 export { default as ArrowRightIcon } from './icons/arrow-right-icon';
+export { default as CloseIcon } from './icons/close-icon';
+export { default as BasketIcon } from './icons/basket-icon';
 // ЛОГОТИП
 export { default as Logo } from './logo/logo';
 // КАРТОЧКИ
@@ -15,6 +17,7 @@ export { default as SecondaryCard } from './cards/secondary-card/secondary-card'
 export { default as Button } from './button/button';
 export { default as GoogleBtn } from './button/google-btn/google-btn';
 export { default as SubmitBtn } from './button/submit-btn/submit-btn';
+export { default as Tab } from './button/tab/tab';
 // ЭЛЕМЕНТЫ ФОРМЫ
 export { default as Form } from './form/form';
 export { default as Label } from './form/label/label';

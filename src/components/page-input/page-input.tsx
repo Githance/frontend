@@ -1,10 +1,10 @@
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect, useRef, useCallback } from 'react';
 import { useController } from 'react-hook-form';
 import cn from 'classnames';
 import style from './page-input.module.css';
 import { PenIcon, Button, Divider } from '~/components/UI/index';
-
-type Size = 'large' | /* 'medium' | */ 'small';
+import { InputMessage } from '../UI/index';
+type Size = 'large' | 'small';
 type Divider = 'bold';
 
 type Props = {
@@ -14,14 +14,26 @@ type Props = {
   minLength?: number;
   maxLength?: number;
   divider?: Divider;
+  classname?: string;
+  hasErrorMessage?: boolean;
 };
 
-const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, divider }) => {
+const PageInput: FC<Props> = ({
+  classname,
+  control,
+  inputSize,
+  name,
+  minLength,
+  maxLength,
+  divider,
+  hasErrorMessage = false,
+}) => {
   const [disabledInput, setDisabledInput] = useState(true);
   const firstNameRef = useRef<HTMLInputElement | null>(null);
 
   const {
-    field: { ref, ...rest },
+    field: { ref, value, ...rest },
+    formState: { errors },
   } = useController({
     control,
     name,
@@ -33,13 +45,14 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, 
     }
   }, [disabledInput]);
 
-  const setDisable = () => {
-    setDisabledInput((prevValue) => !prevValue);
-  };
+  const toggleInput = useCallback(() => {
+    setDisabledInput((prev) => !prev);
+  }, []);
 
   return (
     <fieldset
       className={cn(
+        classname,
         style.pageInput,
         inputSize === 'large' ? style.pageInput_size_large : undefined,
         /* inputSize === 'medium' ? style.pageInput_size_medium : undefined, */
@@ -53,6 +66,7 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, 
           minLength={minLength}
           maxLength={maxLength}
           disabled={disabledInput}
+          defaultValue={value}
           {...rest}
           ref={(e) => {
             ref(e);
@@ -65,11 +79,14 @@ const PageInput: FC<Props> = ({ control, inputSize, name, minLength, maxLength, 
             inputSize === 'small' ? style.input_size_small : undefined,
           )}
         />
-        <Button type="button" onClick={setDisable} className={style.button} isValid>
+        <Button type="button" onClick={toggleInput} className={style.button} isValid>
           <PenIcon size={inputSize} active={!disabledInput} />
         </Button>
       </div>
       <Divider active={!disabledInput} weight={divider} />
+      {hasErrorMessage && errors[name]?.message && (
+        <InputMessage className={style.error} type="error" message={errors[name]?.message} />
+      )}
     </fieldset>
   );
 };

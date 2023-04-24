@@ -1,32 +1,39 @@
-import { FC } from 'react';
-import { Button } from '../UI/index';
+import { FC, useState } from 'react';
+import { Tab } from '../UI/index';
 import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
 import { MainCard } from '../UI';
+import Modal from '../UI/modal/modal';
+import CreateProject from '../modal/create-project/create-project';
+import useModal from '~/hook/useModal';
+
+const selectorOptions = [
+  { value: 'test', label: 'test' },
+  { value: 'test1', label: 'test1' },
+  { value: 'test2', label: 'test2' },
+  { value: 'test3', label: 'test3' },
+];
+const tabOptions = [
+  { name: 'Все проекты' },
+  { name: 'Идёт набор' },
+  { name: 'Завершённые проекты' },
+  { name: 'Текущие проекты' },
+];
 
 const CardTable: FC = () => {
-  const selectorOptions = [
-    { value: 'test', label: 'test' },
-    { value: 'test1', label: 'test1' },
-    { value: 'test2', label: 'test2' },
-    { value: 'test3', label: 'test3' },
-  ];
-  const navBarOptions = [
-    { name: 'Все проекты' },
-    { name: 'Идёт набор' },
-    { name: 'Завершённые проекты' },
-    { name: 'Текущие проекты' },
-  ];
+  const [isOpen, openModal, closeModal] = useModal(false);
+  const [tab, setTab] = useState('Все проекты');
+
   return (
     <section className={style.container}>
       <div className={style.selectors_wrapper}>
-        <div className={style.btns_wrapper}>
-          {navBarOptions.map((option, index) => (
-            <Button key={index} type="button" isValid={true} className={style.button}>
-              {option.name}
-            </Button>
+        <ul className={style.btns_wrapper}>
+          {tabOptions.map((option, index) => (
+            <li key={index}>
+              <Tab active={tab} name={option.name} onClick={() => setTab(option.name)} />
+            </li>
           ))}
-        </div>
+        </ul>
         <CustomSelect
           isClearable={true}
           isSeacheble={false}
@@ -35,14 +42,16 @@ const CardTable: FC = () => {
         />
       </div>
       <div className={style.cards_wrapper}>
-        <MainCard
-          status="В процессе"
-          title="Githance"
-          subtitle="Сайт для создания проектов 
+        <div onClick={openModal} aria-hidden="true">
+          <MainCard
+            status="В процессе"
+            title="Githance"
+            subtitle="Сайт для создания проектов 
 в портфолио"
-          percent="30"
-          empty={true}
-        />
+            percent="30"
+            empty={true}
+          />
+        </div>
         <MainCard
           status="В процессе"
           title="Маршруты
@@ -79,6 +88,11 @@ const CardTable: FC = () => {
           percent="10"
         />
       </div>
+      {isOpen && (
+        <Modal onClose={closeModal}>
+          <CreateProject />
+        </Modal>
+      )}
     </section>
   );
 };

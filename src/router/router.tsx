@@ -4,6 +4,7 @@ import {
   Layout,
   UserPage,
   ProfilePage,
+  ProjectPage,
   MainPage,
   AuthLayout,
   AuthenticationPage,
@@ -29,6 +30,10 @@ const mainRoutes = [
   {
     path: PATH.USER,
     element: <UserPage />,
+  },
+  {
+    path: PATH.PROJECT,
+    element: <ProjectPage />,
   },
 ];
 const authRoutes = [
