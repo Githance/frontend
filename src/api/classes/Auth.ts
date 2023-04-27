@@ -11,7 +11,7 @@ import {
 class Auth {
   private authAxios = axios.create({
     baseURL: 'https://dev.githance.com/api/v1/auth',
-    /* withCredentials: true, */
+    withCredentials: true,
   });
   private googleAuth = '/google/login/';
   private loginUser = '/login/';

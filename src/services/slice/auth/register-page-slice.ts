@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { userIsAuth } from '../../actions';
 import { auth } from '~/api';
 import { ConfirmEmailType, RegisterType } from '~/api/api-types';
 
@@ -27,9 +26,8 @@ export const confirmUserEmail = createAsyncThunk<
   void,
   // First argument to the payload creator
   ConfirmEmailType
->('userAuthSlice/confirmUserEmail', (userEmail, { dispatch }) => {
+>('userAuthSlice/confirmUserEmail', (userEmail) => {
   auth.confirmEmailRequest(userEmail);
-  dispatch(userIsAuth());
 });
 
 type InitialState = {

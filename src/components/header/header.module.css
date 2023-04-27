@@ -6,25 +6,22 @@
   max-width: 1480px;
   margin: 0 auto;
   padding: 64px 55px 36px;
-  background-color: var(--bg-color-form);
-
 }
 
-.nav_wrapper {
+.nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 1110px;
-  
 }
 
-.nav_main {
+.nav__main {
   display: flex;
   flex-grow: 1;
   gap: 25px;
 }
 
-.nav_profile {
+.nav__profile {
   display: flex;
   gap: 15px;
 }
@@ -40,12 +37,17 @@
   text-decoration: none;
 }
 
-.profile_link {
+.link_position_profile {
   composes: link;
   flex-direction: column;
   gap: 5px;
-  justify-content: center; 
+  justify-content: center;
+  color: var(--text-color-light-grey);
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
+}
+
+.link_active {
+  color: var(--link-color-active);
 }

@@ -49,6 +49,7 @@ body {
 
   /* Переменные цветов ссылок профиля */
   --link-color-grey: #999;
+  --link-color-active: #5d5fef;
   --border-textarea-color: #999;
   --border-input-color: #dedede;
   --color-background-overlay: rgb(0 0 0 / 60%)
