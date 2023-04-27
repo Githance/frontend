@@ -1,30 +1,22 @@
 import { FC, ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from '~/services/hooks';
-import { checkAuth } from '~/services/selectors';
+import { PATH } from '~/utils/variables';
+import { getIsAuthCheck, getIsAuth } from '~/services/selectors';
+import Loader from '../UI/loader/loader';
 
-interface IProtectedRoute {
-  children: ReactNode;
-  to: string;
-}
-
-const ProtectedRoute: FC<IProtectedRoute> = ({ children, to }) => {
-  const isAuth = useSelector(checkAuth);
-  return <>{!isAuth ? children : <Navigate to={to} replace />}</>;
+export type Props = {
+  element: ReactNode;
+  onlyUnAuth?: boolean;
 };
 
-export default ProtectedRoute;
-
-/* const ProtectedRoute: FC<TProtectedRoute> = ({
-  onlyUnAuth = false,
-  element,
-}) => {
+const ProtectedRoute: FC<Props> = ({ onlyUnAuth = false, element }) => {
   const location = useLocation();
-  const isAuth = useAppSelector(getIsAuth);
-  const isAuthCheck = useAppSelector(getIsAuthCheck);
+  const isAuth = useSelector(getIsAuth);
+  const isAuthCheck = useSelector(getIsAuthCheck);
 
   if (!isAuthCheck) {
-    return <Loader classname="--loader-router" />;
+    return <Loader />;
   }
 
   if (onlyUnAuth && isAuth) {
@@ -33,12 +25,10 @@ export default ProtectedRoute;
   }
 
   if (!onlyUnAuth && !isAuth) {
-    return <Navigate to={PATH.LOGIN} replace state={{ from: location }} />;
+    return <Navigate to={PATH.AUTH} replace state={{ from: location }} />;
   }
 
   return <>{element}</>;
 };
-export type TProtectedRoute = {
-  element: ReactNode;
-  onlyUnAuth?: boolean;
-} */
+
+export default ProtectedRoute;
