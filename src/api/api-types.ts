@@ -23,3 +23,11 @@ export type ConfirmPasswordType = {
 export type ConfirmEmailType = string;
 
 export type ResendEmailType = string | null;
+
+export type CurrentUserType = {
+  name?: string;
+  telegram?: string;
+  portfolio_url?: string;
+  summary_url?: string;
+  bio?: string;
+};
