@@ -43,6 +43,7 @@
 }
 
 .noBtn {
+  /* stylelint-disable-next-line value-keyword-case */
   composes: yesBtn;
   color: var(--text-color-white);
   background: var(--color-input-false);
