@@ -5,6 +5,7 @@ import authPageSlice from './slice/auth/auth-page-slice';
 import registerPageSlice from './slice/auth/register-page-slice';
 import resetPageSlice from './slice/auth/reset-page-slice';
 import projectSlice from './slice/project/project-slice';
+import refreshTokenSlice from './slice/auth/refresh-token-slice';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     authUser: authPageSlice,
     registerUser: registerPageSlice,
     resetUser: resetPageSlice,
+    refreshToken: refreshTokenSlice,
     project: projectSlice,
   },
 });

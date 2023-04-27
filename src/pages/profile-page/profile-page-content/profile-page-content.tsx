@@ -2,14 +2,16 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from '~/services/hooks';
 import style from './profile-page-content.module.css';
 import PageInput from '~/components/page-input/page-input';
 import PageLink from '~/components/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/index';
-import { auth } from '~/api';
+import { refreshToken } from '~/services/slice/auth/refresh-token-slice';
 
 const ProfilePageContent: FC = () => {
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -27,7 +29,7 @@ const ProfilePageContent: FC = () => {
   });
 
   const onClick = () => {
-    auth.refreshTokenRequest();
+    dispatch(refreshToken());
   };
 
   // Возможно стоит подумать над использованием touchedFields,
