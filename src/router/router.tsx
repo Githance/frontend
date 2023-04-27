@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
   },
   {
     path: PATH.AUTH,
-    element: <AuthLayout />,
+    element: <ProtectedRoute element={<AuthLayout />} onlyUnAuth />,
     children: authRoutes,
   },
   {

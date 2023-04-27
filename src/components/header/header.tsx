@@ -1,12 +1,15 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import { NavLink, useMatch } from 'react-router-dom';
+import { useSelector } from '~/services/hooks';
 import { Logo, NotificationIcon, ProfileIcon } from '../UI';
 import style from './header.module.css';
+import { PATH } from '~/utils/variables';
+import { getIsAuth } from '~/services/selectors';
 
 const Header: FC = () => {
   const profile = useMatch('profile');
-  console.log(profile);
+  const isAuth = useSelector(getIsAuth);
 
   return (
     <header className={style.header}>
@@ -29,7 +32,7 @@ const Header: FC = () => {
           </NavLink>
           <NavLink
             className={cn(style.link, style.link_position_profile, profile && style.link_active)}
-            to="/auth"
+            to={isAuth ? PATH.PROFILE : PATH.AUTH}
           >
             <ProfileIcon active={!!profile} />
             Профиль

@@ -13,20 +13,17 @@ export const checkUserAuth = createAsyncThunk(
   async (_, { dispatch }) => {
     if (token.getToken('accessToken')) {
       dispatch(refreshToken())
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           dispatch(userIsAuth());
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
           dispatch(userNotAuth());
         })
         .finally(() => {
-          console.log('finally');
           dispatch(userIsCheck());
         });
     } else {
-      dispatch(userNotAuth());
+      dispatch(userIsCheck());
     }
   },
 );
