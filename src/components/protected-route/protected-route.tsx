@@ -14,3 +14,31 @@ const ProtectedRoute: FC<IProtectedRoute> = ({ children, to }) => {
 };
 
 export default ProtectedRoute;
+
+/* const ProtectedRoute: FC<TProtectedRoute> = ({
+  onlyUnAuth = false,
+  element,
+}) => {
+  const location = useLocation();
+  const isAuth = useAppSelector(getIsAuth);
+  const isAuthCheck = useAppSelector(getIsAuthCheck);
+
+  if (!isAuthCheck) {
+    return <Loader classname="--loader-router" />;
+  }
+
+  if (onlyUnAuth && isAuth) {
+    const fromPage = location.state?.from?.pathname || PATH.HOME;
+    return <Navigate to={fromPage} replace state={{ from: location }} />;
+  }
+
+  if (!onlyUnAuth && !isAuth) {
+    return <Navigate to={PATH.LOGIN} replace state={{ from: location }} />;
+  }
+
+  return <>{element}</>;
+};
+export type TProtectedRoute = {
+  element: ReactNode;
+  onlyUnAuth?: boolean;
+} */
