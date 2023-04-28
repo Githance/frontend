@@ -8,7 +8,6 @@ import PageInput from '~/components/page-input/page-input';
 import PageLink from '~/components/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/index';
-import { refreshToken } from '~/services/slice/auth/refresh-token-slice';
 import { CurrentUserResponce } from '~/api/api-types';
 
 type Props = { currenProfileData: CurrentUserResponce };
@@ -38,10 +37,6 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
     },
   });
 
-  const onClick = () => {
-    dispatch(refreshToken());
-  };
-
   const onSubmit = handleSubmit((data) => {
     console.log(data);
     reset();
@@ -58,7 +53,7 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
           <div className={cn(style.container, style.container__item)}>
             <div className={cn(style.container, style.container__inputs)}>
               <p className={style.label}>Электронная почта (видна только вам)</p>
-              <p className={style.email}>Email</p>
+              <p className={style.email}>{currenProfileData.email}</p>
               <Divider weight="bold" />
             </div>
             <div className={cn(style.container, style.container__inputs)}>
@@ -95,17 +90,13 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
         </div>
         <div className={style.container}>
           <p className={style.title}>Управление</p>
-          <div className={cn(style.container, style.container__inputs)}>
+          <div className={cn(style.container, style.container__item)}>
             <Button type="button" className={style.button} isValid>
               Изменить пароль <ArrowRightIcon size="small" />
             </Button>
             <Divider weight="bold" />
             <Button type="button" className={style.button} isValid>
               Выйти из профиля <ArrowRightIcon size="small" />
-            </Button>
-            <Divider weight="bold" />
-            <Button type="button" className={style.button} isValid onClick={onClick}>
-              Обновить токен <ArrowRightIcon size="small" />
             </Button>
           </div>
         </div>

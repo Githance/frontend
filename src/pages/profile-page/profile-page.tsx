@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import { FC, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from '~/services/hooks';
 import { getCurrentUserRequestState } from '~/services/selectors';
