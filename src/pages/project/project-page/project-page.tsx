@@ -14,12 +14,9 @@ import Modal from '~/components/UI/modal/modal';
 import ConfirmDelete from '~/components/modal/confirm-delete/confirm-delete';
 import useProject from '~/hook/useProject';
 
-const tabOptions = [{ name: 'Информация о проекте' }, { name: 'Команда' }, { name: 'Вакансии' }];
-
 const ProjectPage: FC = () => {
   const { id } = useParams();
   const [isOpen, openModal, closeModal] = useModal(false);
-  const [tab, setTab] = useState('Информация о проекте');
 
   const project = useSelector(getProject);
 
@@ -40,13 +37,6 @@ const ProjectPage: FC = () => {
 
   return (
     <>
-      <ul className={style.btns_wrapper}>
-        {tabOptions.map((option, index) => (
-          <li key={index}>
-            <Tab active={tab} name={option.name} onClick={() => setTab(option.name)} />
-          </li>
-        ))}
-      </ul>
       {project?.id && (
         <form className={style.form} onSubmit={handleSubmit(onSubmit)} noValidate>
           <fieldset className={style.form__name}>

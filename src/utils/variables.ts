@@ -4,7 +4,9 @@ export const PATH = {
   AUTH_MAIL: '/auth/mail', // BASIC
   PROFILE: 'profile',
   USER: 'user',
-  PROJECT: 'project/:id', // BASIC
+ /*  PROJECT: 'project/:id', */
+  PROJECT: '/project', // BASIC
+  PROJECT_D: '/project/:id',
   REGISTRATION: 'registration',
   PASSWORD_RESET: 'password/reset',
   PASSWORD_RESET_CONFIRM_D: 'password/reset/confirm/:id/:confirmCode',

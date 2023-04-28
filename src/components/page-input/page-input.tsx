@@ -16,6 +16,7 @@ type Props = {
   divider?: Divider;
   classname?: string;
   hasErrorMessage?: boolean;
+  value?: any;
 };
 
 const PageInput: FC<Props> = ({

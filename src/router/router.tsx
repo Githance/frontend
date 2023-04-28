@@ -17,7 +17,13 @@ import {
   VerifyEmailPage,
 } from '../pages/index';
 import ProtectedRoute from '~/components/protected-route/protected-route';
-
+import ProjectLayout from '~/pages/project/layout/layout';
+const projectRoutes = [
+  {
+    path: PATH.PROJECT_D,
+    element: <ProjectPage />,
+  },
+];
 const mainRoutes = [
   {
     index: true,
@@ -33,7 +39,8 @@ const mainRoutes = [
   },
   {
     path: PATH.PROJECT,
-    element: <ProjectPage />,
+    element: <ProjectLayout />,
+    children: projectRoutes,
   },
 ];
 const authRoutes = [
@@ -76,6 +83,7 @@ const authResendRoutes = [
     element: <ResendPage base="password" />,
   },
 ];
+
 export const router = createBrowserRouter([
   {
     path: PATH.HOME,
