@@ -18,7 +18,11 @@ const ProfilePage: FC = () => {
     const accessToken = `Bearer ${token.getToken('accessToken')}`;
     dispatch(getCurrentUserData(accessToken))
       .unwrap()
-      .then((res) => setCurrentUserData(res));
+      .then((res) => {
+        setCurrentUserData(res);
+        // TODO: Убрать перед продакшеном
+        console.log(res);
+      });
   }, []);
 
   return (
