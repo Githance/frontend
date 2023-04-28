@@ -50,7 +50,7 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
   return (
     <form className={style.form} onSubmit={onSubmit} noValidate>
       <div className={style.form__name}>
-        <PageInput inputSize="large" control={control} name="name" maxLength={5} />
+        <PageInput inputSize="large" control={control} name="name" maxLength={38} />
       </div>
       <div className={style.form__info}>
         <div className={style.container}>
@@ -63,7 +63,14 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
             </div>
             <div className={cn(style.container, style.container__inputs)}>
               <p className={style.label}>Ник в Telegram</p>
-              <PageInput inputSize="small" control={control} name="telegram" divider="bold" />
+              <PageInput
+                inputSize="small"
+                control={control}
+                name="telegram"
+                divider="bold"
+                maxLength={32}
+                minLength={5}
+              />
             </div>
           </div>
         </div>
