@@ -40,7 +40,11 @@ const Textarea: FC<Props> = ({
         {...field}
         className={cn(
           className,
-          invalid ? style.validation_false : isDirty ? style.validation_success : undefined,
+          hasErrorMessage && invalid
+            ? style.validation_false
+            : hasErrorMessage && isDirty
+            ? style.validation_success
+            : undefined,
           style.textarea,
         )}
         defaultValue={props.value}

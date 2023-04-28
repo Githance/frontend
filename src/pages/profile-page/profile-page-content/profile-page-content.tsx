@@ -22,12 +22,19 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
     formState: { isDirty },
   } = useForm({
     mode: 'onChange',
+    values: {
+      name: currenProfileData.name || '',
+      telegram: currenProfileData.telegram || '',
+      portfolio_url: currenProfileData.portfolio_url || '',
+      summary_url: currenProfileData.summary_url || '',
+      bio: currenProfileData.bio || '',
+    },
     defaultValues: {
-      name: currenProfileData.name,
-      telegram: currenProfileData.telegram,
-      portfolio_url: currenProfileData.portfolio_url,
-      summary_url: currenProfileData.summary_url,
-      bio: currenProfileData.bio,
+      name: '',
+      telegram: '',
+      portfolio_url: '',
+      summary_url: '',
+      bio: '',
     },
   });
 
