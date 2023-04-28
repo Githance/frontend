@@ -32,7 +32,7 @@ const Header: FC = () => {
           </NavLink>
           <NavLink
             className={cn(style.link, style.link_position_profile, profile && style.link_active)}
-            to={isAuth ? PATH.PROFILE : PATH.AUTH}
+            to={PATH.PROFILE}
           >
             <ProfileIcon active={!!profile} />
             Профиль
