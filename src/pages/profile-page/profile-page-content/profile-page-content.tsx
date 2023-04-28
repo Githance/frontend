@@ -9,8 +9,11 @@ import PageLink from '~/components/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/index';
 import { refreshToken } from '~/services/slice/auth/refresh-token-slice';
+import { CurrentUserResponce } from '~/api/api-types';
 
-const ProfilePageContent: FC = () => {
+type Props = { currenProfileData: CurrentUserResponce };
+
+const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
   const dispatch = useDispatch();
   const {
     handleSubmit,
@@ -20,21 +23,17 @@ const ProfilePageContent: FC = () => {
   } = useForm({
     mode: 'onChange',
     defaultValues: {
-      name: 'name',
-      telegram: '@telegram',
-      portfolio_url: 'portfolio_url',
-      summary_url: 'summary_url',
-      bio: 'bio',
+      name: currenProfileData.name,
+      telegram: currenProfileData.telegram,
+      portfolio_url: currenProfileData.portfolio_url,
+      summary_url: currenProfileData.summary_url,
+      bio: currenProfileData.bio,
     },
   });
 
   const onClick = () => {
     dispatch(refreshToken());
   };
-
-  // Возможно стоит подумать над использованием touchedFields,
-  // для выбора только измененных полей для отправки.
-  // touchedFields возвращает объект с именем поля и значением boolean
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
