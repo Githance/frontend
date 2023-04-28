@@ -25,7 +25,7 @@ const mainRoutes = [
   },
   {
     path: PATH.PROFILE,
-    element: <ProfilePage />,
+    element: <ProtectedRoute element={<ProfilePage />} />,
   },
   {
     path: PATH.USER,
@@ -84,11 +84,7 @@ export const router = createBrowserRouter([
   },
   {
     path: PATH.AUTH,
-    element: (
-      <ProtectedRoute to="/profile">
-        <AuthLayout />
-      </ProtectedRoute>
-    ),
+    element: <ProtectedRoute element={<AuthLayout />} onlyUnAuth />,
     children: authRoutes,
   },
   {

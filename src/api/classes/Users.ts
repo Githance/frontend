@@ -1,10 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
+import { CurrentUserType } from '../api-types';
 
 class Users {
   private usersAxios = axios.create({
     baseURL: 'https://dev.githance.com/api/v1/users',
   });
-  private userData = '/me/';
+  private currentUser = '/me/';
+
   private selectedUser(id: number) {
     return `/${id}/`;
   }
@@ -16,8 +18,18 @@ class Users {
     return res.data;
   }
 
-  public getCurrenUserDataRequest(id: number) {
-    return this.usersAxios(this.selectedUser(id)).then(this.checkResponse);
+  public getCurrenUserDataRequest(token: string) {
+    return this.usersAxios(this.currentUser, {
+      headers: { 'Content-Type': 'application/json;charset=utf-8', Authorization: token },
+    }).then(this.checkResponse);
+  }
+
+  public patchCurrenUserDataRequest(data: CurrentUserType, token: string) {
+    return this.usersAxios
+      .patch(this.currentUser, data, {
+        headers: { 'Content-Type': 'application/json;charset=utf-8', Authorization: token },
+      })
+      .then(this.checkResponse);
   }
 }
 

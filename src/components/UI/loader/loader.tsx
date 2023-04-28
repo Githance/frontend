@@ -1,8 +1,13 @@
 import { FC } from 'react';
-import spiner from '../../../images/Spin-1s-300px.svg';
+import cn from 'classnames';
+import style from './loader.module.css';
 
-const Loader: FC = () => {
-  return <img src={spiner} alt="Спинер" />;
+type Props = {
+  className?: string;
+};
+
+const Loader: FC<Props> = ({ className }) => {
+  return <div className={cn(style.loader, className)}></div>;
 };
 
 export default Loader;
