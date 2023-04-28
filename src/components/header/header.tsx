@@ -1,15 +1,12 @@
 import { FC } from 'react';
 import cn from 'classnames';
 import { NavLink, useMatch } from 'react-router-dom';
-import { useSelector } from '~/services/hooks';
 import { Logo, NotificationIcon, ProfileIcon } from '../UI';
 import style from './header.module.css';
 import { PATH } from '~/utils/variables';
-import { getIsAuth } from '~/services/selectors';
 
 const Header: FC = () => {
   const profile = useMatch('profile');
-  const isAuth = useSelector(getIsAuth);
 
   return (
     <header className={style.header}>
