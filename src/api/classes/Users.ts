@@ -7,7 +7,7 @@ class Users {
   });
   private currentUser = '/me/';
 
-  private selectedUser(id: number) {
+  private selectedUser(id: string | undefined) {
     return `/${id}/`;
   }
   private selectedUserProjects(id: number) {
@@ -30,6 +30,10 @@ class Users {
         headers: { 'Content-Type': 'application/json;charset=utf-8', Authorization: token },
       })
       .then(this.checkResponse);
+  }
+
+  public getSelectedUserDataRequest(id: string | undefined) {
+    return this.usersAxios(this.selectedUser(id)).then(this.checkResponse);
   }
 }
 

@@ -28,7 +28,7 @@ const mainRoutes = [
     element: <ProtectedRoute element={<ProfilePage />} />,
   },
   {
-    path: PATH.USER,
+    path: `${PATH.USER}/:id`,
     element: <UserPage />,
   },
   {

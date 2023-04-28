@@ -15,14 +15,19 @@ export const getCurrentUserData = createAsyncThunk<void, string | null>(
   },
 );
 
-export const patchCurrentUserData = createAsyncThunk<
-  // Return type of the payload creator
-  void,
-  // First argument to the payload creator
-  PatchCurrentUserData
->('profileSlice/patchCurrentUserData', ({ data, token }, { fulfillWithValue }) => {
-  return users.patchCurrenUserDataRequest(data, token).then((res) => fulfillWithValue(res));
-});
+export const patchCurrentUserData = createAsyncThunk<void, PatchCurrentUserData>(
+  'profileSlice/patchCurrentUserData',
+  ({ data, token }, { fulfillWithValue }) => {
+    return users.patchCurrenUserDataRequest(data, token).then((res) => fulfillWithValue(res));
+  },
+);
+
+export const getSelectedUserData = createAsyncThunk<void, string | undefined>(
+  'profileSlice/getSelectedUserData',
+  (id, { fulfillWithValue }) => {
+    return users.getSelectedUserDataRequest(id).then((res) => fulfillWithValue(res));
+  },
+);
 
 type InitialState = {
   getCurrentUserRequest: boolean | null;
@@ -67,6 +72,17 @@ const profileSlice = createSlice({
     builder.addCase(patchCurrentUserData.rejected, (state) => {
       state.patchCurrentUserRequest = null;
       state.patchCurrentUserError = true;
+    });
+
+    builder.addCase(getSelectedUserData.pending, (state) => {
+      state.selectedUserRequest = true;
+    });
+    builder.addCase(getSelectedUserData.fulfilled, (state) => {
+      state.selectedUserRequest = null;
+    });
+    builder.addCase(getSelectedUserData.rejected, (state) => {
+      state.selectedUserRequest = null;
+      state.selectedUserRequest = true;
     });
   },
 });
