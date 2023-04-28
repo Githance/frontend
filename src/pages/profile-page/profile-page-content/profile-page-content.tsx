@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from '~/services/hooks';
@@ -9,37 +8,45 @@ import PageLink from '~/components/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/index';
 import { CurrentUserResponce } from '~/api/api-types';
+import token from '~/utils/token';
+import { patchCurrentUserData } from '~/services/slice/profile/profile-slice';
 
 type Props = { currenProfileData: CurrentUserResponce };
 
 const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
+  const [currentUserData, setCurrentUserData] = useState<any>();
   const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
-    reset,
     formState: { isDirty },
   } = useForm({
     mode: 'onChange',
     values: {
-      name: currenProfileData.name || '',
-      telegram: currenProfileData.telegram || '',
-      portfolio_url: currenProfileData.portfolio_url || '',
-      summary_url: currenProfileData.summary_url || '',
-      bio: currenProfileData.bio || '',
+      name: currentUserData?.name,
+      telegram: currentUserData?.telegram,
+      portfolio_url: currentUserData?.portfolio_url,
+      summary_url: currentUserData?.summary_url,
+      bio: currentUserData?.bio,
     },
     defaultValues: {
-      name: '',
-      telegram: '',
-      portfolio_url: '',
-      summary_url: '',
-      bio: '',
+      name: currenProfileData?.name || '',
+      telegram: currenProfileData?.telegram || '',
+      portfolio_url: currenProfileData?.portfolio_url || '',
+      summary_url: currenProfileData?.summary_url || '',
+      bio: currenProfileData?.bio || '',
     },
   });
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
-    reset();
+    const userData = {
+      data: data,
+      token: `Bearer ${token.getToken('accessToken')}`,
+    };
+    dispatch(patchCurrentUserData(userData))
+      .unwrap()
+      .then((res) => setCurrentUserData(res));
   });
 
   return (

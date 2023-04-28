@@ -1,24 +1,43 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '~/services';
 import { users } from '~/api/index';
+import { CurrentUserRequest } from '~/api/api-types';
+
+type PatchCurrentUserData = {
+  data: CurrentUserRequest;
+  token: string;
+};
 
 export const getCurrentUserData = createAsyncThunk<void, string | null>(
-  'initialState/getCurrentUserData',
+  'profileSlice/getCurrentUserData',
   (token, { fulfillWithValue }) => {
     return users.getCurrenUserDataRequest(token).then((res) => fulfillWithValue(res));
   },
 );
 
+export const patchCurrentUserData = createAsyncThunk<
+  // Return type of the payload creator
+  void,
+  // First argument to the payload creator
+  PatchCurrentUserData
+>('profileSlice/patchCurrentUserData', ({ data, token }, { fulfillWithValue }) => {
+  return users.patchCurrenUserDataRequest(data, token).then((res) => fulfillWithValue(res));
+});
+
 type InitialState = {
-  currentUserRequest: boolean | null;
-  currentUserError: boolean | null;
+  getCurrentUserRequest: boolean | null;
+  getCurrentUserError: boolean | null;
+  patchCurrentUserRequest: boolean | null;
+  patchCurrentUserError: boolean | null;
   selectedUserRequest: boolean | null;
   selectedUserError: boolean | null;
 };
 
 const initialState: InitialState = {
-  currentUserRequest: null,
-  currentUserError: null,
+  getCurrentUserRequest: null,
+  getCurrentUserError: null,
+  patchCurrentUserRequest: null,
+  patchCurrentUserError: null,
   selectedUserRequest: null,
   selectedUserError: null,
 };
@@ -29,14 +48,25 @@ const profileSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(getCurrentUserData.pending, (state) => {
-      state.currentUserRequest = true;
+      state.getCurrentUserRequest = true;
     });
     builder.addCase(getCurrentUserData.fulfilled, (state) => {
-      state.currentUserRequest = null;
+      state.getCurrentUserRequest = null;
     });
     builder.addCase(getCurrentUserData.rejected, (state) => {
-      state.currentUserRequest = null;
-      state.currentUserError = true;
+      state.getCurrentUserRequest = null;
+      state.getCurrentUserError = true;
+    });
+
+    builder.addCase(patchCurrentUserData.pending, (state) => {
+      state.patchCurrentUserRequest = true;
+    });
+    builder.addCase(patchCurrentUserData.fulfilled, (state) => {
+      state.patchCurrentUserRequest = null;
+    });
+    builder.addCase(patchCurrentUserData.rejected, (state) => {
+      state.patchCurrentUserRequest = null;
+      state.patchCurrentUserError = true;
     });
   },
 });
@@ -44,7 +74,7 @@ const profileSlice = createSlice({
 // Actions
 
 // Selectors
-export const getCurrentUserRequestState = (store: RootState) => store.profile.currentUserRequest;
+export const getCurrentUserRequestState = (store: RootState) => store.profile.getCurrentUserRequest;
 export const getSelectedUserRequestState = (store: RootState) => store.profile.selectedUserRequest;
 
 // Reducers
