@@ -54,10 +54,10 @@ const CardTable: FC<Props> = ({ projectList }) => {
           return (
             <MainCard
               key={nanoid()}
-              status={item.status}
-              title={item.name}
-              subtitle={item.intro}
-              id={item.id}
+              status={item?.status}
+              title={item?.name}
+              subtitle={item?.intro}
+              id={item?.id}
               percent="30"
             />
           );

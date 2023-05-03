@@ -20,7 +20,6 @@ const MainPage: FC = () => {
     dispatch(getAllProject())
       .unwrap()
       .then((res) => {
-        /* console.log(res); */
         setData(res);
       });
   }, []);
@@ -34,10 +33,10 @@ const MainPage: FC = () => {
         .then((res) => {
           setData(res);
           console.log(res);
-          setProjectList(res.results);
+          dispatch(setProjectList(res.results));
         });
     }
-  });
+  }, [inViewDivider]);
 
   return (
     <main className={style.content}>

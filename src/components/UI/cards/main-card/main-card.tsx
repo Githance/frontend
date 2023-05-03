@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { cutText } from '../../../../utils/cutText';
 import { RowIcon } from '../../index';
 import style from './main-card.module.css';
 import { checkStatusCard, StatusType } from '~/utils/check-status-card';
@@ -28,8 +27,8 @@ const MainCard: FC<Props> = ({ status, title, subtitle, percent, id }) => {
 
           <RowIcon />
         </div>
-        <h2 className={style.title}>{cutText(title, 30)}</h2>
-        <p className={style.subtitle}>{cutText(subtitle, 142)}</p>
+        <h2 className={style.title}>{title}</h2>
+        <p className={style.subtitle}>{subtitle}</p>
         <progress className={style.progress} id="project" max="100" value={percent}></progress>
       </Link>
     </article>

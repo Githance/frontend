@@ -99,7 +99,7 @@ type InitialState = {
   deleteProjectByIDError: boolean | null;
   updateProjectByIDRequest: boolean | null;
   updateProjectByIDError: boolean | null;
-  projectList: Projectlist[] | null;
+  projectList: Projectlist[];
   project: TProject | null;
 };
 
@@ -119,7 +119,7 @@ const initialState: InitialState = {
   updateProjectByIDRequest: null,
   updateProjectByIDError: null,
 
-  projectList: null,
+  projectList: [],
 
   project: null,
 };
@@ -129,7 +129,11 @@ const projectSlice = createSlice({
   initialState,
   reducers: {
     setProjectList: (state, action) => {
-      state.projectList = action.payload;
+      if (state.projectList.length === 0) {
+        state.projectList = [...action.payload];
+      } else {
+        state.projectList = [...state.projectList, ...action.payload];
+      }
     },
 
     setProject: (state, action) => {
