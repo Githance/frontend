@@ -106,7 +106,7 @@ const UserPage: FC = () => {
         </div>
         <div className={cn(style.userPage__container, style.userPage__container_position_projects)}>
           <p className={style.title}>Участие в проектах</p>
-          <div>
+          <div className={style.userPage__projects}>
             {currentUserProject &&
               currentUserProject.map((item: any) => {
                 return (
