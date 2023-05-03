@@ -28,7 +28,7 @@ const AuthenticationPage: FC = () => {
   const onSubmit = handleSubmit((data) => {
     dispatch(loginUser(data))
       .unwrap()
-      .then(() => navigate('/'))
+      .then(() => navigate('/profile'))
       .catch((err) => {
         handleErrors(err, setError);
       });

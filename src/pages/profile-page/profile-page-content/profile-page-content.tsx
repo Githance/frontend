@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from '~/services/hooks';
+import { useNavigate } from 'react-router-dom';
 import style from './profile-page-content.module.css';
 import PageInput from '~/components/page-input/page-input';
 import PageLink from '~/components/page-link/page-link';
@@ -10,12 +11,15 @@ import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/inde
 import { CurrentUserResponce } from '~/api/api-types';
 import token from '~/utils/token';
 import { patchCurrentUserData } from '~/services/slice/profile/profile-slice';
+import { logoutUser } from '~/services/slice/auth/auth-page-slice';
+import { PATH } from '~/utils/variables';
 
 type Props = { currenProfileData: CurrentUserResponce };
 
 const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
   const [currentUserData, setCurrentUserData] = useState<any>();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -48,6 +52,14 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
       .unwrap()
       .then((res) => setCurrentUserData(res));
   });
+
+  const handleLogout = () => {
+    dispatch(logoutUser())
+      .unwrap()
+      .then(() => {
+        navigate(PATH.HOME);
+      });
+  };
 
   return (
     <form className={style.form} onSubmit={onSubmit} noValidate>
@@ -102,7 +114,7 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
               Изменить пароль <ArrowRightIcon size="small" />
             </Button>
             <Divider weight="bold" />
-            <Button type="button" className={style.button} isValid>
+            <Button type="button" className={style.button} isValid onClick={handleLogout}>
               Выйти из профиля <ArrowRightIcon size="small" />
             </Button>
           </div>

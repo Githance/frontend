@@ -29,6 +29,13 @@ export const getSelectedUserData = createAsyncThunk<void, string | undefined>(
   },
 );
 
+export const getSelectedUserProject = createAsyncThunk<void, string | undefined>(
+  'profileSlice/getSelectedUserProject',
+  (id, { fulfillWithValue }) => {
+    return users.getSelectedUserProjectRequest(id).then((res) => fulfillWithValue(res.results));
+  },
+);
+
 type InitialState = {
   getCurrentUserRequest: boolean | null;
   getCurrentUserError: boolean | null;
@@ -36,6 +43,8 @@ type InitialState = {
   patchCurrentUserError: boolean | null;
   selectedUserRequest: boolean | null;
   selectedUserError: boolean | null;
+  selectedUserProjectRequest: boolean | null;
+  selectedUserProjectError: boolean | null;
 };
 
 const initialState: InitialState = {
@@ -45,6 +54,8 @@ const initialState: InitialState = {
   patchCurrentUserError: null,
   selectedUserRequest: null,
   selectedUserError: null,
+  selectedUserProjectRequest: null,
+  selectedUserProjectError: null,
 };
 
 const profileSlice = createSlice({
@@ -82,7 +93,18 @@ const profileSlice = createSlice({
     });
     builder.addCase(getSelectedUserData.rejected, (state) => {
       state.selectedUserRequest = null;
-      state.selectedUserRequest = true;
+      state.selectedUserError = true;
+    });
+
+    builder.addCase(getSelectedUserProject.pending, (state) => {
+      state.selectedUserProjectRequest = true;
+    });
+    builder.addCase(getSelectedUserProject.fulfilled, (state) => {
+      state.selectedUserProjectRequest = null;
+    });
+    builder.addCase(getSelectedUserProject.rejected, (state) => {
+      state.selectedUserProjectRequest = null;
+      state.selectedUserProjectError = true;
     });
   },
 });

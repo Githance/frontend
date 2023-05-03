@@ -13,6 +13,12 @@
   row-gap: 60px;
 }
 
+.userPage__projects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;  
+}
+
 .userPage__container {
   display: flex;
   flex-direction: column;

@@ -1,15 +1,26 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from '~/services/hooks';
+import { useDispatch } from '~/services/hooks';
+import { nanoid } from '@reduxjs/toolkit';
 import cn from 'classnames';
 import style from './user-page.module.css';
 import Divider from '~/components/UI/divider/divider';
-import { getSelectedUserData } from '~/services/slice/profile/profile-slice';
+import {
+  getSelectedUserData,
+  getSelectedUserProject,
+} from '~/services/slice/profile/profile-slice';
 import { useParams } from 'react-router-dom';
+import { SecondaryCard } from '~/components/UI';
+
+type ProjectType = {
+  id: number;
+  name: string;
+  status: string;
+};
 
 const UserPage: FC = () => {
   const { id } = useParams();
   const [currentUserData, setCurrentUserData] = useState<any>();
+  const [currentUserProject, setCurrentUserProject] = useState<any>();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,8 +28,14 @@ const UserPage: FC = () => {
       .unwrap()
       .then((res) => {
         console.log(res);
-
         setCurrentUserData(res);
+      });
+
+    dispatch(getSelectedUserProject(id))
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+        setCurrentUserProject(res);
       });
   }, []);
 
@@ -36,14 +53,9 @@ const UserPage: FC = () => {
               <div
                 className={cn(style.userPage__container, style.userPage__container_position_link)}
               >
-                <a
-                  href={currentUserData?.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(style.label, style.label_color_black)}
-                >
+                <p className={cn(style.label, style.label_color_black)}>
                   {currentUserData?.telegram}
-                </a>
+                </p>
                 <Divider weight="bold" />
               </div>
             </div>
@@ -94,6 +106,19 @@ const UserPage: FC = () => {
         </div>
         <div className={cn(style.userPage__container, style.userPage__container_position_projects)}>
           <p className={style.title}>Участие в проектах</p>
+          <div className={style.userPage__projects}>
+            {currentUserProject &&
+              currentUserProject.map((item: any) => {
+                return (
+                  <SecondaryCard
+                    status={item.status}
+                    title={item.name}
+                    id={item.id}
+                    key={nanoid()}
+                  />
+                );
+              })}
+          </div>
         </div>
       </main>
     )
