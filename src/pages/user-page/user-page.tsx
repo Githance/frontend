@@ -1,6 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from '~/services/hooks';
+import { useDispatch } from '~/services/hooks';
 import cn from 'classnames';
 import style from './user-page.module.css';
 import Divider from '~/components/UI/divider/divider';
@@ -17,7 +16,6 @@ const UserPage: FC = () => {
       .unwrap()
       .then((res) => {
         console.log(res);
-
         setCurrentUserData(res);
       });
   }, []);
