@@ -17,16 +17,21 @@ const MainCard: FC<Props> = ({ status, title, subtitle, percent, id }) => {
   const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
   const randomColor = colors[Math.floor(Math.random() * 4)];
   return (
-    <article className={style.container} style={{ backgroundColor: `${randomColor}` }}>
-      <div className={style.wrapper}>
-        <span className={style.status}>{checkStatusCard(status)}</span>
-        <Link to={`/project/${id}`}>
+    <article>
+      <Link
+        to={`/project/${id}`}
+        className={style.container}
+        style={{ backgroundColor: `${randomColor}` }}
+      >
+        <div className={style.wrapper}>
+          <span className={style.status}>{checkStatusCard(status)}</span>
+
           <RowIcon />
-        </Link>
-      </div>
-      <h2 className={style.title}>{cutText(title, 30)}</h2>
-      <p className={style.subtitle}>{cutText(subtitle, 142)}</p>
-      <progress className={style.progress} id="project" max="100" value={percent}></progress>
+        </div>
+        <h2 className={style.title}>{cutText(title, 30)}</h2>
+        <p className={style.subtitle}>{cutText(subtitle, 142)}</p>
+        <progress className={style.progress} id="project" max="100" value={percent}></progress>
+      </Link>
     </article>
   );
 };
