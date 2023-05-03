@@ -10,7 +10,7 @@ class Users {
   private selectedUser(id: string | undefined) {
     return `/${id}/`;
   }
-  private selectedUserProjects(id: number) {
+  private selectedUserProjects(id: string | undefined) {
     return `/${id}/projects/`;
   }
 
@@ -34,6 +34,10 @@ class Users {
 
   public getSelectedUserDataRequest(id: string | undefined) {
     return this.usersAxios(this.selectedUser(id)).then(this.checkResponse);
+  }
+
+  public getSelectedProjectRequest(id: string | undefined) {
+    return this.usersAxios(this.selectedUserProjects(id)).then(this.checkResponse);
   }
 }
 
