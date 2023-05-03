@@ -36,7 +36,7 @@ class Users {
     return this.usersAxios(this.selectedUser(id)).then(this.checkResponse);
   }
 
-  public getSelectedProjectRequest(id: string | undefined) {
+  public getSelectedUserProjectRequest(id: string | undefined) {
     return this.usersAxios(this.selectedUserProjects(id)).then(this.checkResponse);
   }
 }
