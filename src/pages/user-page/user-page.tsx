@@ -3,12 +3,22 @@ import { useDispatch } from '~/services/hooks';
 import cn from 'classnames';
 import style from './user-page.module.css';
 import Divider from '~/components/UI/divider/divider';
-import { getSelectedUserData } from '~/services/slice/profile/profile-slice';
+import {
+  getSelectedUserData,
+  getSelectedUserProject,
+} from '~/services/slice/profile/profile-slice';
 import { useParams } from 'react-router-dom';
+
+type ProjectType = {
+  id: number;
+  name: string;
+  status: string;
+};
 
 const UserPage: FC = () => {
   const { id } = useParams();
   const [currentUserData, setCurrentUserData] = useState<any>();
+  const [currentUserProject, setCurrentUserProject] = useState<any>();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,6 +27,13 @@ const UserPage: FC = () => {
       .then((res) => {
         console.log(res);
         setCurrentUserData(res);
+      });
+
+    dispatch(getSelectedUserProject(id))
+      .unwrap()
+      .then((res) => {
+        console.log(res);
+        setCurrentUserProject(res);
       });
   }, []);
 
