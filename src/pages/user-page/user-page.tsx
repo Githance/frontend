@@ -36,14 +36,9 @@ const UserPage: FC = () => {
               <div
                 className={cn(style.userPage__container, style.userPage__container_position_link)}
               >
-                <a
-                  href={currentUserData?.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(style.label, style.label_color_black)}
-                >
+                <p className={cn(style.label, style.label_color_black)}>
                   {currentUserData?.telegram}
-                </a>
+                </p>
                 <Divider weight="bold" />
               </div>
             </div>
