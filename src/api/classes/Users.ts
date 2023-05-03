@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { CurrentUserType } from '../api-types';
+import { CurrentUserRequest } from '../api-types';
 
 class Users {
   private usersAxios = axios.create({
@@ -7,7 +7,7 @@ class Users {
   });
   private currentUser = '/me/';
 
-  private selectedUser(id: number) {
+  private selectedUser(id: string | undefined) {
     return `/${id}/`;
   }
   private selectedUserProjects(id: number) {
@@ -18,18 +18,22 @@ class Users {
     return res.data;
   }
 
-  public getCurrenUserDataRequest(token: string) {
+  public getCurrenUserDataRequest(token: string | null) {
     return this.usersAxios(this.currentUser, {
       headers: { 'Content-Type': 'application/json;charset=utf-8', Authorization: token },
     }).then(this.checkResponse);
   }
 
-  public patchCurrenUserDataRequest(data: CurrentUserType, token: string) {
+  public patchCurrenUserDataRequest(data: CurrentUserRequest, token: string) {
     return this.usersAxios
       .patch(this.currentUser, data, {
         headers: { 'Content-Type': 'application/json;charset=utf-8', Authorization: token },
       })
       .then(this.checkResponse);
+  }
+
+  public getSelectedUserDataRequest(id: string | undefined) {
+    return this.usersAxios(this.selectedUser(id)).then(this.checkResponse);
   }
 }
 

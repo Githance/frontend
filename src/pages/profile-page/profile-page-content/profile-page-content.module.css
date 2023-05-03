@@ -6,6 +6,7 @@
   grid-template-columns: repeat(12, 1fr);
   max-width: 1110px;
   margin: 0 auto;
+  padding-bottom: 200px;
   row-gap: 60px;
   column-gap: 30px;
 }
