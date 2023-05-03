@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { project } from '~/api';
 import { RootState } from '~/services';
+import { StatusType } from '~/utils/check-status-card';
 
 export const getAllProject = createAsyncThunk<void>(
   'projectSlice/getAllProject',
@@ -69,7 +70,7 @@ export const updateUserProjectByID = createAsyncThunk<
 export type Projectlist = {
   id: number;
   name: string;
-  status: string;
+  status: StatusType;
   intro: string;
 };
 
