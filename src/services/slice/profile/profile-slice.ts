@@ -32,7 +32,7 @@ export const getSelectedUserData = createAsyncThunk<void, string | undefined>(
 export const getSelectedUserProject = createAsyncThunk<void, string | undefined>(
   'profileSlice/getSelectedUserProject',
   (id, { fulfillWithValue }) => {
-    return users.getSelectedUserProjectRequest(id).then((res) => fulfillWithValue(res));
+    return users.getSelectedUserProjectRequest(id).then((res) => fulfillWithValue(res.results));
   },
 );
 

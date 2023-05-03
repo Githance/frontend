@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch } from '~/services/hooks';
+import { nanoid } from '@reduxjs/toolkit';
 import cn from 'classnames';
 import style from './user-page.module.css';
 import Divider from '~/components/UI/divider/divider';
@@ -8,6 +9,7 @@ import {
   getSelectedUserProject,
 } from '~/services/slice/profile/profile-slice';
 import { useParams } from 'react-router-dom';
+import { SecondaryCard } from '~/components/UI';
 
 type ProjectType = {
   id: number;
@@ -104,6 +106,19 @@ const UserPage: FC = () => {
         </div>
         <div className={cn(style.userPage__container, style.userPage__container_position_projects)}>
           <p className={style.title}>Участие в проектах</p>
+          <div>
+            {currentUserProject &&
+              currentUserProject.map((item: any) => {
+                return (
+                  <SecondaryCard
+                    status={item.status}
+                    title={item.name}
+                    id={item.id}
+                    key={nanoid()}
+                  />
+                );
+              })}
+          </div>
         </div>
       </main>
     )
