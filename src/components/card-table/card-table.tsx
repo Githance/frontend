@@ -50,19 +50,18 @@ const CardTable: FC<Props> = ({ projectList }) => {
       </div>
       <div className={style.cards_wrapper}>
         <Button isValid type="button" onClick={openModal} className={style.button} />
-        {projectList &&
-          projectList.map((item) => {
-            return (
-              <MainCard
-                key={nanoid()}
-                status={item.status}
-                title={item.name}
-                subtitle={item.intro}
-                id={item.id}
-                percent="30"
-              />
-            );
-          })}
+        {projectList?.map((item) => {
+          return (
+            <MainCard
+              key={nanoid()}
+              status={item.status}
+              title={item.name}
+              subtitle={item.intro}
+              id={item.id}
+              percent="30"
+            />
+          );
+        })}
       </div>
       {isOpen && (
         <Modal onClose={closeModal}>
