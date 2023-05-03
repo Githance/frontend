@@ -18,10 +18,15 @@ import {
 } from '../pages/index';
 import ProtectedRoute from '~/components/protected-route/protected-route';
 import ProjectLayout from '~/pages/project/layout/layout';
+import VacancyPage from '~/pages/project/vacancy-page/vacancy-page';
 const projectRoutes = [
   {
     path: PATH.PROJECT_D,
     element: <ProjectPage />,
+  },
+  {
+    path: PATH.PROJECT_D_VACANCY,
+    element: <VacancyPage />,
   },
 ];
 const mainRoutes = [

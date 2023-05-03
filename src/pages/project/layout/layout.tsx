@@ -1,12 +1,12 @@
 import { FC, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { Tab } from '~/components/UI';
 import style from './layout.module.css';
 
 const tabOptions = [
   { name: 'Информация о проекте', to: '/' },
   { name: 'Команда', to: '/' },
-  { name: 'Вакансии', to: '/vacancy' },
+  { name: 'Вакансии', to: ':id/vacancy' },
 ];
 
 const ProjectLayout: FC = () => {
@@ -17,7 +17,9 @@ const ProjectLayout: FC = () => {
       <ul className={style.btns_wrapper}>
         {tabOptions.map((option, index) => (
           <li key={index}>
-            <Tab active={tab} name={option.name} onClick={() => setTab(option.name)} />
+            <Link to={option.to}>
+              <Tab active={tab} name={option.name} onClick={() => setTab(option.name)} />
+            </Link>
           </li>
         ))}
       </ul>
