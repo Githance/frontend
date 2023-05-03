@@ -17,7 +17,9 @@ class Project {
     console.log(res);
     return res.data;
   }
-  public getAllProjectsRequest = () => this.projectAxios.get('/').then(this.checkResponse);
+  public getAllProjectsRequest() {
+    return this.projectAxios.get('/').then(this.checkResponse);
+  }
 
   public createProjectRequest(data: TProject) {
     return this.projectAxios.post('/', data).then(this.checkResponse);

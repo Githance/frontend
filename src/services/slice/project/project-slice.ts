@@ -2,6 +2,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { project } from '~/api';
 import { RootState } from '~/services';
 
+export const getAllProject = createAsyncThunk<void>(
+  'projectSlice/getAllProject',
+  (_, { fulfillWithValue, dispatch }) => {
+    return project.getAllProjectsRequest().then((res) => {
+      dispatch(setProjectList(res.results));
+      return fulfillWithValue(res);
+    });
+  },
+);
+
 export const createProject = createAsyncThunk<
   void,
   any,
@@ -55,6 +65,14 @@ export const updateUserProjectByID = createAsyncThunk<
     })
     .catch((err) => rejectWithValue(err.response.data)),
 );
+
+export type Projectlist = {
+  id: number;
+  name: string;
+  status: string;
+  intro: string;
+};
+
 export type TProject = {
   id: number;
   name: string;
@@ -68,7 +86,10 @@ export type TProject = {
   telegram: string;
   email: string;
 };
+
 type InitialState = {
+  getAllProjectRequest: boolean | null;
+  getAllProjectError: boolean | null;
   createProjectRequest: boolean | null;
   createProjectError: boolean | null;
   getProjectByIDRequest: boolean | null;
@@ -77,10 +98,14 @@ type InitialState = {
   deleteProjectByIDError: boolean | null;
   updateProjectByIDRequest: boolean | null;
   updateProjectByIDError: boolean | null;
+  projectList: Projectlist[] | null;
   project: TProject | null;
 };
 
 const initialState: InitialState = {
+  getAllProjectRequest: null,
+  getAllProjectError: null,
+
   createProjectRequest: null,
   createProjectError: null,
 
@@ -93,6 +118,8 @@ const initialState: InitialState = {
   updateProjectByIDRequest: null,
   updateProjectByIDError: null,
 
+  projectList: null,
+
   project: null,
 };
 
@@ -100,12 +127,27 @@ const projectSlice = createSlice({
   name: 'projectSlice',
   initialState,
   reducers: {
+    setProjectList: (state, action) => {
+      state.projectList = action.payload;
+    },
+
     setProject: (state, action) => {
       state.project = action.payload;
     },
   },
 
   extraReducers: (builder) => {
+    // ПОЛУЧЕНИЕ ВСЕХ ПРОЕКТОВ
+    builder.addCase(getAllProject.pending, (state) => {
+      state.getAllProjectRequest = true;
+    });
+    builder.addCase(getAllProject.fulfilled, (state) => {
+      state.getAllProjectRequest = null;
+    });
+    builder.addCase(getAllProject.rejected, (state) => {
+      state.getAllProjectRequest = null;
+      state.getAllProjectError = true;
+    });
     // СОЗДАНИЕ ПРОЕКТА
     builder.addCase(createProject.pending, (state) => {
       state.createProjectRequest = true;
@@ -154,8 +196,9 @@ const projectSlice = createSlice({
 });
 
 // Actions
-export const { setProject } = projectSlice.actions;
+export const { setProject, setProjectList } = projectSlice.actions;
 // Selectors
 export const getProject = (state: RootState) => state.project.project;
+export const getProjectList = (state: RootState) => state.project.projectList;
 // Reducers
 export default projectSlice.reducer;
