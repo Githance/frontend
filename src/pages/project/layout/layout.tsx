@@ -1,17 +1,17 @@
 import { FC, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { Tab } from '~/components/UI';
 import style from './layout.module.css';
 
-const tabOptions = [
-  { name: 'Информация о проекте', to: '/' },
-  { name: 'Команда', to: '/' },
-  { name: 'Вакансии', to: ':id/vacancy' },
-];
-
 const ProjectLayout: FC = () => {
   const [tab, setTab] = useState('Информация о проекте');
-
+  const { id } = useParams();
+  console.log(id);
+  const tabOptions = [
+    { name: 'Информация о проекте', to: `${id}` },
+    { name: 'Команда', to: '/' },
+    { name: 'Вакансии', to: `${id}/vacancy` },
+  ];
   return (
     <>
       <ul className={style.btns_wrapper}>

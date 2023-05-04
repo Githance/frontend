@@ -1,3 +1,13 @@
 .wrapper{
   outline: 1px solid red;
+  max-width: 1110px;
+  width: 100%;
+  margin: 0 auto;
+}
+.cardWrapper{
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
 }
