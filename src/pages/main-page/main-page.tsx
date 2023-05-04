@@ -24,7 +24,7 @@ const MainPage: FC = () => {
       });
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log(inViewDivider);
     if (inViewDivider && data.next) {
       axios
@@ -36,7 +36,7 @@ const MainPage: FC = () => {
           dispatch(setProjectList(res.results));
         });
     }
-  }, [inViewDivider]);
+  }, [inViewDivider]); */
 
   return (
     <main className={style.content}>
