@@ -4,7 +4,8 @@
   justify-self: center;
   box-sizing: border-box;
   width: 100%;
-  max-width: 255px;
+  /* stylelint-disable-next-line comment-empty-line-before */
+  /* max-width: 255px; */
   height: 132px;
   padding: 20px 30px 30px;
   background-color: #e2e2f6;

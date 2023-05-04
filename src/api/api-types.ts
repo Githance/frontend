@@ -24,10 +24,20 @@ export type ConfirmEmailType = string;
 
 export type ResendEmailType = string | null;
 
-export type CurrentUserType = {
+export type CurrentUserRequest = {
   name?: string;
   telegram?: string;
   portfolio_url?: string;
   summary_url?: string;
   bio?: string;
+};
+
+export type CurrentUserResponce = {
+  email: string;
+  id: number;
+  name: string;
+  telegram: string;
+  portfolio_url: string;
+  summary_url: string;
+  bio: string;
 };
