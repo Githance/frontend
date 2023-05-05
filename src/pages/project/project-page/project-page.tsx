@@ -3,7 +3,6 @@ import cn from 'classnames';
 import { useForm } from 'react-hook-form';
 import style from './project-page.module.css';
 import PageInput from '~/components/page-input/page-input';
-import PageLink from '~/components/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn, Tab, Label } from '~/components/UI/index';
 import { useSelector } from 'react-redux';
@@ -22,13 +21,7 @@ const ProjectPage: FC = () => {
 
   const { setError, handleSubmit, control, formState } = useForm({
     mode: 'onChange',
-    defaultValues: {
-      email1: '',
-      telegram1: '',
-      link1_url: '',
-      link2_url: '',
-      link3_url: '',
-    },
+    defaultValues: { description: '', intro: '' },
     values: {
       ...project,
     },
@@ -51,7 +44,9 @@ const ProjectPage: FC = () => {
           </fieldset>
 
           <fieldset className={style.form__info}>
-            <h3 className={style.title}>Контакты создателя проекта</h3>
+            <h3 className={style.title}>Контакты</h3>
+            <h4 className={style.label}>Владелец</h4>
+            <p className={style.owner}>{project?.owner.name}</p>
             <Label className={style.label}>Электронная почта</Label>
             <PageInput
               hasErrorMessage={true}
@@ -71,8 +66,55 @@ const ProjectPage: FC = () => {
               name="telegram"
               divider="bold"
             />
+            <p className={style.note}>
+              Ваши контакты будут видны специалистам, откликнувшимся на&nbsp;&laquo;вакансию&raquo;.
+              Это нужно для того, чтобы специалист смог уточнить у&nbsp;вас недостающую информацию
+              по&nbsp;проекту.
+            </p>
+            <h3 className={style.title}>Управление</h3>
+            <Button type="button" className={style.button} isValid onClick={openModal}>
+              Удалить проект <ArrowRightIcon size="small" />
+            </Button>
+            <Divider weight="bold" />
+          </fieldset>
+          {isOpen && (
+            <Modal onClose={closeModal} closeIcon={false}>
+              <ConfirmDelete onConfirm={handleDeleteProject} onCancel={closeModal} />
+            </Modal>
+          )}
 
-            <h3 className={style.title}>
+          <fieldset className={style.form__about}>
+            <Label className={style.title}>Краткое описание проекта</Label>
+            <Textarea
+              value={project.intro}
+              name="intro"
+              control={control}
+              className={cn(style.shortTextarea)}
+              maxLength={300}
+            />
+            <Label className={style.title}>Подробное описание проекта</Label>
+            <Textarea
+              value={project.description}
+              name="description"
+              control={control}
+              className={style.textarea}
+              maxLength={1000}
+            />
+            <SubmitBtn isValid={formState.isDirty} className={cn(style.submit, 'mt-6')}>
+              Сохранить
+            </SubmitBtn>
+          </fieldset>
+        </form>
+      )}
+    </>
+  );
+};
+
+export default ProjectPage;
+
+// !УДАЛЕННЫЙ КУСОК
+{
+  /* <h3 className={style.title}>
               Контакты менеджера <span className={style.span}>(если менеджер назначен)</span>
             </h3>
             <Label className={style.label}>Электронная почта</Label>
@@ -114,45 +156,5 @@ const ProjectPage: FC = () => {
               name="link3_url"
               linkName="Ссылка 3"
               divider="bold"
-            />
-
-            <h3 className={style.title}>Управление</h3>
-            <Button type="button" className={style.button} isValid onClick={openModal}>
-              Удалить проект <ArrowRightIcon size="small" />
-            </Button>
-            <Divider weight="bold" />
-          </fieldset>
-          {isOpen && (
-            <Modal onClose={closeModal} closeIcon={false}>
-              <ConfirmDelete onConfirm={handleDeleteProject} onCancel={closeModal} />
-            </Modal>
-          )}
-
-          <fieldset className={style.form__about}>
-            <Label className={style.title}>Краткое описание проекта</Label>
-            <Textarea
-              value={project.intro}
-              name="intro"
-              control={control}
-              className={cn(style.shortTextarea)}
-              maxLength={300}
-            />
-            <Label className={style.title}>Подробное описание проекта</Label>
-            <Textarea
-              value={project.description}
-              name="description"
-              control={control}
-              className={style.textarea}
-              maxLength={1000}
-            />
-            <SubmitBtn isValid={formState.isDirty} className={cn(style.submit, 'mt-6')}>
-              Сохранить
-            </SubmitBtn>
-          </fieldset>
-        </form>
-      )}
-    </>
-  );
-};
-
-export default ProjectPage;
+            /> */
+}
