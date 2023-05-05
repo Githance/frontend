@@ -9,7 +9,7 @@ const ProjectLayout: FC = () => {
   console.log(id);
   const tabOptions = [
     { name: 'Информация о проекте', to: `${id}` },
-    { name: 'Команда', to: '/' },
+    { name: 'Команда', to: `${id}/participants` },
     { name: 'Вакансии', to: `${id}/vacancy` },
   ];
   return (

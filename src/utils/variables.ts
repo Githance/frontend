@@ -8,6 +8,7 @@ export const PATH = {
   PROJECT: '/project', // BASIC
   PROJECT_D: '/project/:id',
   PROJECT_D_VACANCY: '/project/:id/vacancy',
+  PROJECT_D_PARTICIPANTS: '/project/:id/participants',
   REGISTRATION: 'registration',
   PASSWORD_RESET: 'password/reset',
   PASSWORD_RESET_CONFIRM_D: 'password/reset/confirm/:id/:confirmCode',
