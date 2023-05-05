@@ -6,7 +6,6 @@ import style from './layout.module.css';
 const ProjectLayout: FC = () => {
   const [tab, setTab] = useState('Информация о проекте');
   const { id } = useParams();
-  console.log(id);
   const tabOptions = [
     { name: 'Информация о проекте', to: `${id}` },
     { name: 'Команда', to: `${id}/participants` },

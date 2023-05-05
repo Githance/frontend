@@ -55,6 +55,21 @@ export const updateUserProjectByID = createAsyncThunk<
     })
     .catch((err) => rejectWithValue(err.response.data)),
 );
+
+export const getParticipantsListID = createAsyncThunk<
+  void,
+  any,
+  {
+    rejectValue: any;
+  }
+>('projectSlice/getParticipantsListID', (id, { rejectWithValue, dispatch }) =>
+  project
+    .getParticipantsListIDRequest(id)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => rejectWithValue(err.response.data)),
+);
 export type TProject = {
   id: number;
   name: string;
@@ -77,6 +92,8 @@ type InitialState = {
   deleteProjectByIDError: boolean | null;
   updateProjectByIDRequest: boolean | null;
   updateProjectByIDError: boolean | null;
+  getParticipantsListIDRequest: boolean | null;
+  getParticipantsListIDError: boolean | null;
   project: TProject | null;
 };
 
@@ -92,6 +109,9 @@ const initialState: InitialState = {
 
   updateProjectByIDRequest: null,
   updateProjectByIDError: null,
+
+  getParticipantsListIDRequest: null,
+  getParticipantsListIDError: null,
 
   project: null,
 };
@@ -149,6 +169,17 @@ const projectSlice = createSlice({
     builder.addCase(updateUserProjectByID.rejected, (state) => {
       state.updateProjectByIDRequest = null;
       state.updateProjectByIDError = true;
+    });
+    // ПОЛУЧЕНИЕ СПИСКА КОМАНДЫ
+    builder.addCase(getParticipantsListID.pending, (state) => {
+      state.getParticipantsListIDRequest = true;
+    });
+    builder.addCase(getParticipantsListID.fulfilled, (state) => {
+      state.getParticipantsListIDRequest = null;
+    });
+    builder.addCase(getParticipantsListID.rejected, (state) => {
+      state.getParticipantsListIDRequest = null;
+      state.getParticipantsListIDError = true;
     });
   },
 });

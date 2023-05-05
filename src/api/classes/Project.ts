@@ -13,6 +13,12 @@ class Project {
   private projectID(id: number) {
     return `/${id}/`;
   }
+  private participantsListID(id: number) {
+    return `/${id}/participants/`;
+  }
+  private vacanciesID(id: number) {
+    return `/${id}/vacancies/`;
+  }
   private checkResponse(res: AxiosResponse) {
     console.log(res);
     return res.data;
@@ -32,12 +38,16 @@ class Project {
   public deleteProjectByIDRequest(id: any) {
     return this.projectAxios.delete(this.projectID(id)).then(this.checkResponse);
   }
+  // !ДОП
+  public getParticipantsListIDRequest(id: any) {
+    return this.projectAxios.get(this.participantsListID(id)).then(this.checkResponse);
+  }
+  public getVacanciesIDRequest(id: any) {
+    return this.projectAxios.get(this.vacanciesID(id)).then(this.checkResponse);
+  }
+  public createVacanciesIDRequest(id: any) {
+    return this.projectAxios.get(this.vacanciesID(id)).then(this.checkResponse);
+  }
 }
 
 export default Project;
-/* private selectedProject(id: number) {
-    return `/${id}/`;
-  }
-  private participantsList(id: number) {
-    return `/${id}/participants/`;
-  } */
