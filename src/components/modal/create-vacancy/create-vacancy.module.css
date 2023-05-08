@@ -1,15 +1,17 @@
 .form {
-  gap: 40px;
+  gap: 25px;
   box-sizing: border-box;
   width: 100%;
+  padding: 0;
+  max-width: 568px;
 }
 
 .title {
   margin: 0;
   padding-bottom: 30px;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 34px;
+font-size: 28px;
+line-height: 34px;
   text-align: center;
 }
 
@@ -18,27 +20,34 @@
   padding: 0;
   border: none;
 }
-
+.label {
+  color: #999999;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 20px 0 10px;
+}
 .message {
   display: inline-block;
   margin: 0;
   padding-top: 10px;
-  color: var(--text-color-grey);
+  color: #999999;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
 }
 
-.message:nth-last-child(1){
+.message:nth-last-child(1) {
   padding-top: 5px;
 }
 
 .submitBtn {
   align-self: center;
-  max-width: 368px;
+  max-width: 229px;
+  padding: 12px 0;
 }
 
 .textarea {
-  height: 86px;
- border: 1px solid var(--color-input-normal); 
+  height: 174px;
+  border: 1px solid var(--color-input-normal);
 }

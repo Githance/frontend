@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import CreateVacancy from '~/components/modal/create-vacancy/create-vacancy';
 import { Button, CrossIcon } from '~/components/UI';
 import ProfessionCard from '~/components/UI/cards/profession-card/profession-card';
 import Modal from '~/components/UI/modal/modal';
@@ -27,8 +28,8 @@ const VacancyPage: FC = () => {
         </li>
       </ul>
       {isOpen && (
-        <Modal onClose={closeModal} closeIcon={false}>
-          тест
+        <Modal onClose={closeModal} closeIcon={true}>
+          <CreateVacancy />
         </Modal>
       )}
     </div>

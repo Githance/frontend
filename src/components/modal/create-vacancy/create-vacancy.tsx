@@ -1,50 +1,65 @@
-import React from 'react'
+import React, { FC } from 'react';
+import { useForm } from 'react-hook-form';
+import CustomSelect from '~/components/custom-select/custom-select';
+import CommonInput from '~/components/form-inputs/common-input';
+import { Form, Label, SubmitBtn } from '~/components/UI';
+import Textarea from '~/components/UI/form/textarea/textarea';
+import useProject from '~/hook/useProject';
+import style from './create-vacancy.module.css';
 
-const CreateVacancy = () => {
+const selectorOptions = [
+  { value: 0, label: 'тестировщик' },
+  { value: 1, label: 'фронтенд' },
+  { value: 2, label: 'бэкенд' },
+];
+
+const CreateVacancy: FC = () => {
   const { setError, handleSubmit, control, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
-      name: '',
-      intro: '',
+      profession: '',
       description: '',
-      status: 'idea',
-      telegram: '',
-      email: '',
+      is_published: false,
     },
   });
-  const { onSubmit } = useProject(setError, { deletePath: null }, null);
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     setFocus('name');
-  }, [setFocus]);
+  }, [setFocus]);  */
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
       <fieldset className={style.fieldset}>
-        <h2 className={style.title}>Назовите свой проект</h2>
-        <Label htmlFor="name" required={true}>
-          Название
+        <h2 className={style.title}>Создайте вакансию</h2>
+        <CustomSelect
+          isClearable={true}
+          isSeacheble={false}
+          options={selectorOptions}
+          placeholder="выбрать профессию"
+        />
+        <Label htmlFor="description" className={style.label}>
+          Требования к специалисту
         </Label>
-        <CommonInput control={control} name="name" placeholder="" />
-      </fieldset>
-
-      <fieldset className={style.fieldset}>
-        <h2 className={style.title}>Опишите свой проект</h2>
-        <Label htmlFor="intro" required={true}>
-          Краткое описание
-        </Label>
-        <Textarea name="intro" control={control} className={style.textarea} maxLength={300} />
-        <p className={style.message}>Эта информация будет видна на главной странице.</p>
+        <Textarea
+          name="description"
+          control={control}
+          className={style.textarea}
+          maxLength={2000}
+        />
         <p className={style.message}>
-          <b>Важно:</b> Не сокращайте слова. Позже вы сможете добавить подробное описание проекта.{' '}
+          Опишите какие задачи будут стоять перед специалистом, какими навыками он должен обладать
+          для участия в проекте. Если вы не знаете, оставьте поле пустым.
         </p>
       </fieldset>
 
       <SubmitBtn isValid={formState.isValid} className={style.submitBtn}>
-        Создать проект
+        Сохранить
       </SubmitBtn>
     </Form>
   );
-}
+};
 
-export default CreateVacancy
+export default CreateVacancy;
