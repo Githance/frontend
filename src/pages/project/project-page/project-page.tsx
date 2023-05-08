@@ -21,7 +21,7 @@ const ProjectPage: FC = () => {
 
   const { setError, handleSubmit, control, formState } = useForm({
     mode: 'onChange',
-    defaultValues: { description: '', intro: '' },
+    /* defaultValues: { description: '', intro: '' }, */
     values: {
       ...project,
     },

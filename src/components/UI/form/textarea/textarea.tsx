@@ -47,7 +47,7 @@ const Textarea: FC<Props> = ({
             : undefined,
           style.textarea,
         )}
-        defaultValue={props.value}
+        defaultValue={props.value || ''}
         minLength={props.minLength}
         maxLength={props.maxLength}
       ></textarea>

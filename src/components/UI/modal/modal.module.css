@@ -9,11 +9,10 @@
   padding: 76px 60px 60px;
   background-color: white;
   border-radius: 20px;
-  outline: 1px solid green;
   animation: swing-in-top-fwd 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 
-.mini_container{
+.mini_container {
   composes: container;
   padding: 40px 50px;
 }

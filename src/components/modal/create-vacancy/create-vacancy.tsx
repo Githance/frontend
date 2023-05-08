@@ -1,12 +1,6 @@
-import { FC, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import useProject from '~/hook/useProject';
-import CommonInput from '../../form-inputs/common-input';
-import { Form, Label, SubmitBtn } from '../../UI';
-import Textarea from '../../UI/form/textarea/textarea';
-import style from './create-project.module.css';
+import React from 'react'
 
-const CreateProject: FC = () => {
+const CreateVacancy = () => {
   const { setError, handleSubmit, control, formState, setFocus } = useForm({
     mode: 'onChange',
     defaultValues: {
@@ -51,7 +45,6 @@ const CreateProject: FC = () => {
       </SubmitBtn>
     </Form>
   );
-};
+}
 
-export default CreateProject;
-
+export default CreateVacancy
