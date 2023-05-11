@@ -1,7 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from '~/services/hooks';
-import style from './protected-route.module.css';
 import { PATH } from '~/utils/variables';
 import { getIsAuthCheck, getIsAuth } from '~/services/selectors';
 
@@ -18,7 +17,7 @@ const ProtectedRoute: FC<Props> = ({ onlyUnAuth = false, element }) => {
   const isAuthCheck = useSelector(getIsAuthCheck);
 
   if (!isAuthCheck) {
-    return <Loader className={style.protectedRouteLoader} />;
+    return <Loader />;
   }
 
   if (onlyUnAuth && isAuth) {

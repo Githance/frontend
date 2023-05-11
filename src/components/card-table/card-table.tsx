@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
 import { Tab } from '../UI/index';
 import style from './card-table.module.css';
 import CustomSelect from '../custom-select/custom-select';
@@ -6,6 +7,8 @@ import { MainCard } from '../UI';
 import Modal from '../UI/modal/modal';
 import CreateProject from '../modal/create-project/create-project';
 import useModal from '~/hook/useModal';
+import { Button } from '../UI/index';
+import { Projectlist } from '~/services/slice/project/project-slice';
 
 const selectorOptions = [
   { value: 'test', label: 'test' },
@@ -20,7 +23,11 @@ const tabOptions = [
   { name: 'Текущие проекты' },
 ];
 
-const CardTable: FC = () => {
+type Props = {
+  projectList: Projectlist[] | null;
+};
+
+const CardTable: FC<Props> = ({ projectList }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const [tab, setTab] = useState('Все проекты');
 
@@ -42,51 +49,19 @@ const CardTable: FC = () => {
         />
       </div>
       <div className={style.cards_wrapper}>
-        <div onClick={openModal} aria-hidden="true">
-          <MainCard
-            status="В процессе"
-            title="Githance"
-            subtitle="Сайт для создания проектов 
-в портфолио"
-            percent="30"
-            empty={true}
-          />
-        </div>
-        <MainCard
-          status="В процессе"
-          title="Маршруты
-моего города моего города"
-          subtitle="Сайт для городских квестов, с простым конструктором и адаптивной формой для ответов Сайт для городских квестов, с простым конструктором и адаптивной формой для ответов Сайт для городских квестов, с простым конструктором и адаптивной формой для ответов"
-          percent="40"
-        />
-        <MainCard
-          status="В процессе"
-          title="Githance"
-          subtitle="Сайт для создания проектов 
-в портфолио"
-          percent="80"
-        />
-        <MainCard
-          status="В процессе"
-          title="Githance"
-          subtitle="Сайт для создания проектов 
-в портфолио"
-          percent="90"
-        />
-        <MainCard
-          status="В процессе"
-          title="Githance"
-          subtitle="Сайт для создания проектов 
-в портфолио"
-          percent="10"
-        />
-        <MainCard
-          status="В процессе"
-          title="Githance"
-          subtitle="Сайт для создания проектов 
-в портфолио"
-          percent="10"
-        />
+        <Button isValid type="button" onClick={openModal} className={style.button} />
+        {projectList?.map((item) => {
+          return (
+            <MainCard
+              key={nanoid()}
+              status={item.status}
+              title={item.name}
+              subtitle={item.intro}
+              id={item.id}
+              percent="30"
+            />
+          );
+        })}
       </div>
       {isOpen && (
         <Modal onClose={closeModal}>
