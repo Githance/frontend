@@ -3,11 +3,17 @@ import token from '../../utils/token';
 import { TProject } from '../../services/slice/project/project-slice';
 class Project {
   private token = `Bearer ${token.getToken('accessToken')}`;
-  private projectAxios = axios.create({
+  private projectAuthAxios = axios.create({
     baseURL: 'https://dev.githance.com/api/v1/projects/',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
       Authorization: this.token,
+    },
+  });
+  private projectNoAuthAxios = axios.create({
+    baseURL: 'https://dev.githance.com/api/v1/projects/',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
     },
   });
   private projectID(id: number) {
@@ -18,21 +24,21 @@ class Project {
     return res.data;
   }
   public getAllProjectsRequest() {
-    return this.projectAxios.get('/').then(this.checkResponse);
+    return this.projectNoAuthAxios.get('/').then(this.checkResponse);
   }
 
   public createProjectRequest(data: TProject) {
-    return this.projectAxios.post('/', data).then(this.checkResponse);
+    return this.projectAuthAxios.post('/', data).then(this.checkResponse);
   }
 
   public getProjectByIDRequest(id: any) {
-    return this.projectAxios.get(this.projectID(id)).then(this.checkResponse);
+    return this.projectAuthAxios.get(this.projectID(id)).then(this.checkResponse);
   }
   public updateProjectByIDRequest({ id, data }: any) {
-    return this.projectAxios.patch(this.projectID(id), data).then(this.checkResponse);
+    return this.projectAuthAxios.patch(this.projectID(id), data).then(this.checkResponse);
   }
   public deleteProjectByIDRequest(id: any) {
-    return this.projectAxios.delete(this.projectID(id)).then(this.checkResponse);
+    return this.projectAuthAxios.delete(this.projectID(id)).then(this.checkResponse);
   }
 }
 
