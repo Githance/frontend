@@ -2,6 +2,17 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { project } from '~/api';
 import { TProject } from '~/api/api-types';
 import { RootState } from '~/services';
+import { StatusType } from '~/utils/check-status-card';
+
+export const getAllProject = createAsyncThunk<void>(
+  'projectSlice/getAllProject',
+  (_, { fulfillWithValue, dispatch }) => {
+    return project.getAllProjectsRequest().then((res) => {
+      dispatch(setProjectList(res.results));
+      return fulfillWithValue(res);
+    });
+  },
+);
 
 // СОЗДАНИЕ ПРОЕКТА
 export const createProject = createAsyncThunk<
@@ -63,6 +74,7 @@ export const updateUserProjectByID = createAsyncThunk<
     .catch((err) => rejectWithValue(err.response.data)),
 );
 
+
 // ПОЛУЧЕНИЕ СПИСКА УЧАСТНИКОВ
 export const getParticipantsListID = createAsyncThunk<
   void,
@@ -104,7 +116,18 @@ export const createVacancy = createAsyncThunk<
   project.createVacanciesIDRequest({ id, data }).catch((err) => rejectWithValue(err.response.data)),
 );
 
+export type Projectlist = {
+  id: number;
+  name: string;
+  status: StatusType;
+  intro: string;
+};
+
+
+
 type InitialState = {
+  getAllProjectRequest: boolean | null;
+  getAllProjectError: boolean | null;
   createProjectRequest: boolean | null;
   createProjectError: boolean | null;
   getProjectByIDRequest: boolean | null;
@@ -119,10 +142,14 @@ type InitialState = {
   getVacanciesIDError: boolean | null;
   createVacancyRequest: boolean | null;
   createVacancyError: boolean | null;
+  projectList: Projectlist[];
   project: TProject | null;
 };
 
 const initialState: InitialState = {
+  getAllProjectRequest: null,
+  getAllProjectError: null,
+
   createProjectRequest: null,
   createProjectError: null,
 
@@ -135,6 +162,7 @@ const initialState: InitialState = {
   updateProjectByIDRequest: null,
   updateProjectByIDError: null,
 
+
   getParticipantsListIDRequest: null,
   getParticipantsListIDError: null,
 
@@ -144,6 +172,8 @@ const initialState: InitialState = {
   createVacancyRequest: null,
   createVacancyError: null,
 
+  projectList: [],
+
   project: null,
 };
 
@@ -151,12 +181,31 @@ const projectSlice = createSlice({
   name: 'projectSlice',
   initialState,
   reducers: {
+    setProjectList: (state, action) => {
+      if (state.projectList.length === 0) {
+        state.projectList = [...action.payload];
+      } else {
+        state.projectList = [...state.projectList, ...action.payload];
+      }
+    },
+
     setProject: (state, action) => {
       state.project = action.payload;
     },
   },
 
   extraReducers: (builder) => {
+    // ПОЛУЧЕНИЕ ВСЕХ ПРОЕКТОВ
+    builder.addCase(getAllProject.pending, (state) => {
+      state.getAllProjectRequest = true;
+    });
+    builder.addCase(getAllProject.fulfilled, (state) => {
+      state.getAllProjectRequest = null;
+    });
+    builder.addCase(getAllProject.rejected, (state) => {
+      state.getAllProjectRequest = null;
+      state.getAllProjectError = true;
+    });
     // СОЗДАНИЕ ПРОЕКТА
     builder.addCase(createProject.pending, (state) => {
       state.createProjectRequest = true;
@@ -238,8 +287,9 @@ const projectSlice = createSlice({
 });
 
 // Actions
-export const { setProject } = projectSlice.actions;
+export const { setProject, setProjectList } = projectSlice.actions;
 // Selectors
 export const getProject = (state: RootState) => state.project.project;
+export const getProjectList = (state: RootState) => state.project.projectList;
 // Reducers
 export default projectSlice.reducer;
