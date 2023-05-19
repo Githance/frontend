@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from '~/services/hooks';
 import { getParticipantsListID } from '~/services/slice/project/project-slice';
@@ -8,7 +8,7 @@ const ParticipantsPage: FC = () => {
   const { id } = useParams();
   useEffect(() => {
     dispatch(getParticipantsListID(id));
-  }, [id]);
+  }, [id, dispatch]);
   return <div>ТЕСТ</div>;
 };
 

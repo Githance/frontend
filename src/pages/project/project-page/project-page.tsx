@@ -1,10 +1,10 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import cn from 'classnames';
 import { useForm } from 'react-hook-form';
 import style from './project-page.module.css';
 import PageInput from '~/components/page-input/page-input';
 import Textarea from '~/components/UI/form/textarea/textarea';
-import { Divider, Button, ArrowRightIcon, SubmitBtn, Tab, Label } from '~/components/UI/index';
+import { Divider, Button, ArrowRightIcon, SubmitBtn, Label } from '~/components/UI/index';
 import { useSelector } from 'react-redux';
 import { getProject } from '~/services/selectors';
 import { useParams } from 'react-router-dom';

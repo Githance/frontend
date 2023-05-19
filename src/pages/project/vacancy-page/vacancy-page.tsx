@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import CreateVacancy from '~/components/modal/create-vacancy/create-vacancy';
 import { Button, CrossIcon } from '~/components/UI';
 import ProfessionCard from '~/components/UI/cards/profession-card/profession-card';

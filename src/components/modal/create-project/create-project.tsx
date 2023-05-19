@@ -54,4 +54,3 @@ const CreateProject: FC = () => {
 };
 
 export default CreateProject;
-

@@ -1,12 +1,10 @@
 import { unwrapResult } from '@reduxjs/toolkit';
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import CustomSelect from '~/components/custom-select/custom-select';
-import CommonInput from '~/components/form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '~/components/UI';
 import Textarea from '~/components/UI/form/textarea/textarea';
-import useProject from '~/hook/useProject';
 import { useDispatch } from '~/services/hooks';
 import { createVacancy } from '~/services/slice/project/project-slice';
 import { handleErrors } from '~/utils/handleErrors';

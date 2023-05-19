@@ -70,7 +70,7 @@ export const getParticipantsListID = createAsyncThunk<
   {
     rejectValue: any;
   }
->('projectSlice/getParticipantsListID', (id, { rejectWithValue, dispatch }) =>
+>('projectSlice/getParticipantsListID', (id, { rejectWithValue }) =>
   project
     .getParticipantsListIDRequest(id)
     .then((res) => {
@@ -86,7 +86,7 @@ export const createVacancy = createAsyncThunk<
   {
     rejectValue: any;
   }
->('projectSlice/createVacancy', ({ id, data }, { rejectWithValue, dispatch }) =>
+>('projectSlice/createVacancy', ({ id, data }, { rejectWithValue }) =>
   project.createVacanciesIDRequest({ id, data }).catch((err) => rejectWithValue(err.response.data)),
 );
 
