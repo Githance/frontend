@@ -24,6 +24,7 @@ class Auth {
   private refreshToken = '/token/refresh/';
 
   private checkResponse(res: AxiosResponse) {
+    console.log(res);
     return res.data;
   }
 

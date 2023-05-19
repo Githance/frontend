@@ -5,9 +5,10 @@ import Select from 'react-select';
 import './custom-select.css';
 
 export default function CustomSelect({ ...props }) {
-  const { isClearable, isSeacheble, options, placeholder } = props;
+  const { isClearable, isSeacheble, options, placeholder, onChange } = props;
   return (
     <Select
+      onChange={onChange}
       isClearable={isClearable}
       isSeacheble={isSeacheble}
       options={options}

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { project } from '~/api';
+import { TProject } from '~/api/api-types';
 import { RootState } from '~/services';
 import { StatusType } from '~/utils/check-status-card';
 
@@ -13,6 +14,7 @@ export const getAllProject = createAsyncThunk<void>(
   },
 );
 
+// СОЗДАНИЕ ПРОЕКТА
 export const createProject = createAsyncThunk<
   void,
   any,
@@ -29,6 +31,7 @@ export const createProject = createAsyncThunk<
     .catch((err) => rejectWithValue(err.response.data)),
 );
 
+// ПОЛУЧЕНИЕ ПРОЕКТА ПО ID
 export const getProjectByID = createAsyncThunk<
   void,
   any,
@@ -43,6 +46,8 @@ export const getProjectByID = createAsyncThunk<
     })
     .catch((err) => rejectWithValue(err.response.data)),
 );
+
+// УДАЛЕНИЕ ПРОЕКТА ПО ID
 export const deleteUserProjectByID = createAsyncThunk<
   void,
   any,
@@ -52,6 +57,8 @@ export const deleteUserProjectByID = createAsyncThunk<
 >('projectSlice/deleteProjectByID', (id, { rejectWithValue }) =>
   project.deleteProjectByIDRequest(id).catch((err) => rejectWithValue(err.response.data)),
 );
+
+// ОБНОВЛЕНИЕ ПРОЕКТА ПО ID
 export const updateUserProjectByID = createAsyncThunk<
   void,
   any,
@@ -67,6 +74,48 @@ export const updateUserProjectByID = createAsyncThunk<
     .catch((err) => rejectWithValue(err.response.data)),
 );
 
+
+// ПОЛУЧЕНИЕ СПИСКА УЧАСТНИКОВ
+export const getParticipantsListID = createAsyncThunk<
+  void,
+  any,
+  {
+    rejectValue: any;
+  }
+>('projectSlice/getParticipantsListID', (id, { rejectWithValue }) =>
+  project
+    .getParticipantsListIDRequest(id)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => rejectWithValue(err.response.data)),
+);
+// ПОЛУЧЕНИЕ СПИСКА ВАКАНСИЙ
+export const getVacanciesID = createAsyncThunk<
+  void,
+  any,
+  {
+    rejectValue: any;
+  }
+>('projectSlice/getVacanciesID', (id, { rejectWithValue }) =>
+  project
+    .getVacanciesIDRequest(id)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => rejectWithValue(err.response.data)),
+);
+// СОЗДАНИЕ ВАКАНСИИ
+export const createVacancy = createAsyncThunk<
+  void,
+  any,
+  {
+    rejectValue: any;
+  }
+>('projectSlice/createVacancy', ({ id, data }, { rejectWithValue }) =>
+  project.createVacanciesIDRequest({ id, data }).catch((err) => rejectWithValue(err.response.data)),
+);
+
 export type Projectlist = {
   id: number;
   name: string;
@@ -74,19 +123,7 @@ export type Projectlist = {
   intro: string;
 };
 
-export type TProject = {
-  id: number;
-  name: string;
-  intro: string;
-  description: string;
-  status: 'idea' | 'vacancy' | 'in_progress' | 'closed';
-  owner: {
-    id: number;
-    name: string;
-  };
-  telegram: string;
-  email: string;
-};
+
 
 type InitialState = {
   getAllProjectRequest: boolean | null;
@@ -99,6 +136,12 @@ type InitialState = {
   deleteProjectByIDError: boolean | null;
   updateProjectByIDRequest: boolean | null;
   updateProjectByIDError: boolean | null;
+  getParticipantsListIDRequest: boolean | null;
+  getParticipantsListIDError: boolean | null;
+  getVacanciesIDRequest: boolean | null;
+  getVacanciesIDError: boolean | null;
+  createVacancyRequest: boolean | null;
+  createVacancyError: boolean | null;
   projectList: Projectlist[];
   project: TProject | null;
 };
@@ -118,6 +161,16 @@ const initialState: InitialState = {
 
   updateProjectByIDRequest: null,
   updateProjectByIDError: null,
+
+
+  getParticipantsListIDRequest: null,
+  getParticipantsListIDError: null,
+
+  getVacanciesIDRequest: null,
+  getVacanciesIDError: null,
+
+  createVacancyRequest: null,
+  createVacancyError: null,
 
   projectList: [],
 
@@ -196,6 +249,39 @@ const projectSlice = createSlice({
     builder.addCase(updateUserProjectByID.rejected, (state) => {
       state.updateProjectByIDRequest = null;
       state.updateProjectByIDError = true;
+    });
+    // ПОЛУЧЕНИЕ СПИСКА КОМАНДЫ
+    builder.addCase(getParticipantsListID.pending, (state) => {
+      state.getParticipantsListIDRequest = true;
+    });
+    builder.addCase(getParticipantsListID.fulfilled, (state) => {
+      state.getParticipantsListIDRequest = null;
+    });
+    builder.addCase(getParticipantsListID.rejected, (state) => {
+      state.getParticipantsListIDRequest = null;
+      state.getParticipantsListIDError = true;
+    });
+    // ПОЛУЧЕНИЕ СПИСКА ВАКАНСИЙ
+    builder.addCase(getVacanciesID.pending, (state) => {
+      state.getVacanciesIDRequest = true;
+    });
+    builder.addCase(getVacanciesID.fulfilled, (state) => {
+      state.getVacanciesIDRequest = null;
+    });
+    builder.addCase(getVacanciesID.rejected, (state) => {
+      state.getVacanciesIDRequest = null;
+      state.getVacanciesIDError = true;
+    });
+    // СОЗДАНИЕ ВАКАНСИИ
+    builder.addCase(createVacancy.pending, (state) => {
+      state.createVacancyRequest = true;
+    });
+    builder.addCase(createVacancy.fulfilled, (state) => {
+      state.createVacancyRequest = null;
+    });
+    builder.addCase(createVacancy.rejected, (state) => {
+      state.createVacancyRequest = null;
+      state.createVacancyError = true;
     });
   },
 });

@@ -9,7 +9,7 @@ type Props = {
 const ConfirmDelete: FC<Props> = ({ onConfirm, onCancel }) => {
   return (
     <div className={style.wrapper}>
-      <BasketIcon />
+      <BasketIcon place="modal" />
       <h3 className={`${style.title} pt-1`}>Удалить проект?</h3>
       <p className={`${style.text} pb-2`}>
         Убедитесь, что вы оповестили всех участников проекта или в проекте нет участников.

@@ -1,0 +1,27 @@
+.wrapper {
+  max-width: 1110px;
+  width: 100%;
+  margin: 0 auto;
+}
+.cardWrapper {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  margin: 0;
+  padding: 30px 0 0 0;
+}
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 25px 0;
+  border-radius: 25px;
+  font-size: 50px;
+  line-height: 50px;
+  color: var(--text-color-white);
+  background-color: var(--bg-color-button-normal);
+}
+.addBtn:hover{
+  scale: 1.02
+}

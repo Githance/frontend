@@ -1,0 +1,11 @@
+.btns_wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 20px 0 60px;
+  list-style: none;
+}

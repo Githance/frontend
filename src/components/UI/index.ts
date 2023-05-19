@@ -8,6 +8,7 @@ export { default as RowIcon } from './icons/row-icon';
 export { default as ArrowRightIcon } from './icons/arrow-right-icon';
 export { default as CloseIcon } from './icons/close-icon';
 export { default as BasketIcon } from './icons/basket-icon';
+export { default as CrossIcon } from './icons/cross-icon';
 // ЛОГОТИП
 export { default as Logo } from './logo/logo';
 // КАРТОЧКИ

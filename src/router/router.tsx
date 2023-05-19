@@ -17,7 +17,23 @@ import {
   VerifyEmailPage,
 } from '../pages/index';
 import ProtectedRoute from '~/components/protected-route/protected-route';
-
+import ProjectLayout from '~/pages/project/layout/layout';
+import VacancyPage from '~/pages/project/vacancy-page/vacancy-page';
+import ParticipantsPage from '~/pages/project/participants-page/participants-page';
+const projectRoutes = [
+  {
+    path: PATH.PROJECT_D,
+    element: <ProjectPage />,
+  },
+  {
+    path: PATH.PROJECT_D_VACANCY,
+    element: <VacancyPage />,
+  },
+  {
+    path: PATH.PROJECT_D_PARTICIPANTS,
+    element: <ParticipantsPage />,
+  },
+];
 const mainRoutes = [
   {
     index: true,
@@ -33,7 +49,8 @@ const mainRoutes = [
   },
   {
     path: PATH.PROJECT,
-    element: <ProjectPage />,
+    element: <ProjectLayout />,
+    children: projectRoutes,
   },
 ];
 const authRoutes = [
@@ -76,6 +93,7 @@ const authResendRoutes = [
     element: <ResendPage base="password" />,
   },
 ];
+
 export const router = createBrowserRouter([
   {
     path: PATH.HOME,

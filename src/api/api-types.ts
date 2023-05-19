@@ -41,3 +41,16 @@ export type CurrentUserResponce = {
   summary_url: string;
   bio: string;
 };
+export type TProject = {
+  id: number;
+  name: string;
+  intro: string;
+  description: string;
+  status: 'idea' | 'vacancy' | 'in_progress' | 'closed';
+  owner: {
+    id: number;
+    name: string;
+  };
+  telegram: string;
+  email: string;
+};

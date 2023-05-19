@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import token from '../../utils/token';
-import { TProject } from '../../services/slice/project/project-slice';
+import { TProject } from '../api-types';
+
 class Project {
   private token = `Bearer ${token.getToken('accessToken')}`;
   private projectAuthAxios = axios.create({
@@ -19,8 +20,13 @@ class Project {
   private projectID(id: number) {
     return `/${id}/`;
   }
+  private participantsListID(id: number) {
+    return `/${id}/participants/`;
+  }
+  private vacanciesID(id: number) {
+    return `/${id}/vacancies/`;
+  }
   private checkResponse(res: AxiosResponse) {
-    console.log(res);
     return res.data;
   }
   public getAllProjectsRequest() {
@@ -40,12 +46,16 @@ class Project {
   public deleteProjectByIDRequest(id: any) {
     return this.projectAuthAxios.delete(this.projectID(id)).then(this.checkResponse);
   }
+  // !ДОП
+  public getParticipantsListIDRequest(id: any) {
+    return this.projectAxios.get(this.participantsListID(id)).then(this.checkResponse);
+  }
+  public getVacanciesIDRequest(id: any) {
+    return this.projectAxios.get(this.vacanciesID(id)).then(this.checkResponse);
+  }
+  public createVacanciesIDRequest({ id, data }: any) {
+    return this.projectAxios.post(this.vacanciesID(id), data).then(this.checkResponse);
+  }
 }
 
 export default Project;
-/* private selectedProject(id: number) {
-    return `/${id}/`;
-  }
-  private participantsList(id: number) {
-    return `/${id}/participants/`;
-  } */

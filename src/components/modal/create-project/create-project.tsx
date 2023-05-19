@@ -40,38 +40,12 @@ const CreateProject: FC = () => {
           Краткое описание
         </Label>
         <Textarea name="intro" control={control} className={style.textarea} maxLength={300} />
-        <p className={style.message}>
-          Коротко опишите о чем ваш проект. Эта информация будет видна на главной странице. Вы
-          сможете изменить описание после создания проекта.
-        </p>
+        <p className={style.message}>Эта информация будет видна на главной странице.</p>
         <p className={style.message}>
           <b>Важно:</b> Не сокращайте слова. Позже вы сможете добавить подробное описание проекта.{' '}
         </p>
       </fieldset>
 
-      <fieldset className={style.fieldset}>
-        <h2 className={style.title}>Оставьте свои контакты</h2>
-        <Label htmlFor="email">Электронная почта</Label>
-        <CommonInput
-          control={control}
-          name="email"
-          placeholder=""
-          validation={{ required: false }}
-        />
-        <Label htmlFor="telegram" className="pt-3">
-          Ник в Telegram
-        </Label>
-        <CommonInput
-          control={control}
-          name="telegram"
-          placeholder=""
-          validation={{ required: false }}
-        />
-        <p className={style.message}>
-          Ваши контакты будут видны специалистам, откликнувшимся на «вакансию». Это нужно для того,
-          чтобы специалист смог уточнить у вас недостающую информацию по проекту.
-        </p>
-      </fieldset>
       <SubmitBtn isValid={formState.isValid} className={style.submitBtn}>
         Создать проект
       </SubmitBtn>
