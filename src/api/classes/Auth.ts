@@ -10,7 +10,7 @@ import {
 
 class Auth {
   private authAxios = axios.create({
-    baseURL: 'https://dev.githance.com/api/v1/auth',
+    baseURL: 'http://dev.githance.com/api/v1/auth',
     withCredentials: true,
   });
   private googleAuth = '/google/login/';
@@ -24,6 +24,7 @@ class Auth {
   private refreshToken = '/token/refresh/';
 
   private checkResponse(res: AxiosResponse) {
+    console.log(res);
     return res.data;
   }
 

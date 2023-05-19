@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import token from '../../utils/token';
-import { TProject } from '../../services/slice/project/project-slice';
+import { TProject } from '../api-types';
+
 class Project {
   private token = `Bearer ${token.getToken('accessToken')}`;
   private projectAxios = axios.create({
@@ -45,8 +46,8 @@ class Project {
   public getVacanciesIDRequest(id: any) {
     return this.projectAxios.get(this.vacanciesID(id)).then(this.checkResponse);
   }
-  public createVacanciesIDRequest(id: any) {
-    return this.projectAxios.get(this.vacanciesID(id)).then(this.checkResponse);
+  public createVacanciesIDRequest({ id, data }: any) {
+    return this.projectAxios.post(this.vacanciesID(id), data).then(this.checkResponse);
   }
 }
 

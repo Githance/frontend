@@ -2,6 +2,7 @@
   gap: 40px;
   box-sizing: border-box;
   width: 100%;
+  max-width: 800px;
 }
 
 .title {
@@ -29,7 +30,7 @@
   line-height: 20px;
 }
 
-.message:nth-last-child(1){
+.message:nth-last-child(1) {
   padding-top: 5px;
 }
 
@@ -40,5 +41,5 @@
 
 .textarea {
   height: 86px;
- border: 1px solid var(--color-input-normal); 
+  border: 1px solid var(--color-input-normal);
 }
