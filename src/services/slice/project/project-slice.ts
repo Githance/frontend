@@ -78,7 +78,21 @@ export const getParticipantsListID = createAsyncThunk<
     })
     .catch((err) => rejectWithValue(err.response.data)),
 );
-
+// ПОЛУЧЕНИЕ СПИСКА ВАКАНСИЙ
+export const getVacanciesID = createAsyncThunk<
+  void,
+  any,
+  {
+    rejectValue: any;
+  }
+>('projectSlice/getVacanciesID', (id, { rejectWithValue }) =>
+  project
+    .getVacanciesIDRequest(id)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => rejectWithValue(err.response.data)),
+);
 // СОЗДАНИЕ ВАКАНСИИ
 export const createVacancy = createAsyncThunk<
   void,
@@ -101,6 +115,8 @@ type InitialState = {
   updateProjectByIDError: boolean | null;
   getParticipantsListIDRequest: boolean | null;
   getParticipantsListIDError: boolean | null;
+  getVacanciesIDRequest: boolean | null;
+  getVacanciesIDError: boolean | null;
   createVacancyRequest: boolean | null;
   createVacancyError: boolean | null;
   project: TProject | null;
@@ -121,6 +137,9 @@ const initialState: InitialState = {
 
   getParticipantsListIDRequest: null,
   getParticipantsListIDError: null,
+
+  getVacanciesIDRequest: null,
+  getVacanciesIDError: null,
 
   createVacancyRequest: null,
   createVacancyError: null,
@@ -192,6 +211,17 @@ const projectSlice = createSlice({
     builder.addCase(getParticipantsListID.rejected, (state) => {
       state.getParticipantsListIDRequest = null;
       state.getParticipantsListIDError = true;
+    });
+    // ПОЛУЧЕНИЕ СПИСКА ВАКАНСИЙ
+    builder.addCase(getVacanciesID.pending, (state) => {
+      state.getVacanciesIDRequest = true;
+    });
+    builder.addCase(getVacanciesID.fulfilled, (state) => {
+      state.getVacanciesIDRequest = null;
+    });
+    builder.addCase(getVacanciesID.rejected, (state) => {
+      state.getVacanciesIDRequest = null;
+      state.getVacanciesIDError = true;
     });
     // СОЗДАНИЕ ВАКАНСИИ
     builder.addCase(createVacancy.pending, (state) => {
