@@ -26,7 +26,7 @@ const ProfessionCard: FC<Props> = ({ title, subtitle, onClick }) => {
         Опубликовать
       </SubmitBtn>
       <Button className={style.deleteBtn} type="button" isValid={true}>
-        <BasketIcon  place="vacancy" />
+        <BasketIcon place="vacancy" />
       </Button>
     </article>
   );

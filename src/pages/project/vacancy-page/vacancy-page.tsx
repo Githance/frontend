@@ -5,17 +5,16 @@ import { Button, CrossIcon } from '~/components/UI';
 import ProfessionCard from '~/components/UI/cards/profession-card/profession-card';
 import Modal from '~/components/UI/modal/modal';
 import useModal from '~/hook/useModal';
-import { useDispatch } from '~/services/hooks';
-import { getVacanciesID } from '~/services/slice/project/project-slice';
+import useVacancy from '~/hook/useVacancy';
 import style from './vacancy-page.module.css';
 
 const VacancyPage: FC = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
   const [isOpen, openModal, closeModal] = useModal(false);
-  useEffect(() => {
-    dispatch(getVacanciesID(id)).then((res) => console.log(res));
-  }, []);
+  const { vacancy } = useVacancy(id);
+
+  console.log(vacancy);
+
   return (
     <div className={style.wrapper}>
       <Button onClick={openModal} className={style.addBtn} type="button" isValid={true}>
