@@ -26,13 +26,13 @@ const ProjectPage: FC = () => {
 
   const { setError, handleSubmit, control, formState } = useForm({
     mode: 'onChange',
-    /* defaultValues: { description: '', intro: '' }, */
+    defaultValues: { description: '', intro: '' },
     values: {
       ...project,
     },
   });
   const { onSubmit, handleDeleteProject } = useProject(setError, { deletePath: '/' }, id);
-  console.log(project);
+
   return (
     <>
       {project?.id && (
@@ -91,7 +91,6 @@ const ProjectPage: FC = () => {
           <fieldset className={style.form__about}>
             <Label className={style.title}>Краткое описание проекта</Label>
             <Textarea
-              /* value={project.intro} */
               name="intro"
               control={control}
               className={cn(style.shortTextarea)}
@@ -100,7 +99,6 @@ const ProjectPage: FC = () => {
             />
             <Label className={style.title}>Подробное описание проекта</Label>
             <Textarea
-              /* value={project.description} */
               name="description"
               control={control}
               className={style.textarea}
