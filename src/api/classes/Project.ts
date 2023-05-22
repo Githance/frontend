@@ -48,13 +48,13 @@ class Project {
   }
   // !ДОП
   public getParticipantsListIDRequest(id: any) {
-    return this.projectAxios.get(this.participantsListID(id)).then(this.checkResponse);
+    return this.projectAuthAxios.get(this.participantsListID(id)).then(this.checkResponse);
   }
   public getVacanciesIDRequest(id: any) {
-    return this.projectAxios.get(this.vacanciesID(id)).then(this.checkResponse);
+    return this.projectAuthAxios.get(this.vacanciesID(id)).then(this.checkResponse);
   }
   public createVacanciesIDRequest({ id, data }: any) {
-    return this.projectAxios.post(this.vacanciesID(id), data).then(this.checkResponse);
+    return this.projectAuthAxios.post(this.vacanciesID(id), data).then(this.checkResponse);
   }
 }
 

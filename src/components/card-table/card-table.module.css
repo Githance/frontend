@@ -57,3 +57,7 @@
 .button:hover {
   scale: 1.05;
 }
+.modal {
+  padding: 56px 60px 40px;
+  max-width: 800px;
+}
