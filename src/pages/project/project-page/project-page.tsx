@@ -7,11 +7,15 @@ import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn, Label } from '~/components/UI/index';
 import { useSelector } from 'react-redux';
 import { getProject } from '~/services/selectors';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useModal from '~/hook/useModal';
 import Modal from '~/components/UI/modal/modal';
 import ConfirmDelete from '~/components/modal/confirm-delete/confirm-delete';
 import useProject from '~/hook/useProject';
+import {
+  textareaValidation1000Scheme,
+  textareaValidation300Scheme,
+} from '~/utils/validation-scheme';
 
 const ProjectPage: FC = () => {
   const { id } = useParams();
@@ -46,7 +50,9 @@ const ProjectPage: FC = () => {
           <fieldset className={style.form__info}>
             <h3 className={style.title}>Контакты</h3>
             <h4 className={style.label}>Владелец</h4>
-            <p className={style.owner}>{project?.owner.name}</p>
+            <Link to={'/'} className={style.owner}>
+              {project?.owner.name}
+            </Link>
             <Label className={style.label}>Электронная почта</Label>
             <PageInput
               hasErrorMessage={true}
@@ -55,7 +61,6 @@ const ProjectPage: FC = () => {
               inputSize="small"
               control={control}
               name="email"
-              divider="bold"
             />
             <Label className={style.label}>Ник в Telegram</Label>
             <PageInput
@@ -64,7 +69,6 @@ const ProjectPage: FC = () => {
               inputSize="small"
               control={control}
               name="telegram"
-              divider="bold"
             />
             <p className={style.note}>
               Ваши контакты будут видны специалистам, откликнувшимся на&nbsp;&laquo;вакансию&raquo;.
@@ -75,7 +79,7 @@ const ProjectPage: FC = () => {
             <Button type="button" className={style.button} isValid onClick={openModal}>
               Удалить проект <ArrowRightIcon size="small" />
             </Button>
-            <Divider weight="bold" />
+            <Divider />
           </fieldset>
           {isOpen && (
             <Modal onClose={closeModal} closeIcon={false}>
@@ -86,19 +90,21 @@ const ProjectPage: FC = () => {
           <fieldset className={style.form__about}>
             <Label className={style.title}>Краткое описание проекта</Label>
             <Textarea
-              value={project.intro}
+              /* value={project.intro} */
               name="intro"
               control={control}
               className={cn(style.shortTextarea)}
-              maxLength={300}
+              hasErrorMessage={true}
+              validation={textareaValidation300Scheme}
             />
             <Label className={style.title}>Подробное описание проекта</Label>
             <Textarea
-              value={project.description}
+              /* value={project.description} */
               name="description"
               control={control}
               className={style.textarea}
-              maxLength={1000}
+              hasErrorMessage={true}
+              validation={textareaValidation1000Scheme}
             />
             <SubmitBtn isValid={formState.isDirty} className={cn(style.submit, 'mt-6')}>
               Сохранить
@@ -111,50 +117,3 @@ const ProjectPage: FC = () => {
 };
 
 export default ProjectPage;
-
-// !УДАЛЕННЫЙ КУСОК
-{
-  /* <h3 className={style.title}>
-              Контакты менеджера <span className={style.span}>(если менеджер назначен)</span>
-            </h3>
-            <Label className={style.label}>Электронная почта</Label>
-            <PageInput
-              hasErrorMessage={true}
-              classname={style.input}
-              inputSize="small"
-              control={control}
-              name="email1"
-              divider="bold"
-            />
-            <Label className={style.label}>Ник в Telegram</Label>
-            <PageInput
-              hasErrorMessage={true}
-              inputSize="small"
-              control={control}
-              name="telegram1"
-              divider="bold"
-            />
-
-            <h3 className={style.title}>Ссылки</h3>
-            <PageLink
-              inputSize="small"
-              control={control}
-              name="link1_url"
-              linkName="Ссылка 1"
-              divider="bold"
-            />
-            <PageLink
-              inputSize="small"
-              control={control}
-              name="link2_url"
-              linkName="Ссылка 2"
-              divider="bold"
-            />
-            <PageLink
-              inputSize="small"
-              control={control}
-              name="link3_url"
-              linkName="Ссылка 3"
-              divider="bold"
-            /> */
-}
