@@ -16,6 +16,7 @@ import {
   textareaValidation1000Scheme,
   textareaValidation300Scheme,
 } from '~/utils/validation-scheme';
+import { PATH } from '~/utils/variables';
 
 const ProjectPage: FC = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const ProjectPage: FC = () => {
     },
   });
   const { onSubmit, handleDeleteProject } = useProject(setError, { deletePath: '/' }, id);
-
+  console.log(project);
   return (
     <>
       {project?.id && (
@@ -50,7 +51,7 @@ const ProjectPage: FC = () => {
           <fieldset className={style.form__info}>
             <h3 className={style.title}>Контакты</h3>
             <h4 className={style.label}>Владелец</h4>
-            <Link to={'/'} className={style.owner}>
+            <Link to={`/${PATH.USER}/${project.owner.id}`} className={style.owner}>
               {project?.owner.name}
             </Link>
             <Label className={style.label}>Электронная почта</Label>
