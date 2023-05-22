@@ -64,7 +64,7 @@ const CardTable: FC<Props> = ({ projectList }) => {
         })}
       </div>
       {isOpen && (
-        <Modal onClose={closeModal}>
+        <Modal classname={style.modal} onClose={closeModal}>
           <CreateProject />
         </Modal>
       )}

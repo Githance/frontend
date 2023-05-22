@@ -11,16 +11,17 @@ type Props = {
   children: ReactNode;
   onClose: () => void;
   closeIcon?: boolean;
+  classname?: string;
 };
 
-const Modal: FC<Props> = ({ children, onClose, closeIcon = true }) => {
+const Modal: FC<Props> = ({ classname, children, onClose, closeIcon = true }) => {
   return createPortal(
     <Overlay onClose={onClose}>
       <div
         onClick={(e) => {
           e.stopPropagation();
         }}
-        className={cn(closeIcon ? style.container : style.mini_container)}
+        className={cn(closeIcon ? style.container : style.mini_container, classname)}
         aria-hidden="true"
       >
         {closeIcon && (

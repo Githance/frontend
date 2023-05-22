@@ -5,6 +5,7 @@ import CommonInput from '../../form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '../../UI';
 import Textarea from '../../UI/form/textarea/textarea';
 import style from './create-project.module.css';
+import cn from 'classnames';
 
 const CreateProject: FC = () => {
   const { setError, handleSubmit, control, formState, setFocus } = useForm({
@@ -35,7 +36,7 @@ const CreateProject: FC = () => {
       </fieldset>
 
       <fieldset className={style.fieldset}>
-        <h2 className={style.title}>Опишите свой проект</h2>
+        <h2 className={cn(style.title)}>Опишите свой проект</h2>
         <Label htmlFor="intro" required={true}>
           Краткое описание
         </Label>
