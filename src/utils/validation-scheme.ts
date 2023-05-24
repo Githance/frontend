@@ -12,7 +12,11 @@ export const textareaValidation300Scheme = {
 
 export const textareaValidation1000Scheme = {
   required: 'Заполни меня',
-  minLength: { value: 10, message: 'Минимум 8 символов' },
+  minLength: { value: 10, message: 'Минимум 10 символов' },
   maxLength: { value: 1000, message: 'Максимум 1000 символов' },
 };
-
+export const textareaValidation2000Scheme = {
+  required: 'Заполни меня',
+  minLength: { value: 10, message: 'Минимум 10 символов' },
+  maxLength: { value: 1000, message: 'Максимум 2000 символов' },
+};

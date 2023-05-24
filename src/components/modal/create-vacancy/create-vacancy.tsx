@@ -8,6 +8,7 @@ import Textarea from '~/components/UI/form/textarea/textarea';
 import { useDispatch } from '~/services/hooks';
 import { createVacancy } from '~/services/slice/project/project-slice';
 import { handleErrors } from '~/utils/handleErrors';
+import { textareaValidation2000Scheme } from '~/utils/validation-scheme';
 import style from './create-vacancy.module.css';
 
 const selectorOptions = [
@@ -15,8 +16,10 @@ const selectorOptions = [
   { value: 1, label: 'фронтенд' },
   { value: 2, label: 'бэкенд' },
 ];
-
-const CreateVacancy: FC = () => {
+type Props = {
+  closeModal: () => void;
+};
+const CreateVacancy: FC<Props> = ({ closeModal }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -40,6 +43,7 @@ const CreateVacancy: FC = () => {
   const onSubmit = (data: any) => {
     dispatch(createVacancy({ id, data }))
       .then(unwrapResult)
+      .then(closeModal)
       .catch((err) => {
         handleErrors(err, setError);
       });
@@ -63,7 +67,8 @@ const CreateVacancy: FC = () => {
           name="description"
           control={control}
           className={style.textarea}
-          maxLength={2000}
+          validation={textareaValidation2000Scheme}
+          hasErrorMessage={true}
         />
         <p className={style.message}>
           Опишите какие задачи будут стоять перед специалистом, какими навыками он должен обладать

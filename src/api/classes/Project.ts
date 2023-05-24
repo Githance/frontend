@@ -27,6 +27,7 @@ class Project {
     return `/${id}/vacancies/`;
   }
   private checkResponse(res: AxiosResponse) {
+    console.log(res);
     return res.data;
   }
   public getAllProjectsRequest() {

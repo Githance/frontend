@@ -36,7 +36,7 @@ const VacancyPage: FC = () => {
       </ul>
       {isOpen && (
         <Modal onClose={closeModal} closeIcon={true}>
-          <CreateVacancy />
+          <CreateVacancy closeModal={closeModal} />
         </Modal>
       )}
     </div>
