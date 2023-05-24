@@ -9,7 +9,6 @@ type Props = {
   control?: any;
   name: string;
   className?: string;
-  minLength?: number;
   maxLength?: number;
   validation?: any;
   value?: string;
@@ -22,6 +21,7 @@ const Textarea: FC<Props> = ({
   className,
   validation = RequireValidationScheme,
   hasErrorMessage = false,
+  maxLength,
   ...props
 }) => {
   const {
@@ -48,8 +48,7 @@ const Textarea: FC<Props> = ({
           style.textarea,
         )}
         defaultValue={props.value || ''}
-        minLength={props.minLength}
-        maxLength={props.maxLength}
+        maxLength={maxLength}
       ></textarea>
       {hasErrorMessage && errors[name]?.message && (
         <InputMessage type="error" message={errors[name]?.message} />
