@@ -6,9 +6,9 @@
   grid-template-columns: repeat(12, 1fr);
   max-width: 1110px;
   margin: 0 auto;
-  row-gap: 40px;
-  column-gap: 30px;
   padding-bottom: 9.6vw;
+  column-gap: 30px;
+  row-gap: 40px;
 }
 
 .form__name {
@@ -94,7 +94,7 @@
   justify-content: space-between;
   height: 22px;
   margin: 0;
-  padding: 0 0 10px 0;
+  padding: 0 0 10px;
   font-weight: 500;
   background-color: transparent;
   border: none;
@@ -131,18 +131,20 @@
 .input {
   margin-bottom: 15px;
 }
+
 .owner {
   margin: 0 0 15px;
   padding: 0 0 8px;
-  border-bottom: 3px solid var(--border-input-color);
   color: var(--link-color-active);
-  cursor: pointer;
   text-decoration: none;
+  border-bottom: 3px solid var(--border-input-color);
+  cursor: pointer;
 }
+
 .note {
-  margin: 5px 0 15px 0;
+  margin: 5px 0 15px;
+  color: var(--text-color-light-grey);
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  color: var(--text-color-light-grey);
 }

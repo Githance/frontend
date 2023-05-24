@@ -2,8 +2,8 @@
   gap: 25px;
   box-sizing: border-box;
   width: 100%;
-  padding: 0;
   max-width: 568px;
+  padding: 0;
 }
 
 .title {
@@ -20,18 +20,20 @@ line-height: 34px;
   padding: 0;
   border: none;
 }
+
 .label {
-  color: #999999;
+  padding: 20px 0 10px;
+  color: #999;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  padding: 20px 0 10px;
 }
+
 .message {
   display: inline-block;
   margin: 0;
   padding-top: 10px;
-  color: #999999;
+  color: #999;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
