@@ -62,6 +62,7 @@ const ProjectPage: FC = () => {
               inputSize="small"
               control={control}
               name="email"
+              divider="bold"
             />
             <Label className={style.label}>Ник в Telegram</Label>
             <PageInput
@@ -70,6 +71,7 @@ const ProjectPage: FC = () => {
               inputSize="small"
               control={control}
               name="telegram"
+              divider="bold"
             />
             <p className={style.note}>
               Ваши контакты будут видны специалистам, откликнувшимся на&nbsp;&laquo;вакансию&raquo;.
@@ -80,7 +82,7 @@ const ProjectPage: FC = () => {
             <Button type="button" className={style.button} isValid onClick={openModal}>
               Удалить проект <ArrowRightIcon size="small" />
             </Button>
-            <Divider />
+            <Divider weight="bold" />
           </fieldset>
           {isOpen && (
             <Modal onClose={closeModal} closeIcon={false}>
