@@ -6,9 +6,8 @@ import BasketIcon from '../../icons/basket-icon';
 import style from './profession-card.module.css';
 
 type Props = {
-  title: string;
+  title?: string;
   subtitle: string;
-
   onClick?: any;
 };
 
@@ -17,10 +16,10 @@ const ProfessionCard: FC<Props> = ({ title, subtitle, onClick }) => {
   const randomColor = colors[Math.floor(Math.random() * 4)];
   return (
     <article className={style.container} style={{ backgroundColor: `${randomColor}` }}>
-      <h2 className={style.title}>{cutText(title, 30)}</h2>
+      <h2 className={style.title}>{cutText(title as string, 30)}</h2>
       <p className={style.subtitle}>{cutText(subtitle, 172)}</p>
       <Button className={style.moreBtn} type="button" isValid={true}>
-        подробнее
+        редактировать
       </Button>
       <SubmitBtn className={style.submitBtn} isValid={true}>
         Опубликовать

@@ -74,7 +74,6 @@ export const updateUserProjectByID = createAsyncThunk<
     .catch((err) => rejectWithValue(err.response.data)),
 );
 
-
 // ПОЛУЧЕНИЕ СПИСКА УЧАСТНИКОВ
 export const getParticipantsListID = createAsyncThunk<
   void,
@@ -123,8 +122,6 @@ export type Projectlist = {
   intro: string;
 };
 
-
-
 type InitialState = {
   getAllProjectRequest: boolean | null;
   getAllProjectError: boolean | null;
@@ -161,7 +158,6 @@ const initialState: InitialState = {
 
   updateProjectByIDRequest: null,
   updateProjectByIDError: null,
-
 
   getParticipantsListIDRequest: null,
   getParticipantsListIDError: null,

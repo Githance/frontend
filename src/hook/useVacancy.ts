@@ -5,7 +5,7 @@ import { getVacanciesID } from '~/services/slice/project/project-slice';
 
 const useVacancy = (id?: string | null) => {
   const dispatch = useDispatch();
-  const [vacancy, setVacancy] = useState('');
+  const [vacancy, setVacancy] = useState<any>({});
   useEffect(() => {
     id &&
       dispatch(getVacanciesID(id))
@@ -15,8 +15,8 @@ const useVacancy = (id?: string | null) => {
           console.log(err);
         });
   }, [dispatch, id]);
-
-  return { vacancy };
+  const { results = [] } = vacancy;
+  return { vacancy, results };
 };
 
 export default useVacancy;

@@ -5,11 +5,13 @@
 }
 
 .cardWrapper {
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-  padding: 30px 0 0;
+  padding: 0;
   list-style: none;
+  display: grid;
+  grid-auto-rows: 350px;
+  grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+  gap: 30px;
+  align-items: stretch;
 }
 
 .addBtn {
@@ -25,6 +27,6 @@
   border-radius: 25px;
 }
 
-.addBtn:hover{
-  scale: 1.02
+.addBtn:hover {
+  scale: 1.02;
 }
