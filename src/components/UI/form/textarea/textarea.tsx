@@ -47,8 +47,10 @@ const Textarea: FC<Props> = ({
             : undefined,
           style.textarea,
         )}
-        defaultValue={props.value || ''}
+
+        /* defaultValue={props.value || ''} */
         maxLength={maxLength}
+
       ></textarea>
       {hasErrorMessage && errors[name]?.message && (
         <InputMessage type="error" message={errors[name]?.message} />
