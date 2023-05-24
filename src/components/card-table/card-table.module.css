@@ -36,9 +36,10 @@
 
 .cards_wrapper {
   display: grid;
+  grid-auto-rows: 350px;
   grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
   gap: 30px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .button {

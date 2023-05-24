@@ -9,8 +9,10 @@ export const textareaValidation300Scheme = {
   minLength: { value: 3, message: 'Минимум 3 символа' },
   maxLength: { value: 300, message: 'Максимум 300 символов' },
 };
+
 export const textareaValidation1000Scheme = {
   required: 'Заполни меня',
   minLength: { value: 10, message: 'Минимум 8 символов' },
   maxLength: { value: 1000, message: 'Максимум 1000 символов' },
 };
+
