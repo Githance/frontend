@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import { useDispatch } from '~/services/hooks';
+import { deleteVacancyByID, updateVacancyByID } from '~/services/slice/project/vacancy-slice';
 import { cutText } from '~/utils/cutText';
 import Button from '../../button/button';
 import SubmitBtn from '../../button/submit-btn/submit-btn';
@@ -6,25 +8,35 @@ import BasketIcon from '../../icons/basket-icon';
 import style from './profession-card.module.css';
 
 type Props = {
-  title?: string;
-  subtitle: string;
+  profession?: string;
+  description: string;
+  id: number;
   onClick?: any;
 };
 
-const ProfessionCard: FC<Props> = ({ title, subtitle, onClick }) => {
+const ProfessionCard: FC<Props> = ({ id, profession, description, onClick }) => {
+  const dispatch = useDispatch();
   const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
   const randomColor = colors[Math.floor(Math.random() * 4)];
+  const handleDelete = () => dispatch(deleteVacancyByID(id));
+  const handlePublisher = () =>
+    dispatch(
+      updateVacancyByID({
+        id,
+        data: { profession: { name: 'фронтенд' }, description, is_published: true },
+      }),
+    );
   return (
     <article className={style.container} style={{ backgroundColor: `${randomColor}` }}>
-      <h2 className={style.title}>{cutText(title as string, 30)}</h2>
-      <p className={style.subtitle}>{cutText(subtitle, 172)}</p>
+      <h2 className={style.profession}>{cutText(profession as string, 30)}</h2>
+      <p className={style.description}>{cutText(description, 172)}</p>
       <Button className={style.moreBtn} type="button" isValid={true}>
         редактировать
       </Button>
-      <SubmitBtn className={style.submitBtn} isValid={true}>
+      <SubmitBtn className={style.submitBtn} isValid={true} onClick={handlePublisher}>
         Опубликовать
       </SubmitBtn>
-      <Button className={style.deleteBtn} type="button" isValid={true}>
+      <Button className={style.deleteBtn} type="button" isValid={true} onClick={handleDelete}>
         <BasketIcon place="vacancy" />
       </Button>
     </article>

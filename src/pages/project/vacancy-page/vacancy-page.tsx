@@ -13,7 +13,9 @@ const VacancyPage: FC = () => {
   const { id } = useParams();
   const [isOpen, openModal, closeModal] = useModal(false);
   const { results, vacancy } = useVacancy(id);
-
+  useEffect(() => {
+    console.log('first');
+  }, [results]);
   console.log(vacancy);
   return (
     <div className={style.wrapper}>
@@ -25,8 +27,9 @@ const VacancyPage: FC = () => {
           return (
             <li key={index}>
               <ProfessionCard
-                title={checkVacancyCard(el.profession.id)}
-                subtitle={el.description}
+                id={el.id}
+                profession={checkVacancyCard(el.profession.id)}
+                description={el.description}
               />
             </li>
           );

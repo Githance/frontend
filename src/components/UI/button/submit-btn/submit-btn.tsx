@@ -7,9 +7,10 @@ type Props = {
   isValid: boolean;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 };
 
-const SubmitBtn: FC<Props> = ({ isValid, children, className }) => {
+const SubmitBtn: FC<Props> = ({ isValid, children, className, onClick }) => {
   return (
     <Button
       className={cn(
@@ -19,6 +20,7 @@ const SubmitBtn: FC<Props> = ({ isValid, children, className }) => {
       )}
       type="submit"
       isValid={isValid}
+      onClick={onClick}
     >
       {children}
     </Button>

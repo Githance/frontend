@@ -6,8 +6,8 @@ import cn from 'classnames';
 type Props = {
   name: string;
   classname?: string;
-  onClick: any;
-  active: string;
+  onClick: () => void;
+  active: boolean;
 };
 
 const Tab: FC<Props> = ({ name, onClick, classname, active }) => {
@@ -16,7 +16,7 @@ const Tab: FC<Props> = ({ name, onClick, classname, active }) => {
       type="button"
       onClick={onClick}
       isValid={true}
-      className={cn(active === name ? style.activeButton : style.button, classname)}
+      className={cn(active ? style.activeButton : style.button, classname)}
     >
       {name}
     </Button>

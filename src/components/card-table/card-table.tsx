@@ -37,12 +37,16 @@ const CardTable: FC<Props> = ({ projectList }) => {
         <ul className={style.btns_wrapper}>
           {tabOptions.map((option, index) => (
             <li key={index}>
-              <Tab active={tab} name={option.name} onClick={() => setTab(option.name)} />
+              <Tab
+                active={tab === option.name}
+                name={option.name}
+                onClick={() => setTab(option.name)}
+              />
             </li>
           ))}
         </ul>
         <CustomSelect
-          isClearable={true}
+          isClearable={false}
           isSeacheble={false}
           options={selectorOptions}
           placeholder="выбрать профессию"
