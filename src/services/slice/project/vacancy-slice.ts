@@ -4,10 +4,9 @@ import { RootState } from '~/services';
 
 //! ПОЛУЧАЕМ ВЕС ОПУБЛИКОВАННЫЕ ВАКАНСИИ
 export const getAllPublicVacancies = createAsyncThunk<void>(
-  'vananciesSlice/getAllPublicVacancies',
+  'vaсanciesSlice/getAllPublicVacancies',
   (_, { fulfillWithValue, dispatch }) => {
     return vacancies.getAllPublicVacanciesRequest().then((res) => {
-      /* dispatch(setProjectList(res.results)); */
       return fulfillWithValue(res);
     });
   },
@@ -20,13 +19,8 @@ export const getVacancyByID = createAsyncThunk<
   {
     rejectValue: any;
   }
->('vananciesSlice/getVacancyByID', (id, { rejectWithValue, dispatch }) =>
-  vacancies
-    .getVacancyByIDRequest(id)
-    /* .then((res) => {
-      dispatch(setProject(res));
-    }) */
-    .catch((err) => rejectWithValue(err.response.data)),
+>('vaсanciesSlice/getVacancyByID', (id, { rejectWithValue, dispatch }) =>
+  vacancies.getVacancyByIDRequest(id).catch((err) => rejectWithValue(err.response.data)),
 );
 
 //! УДАЛЯЕМ ВАКАНСИЮ ПО ID
@@ -36,7 +30,7 @@ export const deleteVacancyByID = createAsyncThunk<
   {
     rejectValue: any;
   }
->('vananciesSlice/deleteVacancyByID', (id, { rejectWithValue }) =>
+>('vaсanciesSlice/deleteVacancyByID', (id, { rejectWithValue }) =>
   vacancies.deleteVacancyByIDRequest(id).catch((err) => rejectWithValue(err.response.data)),
 );
 
@@ -47,7 +41,7 @@ export const updateVacancyByID = createAsyncThunk<
   {
     rejectValue: any;
   }
->('vananciesSlice/updateVacancyByID', ({ id, data }, { rejectWithValue, dispatch }) =>
+>('vaсanciesSlice/updateVacancyByID', ({ id, data }, { rejectWithValue, dispatch }) =>
   vacancies
     .updateVacancyByIDRequest({ id, data })
     .catch((err) => rejectWithValue(err.response.data)),
@@ -65,9 +59,6 @@ type InitialState = {
 
   deleteVacancyByIDRequest: boolean | null;
   deleteVacancyByIDError: boolean | null;
-
-  /*  projectList: Projectlist[];
-  project: TProject | null; */
 };
 
 const initialState: InitialState = {
@@ -84,23 +75,10 @@ const initialState: InitialState = {
   deleteVacancyByIDError: null,
 };
 
-const vananciesSlice = createSlice({
-  name: 'vananciesSlice',
+const vaсanciesSlice = createSlice({
+  name: 'vaсanciesSlice',
   initialState,
-  reducers: {
-    /* setProjectList: (state, action) => {
-      if (state.projectList.length === 0) {
-        state.projectList = [...action.payload];
-      } else {
-        state.projectList = [...state.projectList, ...action.payload];
-      }
-    },
-
-    setProject: (state, action) => {
-      state.project = action.payload;
-    }, */
-  },
-
+  reducers: {},
   extraReducers: (builder) => {
     // ПОЛУЧАЕМ ВЕС ОПУБЛИКОВАННЫЕ ВАКАНСИИ
     builder.addCase(getAllPublicVacancies.pending, (state) => {
@@ -150,9 +128,10 @@ const vananciesSlice = createSlice({
 });
 
 // Actions
-/* export const { setProject, setProjectList } = projectSlice.actions; */
+/* export const { setProject, setProjectList } = vaсanciesSlice.actions;  */
 // Selectors
-/* export const getProject = (state: RootState) => state.project.project;
-export const getProjectList = (state: RootState) => state.project.projectList; */
+export const getDeleteVacancyByIDRequest = (state: RootState) =>
+  state.vacancies.deleteVacancyByIDRequest;
+
 // Reducers
-export default vananciesSlice.reducer;
+export default vaсanciesSlice.reducer;

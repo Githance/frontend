@@ -11,11 +11,8 @@ import { handleErrors } from '~/utils/handleErrors';
 import { textareaValidation2000Scheme } from '~/utils/validation-scheme';
 import style from './create-vacancy.module.css';
 
-const selectorOptions = [
-  { value: 0, label: 'тестировщик' },
-  { value: 1, label: 'фронтенд' },
-  { value: 2, label: 'бэкенд' },
-];
+const selectorOptions = [{ value: 1, label: 'мэнеджер' }];
+
 type Props = {
   closeModal: () => void;
 };
@@ -55,7 +52,7 @@ const CreateVacancy: FC<Props> = ({ closeModal }) => {
         <h2 className={style.title}>Создайте вакансию</h2>
         <CustomSelect
           onChange={onChange}
-          isClearable={true}
+          isClearable={false}
           isSeacheble={false}
           options={selectorOptions}
           placeholder="выбрать профессию"

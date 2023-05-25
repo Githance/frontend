@@ -287,5 +287,6 @@ export const { setProject, setProjectList } = projectSlice.actions;
 // Selectors
 export const getProject = (state: RootState) => state.project.project;
 export const getProjectList = (state: RootState) => state.project.projectList;
+export const getCreateVacancyRequest = (state: RootState) => state.project.createVacancyRequest;
 // Reducers
 export default projectSlice.reducer;

@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import CreateVacancy from '~/components/modal/create-vacancy/create-vacancy';
 import { Button, CrossIcon } from '~/components/UI';
@@ -12,11 +12,8 @@ import style from './vacancy-page.module.css';
 const VacancyPage: FC = () => {
   const { id } = useParams();
   const [isOpen, openModal, closeModal] = useModal(false);
-  const { results, vacancy } = useVacancy(id);
-  useEffect(() => {
-    console.log('first');
-  }, [results]);
-  console.log(vacancy);
+  const { results } = useVacancy(id);
+
   return (
     <div className={style.wrapper}>
       <Button onClick={openModal} className={style.addBtn} type="button" isValid={true}>

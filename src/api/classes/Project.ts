@@ -24,7 +24,7 @@ class Project {
     return `/${id}/participants/`;
   }
   private vacanciesID(id: number) {
-    return `/${id}/vacancies/`;
+    return `/${id}/vacancies/?page_size=6`;
   }
   private checkResponse(res: AxiosResponse) {
     console.log(res);
