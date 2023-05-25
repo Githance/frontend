@@ -58,6 +58,9 @@
   left: 20px;
   background-color: transparent;
 }
+.deleteBtn:hover {
+  opacity: 0.6;
+}
 .note {
   padding: 0;
   margin: 0;

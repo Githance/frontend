@@ -12,7 +12,7 @@ type Props = {
   description: string;
   isPublished: boolean;
   id: number;
-  onClick?: any;
+  onClick?: () => void;
 };
 
 const ProfessionCard: FC<Props> = ({ id, profession, description, isPublished, onClick }) => {
@@ -20,11 +20,12 @@ const ProfessionCard: FC<Props> = ({ id, profession, description, isPublished, o
   const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
   const randomColor = colors[Math.floor(Math.random() * 4)];
   const handleDelete = () => dispatch(deleteVacancyByID(id));
+  //! НЕ РАБОТАЕТ ОПУБЛИКОВАНИЕ
   const handlePublisher = () =>
     dispatch(
       updateVacancyByID({
         id,
-        data: { profession: { name: 'фронтенд' }, description, is_published: true },
+        data: { profession: { name: 'frontend' }, description, is_published: true },
       }),
     );
   return (
