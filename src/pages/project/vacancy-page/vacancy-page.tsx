@@ -20,10 +20,11 @@ const VacancyPage: FC = () => {
         <CrossIcon />
       </Button>
       <ul className={style.cardWrapper}>
-        {results.map((el: any, index: number) => {
+        {results.reverse().map((el: any, index: number) => {
           return (
             <li key={index}>
               <ProfessionCard
+                isPublished={el.is_published}
                 id={el.id}
                 profession={checkVacancyCard(el.profession.id)}
                 description={el.description}

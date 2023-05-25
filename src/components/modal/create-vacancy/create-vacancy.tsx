@@ -29,7 +29,7 @@ const CreateVacancy: FC<Props> = ({ closeModal }) => {
     },
     values: {
       profession: currentValue,
-      is_published: false,
+      is_published: true,
     },
   });
 

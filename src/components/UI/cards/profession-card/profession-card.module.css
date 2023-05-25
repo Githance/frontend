@@ -10,11 +10,10 @@
   height: 350px;
   padding: 20px;
   border-radius: 30px;
-  transition: all 0.1s ease-out;
 }
 
 .container:hover {
-  scale: 1.05;
+  scale: 1.02;
 }
 
 .title {
@@ -58,4 +57,13 @@
   bottom: 18px;
   left: 20px;
   background-color: transparent;
+}
+.note {
+  padding: 0;
+  margin: 0;
+  align-self: flex-end;
+  color: var(--bg-color-button-normal);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }

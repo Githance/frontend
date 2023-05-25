@@ -10,11 +10,12 @@ import style from './profession-card.module.css';
 type Props = {
   profession?: string;
   description: string;
+  isPublished: boolean;
   id: number;
   onClick?: any;
 };
 
-const ProfessionCard: FC<Props> = ({ id, profession, description, onClick }) => {
+const ProfessionCard: FC<Props> = ({ id, profession, description, isPublished, onClick }) => {
   const dispatch = useDispatch();
   const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
   const randomColor = colors[Math.floor(Math.random() * 4)];
@@ -31,11 +32,15 @@ const ProfessionCard: FC<Props> = ({ id, profession, description, onClick }) => 
       <h2 className={style.profession}>{cutText(profession as string, 30)}</h2>
       <p className={style.description}>{cutText(description, 172)}</p>
       <Button className={style.moreBtn} type="button" isValid={true}>
-        редактировать
+        подробнее
       </Button>
-      <SubmitBtn className={style.submitBtn} isValid={true} onClick={handlePublisher}>
-        Опубликовать
-      </SubmitBtn>
+      {!isPublished ? (
+        <SubmitBtn className={style.submitBtn} isValid={true} onClick={handlePublisher}>
+          Опубликовать
+        </SubmitBtn>
+      ) : (
+        <p className={style.note}>Вакансия размещена</p>
+      )}
       <Button className={style.deleteBtn} type="button" isValid={true} onClick={handleDelete}>
         <BasketIcon place="vacancy" />
       </Button>
