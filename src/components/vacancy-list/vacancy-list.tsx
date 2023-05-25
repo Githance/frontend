@@ -3,9 +3,8 @@ import ProfessionCard from '../UI/cards/profession-card/profession-card';
 import style from './vacancy-list.module.css';
 type Props = {
   results: any;
-  openModal: () => void;
 };
-const VacancyList: FC<Props> = ({ results, openModal }) => {
+const VacancyList: FC<Props> = ({ results }) => {
   return (
     <ul className={style.cardWrapper}>
       {results.reverse().map((el: any, index: number) => {
@@ -16,7 +15,6 @@ const VacancyList: FC<Props> = ({ results, openModal }) => {
               id={el.id}
               profession={el.profession}
               description={el.description}
-              onClick={openModal}
             />
           </li>
         );

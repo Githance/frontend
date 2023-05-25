@@ -18,7 +18,7 @@ const VacancyPage: FC = () => {
       <Button onClick={openModal} className={style.addBtn} type="button" isValid={true}>
         <CrossIcon />
       </Button>
-      <VacancyList results={results} openModal={openModal} />
+      <VacancyList results={results} />
       {isOpen && (
         <Modal onClose={closeModal} closeIcon={true}>
           <CreateVacancy onClose={closeModal} title="Создайте вакансию" />

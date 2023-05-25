@@ -16,10 +16,9 @@ type Props = {
   description: string;
   isPublished: boolean;
   id: number;
-  onClick: () => void;
 };
 
-const ProfessionCard: FC<Props> = ({ id, profession, description, isPublished, onClick }) => {
+const ProfessionCard: FC<Props> = ({ id, profession, description, isPublished }) => {
   const dispatch = useDispatch();
   const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
   const randomColor = colors[Math.floor(Math.random() * 4)];
