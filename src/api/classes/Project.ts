@@ -35,6 +35,7 @@ class Project {
   }
 
   public createProjectRequest(data: TProject) {
+    console.log(this.token);
     return this.projectAuthAxios.post('/', data).then(this.checkResponse);
   }
 

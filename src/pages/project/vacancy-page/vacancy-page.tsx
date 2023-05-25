@@ -26,8 +26,9 @@ const VacancyPage: FC = () => {
               <ProfessionCard
                 isPublished={el.is_published}
                 id={el.id}
-                profession={checkVacancyCard(el.profession.id)}
+                profession={el.profession}
                 description={el.description}
+                onClick={openModal}
               />
             </li>
           );
@@ -35,7 +36,7 @@ const VacancyPage: FC = () => {
       </ul>
       {isOpen && (
         <Modal onClose={closeModal} closeIcon={true}>
-          <CreateVacancy closeModal={closeModal} />
+          <CreateVacancy onClose={closeModal} title="Создайте вакансию" />
         </Modal>
       )}
     </div>
