@@ -34,10 +34,10 @@ const CreateVacancy: FC<Props> = ({ isPublished, onClose, title, profession, des
     },
     values: {
       profession: currentValue,
-      is_published: true,
+      is_published: false,
     },
   });
-  console.log(currentValue);
+
   const onChange = (newValue: any) => {
     setCurrentValue(newValue.value);
   };
