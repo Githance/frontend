@@ -2,11 +2,7 @@ import { FC } from 'react';
 import CreateVacancy from '~/components/modal/create-vacancy/create-vacancy';
 import useModal from '~/hook/useModal';
 import { useDispatch } from '~/services/hooks';
-import {
-  deleteVacancyByID,
-  getVacancyByID,
-  updateVacancyByID,
-} from '~/services/slice/project/vacancy-slice';
+import { deleteVacancyByID, updateVacancyByID } from '~/services/slice/project/vacancy-slice';
 import { checkVacancyCard } from '~/utils/check-vacancy-card';
 import { cutText } from '~/utils/cutText';
 import Button from '../../button/button';

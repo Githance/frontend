@@ -58,13 +58,15 @@
   left: 20px;
   background-color: transparent;
 }
+
 .deleteBtn:hover {
   opacity: 0.6;
 }
+
 .note {
-  padding: 0;
-  margin: 0;
   align-self: flex-end;
+  margin: 0;
+  padding: 0;
   color: var(--bg-color-button-normal);
   font-weight: 500;
   font-size: 16px;

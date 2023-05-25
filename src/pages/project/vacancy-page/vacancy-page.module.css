@@ -6,12 +6,12 @@
 }
 
 .cardWrapper {
-  padding: 0;
-  list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, 350px);
   gap: 30px;
   align-items: stretch;
+  padding: 0;
+  list-style: none;
 }
 
 .addBtn {

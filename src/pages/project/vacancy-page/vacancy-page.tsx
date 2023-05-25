@@ -6,7 +6,6 @@ import ProfessionCard from '~/components/UI/cards/profession-card/profession-car
 import Modal from '~/components/UI/modal/modal';
 import useModal from '~/hook/useModal';
 import useVacancy from '~/hook/useVacancy';
-import { checkVacancyCard } from '~/utils/check-vacancy-card';
 import style from './vacancy-page.module.css';
 
 const VacancyPage: FC = () => {
