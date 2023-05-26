@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import useProject from '~/hook/useProject';
-import { TextareaValidationScheme } from '~/utils/validation-scheme';
+import { textareaValidation300Scheme } from '~/utils/validation-scheme';
 import CommonInput from '../../form-inputs/common-input';
 import { Form, Label, SubmitBtn } from '../../UI';
 import Textarea from '../../UI/form/textarea/textarea';
@@ -46,7 +46,7 @@ const CreateProject: FC = () => {
           control={control}
           className={style.textarea}
           hasErrorMessage={true}
-          validation={TextareaValidationScheme}
+          validation={textareaValidation300Scheme}
         />
         <p className={style.message}>Эта информация будет видна на главной странице.</p>
         <p className={style.message}>

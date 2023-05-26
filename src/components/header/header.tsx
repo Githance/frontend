@@ -12,7 +12,7 @@ const Header: FC = () => {
     <header className={style.header}>
       <nav className={style.nav}>
         <div className={style.nav__main}>
-          <NavLink className={`${style.link} pr-6`} to="/">
+          <NavLink className={`${style.link} pr-7`} to="/">
             <Logo />
           </NavLink>
           <NavLink className={style.link} to="/">
