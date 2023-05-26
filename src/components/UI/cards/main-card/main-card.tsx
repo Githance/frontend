@@ -10,17 +10,16 @@ type Props = {
   subtitle: string;
   percent: string;
   id: number;
+  color: string;
 };
 
-const MainCard: FC<Props> = ({ status, title, subtitle, percent, id }) => {
-  const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
-  const randomColor = colors[Math.floor(Math.random() * 4)];
+const MainCard: FC<Props> = ({ status, title, subtitle, percent, id, color }) => {
   return (
     <article>
       <Link
         to={`/project/${id}`}
         className={style.container}
-        style={{ backgroundColor: `${randomColor}` }}
+        style={{ backgroundColor: `${color}` }}
       >
         <div className={style.wrapper}>
           <span className={style.status}>{checkStatusCard(status)}</span>
