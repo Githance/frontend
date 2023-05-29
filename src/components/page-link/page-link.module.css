@@ -30,7 +30,7 @@
 }
 
 .link_active {
-  color: var(--text-color-black);
+  color: var(--link-color-active);
 }
 
 .link_size_small {

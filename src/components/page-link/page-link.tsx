@@ -58,9 +58,9 @@ const PageLink: FC<Props> = ({
       <div className={style.pageLink__container}>
         {disabledInput ? (
           <a
-            href={value}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={value || '#'}
+            target={value ? '_blank' : undefined}
+            rel={value ? 'noopener noreferrer' : undefined}
             className={cn(
               style.link,
               /* inputSize === 'large' ? style.link_size_large : undefined,

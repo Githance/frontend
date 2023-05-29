@@ -8,7 +8,7 @@
   box-sizing: border-box;
   max-width: 1110px;
   margin: 0 auto;
-  padding: 30px 0 200px;
+  padding: 22px 0 200px;
   column-gap: 30px;
   row-gap: 60px;
 }
@@ -27,7 +27,7 @@
 
 .userPage__container_position_info {
   grid-area: info;
-  gap: 60px;
+  gap: 50px;
 }
 
 .userPage__container_position_about {
@@ -35,12 +35,11 @@
 }
 
 .userPage__container_position_projects {
-  grid-area: projects;
-  margin-top: 20px;
+  grid-area: projects;  
 }
 
 .userPage__container_position_links {
-  gap: 15px;
+  gap: 10px;
 }
 
 .userPage__container_position_link {
@@ -55,7 +54,7 @@
   grid-area: name;
   box-sizing: border-box;
   margin: 0;
-  padding: 20px 0;
+  padding-bottom: 20px;
   color: var(--text-color-black);
   font-weight: 600;
   font-size: 36px;
@@ -74,7 +73,8 @@
 .text {
   box-sizing: border-box;
   max-width: 730px;
-  min-height: 232px;
+  height: 466px;
+  min-height: 232px;  
   margin: 0;
   padding: 11px 10px;
   color: var(--text-color-black);
@@ -109,5 +109,5 @@
 }
 
 .link_active {
-  color: var(--text-color-black);
+  color: var(--link-color-active);
 }

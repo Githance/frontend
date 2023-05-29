@@ -121,7 +121,9 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
         </div>
       </div>
       <div className={style.form__about}>
-        <p className={style.title}>О&nbsp;себе (максимум 1000&nbsp;символов)</p>
+        <p className={style.title}>
+          О&nbsp;себе <span>(максимум 1000&nbsp;символов)</span>
+        </p>
         <Textarea name="bio" control={control} className={style.textarea} maxLength={1000} />
         <SubmitBtn isValid={isDirty} className={style.submit}>
           Сохранить
