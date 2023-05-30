@@ -7,17 +7,12 @@ type Props = {
   isValid: boolean;
   className?: string;
   children?: ReactNode;
-  onClick?: () => void;
 };
 
-const Button: FC<Props> = ({ type, isValid, className, children, onClick }) => {
+const Button: FC<Props> = ({ isValid, className, children, ...rest }) => {
+  console.log(rest);
   return (
-    <button
-      disabled={!isValid}
-      className={cn(style.button, className)}
-      type={type}
-      onClick={onClick}
-    >
+    <button disabled={!isValid} className={cn(style.button, className)} {...rest}>
       {children}
     </button>
   );

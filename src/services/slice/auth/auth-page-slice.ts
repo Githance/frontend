@@ -55,7 +55,7 @@ type InitialState = {
   googleError: boolean | null;
   loginRequest: boolean | null;
   loginError: boolean | null;
-  loginErrorText: LoginRejectValue | undefined;
+  loginErrorText: LoginRejectValue | null;
   logoutRequest: boolean | null;
   logoutError: boolean | null;
 };
@@ -66,7 +66,7 @@ const initialState: InitialState = {
 
   loginRequest: null,
   loginError: null,
-  loginErrorText: undefined,
+  loginErrorText: null,
 
   logoutRequest: null,
   logoutError: null,
@@ -94,12 +94,13 @@ const authPageSLice = createSlice({
 
     builder.addCase(loginUser.pending, (state) => {
       state.loginRequest = true;
-      state.loginErrorText = undefined;
+      state.loginErrorText = null;
     });
     builder.addCase(loginUser.fulfilled, (state) => {
       state.loginRequest = null;
     });
     builder.addCase(loginUser.rejected, (state, action) => {
+      console.log(action);
       state.loginRequest = null;
       state.loginError = true;
       if (action.payload?.non_field_errors) {

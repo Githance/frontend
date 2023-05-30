@@ -18,7 +18,7 @@ class Vacancy {
     console.log(res);
     return res.data;
   }
-  // ПОЛУЧАЕМ ВЕС ОПУБЛИКОВАННЫЕ ВАКАНСИИ
+  // ПОЛУЧАЕМ ВСЕ ОПУБЛИКОВАННЫЕ ВАКАНСИИ
   public getAllPublicVacanciesRequest() {
     return this.vacancyAuthAxios.get('/').then(this.checkResponse);
   }
