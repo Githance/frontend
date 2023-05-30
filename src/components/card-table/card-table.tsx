@@ -9,6 +9,7 @@ import CreateProject from '../modal/create-project/create-project';
 import useModal from '~/hook/useModal';
 import { Button } from '../UI/index';
 import { Projectlist } from '~/services/slice/project/project-slice';
+import { getCardColor } from '~/utils/get-card-color';
 
 const selectorOptions = [
   { value: 'test', label: 'test' },
@@ -50,7 +51,7 @@ const CardTable: FC<Props> = ({ projectList }) => {
       </div>
       <div className={style.cards_wrapper}>
         <Button isValid type="button" onClick={openModal} className={style.button} />
-        {projectList?.map((item) => {
+        {projectList?.map((item, index) => {
           return (
             <MainCard
               key={nanoid()}
@@ -59,6 +60,7 @@ const CardTable: FC<Props> = ({ projectList }) => {
               subtitle={item.intro}
               id={item.id}
               percent="30"
+              color={getCardColor(index)}
             />
           );
         })}
