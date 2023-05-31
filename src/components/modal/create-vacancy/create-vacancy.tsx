@@ -7,16 +7,21 @@ import { Form, Label, SubmitBtn } from '~/components/UI';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { useDispatch } from '~/services/hooks';
 import { createVacancy } from '~/services/slice/project/project-slice';
+import { updateVacancyByID } from '~/services/slice/project/vacancy-slice';
 import { handleErrors } from '~/utils/handleErrors';
+import { textareaValidation2000Scheme } from '~/utils/validation-scheme';
 import style from './create-vacancy.module.css';
 
-const selectorOptions = [
-  { value: 0, label: 'тестировщик' },
-  { value: 1, label: 'фронтенд' },
-  { value: 2, label: 'бэкенд' },
-];
+const selectorOptions = [{ value: 1, label: 'manager' }];
 
-const CreateVacancy: FC = () => {
+type Props = {
+  onClose: () => void;
+  title: string;
+  description?: string;
+  profession?: string;
+  isPublished?: boolean;
+};
+const CreateVacancy: FC<Props> = ({ isPublished, onClose, title, profession, description }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -25,7 +30,7 @@ const CreateVacancy: FC = () => {
   const { setError, handleSubmit, control, formState } = useForm({
     mode: 'onChange',
     defaultValues: {
-      description: '',
+      description: description || '',
     },
     values: {
       profession: currentValue,
@@ -37,24 +42,33 @@ const CreateVacancy: FC = () => {
     setCurrentValue(newValue.value);
   };
 
+  //! НЕ РАБОТАЕТ РЕДАКТИРОВАНИЕ
   const onSubmit = (data: any) => {
-    dispatch(createVacancy({ id, data }))
-      .then(unwrapResult)
-      .catch((err) => {
-        handleErrors(err, setError);
-      });
+    !profession
+      ? dispatch(createVacancy({ id, data }))
+          .then(unwrapResult)
+          .then(onClose)
+          .catch((err) => {
+            handleErrors(err, setError);
+          })
+      : dispatch(
+          updateVacancyByID({
+            id,
+            data: { profession: { name: 'manager' }, description, is_published: false },
+          }),
+        );
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className={style.form}>
       <fieldset className={style.fieldset}>
-        <h2 className={style.title}>Создайте вакансию</h2>
+        <h2 className={style.title}>{title}</h2>
         <CustomSelect
           onChange={onChange}
-          isClearable={true}
+          isClearable={false}
           isSeacheble={false}
           options={selectorOptions}
-          placeholder="выбрать профессию"
+          placeholder={profession || 'выбрать профессию'}
         />
         <Label htmlFor="description" className={style.label}>
           Требования к специалисту
@@ -63,7 +77,8 @@ const CreateVacancy: FC = () => {
           name="description"
           control={control}
           className={style.textarea}
-          maxLength={2000}
+          validation={textareaValidation2000Scheme}
+          hasErrorMessage={true}
         />
         <p className={style.message}>
           Опишите какие задачи будут стоять перед специалистом, какими навыками он должен обладать
@@ -71,7 +86,7 @@ const CreateVacancy: FC = () => {
         </p>
       </fieldset>
 
-      <SubmitBtn isValid={formState.isValid} className={style.submitBtn}>
+      <SubmitBtn isValid={formState.isValid && !isPublished} className={style.submitBtn}>
         Сохранить
       </SubmitBtn>
     </Form>

@@ -7,6 +7,7 @@ import resetPageSlice from './slice/auth/reset-page-slice';
 import projectSlice from './slice/project/project-slice';
 import refreshTokenSlice from './slice/auth/refresh-token-slice';
 import profileSlice from './slice/profile/profile-slice';
+import vacanciesSlice from './slice/project/vacancy-slice';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     refreshToken: refreshTokenSlice,
     profile: profileSlice,
     project: projectSlice,
+    vacancies: vacanciesSlice,
   },
 });
 

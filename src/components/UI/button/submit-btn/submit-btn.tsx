@@ -9,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-const SubmitBtn: FC<Props> = ({ isValid, children, className }) => {
+const SubmitBtn: FC<Props> = ({ isValid, children, className, ...rest }) => {
   return (
     <Button
       className={cn(
@@ -19,6 +19,7 @@ const SubmitBtn: FC<Props> = ({ isValid, children, className }) => {
       )}
       type="submit"
       isValid={isValid}
+      {...rest}
     >
       {children}
     </Button>

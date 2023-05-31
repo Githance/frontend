@@ -1,22 +1,25 @@
 import { useEffect, useState } from 'react';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { useDispatch } from '~/services/hooks';
-import { getVacanciesID } from '~/services/slice/project/project-slice';
+import { useDispatch, useSelector } from '~/services/hooks';
+import { getCreateVacancyRequest, getVacanciesID } from '~/services/slice/project/project-slice';
+import { getDeleteVacancyByIDRequest } from '~/services/slice/project/vacancy-slice';
 
 const useVacancy = (id?: string | null) => {
   const dispatch = useDispatch();
-  const [vacancy, setVacancy] = useState('');
+  const [allVacancies, setAllVacancies] = useState<any>({});
+  const deleteVacancyRequest = useSelector(getDeleteVacancyByIDRequest);
+  const createVacancyRequest = useSelector(getCreateVacancyRequest);
   useEffect(() => {
     id &&
       dispatch(getVacanciesID(id))
         .then(unwrapResult)
-        .then((res: any) => setVacancy(res))
+        .then((res: any) => setAllVacancies(res))
         .catch((err) => {
           console.log(err);
         });
-  }, [dispatch, id]);
-
-  return { vacancy };
+  }, [dispatch, id, createVacancyRequest, deleteVacancyRequest]);
+  const { results = [] } = allVacancies;
+  return { allVacancies, results };
 };
 
 export default useVacancy;

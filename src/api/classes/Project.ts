@@ -24,9 +24,10 @@ class Project {
     return `/${id}/participants/`;
   }
   private vacanciesID(id: number) {
-    return `/${id}/vacancies/`;
+    return `/${id}/vacancies/?page_size=6`;
   }
   private checkResponse(res: AxiosResponse) {
+    console.log(res);
     return res.data;
   }
   public getAllProjectsRequest() {
@@ -34,6 +35,7 @@ class Project {
   }
 
   public createProjectRequest(data: TProject) {
+    console.log(this.token);
     return this.projectAuthAxios.post('/', data).then(this.checkResponse);
   }
 
