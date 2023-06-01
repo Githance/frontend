@@ -31,7 +31,7 @@ class Project {
     return res.data;
   }
   public getAllProjectsRequest() {
-    return this.projectNoAuthAxios.get('/').then(this.checkResponse);
+    return this.projectNoAuthAxios.get('/?page_size=8').then(this.checkResponse);
   }
 
   public createProjectRequest(data: TProject) {

@@ -6,7 +6,7 @@ type Props = { onClick: () => void };
 
 const GoogleBtn: FC<Props> = ({ onClick }) => {
   return (
-    <Button isValid className={style.button} type="button" onClick={onClick}>
+    <Button isValid className={style.button} onClick={onClick}>
       <span className={style.icon}></span>
       Войти через Google
     </Button>

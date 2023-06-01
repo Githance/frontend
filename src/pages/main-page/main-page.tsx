@@ -1,42 +1,46 @@
 import { FC, useEffect, useState } from 'react';
-import axios from 'axios';
-import { useDispatch, useSelector } from '~/services/hooks';
+import axios, { AxiosResponse } from 'axios';
+import { useDispatch } from '~/services/hooks';
 import style from './main-page.module.css';
 import Presentation from '../../components/presentation/presentation';
 import CardTable from '../../components/card-table/card-table';
 import { getAllProject } from '~/services/slice/project/project-slice';
-import { getProjectList } from '~/services/slice/project/project-slice';
 import { useInView } from 'react-intersection-observer';
-import { setProjectList } from '~/services/slice/project/project-slice';
+import { Projectlist, GetProject } from '~/services/slice/project/project-slice';
+
+type NextPage = string | null;
 
 const MainPage: FC = () => {
-  const [data, setData] = useState<any>();
+  const [projectList, setProjectList] = useState<Projectlist[]>();
+  const [next, setNext] = useState<NextPage>();
   const [dividerRef, inViewDivider] = useInView({ threshold: 0 });
 
   const dispatch = useDispatch();
-  const projectList = useSelector(getProjectList);
 
   useEffect(() => {
-    dispatch(getAllProject())
-      .unwrap()
-      .then((res) => {
-        setData(res);
-      });
-  }, []);
-
-  /* useEffect(() => {
-    console.log(inViewDivider);
-    if (inViewDivider && data.next) {
-      axios
-        .get(data.next)
-        .then((res) => res.data)
+    if (!projectList?.length) {
+      dispatch(getAllProject())
+        .unwrap()
         .then((res) => {
-          setData(res);
-          console.log(res);
-          dispatch(setProjectList(res.results));
+          setNext(res.next);
+          setProjectList(res.results);
         });
     }
-  }, [inViewDivider]); */
+  }, []);
+
+  useEffect(() => {
+    if (inViewDivider && next) {
+      axios
+        .get(`${next}&page_size=3`)
+        .then((res): GetProject => res.data)
+        .then((res) => {
+          setNext(res.next);
+          if (projectList) {
+            setProjectList([...projectList, ...res.results]);
+          }
+        });
+    }
+  }, [inViewDivider]);
 
   return (
     <main className={style.content}>
