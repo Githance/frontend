@@ -17,32 +17,32 @@ const MainPage: FC = () => {
   const projectList = useSelector(getProjectList);
 
   useEffect(() => {
-    dispatch(getAllProject())
-      .unwrap()
-      .then((res) => {
-        setData(res);
-      });
+    if (!projectList.length) {
+      dispatch(getAllProject())
+        .unwrap()
+        .then((res) => {
+          setData(res);
+        });
+    }
   }, []);
 
-  /* useEffect(() => {
-    console.log(inViewDivider);
-    if (inViewDivider && data.next) {
+  useEffect(() => {
+    if (inViewDivider && data?.next) {
       axios
-        .get(data.next)
+        .get(`${data?.next}&page_size=3`)
         .then((res) => res.data)
         .then((res) => {
           setData(res);
-          console.log(res);
           dispatch(setProjectList(res.results));
         });
     }
-  }, [inViewDivider]); */
+  }, [inViewDivider]);
 
   return (
     <main className={style.content}>
       <Presentation />
       <CardTable projectList={projectList} />
-      <div ref={dividerRef}></div>
+      <div ref={dividerRef} className="pb-8"></div>
     </main>
   );
 };
