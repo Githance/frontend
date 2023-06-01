@@ -1,18 +1,17 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, HTMLProps } from 'react';
 import cn from 'classnames';
 import style from './button.module.css';
 
-type Props = {
-  type: 'button' | 'submit' | 'reset';
+interface Props extends HTMLProps<HTMLButtonElement> {
+  type?: 'button' | 'submit' | 'reset';
   isValid: boolean;
   className?: string;
   children?: ReactNode;
-};
+}
 
-const Button: FC<Props> = ({ isValid, className, children, ...rest }) => {
-  console.log(rest);
+const Button: FC<Props> = ({ isValid, className, children, type = 'button', ...rest }) => {
   return (
-    <button disabled={!isValid} className={cn(style.button, className)} {...rest}>
+    <button disabled={!isValid} type={type} className={cn(style.button, className)} {...rest}>
       {children}
     </button>
   );

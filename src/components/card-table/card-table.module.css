@@ -5,7 +5,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 1440px;
-  padding: 40px 165px 0 164px;
+  padding: 40px 165px 40px 164px;
 }
 
 .selectors_wrapper {

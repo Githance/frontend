@@ -7,15 +7,15 @@ type Props = {
   name: string;
   classname?: string;
   active: boolean;
+  onClick: () => void;
 };
 
-const Tab: FC<Props> = ({ name, classname, ...rest }) => {
+const Tab: FC<Props> = ({ name, classname, active, onClick }) => {
   return (
     <Button
-      type="button"
       isValid={true}
-      className={cn(rest.active ? style.activeButton : style.button, classname)}
-      {...rest}
+      className={cn(active ? style.activeButton : style.button, classname)}
+      onClick={onClick}
     >
       {name}
     </Button>

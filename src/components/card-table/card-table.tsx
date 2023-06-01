@@ -25,7 +25,7 @@ const tabOptions = [
 ];
 
 type Props = {
-  projectList: Projectlist[] | null;
+  projectList: Projectlist[] | undefined;
 };
 
 const CardTable: FC<Props> = ({ projectList }) => {

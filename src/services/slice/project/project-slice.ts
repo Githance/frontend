@@ -4,12 +4,18 @@ import { TProject } from '~/api/api-types';
 import { RootState } from '~/services';
 import { StatusType } from '~/utils/check-status-card';
 
-export const getAllProject = createAsyncThunk<void>(
+export type GetProject = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Projectlist[];
+};
+
+export const getAllProject = createAsyncThunk<GetProject, void>(
   'projectSlice/getAllProject',
-  (_, { fulfillWithValue, dispatch }) => {
+  (_, { fulfillWithValue }) => {
     return project.getAllProjectsRequest().then((res) => {
-      dispatch(setProjectList(res.results));
-      return fulfillWithValue(res);
+      return fulfillWithValue(res) as GetProject;
     });
   },
 );
