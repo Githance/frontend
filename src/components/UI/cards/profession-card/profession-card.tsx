@@ -35,7 +35,6 @@ const ProfessionCard: FC<Props> = ({ id, profession, description, isPublished })
 
   return (
     <>
-      {' '}
       <article className={style.container} style={{ backgroundColor: `${randomColor}` }}>
         <h2 className={style.profession}>
           {cutText(checkVacancyCard(profession.id) as string, 30)}
