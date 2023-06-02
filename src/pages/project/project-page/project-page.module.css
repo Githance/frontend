@@ -137,7 +137,7 @@
   padding: 0 0 8px;
   color: var(--link-color-active);
   text-decoration: none;
-  border-bottom: 3px solid var(--border-input-color);
+  border-bottom: 2px solid var(--border-input-color);
   cursor: pointer;
 }
 
