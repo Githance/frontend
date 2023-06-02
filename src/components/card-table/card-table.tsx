@@ -10,6 +10,10 @@ import useModal from '~/hook/useModal';
 import { Button } from '../UI/index';
 import { Projectlist } from '~/services/slice/project/project-slice';
 import { getCardColor } from '~/utils/get-card-color';
+import { useSelector } from '~/services/hooks';
+import { getIsAuth } from '~/services/selectors';
+import { useNavigate } from 'react-router-dom';
+import { PATH } from '~/utils/variables';
 
 const selectorOptions = [
   { value: 'test', label: 'test' },
@@ -29,8 +33,18 @@ type Props = {
 };
 
 const CardTable: FC<Props> = ({ projectList }) => {
+  const navigate = useNavigate();
   const [isOpen, openModal, closeModal] = useModal(false);
   const [tab, setTab] = useState('Все проекты');
+  const isAuth = useSelector(getIsAuth);
+
+  const handleClickCreateProject = () => {
+    if (isAuth) {
+      openModal();
+    } else {
+      navigate(PATH.AUTH);
+    }
+  };
 
   return (
     <section className={style.container}>
@@ -54,7 +68,7 @@ const CardTable: FC<Props> = ({ projectList }) => {
         />
       </div>
       <div className={style.cards_wrapper}>
-        <Button isValid type="button" onClick={openModal} className={style.button} />
+        <Button isValid type="button" onClick={handleClickCreateProject} className={style.button} />
         {projectList?.map((item, index) => {
           return (
             <MainCard
