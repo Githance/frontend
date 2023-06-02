@@ -33,7 +33,7 @@ const PageInput: FC<Props> = ({
   const firstNameRef = useRef<HTMLInputElement | null>(null);
 
   const {
-    field: { ref, value, ...rest },
+    field: { ref, ...rest },
     formState: { errors },
   } = useController({
     control,
@@ -67,7 +67,6 @@ const PageInput: FC<Props> = ({
           minLength={minLength}
           maxLength={maxLength}
           disabled={disabledInput}
-          defaultValue={value}
           {...rest}
           ref={(e) => {
             ref(e);
