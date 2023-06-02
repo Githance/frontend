@@ -27,7 +27,6 @@ class Project {
     return `/${id}/vacancies/?page_size=6`;
   }
   private checkResponse(res: AxiosResponse) {
-    console.log(res);
     return res.data;
   }
   public getAllProjectsRequest() {

@@ -100,7 +100,6 @@ const authPageSLice = createSlice({
       state.loginRequest = null;
     });
     builder.addCase(loginUser.rejected, (state, action) => {
-      console.log(action);
       state.loginRequest = null;
       state.loginError = true;
       if (action.payload?.non_field_errors) {
