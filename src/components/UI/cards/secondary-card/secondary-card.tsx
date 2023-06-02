@@ -3,26 +3,26 @@ import { Link } from 'react-router-dom';
 import { cutText } from '../../../../utils/cutText';
 import { RowIcon } from '../../index';
 import style from './secondary-card.module.css';
-import { checkStatusCard, StatusType } from '~/utils/check-status-card';
+import { checkStatusCard } from '~/utils/check-status-card';
+import { StatusType } from '~/api/api-types';
 
 type Props = {
   status: StatusType;
   title: string;
   id: number;
+  color: string;
 };
 
-const SecondaryCard: FC<Props> = ({ status, title, id }) => {
-  const colors = ['#e2e2f6', '#F6D2D1', '#D0E6FF', '#D4D5FF'];
-  const randomColor = colors[Math.floor(Math.random() * 4)];
+const SecondaryCard: FC<Props> = ({ status, title, id, color }) => {
   return (
-    <article className={style.container} style={{ backgroundColor: `${randomColor}` }}>
-      <div className={style.wrapper}>
-        <span className={style.status}>{checkStatusCard(status)}</span>
-        <Link to={`/project/${id}`}>
+    <article>
+      <Link to={`/project/${id}`} className={style.link} style={{ backgroundColor: `${color}` }}>
+        <div className={style.wrapper}>
+          <span className={style.status}>{checkStatusCard(status)}</span>
           <RowIcon />
-        </Link>
-      </div>
-      <h2 className={style.title}>{cutText(title, 30)}</h2>
+        </div>
+        <h2 className={style.title}>{cutText(title, 30)}</h2>
+      </Link>
     </article>
   );
 };

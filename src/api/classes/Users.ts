@@ -11,7 +11,7 @@ class Users {
     return `/${id}/`;
   }
   private selectedUserProjects(id: string | undefined) {
-    return `/${id}/projects/`;
+    return `/${id}/projects/?page_size=100`;
   }
 
   private checkResponse(res: AxiosResponse) {

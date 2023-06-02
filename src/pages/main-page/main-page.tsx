@@ -6,12 +6,12 @@ import Presentation from '../../components/presentation/presentation';
 import CardTable from '../../components/card-table/card-table';
 import { getAllProject } from '~/services/slice/project/project-slice';
 import { useInView } from 'react-intersection-observer';
-import { Projectlist, GetProject } from '~/services/slice/project/project-slice';
+import { GetPrimaryProject, PrimaryProject } from '~/api/api-types';
 
 type NextPage = string | null;
 
 const MainPage: FC = () => {
-  const [projectList, setProjectList] = useState<Projectlist[]>();
+  const [projectList, setProjectList] = useState<PrimaryProject[]>();
   const [next, setNext] = useState<NextPage>();
   const [dividerRef, inViewDivider] = useInView({ threshold: 0 });
 
@@ -32,7 +32,7 @@ const MainPage: FC = () => {
     if (inViewDivider && next) {
       axios
         .get(`${next}&page_size=3`)
-        .then((res): GetProject => res.data)
+        .then((res): GetPrimaryProject => res.data)
         .then((res) => {
           setNext(res.next);
           if (projectList) {

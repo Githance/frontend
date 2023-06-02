@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '~/services';
 import { users } from '~/api/index';
-import { CurrentUserRequest } from '~/api/api-types';
+import { CurrentUserRequest, GetSecondaryProject, SelectedUserResponce } from '~/api/api-types';
 
 type PatchCurrentUserData = {
   data: CurrentUserRequest;
@@ -22,17 +22,17 @@ export const patchCurrentUserData = createAsyncThunk<void, PatchCurrentUserData>
   },
 );
 
-export const getSelectedUserData = createAsyncThunk<void, string | undefined>(
+export const getSelectedUserData = createAsyncThunk<SelectedUserResponce, string | undefined>(
   'profileSlice/getSelectedUserData',
   (id, { fulfillWithValue }) => {
     return users.getSelectedUserDataRequest(id).then((res) => fulfillWithValue(res));
   },
 );
 
-export const getSelectedUserProject = createAsyncThunk<void, string | undefined>(
+export const getSelectedUserProject = createAsyncThunk<GetSecondaryProject, string | undefined>(
   'profileSlice/getSelectedUserProject',
   (id, { fulfillWithValue }) => {
-    return users.getSelectedUserProjectRequest(id).then((res) => fulfillWithValue(res.results));
+    return users.getSelectedUserProjectRequest(id).then((res) => fulfillWithValue(res));
   },
 );
 

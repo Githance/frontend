@@ -2,7 +2,8 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { RowIcon } from '../../index';
 import style from './main-card.module.css';
-import { checkStatusCard, StatusType } from '~/utils/check-status-card';
+import { checkStatusCard } from '~/utils/check-status-card';
+import { StatusType } from '~/api/api-types';
 
 type Props = {
   status: StatusType;

@@ -41,12 +41,51 @@ export type CurrentUserResponce = {
   summary_url: string;
   bio: string;
 };
+
+export type SelectedUserResponce = {
+  id: number;
+  name: string;
+  telegram: string;
+  portfolio_url: string;
+  summary_url: string;
+  bio: string;
+};
+
+export type StatusType = 'idea' | 'vacancy' | 'in_progress' | 'closed';
+
+export type PrimaryProject = {
+  id: number;
+  name: string;
+  status: StatusType;
+  intro: string;
+};
+
+export type SecondaryProject = {
+  id: number;
+  name: string;
+  status: StatusType;
+};
+
+export type GetSecondaryProject = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: SecondaryProject[];
+};
+
+export type GetPrimaryProject = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: PrimaryProject[];
+};
+
 export type TProject = {
   id: number;
   name: string;
   intro: string;
   description: string;
-  status: 'idea' | 'vacancy' | 'in_progress' | 'closed';
+  status: StatusType;
   owner: {
     id: number;
     name: string;

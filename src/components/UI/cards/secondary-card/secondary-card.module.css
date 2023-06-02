@@ -1,14 +1,11 @@
-.container {
+.link {
   display: flex;
   flex-direction: column;
-  justify-self: center;
   box-sizing: border-box;
   width: 100%;
-  /* stylelint-disable-next-line comment-empty-line-before */
-  /* max-width: 255px; */
   height: 132px;
   padding: 20px 30px 30px;
-  background-color: #e2e2f6;
+  text-decoration: none;
   border-radius: 30px;
 }
 
@@ -31,10 +28,10 @@
 }
 
 .title {
-  margin: 0;
-  padding-top: 12px;
-  font-weight: 500;
+  margin: 0;  
+  padding-top: 16px;
+  color: var(--text-color-black);
+  font-weight: 500;  
   font-size: 18px;
-  line-height: 22px;
+  line-height: 22px;  
 }
-

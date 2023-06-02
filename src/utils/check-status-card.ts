@@ -1,4 +1,4 @@
-export type StatusType = 'idea' | 'vacancy' | 'in_progress' | 'closed';
+import { StatusType } from '~/api/api-types';
 
 export const checkStatusCard = (status: StatusType) => {
   switch (status) {

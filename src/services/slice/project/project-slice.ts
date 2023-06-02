@@ -1,21 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { project } from '~/api';
-import { TProject } from '~/api/api-types';
+import { TProject, PrimaryProject, GetPrimaryProject } from '~/api/api-types';
 import { RootState } from '~/services';
-import { StatusType } from '~/utils/check-status-card';
 
-export type GetProject = {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Projectlist[];
-};
-
-export const getAllProject = createAsyncThunk<GetProject, void>(
+export const getAllProject = createAsyncThunk<GetPrimaryProject, void>(
   'projectSlice/getAllProject',
   (_, { fulfillWithValue }) => {
     return project.getAllProjectsRequest().then((res) => {
-      return fulfillWithValue(res) as GetProject;
+      return fulfillWithValue(res) as GetPrimaryProject;
     });
   },
 );
@@ -121,13 +113,6 @@ export const createVacancy = createAsyncThunk<
   project.createVacanciesIDRequest({ id, data }).catch((err) => rejectWithValue(err.response.data)),
 );
 
-export type Projectlist = {
-  id: number;
-  name: string;
-  status: StatusType;
-  intro: string;
-};
-
 type InitialState = {
   getAllProjectRequest: boolean | null;
   getAllProjectError: boolean | null;
@@ -145,7 +130,7 @@ type InitialState = {
   getVacanciesIDError: boolean | null;
   createVacancyRequest: boolean | null;
   createVacancyError: boolean | null;
-  projectList: Projectlist[];
+  projectList: PrimaryProject[];
   project: TProject | null;
 };
 

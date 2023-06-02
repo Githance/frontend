@@ -10,17 +10,20 @@ import {
 } from '~/services/slice/profile/profile-slice';
 import { useParams } from 'react-router-dom';
 import { SecondaryCard } from '~/components/UI';
-
-type ProjectType = {
-  id: number;
-  name: string;
-  status: string;
-};
+import { SecondaryProject, SelectedUserResponce } from '~/api/api-types';
+import { getCardColor } from '~/utils/get-card-color';
 
 const UserPage: FC = () => {
   const { id } = useParams();
-  const [currentUserData, setCurrentUserData] = useState<any>();
-  const [currentUserProject, setCurrentUserProject] = useState<any>();
+  const [currentUserData, setCurrentUserData] = useState<SelectedUserResponce>({
+    id: 0,
+    name: '',
+    telegram: '',
+    portfolio_url: '',
+    summary_url: '',
+    bio: '',
+  });
+  const [currentUserProject, setCurrentUserProject] = useState<SecondaryProject[]>();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,8 +37,7 @@ const UserPage: FC = () => {
     dispatch(getSelectedUserProject(id))
       .unwrap()
       .then((res) => {
-        console.log(res);
-        setCurrentUserProject(res);
+        setCurrentUserProject(res.results);
       });
   }, []);
 
@@ -69,9 +71,9 @@ const UserPage: FC = () => {
                 className={cn(style.userPage__container, style.userPage__container_position_link)}
               >
                 <a
-                  href={currentUserData?.portfolio_url}
-                  rel="noopener noreferrer"
-                  target="_blank"
+                  href={currentUserData?.portfolio_url || '#'}
+                  rel={currentUserData?.portfolio_url ? 'noopener noreferrer' : undefined}
+                  target={currentUserData?.portfolio_url ? '_blank' : undefined}
                   className={cn(
                     style.link,
                     currentUserData?.portfolio_url ? style.link_active : undefined,
@@ -85,9 +87,9 @@ const UserPage: FC = () => {
                 className={cn(style.userPage__container, style.userPage__container_position_link)}
               >
                 <a
-                  href={currentUserData?.summary_url}
-                  rel="noopener noreferrer"
-                  target="_blank"
+                  href={currentUserData?.summary_url || '#'}
+                  rel={currentUserData?.summary_url ? 'noopener noreferrer' : undefined}
+                  target={currentUserData?.summary_url ? '_blank' : undefined}
                   className={cn(
                     style.link,
                     currentUserData?.summary_url ? style.link_active : undefined,
@@ -108,9 +110,10 @@ const UserPage: FC = () => {
           <p className={style.title}>Участие в проектах</p>
           <div className={style.userPage__projects}>
             {currentUserProject &&
-              currentUserProject.map((item: any) => {
+              currentUserProject?.map((item, index) => {
                 return (
                   <SecondaryCard
+                    color={getCardColor(index)}
                     status={item.status}
                     title={item.name}
                     id={item.id}
