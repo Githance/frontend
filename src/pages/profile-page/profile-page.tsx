@@ -10,7 +10,7 @@ import token from '~/utils/token';
 import { CurrentUserResponce } from '~/api/api-types';
 
 const ProfilePage: FC = () => {
-  const [currentUserData, setCurrentUserData] = useState<any>();
+  const [currentUserData, setCurrentUserData] = useState<CurrentUserResponce>();
   const dispatch = useDispatch();
   const currentUserRequestState = useSelector(getCurrentUserRequestState);
 
@@ -21,7 +21,7 @@ const ProfilePage: FC = () => {
       .then((res) => {
         setCurrentUserData(res);
         // TODO: Убрать перед продакшеном
-        console.log(res);
+        /* console.log('GET', res); */
       });
   }, []);
 

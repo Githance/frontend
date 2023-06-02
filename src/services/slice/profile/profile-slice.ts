@@ -1,21 +1,26 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '~/services';
 import { users } from '~/api/index';
-import { CurrentUserRequest, GetSecondaryProject, SelectedUserResponce } from '~/api/api-types';
+import {
+  CurrentUserRequest,
+  CurrentUserResponce,
+  GetSecondaryProject,
+  SelectedUserResponce,
+} from '~/api/api-types';
 
 type PatchCurrentUserData = {
   data: CurrentUserRequest;
   token: string;
 };
 
-export const getCurrentUserData = createAsyncThunk<void, string | null>(
+export const getCurrentUserData = createAsyncThunk<CurrentUserResponce, string | null>(
   'profileSlice/getCurrentUserData',
   (token, { fulfillWithValue }) => {
     return users.getCurrenUserDataRequest(token).then((res) => fulfillWithValue(res));
   },
 );
 
-export const patchCurrentUserData = createAsyncThunk<void, PatchCurrentUserData>(
+export const patchCurrentUserData = createAsyncThunk<CurrentUserResponce, PatchCurrentUserData>(
   'profileSlice/patchCurrentUserData',
   ({ data, token }, { fulfillWithValue }) => {
     return users.patchCurrenUserDataRequest(data, token).then((res) => fulfillWithValue(res));

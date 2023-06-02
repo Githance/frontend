@@ -8,7 +8,7 @@ import PageInput from '~/components/page-input/page-input';
 import PageLink from '~/components/page-link/page-link';
 import Textarea from '~/components/UI/form/textarea/textarea';
 import { Divider, Button, ArrowRightIcon, SubmitBtn } from '~/components/UI/index';
-import { CurrentUserResponce } from '~/api/api-types';
+import { CurrentUserResponce, CurrentUserRequest } from '~/api/api-types';
 import token from '~/utils/token';
 import { patchCurrentUserData } from '~/services/slice/profile/profile-slice';
 import { logoutUser } from '~/services/slice/auth/auth-page-slice';
@@ -17,7 +17,7 @@ import { PATH } from '~/utils/variables';
 type Props = { currenProfileData: CurrentUserResponce };
 
 const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
-  const [currentUserData, setCurrentUserData] = useState<any>();
+  const [currentUserData, setCurrentUserData] = useState<CurrentUserRequest>();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -43,14 +43,16 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
   });
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     const userData = {
       data: data,
       token: `Bearer ${token.getToken('accessToken')}`,
     };
     dispatch(patchCurrentUserData(userData))
       .unwrap()
-      .then((res) => setCurrentUserData(res));
+      .then((res) => {
+        console.log('PATCH', res);
+        setCurrentUserData(res);
+      });
   });
 
   const handleLogout = () => {
@@ -124,7 +126,13 @@ const ProfilePageContent: FC<Props> = ({ currenProfileData }) => {
         <p className={style.title}>
           О&nbsp;себе <span>(максимум 1000&nbsp;символов)</span>
         </p>
-        <Textarea name="bio" control={control} className={style.textarea} maxLength={1000} />
+        <Textarea
+          name="bio"
+          control={control}
+          className={style.textarea}
+          maxLength={1000}
+          validation={{ required: false }}
+        />
         <SubmitBtn isValid={isDirty} className={style.submit}>
           Сохранить
         </SubmitBtn>

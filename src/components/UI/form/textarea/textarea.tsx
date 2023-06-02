@@ -22,7 +22,6 @@ const Textarea: FC<Props> = ({
   validation = RequireValidationScheme,
   hasErrorMessage = false,
   maxLength,
-  ...props
 }) => {
   const {
     field,
@@ -33,7 +32,6 @@ const Textarea: FC<Props> = ({
     name,
     rules: validation,
   });
-
   return (
     <>
       <textarea
@@ -47,7 +45,6 @@ const Textarea: FC<Props> = ({
             : undefined,
           style.textarea,
         )}
-        /* defaultValue={props.value || ''} */
         maxLength={maxLength}
       ></textarea>
       {hasErrorMessage && errors[name]?.message && (
