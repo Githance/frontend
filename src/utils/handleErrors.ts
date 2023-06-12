@@ -7,12 +7,9 @@ export function handleErrors(err: any, setError: any): void {
     });
     return;
   }
-  // Обработка non-field errors
+  // СТОП на non-field errors
   if (err.non_field_errors) {
-    setError('nonFieldErrors', {
-      type: 'server',
-      message: err.non_field_errors,
-    });
+    return;
   }
   Object.keys(err).forEach((key) => {
     if (Object.prototype.hasOwnProperty.call(err, key)) {

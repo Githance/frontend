@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from '~/services/hooks';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './authentication-page.module.css';
 import oauthSignIn from '../../../utils/google-request';
-import { loginUser } from '~/services/slice/auth/auth-page-slice';
+import { loginUser, resetLoginError } from '~/services/slice/auth/auth-page-slice';
 import { GoogleBtn, Form, InputMessage, Label, SubmitBtn } from '../../../components/UI/index';
 import { getLoginErrorText } from '~/services/selectors';
 import PasswordInput from '../../../components/form-inputs/password-input';
@@ -26,6 +26,7 @@ const AuthenticationPage: FC = () => {
   };
 
   const onSubmit = handleSubmit((data) => {
+    console.log(data);
     dispatch(loginUser(data))
       .unwrap()
       .then(() => navigate('/profile'))
